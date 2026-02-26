@@ -506,10 +506,9 @@ function addCalEvent(){const t=$('cal-title').value.trim();if(!t)return alert('E
 function removeCal(id){calendar=calendar.filter(c=>c.id!==id);svC();renderAll();}
 
 // ===== FORMS =====
-function submitJoin(){if(!$('join-name').value.trim()||!$('join-email').value.trim())return alert('Enter name and email.');$('join-msg').classList.remove('hidden');}
-function submitContact(){if(!$('ct-msg').value.trim())return alert('Enter a message.');$('ct-sent').classList.remove('hidden');}
-function submitTopic(){if(!$('topic-input').value.trim())return;$('topic-sent').classList.remove('hidden');$('topic-input').value='';}
-
+async function submitJoin(){const name=$('join-name').value.trim(),email=$('join-email').value.trim();if(!name||!email)return alert('Enter name and email.');await db.collection('submissions').add({type:'join',name,email,year:$('join-year').value,interest:$('join-interest').value.trim(),date:new Date().toISOString()});$('join-msg').classList.remove('hidden');$('join-name').value='';$('join-email').value='';$('join-interest').value='';}
+async function submitContact(){const msg=$('ct-msg').value.trim();if(!msg)return alert('Enter a message.');await db.collection('submissions').add({type:'contact',name:$('ct-name').value.trim(),email:$('ct-email').value.trim(),category:$('ct-type').value,message:msg,date:new Date().toISOString()});$('ct-sent').classList.remove('hidden');$('ct-name').value='';$('ct-email').value='';$('ct-msg').value='';}
+async function submitTopic(){const t=$('topic-input').value.trim();if(!t)return;await db.collection('submissions').add({type:'topic',topic:t,date:new Date().toISOString()});$('topic-sent').classList.remove('hidden');$('topic-input').value='';}
 // ===== GLOSSARY =====
 let gf='all';
 function filterGloss(c,b){gf=c;document.querySelectorAll('#gloss-filter .btn-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');rGloss();}
