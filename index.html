@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Literacy Club</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14243D;--navy-deep:#0C1A2E;--navy-light:#1E3456;--navy-mid:#1A2E4A;--white:#FFF;--accent:#5B9CF6;--accent-dark:#3B7DD8;--accent-bg:rgba(91,156,246,0.1);--accent-border:rgba(91,156,246,0.25);--gold-bg:rgba(232,185,49,0.1);--green:#34D399;--green-bg:rgba(52,211,153,0.12);--green-border:rgba(52,211,153,0.25);--red:#F87171;--red-bg:rgba(248,113,113,0.1);--blue-cat:#60A5FA;--yellow-cat:#FBBF24;--green-cat:#34D399;--border:rgba(255,255,255,0.08);--muted:#8896AB;--secondary:#B0BEC5;--text:#E8EDF2;--surface2:rgba(255,255,255,0.06);--radius:12px;--radius-lg:16px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--navy-deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
+a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(12,26,46,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 32px;}
+.topnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.topnav-brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;cursor:pointer;user-select:none;color:var(--white);}
+.topnav-brand img{height:38px;border-radius:6px;}
+.topnav-links{display:flex;gap:1px;flex-wrap:wrap;}
+.topnav-link{padding:7px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:inherit;transition:all 0.15s;white-space:nowrap;}
+.topnav-link:hover{color:var(--white);}
+.topnav-link.active{color:var(--white);background:rgba(255,255,255,0.08);}
+.hamburger{display:none;background:none;border:1px solid var(--border);border-radius:8px;padding:6px 10px;color:var(--white);cursor:pointer;font-size:18px;font-family:inherit;}
+@media(max-width:900px){.topnav{padding:0 16px;}.topnav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(12,26,46,0.97);border-bottom:1px solid var(--border);flex-direction:column;padding:8px 16px;backdrop-filter:blur(20px);}.topnav-links.open{display:flex;}.hamburger{display:block;}.topnav-link{padding:12px 16px;width:100%;}}
+.page{display:none;animation:fadeIn 0.25s ease;}.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.container{max-width:1200px;margin:0 auto;padding:0 32px;}
+@media(max-width:768px){.container{padding:0 16px;}}
+.section{padding:28px 0;}.section-header{margin-bottom:20px;}
+.section-title{font-size:21px;font-weight:700;letter-spacing:-0.3px;color:var(--white);}
+.section-desc{font-size:14px;color:var(--muted);margin-top:5px;line-height:1.6;}
+.card{background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(255,255,255,0.14);}
+.card-grid{display:grid;gap:14px;}
+.cols-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.cols-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+.cols-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+.cols-5{grid-template-columns:repeat(auto-fit,minmax(175px,1fr));}
+.hero{padding:60px 0 40px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(91,156,246,0.07),transparent 70%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;max-width:700px;}
+.hero-logo{width:110px;border-radius:12px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.3);}
+.hero h1{font-family:'Playfair Display',serif;font-size:44px;font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:14px;color:var(--white);}
+.hero .accent{background:linear-gradient(135deg,var(--accent),#93C5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{font-size:17px;color:var(--secondary);line-height:1.7;margin-bottom:28px;max-width:550px;}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
+@media(max-width:600px){.hero h1{font-size:30px;}.hero{padding:36px 0 24px;}.hero-logo{width:80px;}}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;border:none;transition:all 0.15s;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:var(--white);}
+.btn-primary:hover{opacity:0.9;text-decoration:none;}
+.btn-ghost{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--white);}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.25);text-decoration:none;}
+.btn-sm{padding:8px 16px;font-size:13px;border-radius:8px;}
+.btn-danger{background:transparent;border:1px solid rgba(248,113,113,0.3);color:var(--red);padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;}
+.btn-tab{padding:6px 14px;border-radius:8px;border:none;cursor:pointer;font-size:12px;font-weight:600;font-family:inherit;background:transparent;color:var(--muted);transition:all 0.15s;}
+.btn-tab.active{background:rgba(255,255,255,0.08);color:var(--white);}
+.input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 16px;color:var(--text);font-size:14px;width:100%;font-family:inherit;outline:none;transition:border-color 0.2s;}
+.input:focus{border-color:var(--accent);}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238896AB' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+textarea.input{resize:vertical;min-height:90px;line-height:1.6;}
+label{font-size:11px;color:var(--muted);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
+.badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
+.badge-index{background:var(--green-bg);color:var(--green-cat);}
+.badge-alpha{background:var(--gold-bg);color:var(--yellow-cat);}
+.badge-fixed{background:var(--accent-bg);color:var(--blue-cat);}
+.tip{position:relative;display:inline-flex;align-items:center;cursor:help;}
+.tip-i{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;background:var(--accent-bg);color:var(--accent);font-size:9px;font-weight:700;margin-left:4px;flex-shrink:0;}
+.tip-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:250px;padding:10px 12px;background:var(--navy);border:1px solid var(--accent-border);border-radius:10px;font-size:12px;color:var(--secondary);line-height:1.5;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,0.5);font-weight:400;text-transform:none;letter-spacing:0;}
+.tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy);}
+.tip:hover .tip-box{display:block;}
+.edu{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);padding:14px 18px;margin-bottom:18px;}
+.edu h4{color:var(--accent);font-size:13px;margin-bottom:5px;}
+.edu p{font-size:13px;color:var(--secondary);line-height:1.6;}
+.stat-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:600;}
+.stat-value{font-size:21px;font-weight:700;letter-spacing:-0.5px;font-family:'JetBrains Mono',monospace;color:var(--white);}
+.stat-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+th{text-align:left;padding:9px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border);}
+td{padding:11px 12px;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.025);}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;}
+.text-right{text-align:right;}
+.pie-wrap{display:flex;justify-content:center;align-items:center;flex-direction:column;padding:16px;}
+.pie{width:180px;height:180px;border-radius:50%;}
+.pie-legend{display:flex;gap:14px;margin-top:12px;flex-wrap:wrap;justify-content:center;}
+.pie-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--secondary);}
+.pie-dot{width:10px;height:10px;border-radius:3px;}
+.alloc-bar-track{background:rgba(255,255,255,0.06);border-radius:4px;height:8px;position:relative;margin-top:6px;}
+.alloc-bar-fill{height:8px;border-radius:4px;transition:width 0.5s;position:absolute;top:0;left:0;}
+.alloc-marker{position:absolute;top:-3px;width:2px;height:14px;background:var(--white);border-radius:1px;opacity:0.5;}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+.team-card{text-align:center;padding:24px 16px;background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--border);border-radius:var(--radius-lg);transition:all 0.2s;}
+.team-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-2px);}
+.team-avatar{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--accent);border:2px solid var(--accent-border);font-weight:700;}
+.team-name{font-size:15px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.team-role{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+.slide-card{cursor:pointer;transition:transform 0.15s;}
+.slide-card:hover{transform:translateY(-2px);}
+.slide-thumb{width:100%;aspect-ratio:16/9;background:var(--navy-light);border-radius:10px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;font-size:32px;}
+.slide-date{font-size:11px;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:1px;}
+.slide-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.slide-desc{font-size:12px;color:var(--secondary);line-height:1.4;}
+.hidden{display:none!important;}
+.add-grid{display:grid;grid-template-columns:1fr 2fr 1fr 1fr 1fr 1fr;gap:10px;align-items:end;}
+@media(max-width:768px){.add-grid{grid-template-columns:1fr 1fr;}}
+.drift-warning{background:var(--red-bg);border:1px solid rgba(248,113,113,0.2);border-radius:var(--radius);padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.model-ref{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+@media(max-width:768px){.model-ref{grid-template-columns:1fr;}}
+.model-item{padding:18px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-align:center;}
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:800px){.charts-row{grid-template-columns:1fr;}}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green-cat);animation:pulse 2s infinite;display:inline-block;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.1);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;vertical-align:middle;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.site-footer{border-top:1px solid var(--border);padding:28px 32px;text-align:center;font-size:12px;color:var(--muted);line-height:1.8;margin-top:32px;}
+.site-footer a{color:var(--accent);margin:0 6px;}
+.gloss-filter{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.gloss-term{font-weight:700;color:var(--white);font-size:14px;}
+.gloss-def{color:var(--secondary);font-size:13px;line-height:1.6;margin-bottom:10px;}
+.officer-bar{background:rgba(52,211,153,0.08);border:1px solid var(--green-border);border-radius:8px;padding:8px 16px;font-size:12px;color:var(--green-cat);display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.lock-icon{cursor:pointer;font-size:16px;}
+.form-grid{display:grid;gap:12px;}
+.form-grid-2{grid-template-columns:1fr 1fr;}
+@media(max-width:600px){.form-grid-2{grid-template-columns:1fr;}}
+.testimony{border-left:3px solid var(--accent);padding:14px 18px;margin-bottom:14px;background:rgba(255,255,255,0.02);border-radius:0 10px 10px 0;}
+.testimony-text{font-style:italic;color:var(--secondary);font-size:14px;line-height:1.7;margin-bottom:6px;}
+.testimony-author{font-size:12px;color:var(--muted);font-weight:600;}
+.resource-card{display:flex;gap:14px;padding:16px;align-items:flex-start;}
+.resource-icon{font-size:28px;flex-shrink:0;}
+.resource-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.resource-desc{font-size:12px;color:var(--secondary);line-height:1.5;}
+.calendar-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);}
+.cal-date-box{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:10px;padding:8px 12px;text-align:center;min-width:60px;}
+.cal-month{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:700;}
+.cal-day{font-size:22px;font-weight:800;color:var(--white);line-height:1;}
+.wl-card{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;flex-wrap:wrap;gap:8px;}
+@media print{.topnav,.btn,.btn-primary,.btn-ghost,.btn-danger,.btn-tab,.hamburger,.officer-bar,.edu,.add-grid,#add-form{display:none!important;}.page{display:block!important;page-break-after:always;}.card{break-inside:avoid;border:1px solid #ccc;}.site-footer{display:none;}}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+<script>const LOGO_SRC="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/9k=";</script>
+
+<!-- NAV -->
+<nav class="topnav"><div class="topnav-inner">
+<div class="topnav-brand" onclick="navTo('home')"><img id="nav-logo" alt="FLC" style="height:38px;border-radius:6px;"> Financial Literacy Club</div>
+<button class="hamburger" onclick="document.querySelector('.topnav-links').classList.toggle('open')">☰</button>
+<div class="topnav-links">
+<button class="topnav-link active" data-page="home" onclick="navTo('home')">Home</button>
+<button class="topnav-link" data-page="portfolio" onclick="navTo('portfolio')">Portfolio</button>
+<button class="topnav-link" data-page="analysis" onclick="navTo('analysis')">Analysis</button>
+<button class="topnav-link" data-page="watchlist" onclick="navTo('watchlist')">Watchlist</button>
+<button class="topnav-link" data-page="slides" onclick="navTo('slides')">Meetings</button>
+<button class="topnav-link" data-page="newsletter" onclick="navTo('newsletter')">Newsletter</button>
+<button class="topnav-link" data-page="team" onclick="navTo('team')">Team</button>
+<button class="topnav-link" data-page="support" onclick="navTo('support')">Support Us</button>
+<button class="topnav-link" data-page="join" onclick="navTo('join')">Join</button>
+<button class="topnav-link" data-page="resources" onclick="navTo('resources')">Resources</button>
+<button class="topnav-link" data-page="contact" onclick="navTo('contact')">Contact</button>
+<button class="topnav-link" data-page="learn" onclick="navTo('learn')">📚 Learn</button>
+</div></div></nav>
+
+<!-- Officer unlock bar -->
+<div id="officer-bar" class="hidden" style="max-width:1200px;margin:10px auto 0;padding:0 32px;"><div class="officer-bar">🔓 Officer Mode — you can edit holdings, meetings, newsletters, and watchlist <button class="btn btn-sm btn-ghost" onclick="lockOfficer()" style="padding:4px 12px;font-size:11px;">Lock</button></div></div>
+
+<!-- HOME -->
+<div class="page active" id="page-home"><div class="container">
+<div class="hero"><div class="hero-content">
+<img id="hero-logo" class="hero-logo" alt="FLC">
+<h1>Learn to <span class="accent">Invest</span>, Together.</h1>
+<p>We're a student-run club that started with <b>$10,000</b> and manages a real portfolio using our 60/30/10 model. Join us to build investing skills that last a lifetime.</p>
+<div class="hero-btns"><button class="btn btn-primary" onclick="navTo('portfolio')">📈 Our Portfolio</button><button class="btn btn-ghost" onclick="navTo('join')">✋ Join the Club</button><button class="btn btn-ghost" onclick="navTo('learn')">📚 Learn</button></div>
+</div></div>
+<div class="section"><div class="card-grid cols-5" id="home-stats"></div></div>
+<div class="section">
+<div class="section-header"><div class="section-title">Our 60/30/10 Model</div></div>
+<div class="model-ref">
+<div class="model-item"><div style="font-size:32px;font-weight:800;color:var(--green-cat);font-family:'JetBrains Mono',monospace;">60%</div><div style="font-weight:700;margin-top:4px;color:var(--white)">Index / Core</div><div style="font-size:12px;color:var(--secondary);margin-top:6px;line-height:1.5;">Broad market ETFs. Own 500+ companies at once.</div></div>
+<div class="model-item"><div style="font-size:32px;font-weight:800;color:var(--yellow-cat);font-family:'JetBrains Mono',monospace;">30%</div><div style="font-weight:700;margin-top:4px;color:var(--white)">Alpha / Active</div><div style="font-size:12px;color:var(--secondary);margin-top:6px;line-height:1.5;">Individual stock picks. Members research & pitch.</div></div>
+<div class="model-item"><div style="font-size:32px;font-weight:800;color:var(--blue-cat);font-family:'JetBrains Mono',monospace;">10%</div><div style="font-weight:700;margin-top:4px;color:var(--white)">Fixed / Low Risk</div><div style="font-size:12px;color:var(--secondary);margin-top:6px;line-height:1.5;">Bonds & treasuries. Our safety net.</div></div>
+</div></div>
+<div class="section"><div class="charts-row"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--white)">📋 Latest Meeting</div><div id="home-latest-slide"></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--white)">📰 Latest Newsletter</div><div id="home-latest-nl"></div></div></div></div>
+</div></div>
+
+<!-- PORTFOLIO -->
+<div class="page" id="page-portfolio"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">📈 Team Portfolio <span style="font-size:12px;"><span class="live-dot"></span> <span id="live-label" style="color:var(--green-cat);font-weight:600;">LIVE</span></span></div><div class="section-desc">$10,000 initial investment · 60/30/10 model</div></div>
+<div class="edu"><h4>📖 Reading the Dashboard</h4><p><b>Original Investment</b> = $10,000 starting capital. <b>Current Value</b> = what it's worth today. <b>Total Return</b> = profit/loss. The pie chart shows allocation; the table shows each holding.</p></div>
+<div class="card-grid cols-5" id="port-stats" style="margin-bottom:18px;"></div>
+<div class="charts-row" style="margin-bottom:20px;"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--white)">Allocation <span class="tip"><span class="tip-i">?</span><span class="tip-box">How your portfolio splits between the three buckets.</span></span></div><div class="pie-wrap"><div class="pie" id="pie-chart"></div><div class="pie-legend" id="pie-legend"></div></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--white)">Allocation vs Target</div><div id="alloc-bars"></div></div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
+<div style="display:flex;gap:4px;align-items:center;"><span style="font-size:11px;color:var(--muted)">Sort:</span><button class="btn-tab active" onclick="setSort('category',this)">Category</button><button class="btn-tab" onclick="setSort('ticker',this)">Ticker</button><button class="btn-tab" onclick="setSort('value',this)">Value</button><button class="btn-tab" onclick="setSort('gl',this)">G/L%</button></div>
+<div style="display:flex;gap:6px;align-items:center;"><button class="btn btn-ghost btn-sm" onclick="exportCSV()">📥 Export CSV</button><button class="btn btn-ghost btn-sm" onclick="window.print()">🖨️ Print</button><button class="btn btn-primary btn-sm officer-only hidden" onclick="toggleAdd()">+ Add Holding</button></div>
+</div>
+<div id="add-form" class="card hidden" style="margin-bottom:14px;border:1px solid var(--accent-border);">
+<div class="add-grid"><div><label>Ticker</label><input class="input" id="add-ticker" placeholder="AAPL" style="text-transform:uppercase"></div><div><label>Company Name</label><input class="input" id="add-name" placeholder="Apple Inc."></div><div><label>Category</label><select class="input" id="add-cat"><option value="index">Index</option><option value="alpha">Alpha</option><option value="fixed">Fixed</option></select></div><div><label>Shares</label><input class="input" id="add-shares" type="number" placeholder="10"></div><div><label>Cost ($)</label><input class="input" id="add-cost" type="number" step="0.01" placeholder="150"></div><div><label>Date</label><input class="input" id="add-date" type="date"></div></div>
+<div style="margin-top:10px;display:flex;gap:8px;"><button class="btn btn-primary btn-sm" onclick="addHolding()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleAdd()">Cancel</button></div></div>
+<div class="card" style="padding:0;overflow:hidden;"><div class="table-wrap"><table><thead><tr><th>Ticker</th><th>Name</th><th>Cat</th><th class="text-right">Date</th><th class="text-right">Shares</th><th class="text-right">Cost</th><th class="text-right">Price</th><th class="text-right">Value</th><th class="text-right">G/L</th><th class="text-right">%Port</th><th class="text-right officer-only hidden"></th></tr></thead><tbody id="holdings-tbody"></tbody></table></div></div>
+<div style="margin-top:24px;"><div class="section-title" style="margin-bottom:14px;">⚖️ Rebalance Advisor</div><div id="rebalance-content"></div></div>
+</div></div></div>
+
+<!-- ANALYSIS -->
+<div class="page" id="page-analysis"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">🔬 Stock Analysis</div><div class="section-desc">What each company does, metrics, and why we own it.</div></div>
+<div id="analysis-cards"></div>
+</div></div></div>
+
+<!-- WATCHLIST -->
+<div class="page" id="page-watchlist"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">👀 Watchlist</div><div class="section-desc">Stocks we're researching but haven't bought yet.</div></div>
+<div class="edu"><h4>📖 What's a Watchlist?</h4><p>Before buying a stock, smart investors research it first. This is our list of companies we're considering. We track them here before deciding whether to add them to the portfolio.</p></div>
+<div id="wl-add" class="card officer-only hidden" style="margin-bottom:18px;border:1px solid var(--accent-border);">
+<div class="form-grid form-grid-2"><div><label>Ticker</label><input class="input" id="wl-ticker" placeholder="MSFT" style="text-transform:uppercase"></div><div><label>Company Name</label><input class="input" id="wl-name" placeholder="Microsoft Corp."></div><div><label>Why are we watching?</label><input class="input" id="wl-reason" placeholder="Strong AI investment, growing cloud revenue..."></div><div><label>Added by</label><input class="input" id="wl-by" placeholder="Your name"></div></div>
+<div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addWatchlist()">Add to Watchlist</button></div></div>
+<div id="watchlist-list"></div>
+<div id="no-wl" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">Watchlist is empty. Officers can add stocks to research!</div>
+</div></div></div>
+
+<!-- MEETINGS -->
+<div class="page" id="page-slides"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">📋 Meetings</div></div>
+<!-- Calendar -->
+<div class="card" style="margin-bottom:20px;"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--white)">📅 Upcoming Schedule</div><div id="calendar-list"></div><div id="no-cal" style="color:var(--muted);font-size:13px;padding:10px 0;">No upcoming meetings scheduled.</div>
+<div id="cal-add" class="officer-only hidden" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);"><div class="form-grid form-grid-2"><div><label>Event Title</label><input class="input" id="cal-title" placeholder="Weekly Meeting"></div><div><label>Date & Time</label><input class="input" id="cal-date" type="datetime-local"></div><div><label>Location</label><input class="input" id="cal-loc" placeholder="Room 204 / Zoom link"></div><div style="display:flex;align-items:end;"><button class="btn btn-primary btn-sm" onclick="addCalEvent()">Add Event</button></div></div></div></div>
+<!-- Slides -->
+<div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--white)">📊 Past Meeting Slides</div>
+<div id="slide-add" class="card officer-only hidden" style="margin-bottom:18px;border:1px solid var(--accent-border);"><div class="form-grid form-grid-2"><div><label>Title</label><input class="input" id="slide-title" placeholder="Week 5: P/E Ratios"></div><div><label>Date</label><input class="input" id="slide-date" type="date"></div><div><label>Description</label><input class="input" id="slide-desc" placeholder="What was covered?"></div><div><label>Link</label><input class="input" id="slide-link" placeholder="https://docs.google.com/..."></div></div><div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addSlide()">Publish</button></div></div>
+<div class="card-grid cols-2" id="slides-grid"></div>
+<div id="no-slides" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">No slides yet.</div>
+</div></div></div>
+
+<!-- NEWSLETTER -->
+<div class="page" id="page-newsletter"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">📰 Newsletter</div></div>
+<div id="nl-compose" class="card officer-only hidden" style="margin-bottom:24px;border:1px solid var(--accent-border);"><h4 style="margin-bottom:10px;color:var(--white)">✍️ Write a Post</h4><div class="form-grid form-grid-2"><div><label>Title</label><input class="input" id="nl-title" placeholder="Weekly Update"></div><div><label>Author</label><input class="input" id="nl-author" placeholder="Your name"></div></div><div style="margin-top:10px;"><label>Content</label><textarea class="input" id="nl-body" placeholder="Write about performance, market news, research..."></textarea></div><div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addNewsletter()">Publish</button></div></div>
+<div id="newsletter-feed"></div>
+<div id="no-nl" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">No posts yet.</div>
+</div></div></div>
+
+<!-- TEAM -->
+<div class="page" id="page-team"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">👥 Our Team</div></div>
+<div style="text-align:center;margin-bottom:28px;"><img id="team-logo" alt="FLC" style="width:90px;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.3);"></div>
+<div class="team-grid" id="team-grid"></div>
+</div></div></div>
+
+<!-- SUPPORT -->
+<div class="page" id="page-support"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">💙 Support the Financial Literacy Club</div><div class="section-desc">Help us empower students with the knowledge to build financial futures.</div></div>
+<div class="card" style="margin-bottom:20px;text-align:center;padding:36px;">
+<div style="font-size:40px;margin-bottom:12px;">🎓</div>
+<h3 style="color:var(--white);font-size:20px;margin-bottom:10px;">Our Mission</h3>
+<p style="color:var(--secondary);line-height:1.7;max-width:600px;margin:0 auto;font-size:15px;">We believe every student deserves to understand how money works. Our club teaches real-world investing, financial planning, and money management through hands-on experience with a live portfolio. Your support helps us host events, bring in guest speakers, and provide resources to our members.</p>
+</div>
+<div class="card" style="margin-bottom:20px;text-align:center;padding:30px;">
+<h3 style="color:var(--white);font-size:18px;margin-bottom:8px;">How Your Donation Helps</h3>
+<div class="card-grid cols-3" style="margin-top:16px;text-align:center;">
+<div style="padding:14px;"><div style="font-size:28px;margin-bottom:8px;">📚</div><div style="font-weight:600;color:var(--white);font-size:14px;">Educational Materials</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">Books, subscriptions, and tools for members</div></div>
+<div style="padding:14px;"><div style="font-size:28px;margin-bottom:8px;">🎤</div><div style="font-weight:600;color:var(--white);font-size:14px;">Guest Speakers</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">Industry professionals sharing real-world insights</div></div>
+<div style="padding:14px;"><div style="font-size:28px;margin-bottom:8px;">🏆</div><div style="font-weight:600;color:var(--white);font-size:14px;">Events & Competitions</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">Stock pitch competitions, workshops, and networking</div></div>
+</div></div>
+<div class="card" style="text-align:center;padding:30px;margin-bottom:20px;border:1px solid var(--accent-border);">
+<h3 style="color:var(--white);font-size:18px;margin-bottom:12px;">Make a Donation</h3>
+<p style="color:var(--secondary);font-size:14px;margin-bottom:16px;">Every dollar goes directly to supporting our members' financial education.</p>
+<a id="donate-link" href="#" class="btn btn-primary" style="font-size:16px;padding:14px 36px;">💙 Donate Now</a>
+<p style="color:var(--muted);font-size:11px;margin-top:10px;">[Donation link coming soon]</p>
+</div>
+<div style="margin-top:24px;"><div class="section-title" style="margin-bottom:14px;">💬 Member Testimonials</div>
+<div class="testimony"><div class="testimony-text">"This club completely changed how I think about money. I went from knowing nothing about investing to managing a real portfolio with my peers."</div><div class="testimony-author">— Club Member</div></div>
+<div class="testimony"><div class="testimony-text">"The hands-on approach is what makes this club special. We're not just reading about stocks — we're actually buying them and tracking our returns."</div><div class="testimony-author">— Club Member</div></div>
+<div class="testimony"><div class="testimony-text">"I've learned more about finance here in one semester than I did in four years of school. The 60/30/10 model taught me how to actually build a balanced portfolio."</div><div class="testimony-author">— Club Member</div></div>
+</div></div></div></div>
+
+<!-- JOIN -->
+<div class="page" id="page-join"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">✋ Join the Financial Literacy Club</div><div class="section-desc">No experience needed — just a willingness to learn!</div></div>
+<div class="charts-row">
+<div class="card">
+<h3 style="color:var(--white);font-size:16px;margin-bottom:12px;">What You'll Get</h3>
+<div style="font-size:14px;color:var(--secondary);line-height:2;">
+📈 Hands-on experience managing a real portfolio<br>
+📚 Weekly meetings covering investing fundamentals<br>
+🔬 Learn to analyze stocks and build investment theses<br>
+👥 Network with like-minded students<br>
+🎤 Access to guest speakers from the finance industry<br>
+🏆 Compete in stock pitch competitions
+</div></div>
+<div class="card">
+<h3 style="color:var(--white);font-size:16px;margin-bottom:12px;">Sign Up</h3>
+<div class="form-grid"><div><label>Full Name</label><input class="input" id="join-name" placeholder="Your name"></div><div><label>Email</label><input class="input" id="join-email" type="email" placeholder="you@school.edu"></div><div><label>Year</label><select class="input" id="join-year"><option>Freshman</option><option>Sophomore</option><option>Junior</option><option>Senior</option><option>Graduate</option><option>Other</option></select></div><div><label>What interests you most?</label><input class="input" id="join-interest" placeholder="Stocks, crypto, real estate..."></div><div><button class="btn btn-primary" onclick="submitJoin()" style="width:100%;">Submit Interest Form</button></div></div>
+<div id="join-msg" class="hidden" style="margin-top:12px;color:var(--green-cat);font-size:14px;font-weight:600;">✅ Thanks for your interest! We'll be in touch.</div>
+</div></div>
+</div></div></div>
+
+<!-- RESOURCES -->
+<div class="page" id="page-resources"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">📖 Resources</div><div class="section-desc">Our favorite books, podcasts, and channels for learning to invest.</div></div>
+<div class="section-title" style="font-size:16px;margin-bottom:12px;">📚 Books</div>
+<div class="card-grid cols-2" style="margin-bottom:24px;">
+<div class="card resource-card"><div class="resource-icon">📘</div><div><div class="resource-title">The Intelligent Investor — Benjamin Graham</div><div class="resource-desc">The classic value investing book. Warren Buffett calls it "the best book on investing ever written."</div></div></div>
+<div class="card resource-card"><div class="resource-icon">📗</div><div><div class="resource-title">A Random Walk Down Wall Street — Burton Malkiel</div><div class="resource-desc">Why index funds work and why most stock pickers fail. Essential reading for our 60/30/10 model.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">📙</div><div><div class="resource-title">The Psychology of Money — Morgan Housel</div><div class="resource-desc">Short stories about the weird ways people think about money. Easy, fun read.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">📕</div><div><div class="resource-title">One Up On Wall Street — Peter Lynch</div><div class="resource-desc">How regular people can find great stocks before Wall Street does.</div></div></div>
+</div>
+<div class="section-title" style="font-size:16px;margin-bottom:12px;">🎧 Podcasts</div>
+<div class="card-grid cols-2" style="margin-bottom:24px;">
+<div class="card resource-card"><div class="resource-icon">🎙️</div><div><div class="resource-title">The Motley Fool Money</div><div class="resource-desc">Weekly market recap and stock analysis. Great for staying current.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">🎙️</div><div><div class="resource-title">We Study Billionaires</div><div class="resource-desc">Deep dives into how the world's best investors think.</div></div></div>
+</div>
+<div class="section-title" style="font-size:16px;margin-bottom:12px;">📺 YouTube Channels</div>
+<div class="card-grid cols-2">
+<div class="card resource-card"><div class="resource-icon">▶️</div><div><div class="resource-title">Graham Stephan</div><div class="resource-desc">Personal finance and investing explained for beginners.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">▶️</div><div><div class="resource-title">Patrick Boyle</div><div class="resource-desc">Former hedge fund manager breaking down markets with humor.</div></div></div>
+</div></div></div></div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">📬 Contact & Feedback</div><div class="section-desc">Have a question, topic request, or feedback? We'd love to hear from you.</div></div>
+<div class="charts-row">
+<div class="card">
+<h3 style="color:var(--white);font-size:16px;margin-bottom:12px;">Send us a Message</h3>
+<div class="form-grid"><div><label>Your Name</label><input class="input" id="ct-name" placeholder="Name"></div><div><label>Email</label><input class="input" id="ct-email" type="email" placeholder="you@school.edu"></div><div><label>Type</label><select class="input" id="ct-type"><option>General Question</option><option>Topic Request</option><option>Feedback</option><option>Bug Report</option><option>Partnership Inquiry</option></select></div><div><label>Message</label><textarea class="input" id="ct-msg" placeholder="What's on your mind?"></textarea></div><div><button class="btn btn-primary" onclick="submitContact()" style="width:100%;">Send Message</button></div></div>
+<div id="ct-sent" class="hidden" style="margin-top:12px;color:var(--green-cat);font-size:14px;font-weight:600;">✅ Message sent! We'll get back to you soon.</div>
+</div>
+<div class="card">
+<h3 style="color:var(--white);font-size:16px;margin-bottom:12px;">Quick Links</h3>
+<div style="font-size:14px;color:var(--secondary);line-height:2.2;">
+📧 <b>Email:</b> [club-email@school.edu]<br>
+📍 <b>Meeting Location:</b> [Room TBD]<br>
+📅 <b>Meeting Time:</b> [Day & Time TBD]<br>
+📱 <b>Instagram:</b> <a href="https://instagram.com/" target="_blank">@flc_official</a>
+</div>
+<h3 style="color:var(--white);font-size:16px;margin:20px 0 12px;">Request a Topic</h3>
+<p style="font-size:13px;color:var(--secondary);margin-bottom:10px;">Want us to cover something specific? Drop it here!</p>
+<div style="display:flex;gap:8px;"><input class="input" id="topic-input" placeholder="e.g., How to read an earnings report"><button class="btn btn-primary btn-sm" onclick="submitTopic()">Submit</button></div>
+<div id="topic-sent" class="hidden" style="margin-top:8px;color:var(--green-cat);font-size:13px;">✅ Topic submitted!</div>
+</div></div>
+</div></div></div>
+
+<!-- LEARN -->
+<div class="page" id="page-learn"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">📚 Investing Glossary</div></div>
+<div class="gloss-filter" id="gloss-filter"><button class="btn-tab active" onclick="filterGloss('all',this)">All</button><button class="btn-tab" onclick="filterGloss('basics',this)">Basics</button><button class="btn-tab" onclick="filterGloss('performance',this)">Performance</button><button class="btn-tab" onclick="filterGloss('portfolio',this)">Portfolio</button><button class="btn-tab" onclick="filterGloss('analysis',this)">Analysis</button></div>
+<div id="glossary-content"></div>
+</div></div></div>
+
+<!-- FOOTER -->
+<div class="site-footer">
+<div style="margin-bottom:8px;">Financial Literacy Club</div>
+<a href="https://instagram.com/" target="_blank">📷 Instagram</a> ·
+<span style="cursor:pointer;color:var(--accent);" onclick="navTo('contact')">📬 Contact</span> ·
+<span style="cursor:pointer;color:var(--accent);" onclick="navTo('support')">💙 Support Us</span> ·
+<span style="cursor:pointer;color:var(--accent);" onclick="navTo('join')">✋ Join</span>
+<div style="margin-top:8px;">For educational purposes only · Not financial advice · <span id="last-updated">—</span></div>
+<div style="margin-top:6px;"><span class="lock-icon" onclick="toggleOfficerLogin()" title="Officer login">🔒</span></div>
+</div>
+<script>
+// ===== LOGOS =====
+document.getElementById('nav-logo').src=LOGO_SRC;
+document.getElementById('hero-logo').src=LOGO_SRC;
+document.getElementById('team-logo').src=LOGO_SRC;
+
+// ===== FIREBASE =====
+const firebaseConfig={apiKey:"AIzaSyBOIt3sGDr6CBOTZPGdjsl4d-1UzJwIT8o",authDomain:"flc-website-8999c.firebaseapp.com",projectId:"flc-website-8999c",storageBucket:"flc-website-8999c.firebasestorage.app",messagingSenderId:"614437995336",appId:"1:614437995336:web:36822c5af65d6cb294e97d"};
+firebase.initializeApp(firebaseConfig);
+const db=firebase.firestore();
+
+// ===== CONFIG =====
+const FINNHUB_KEY="d6flfbhr01qqnmbp4sv0d6flfbhr01qqnmbp4svg";
+const OFFICER_PASS="FLC2025";
+const INITIAL_INVESTMENT=10000;
+
+// ===== STATE =====
+let isOfficer=localStorage.getItem('flc_officer')==='true';
+let holdings=[
+  {id:1,ticker:"VOO",name:"Vanguard S&P 500 ETF",category:"index",shares:10,costBasis:550,currentPrice:0,datePurchased:"2025-01-15"},
+  {id:2,ticker:"CAT",name:"Caterpillar Inc.",category:"alpha",shares:3,costBasis:350,currentPrice:0,datePurchased:"2025-01-15"},
+  {id:3,ticker:"LMT",name:"Lockheed Martin Corp.",category:"alpha",shares:3,costBasis:480,currentPrice:0,datePurchased:"2025-01-15"},
+  {id:4,ticker:"BND",name:"Vanguard Total Bond Market ETF",category:"fixed",shares:15,costBasis:73,currentPrice:0,datePurchased:"2025-01-15"},
+];
+let slides=[];
+let newsletters=[];
+let watchlist=[];
+let calendar=[];
+let sortBy='category';
+const TARGETS={index:60,alpha:30,fixed:10};
+const CM={index:{label:"Index / Core",color:"#34D399",badge:"badge-index",desc:"ETFs & Index Funds"},alpha:{label:"Alpha / Active",color:"#FBBF24",badge:"badge-alpha",desc:"Individual Stock Picks"},fixed:{label:"Fixed / Low Risk",color:"#60A5FA",badge:"badge-fixed",desc:"Bonds, CDs & Treasuries"}};
+const SI={
+  VOO:{desc:"Tracks the S&P 500 — 500 largest U.S. companies. Own Apple, Microsoft, Amazon & 497 more at 0.03% fee.",why:"INDEX FUND core (60%). IS the market. ~10% avg annual return.",sector:"Broad Market",type:"ETF"},
+  CAT:{desc:"World's largest construction & mining equipment maker. 190+ countries. 30+ years of dividends. Bellwether for the global economy.",why:"ALPHA pick. Blue-chip industrial benefiting from infrastructure spending.",sector:"Industrials",type:"Stock"},
+  LMT:{desc:"World's largest defense contractor. F-35 jets, Black Hawks, missile defense. ~74% revenue from U.S. government.",why:"ALPHA pick. Stable government contracts, consistent dividends.",sector:"Aerospace & Defense",type:"Stock"},
+  BND:{desc:"10,000+ U.S. investment-grade bonds. Monthly dividends, very low volatility. Your money earns interest steadily.",why:"FIXED INCOME safety cushion. Bonds go up when stocks drop.",sector:"Fixed Income",type:"Bond ETF"},
+};
+const OFFICERS=[
+  {name:"[Name]",role:"President",initials:"P"},{name:"[Name]",role:"Secretary",initials:"S"},
+  {name:"[Name]",role:"Internal Affairs",initials:"IA"},{name:"[Name]",role:"Dir. of Marketing",initials:"DM"},
+  {name:"[Name]",role:"Dir. of Creative Media",initials:"CM"},{name:"[Name]",role:"Dir. of Outreach",initials:"DO"},
+  {name:"[Name]",role:"Dir. of Events",initials:"DE"},
+];
+const GLOSSARY=[
+  {term:"Stock",def:"Ownership in a company. Buy Apple stock = own a fraction of Apple.",cat:"basics"},
+  {term:"Share",def:"One unit of stock.",cat:"basics"},{term:"Ticker Symbol",def:"Short code for a stock (AAPL=Apple).",cat:"basics"},
+  {term:"ETF",def:"Basket of stocks in one security. VOO = 500 companies.",cat:"basics"},
+  {term:"Index Fund",def:"Automatically tracks a market index. No human picks stocks.",cat:"basics"},
+  {term:"Bond",def:"Loan to a company/government. They pay interest. Safer than stocks.",cat:"basics"},
+  {term:"Portfolio",def:"All your investments together.",cat:"basics"},
+  {term:"Dividend",def:"Cash paid to you for owning a stock.",cat:"basics"},
+  {term:"Cost Basis",def:"Price you paid per share. Used to calc profit/loss.",cat:"performance"},
+  {term:"Market Value",def:"Shares × Current Price.",cat:"performance"},
+  {term:"Gain/Loss",def:"Current value minus what you paid.",cat:"performance"},
+  {term:"Return (%)",def:"Gain/loss as %. +10% = earned 10¢ per dollar.",cat:"performance"},
+  {term:"Market Cap",def:"Share Price × All Shares. Company size.",cat:"performance"},
+  {term:"P/E Ratio",def:"Price÷Earnings. High=growth expected.",cat:"analysis"},
+  {term:"Dividend Yield",def:"Annual dividend÷price as %.",cat:"analysis"},
+  {term:"52-Week High/Low",def:"Price range over past year.",cat:"analysis"},
+  {term:"Bull Market 🐂",def:"Prices rising 20%+.",cat:"analysis"},
+  {term:"Bear Market 🐻",def:"Prices falling 20%+.",cat:"analysis"},
+  {term:"Allocation",def:"How you split money: 60/30/10.",cat:"portfolio"},
+  {term:"Diversification",def:"Spread money to reduce risk.",cat:"portfolio"},
+  {term:"Rebalancing",def:"Adjust back to target %.",cat:"portfolio"},
+  {term:"Drift",def:"How far from target. 5%+=rebalance.",cat:"portfolio"},
+  {term:"Alpha",def:"Returns above the market.",cat:"portfolio"},
+  {term:"Beta",def:"Volatility vs market. 1.0=same.",cat:"portfolio"},
+  {term:"Dollar-Cost Averaging",def:"Invest fixed amount regularly.",cat:"portfolio"},
+];
+
+// ===== HELPERS =====
+const $=id=>document.getElementById(id);
+const fmt=v=>'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtPct=v=>(v>=0?'+':'')+v.toFixed(2)+'%';
+async function sv(){await db.collection('data').doc('holdings').set({v:JSON.stringify(holdings)});}
+async function svS(){await db.collection('data').doc('slides').set({v:JSON.stringify(slides)});}
+async function svN(){await db.collection('data').doc('newsletters').set({v:JSON.stringify(newsletters)});}
+async function svW(){await db.collection('data').doc('watchlist').set({v:JSON.stringify(watchlist)});}
+async function svC(){await db.collection('data').doc('calendar').set({v:JSON.stringify(calendar)});}
+async function loadAll(){
+  try{
+    const docs=await Promise.all(['holdings','slides','newsletters','watchlist','calendar'].map(k=>db.collection('data').doc(k).get()));
+    if(docs[0].exists)holdings=JSON.parse(docs[0].data().v);
+    if(docs[1].exists)slides=JSON.parse(docs[1].data().v);
+    if(docs[2].exists)newsletters=JSON.parse(docs[2].data().v);
+    if(docs[3].exists)watchlist=JSON.parse(docs[3].data().v);
+    if(docs[4].exists)calendar=JSON.parse(docs[4].data().v);
+  }catch(e){console.warn('Firebase load failed, using defaults',e);}
+}
+// Listen for real-time updates so all users see changes instantly
+function listenForUpdates(){
+  ['holdings','slides','newsletters','watchlist','calendar'].forEach(key=>{
+    db.collection('data').doc(key).onSnapshot(doc=>{
+      if(!doc.exists)return;
+      const d=JSON.parse(doc.data().v);
+      if(key==='holdings')holdings=d;
+      if(key==='slides')slides=d;
+      if(key==='newsletters')newsletters=d;
+      if(key==='watchlist')watchlist=d;
+      if(key==='calendar')calendar=d;
+      renderAll();
+    });
+  });
+}
+
+// ===== OFFICER AUTH =====
+function toggleOfficerLogin(){
+  if(isOfficer){lockOfficer();return;}
+  const p=prompt('Enter officer password:');
+  if(p===OFFICER_PASS){isOfficer=true;localStorage.setItem('flc_officer','true');renderAll();updateOfficerUI();}
+  else if(p!==null) alert('Incorrect password.');
+}
+function lockOfficer(){isOfficer=false;localStorage.removeItem('flc_officer');renderAll();updateOfficerUI();}
+function updateOfficerUI(){
+  document.querySelectorAll('.officer-only').forEach(el=>el.classList.toggle('hidden',!isOfficer));
+  $('officer-bar').classList.toggle('hidden',!isOfficer);
+}
+
+// ===== NAV =====
+function navTo(p){document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));$('page-'+p).classList.add('active');document.querySelectorAll('.topnav-link').forEach(l=>l.classList.toggle('active',l.dataset.page===p));document.querySelector('.topnav-links').classList.remove('open');window.scrollTo(0,0);renderAll();}
+
+// ===== PRICES =====
+async function fetchPrice(t){try{const r=await fetch(`https://finnhub.io/api/v1/quote?symbol=${t}&token=${FINNHUB_KEY}`);const d=await r.json();return(d.c&&d.c>0)?d:null;}catch(e){return null;}}
+async function fetchAllPrices(){
+  $('live-label').textContent='···';
+  for(const h of holdings){const d=await fetchPrice(h.ticker);if(d){h.currentPrice=d.c;h._dp=d.dp||0;h._h=d.h||0;h._l=d.l||0;h._o=d.o||0;h._pc=d.pc||0;}await new Promise(r=>setTimeout(r,250));}
+  // Also fetch watchlist prices
+  for(const w of watchlist){const d=await fetchPrice(w.ticker);if(d){w.price=d.c;w.dp=d.dp||0;}await new Promise(r=>setTimeout(r,250));}
+  $('last-updated').textContent='Updated '+new Date().toLocaleTimeString();$('live-label').textContent='LIVE';
+  sv();svW();renderAll();
+}
+
+// ===== PORTFOLIO =====
+function calcStats(){const tv=holdings.reduce((s,h)=>s+h.shares*h.currentPrice,0),tc=holdings.reduce((s,h)=>s+h.shares*h.costBasis,0),cats={};for(const c of['index','alpha','fixed']){const ch=holdings.filter(h=>h.category===c),v=ch.reduce((s,h)=>s+h.shares*h.currentPrice,0);cats[c]={value:v,pct:tv>0?(v/tv)*100:0,holdings:ch};}return{tv,tc,gl:tv-tc,glPct:tc>0?((tv-tc)/tc)*100:0,cats,maxDrift:Math.max(...Object.keys(cats).map(c=>Math.abs(cats[c].pct-TARGETS[c])))};}
+function setSort(s,btn){sortBy=s;btn.parentElement.querySelectorAll('.btn-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAll();}
+function getSorted(){return[...holdings].sort((a,b)=>{if(sortBy==='category')return a.category.localeCompare(b.category);if(sortBy==='ticker')return a.ticker.localeCompare(b.ticker);if(sortBy==='value')return(b.shares*b.currentPrice)-(a.shares*a.currentPrice);if(sortBy==='gl')return((b.currentPrice-b.costBasis)/b.costBasis)-((a.currentPrice-a.costBasis)/a.costBasis);return 0;});}
+function toggleAdd(){$('add-form').classList.toggle('hidden');}
+async function addHolding(){const t=$('add-ticker').value.trim().toUpperCase(),n=$('add-name').value.trim()||t,c=$('add-cat').value,sh=parseFloat($('add-shares').value),cb=parseFloat($('add-cost').value),dt=$('add-date').value||new Date().toISOString().split('T')[0];if(!t||!sh||!cb)return alert('Fill in all fields.');const h={id:Date.now(),ticker:t,name:n,category:c,shares:sh,costBasis:cb,currentPrice:cb,datePurchased:dt};const d=await fetchPrice(t);if(d&&d.c>0){h.currentPrice=d.c;h._dp=d.dp||0;h._h=d.h||0;h._l=d.l||0;h._o=d.o||0;h._pc=d.pc||0;}holdings.push(h);sv();renderAll();$('add-ticker').value='';$('add-name').value='';$('add-shares').value='';$('add-cost').value='';$('add-date').value='';$('add-form').classList.add('hidden');}
+function removeHolding(id){if(!confirm('Remove?'))return;holdings=holdings.filter(h=>h.id!==id);sv();renderAll();}
+function exportCSV(){const rows=[['Ticker','Name','Category','Date Purchased','Shares','Cost Basis','Current Price','Market Value','Gain/Loss','G/L %']];holdings.forEach(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,p=((h.currentPrice-h.costBasis)/h.costBasis*100).toFixed(2);rows.push([h.ticker,h.name,h.category,h.datePurchased,h.shares,h.costBasis.toFixed(2),h.currentPrice.toFixed(2),v.toFixed(2),gl.toFixed(2),p+'%']);});const csv=rows.map(r=>r.join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='FLC_Portfolio_'+new Date().toISOString().split('T')[0]+'.csv';a.click();}
+
+// ===== SLIDES, NL, WATCHLIST, CALENDAR =====
+function addSlide(){const t=$('slide-title').value.trim();if(!t)return alert('Enter title.');slides.unshift({id:Date.now(),title:t,date:$('slide-date').value||new Date().toISOString().split('T')[0],desc:$('slide-desc').value.trim(),link:$('slide-link').value.trim()});svS();renderAll();$('slide-title').value='';$('slide-date').value='';$('slide-desc').value='';$('slide-link').value='';}
+function deleteSlide(id){if(!confirm('Delete?'))return;slides=slides.filter(s=>s.id!==id);svS();renderAll();}
+function addNewsletter(){const t=$('nl-title').value.trim(),b=$('nl-body').value.trim();if(!t||!b)return alert('Fill in title & content.');newsletters.unshift({id:Date.now(),title:t,author:$('nl-author').value.trim()||'Anonymous',body:b,date:new Date().toISOString().split('T')[0]});svN();renderAll();$('nl-title').value='';$('nl-author').value='';$('nl-body').value='';}
+function deleteNL(id){if(!confirm('Delete?'))return;newsletters=newsletters.filter(n=>n.id!==id);svN();renderAll();}
+function toggleNL(id){const el=document.querySelector(`#nlf-${id}`);el.classList.toggle('open');document.querySelector(`#nlb-${id}`).textContent=el.classList.contains('open')?'Less ▲':'More ▼';}
+function addWatchlist(){const t=$('wl-ticker').value.trim().toUpperCase(),n=$('wl-name').value.trim()||t;if(!t)return alert('Enter ticker.');watchlist.push({id:Date.now(),ticker:t,name:n,reason:$('wl-reason').value.trim(),by:$('wl-by').value.trim()||'—',price:0,dp:0});svW();renderAll();$('wl-ticker').value='';$('wl-name').value='';$('wl-reason').value='';$('wl-by').value='';fetchAllPrices();}
+function removeWL(id){if(!confirm('Remove?'))return;watchlist=watchlist.filter(w=>w.id!==id);svW();renderAll();}
+function addCalEvent(){const t=$('cal-title').value.trim();if(!t)return alert('Enter title.');calendar.push({id:Date.now(),title:t,date:$('cal-date').value,loc:$('cal-loc').value.trim()});calendar.sort((a,b)=>a.date.localeCompare(b.date));svC();renderAll();$('cal-title').value='';$('cal-date').value='';$('cal-loc').value='';}
+function removeCal(id){calendar=calendar.filter(c=>c.id!==id);svC();renderAll();}
+
+// ===== FORMS =====
+function submitJoin(){if(!$('join-name').value.trim()||!$('join-email').value.trim())return alert('Enter name and email.');$('join-msg').classList.remove('hidden');}
+function submitContact(){if(!$('ct-msg').value.trim())return alert('Enter a message.');$('ct-sent').classList.remove('hidden');}
+function submitTopic(){if(!$('topic-input').value.trim())return;$('topic-sent').classList.remove('hidden');$('topic-input').value='';}
+
+// ===== GLOSSARY =====
+let gf='all';
+function filterGloss(c,b){gf=c;document.querySelectorAll('#gloss-filter .btn-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');rGloss();}
+function rGloss(){const f=gf==='all'?GLOSSARY:GLOSSARY.filter(g=>g.cat===gf);$('glossary-content').innerHTML=f.map(g=>`<div style="margin-bottom:10px;"><div class="gloss-term">${g.term}</div><div class="gloss-def">${g.def}</div></div>`).join('');}
+
+// ===== RENDER =====
+function renderAll(){
+const s=calcStats();const roi=((s.tv-INITIAL_INVESTMENT)/INITIAL_INVESTMENT*100);
+
+// Home
+$('home-stats').innerHTML=`<div class="card"><div class="stat-label">Invested</div><div class="stat-value">${fmt(INITIAL_INVESTMENT)}</div></div><div class="card"><div class="stat-label">Current Value</div><div class="stat-value">${fmt(s.tv)}</div></div><div class="card"><div class="stat-label">Total Return</div><div class="stat-value" style="color:${s.gl>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(roi)}</div><div class="stat-sub">${fmt(s.tv-INITIAL_INVESTMENT)}</div></div><div class="card"><div class="stat-label">Holdings</div><div class="stat-value">${holdings.length}</div></div><div class="card"><div class="stat-label">Meetings</div><div class="stat-value">${slides.length}</div></div>`;
+$('home-latest-slide').innerHTML=slides.length?`<div class="slide-date">${slides[0].date}</div><div class="slide-title">${slides[0].title}</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">${slides[0].desc||''}</div>${slides[0].link?`<a href="${slides[0].link}" target="_blank" class="btn btn-ghost btn-sm" style="margin-top:8px;">View →</a>`:''}`:`<span style="color:var(--muted);font-size:13px;">No meetings yet.</span>`;
+$('home-latest-nl').innerHTML=newsletters.length?`<div class="slide-date">${newsletters[0].date} · ${newsletters[0].author}</div><div class="slide-title">${newsletters[0].title}</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">${newsletters[0].body.substring(0,180)}...</div>`:`<span style="color:var(--muted);font-size:13px;">No posts yet.</span>`;
+
+// Port stats
+$('port-stats').innerHTML=`<div class="card"><div class="stat-label">Invested</div><div class="stat-value">${fmt(INITIAL_INVESTMENT)}</div></div><div class="card"><div class="stat-label">Cost Basis</div><div class="stat-value">${fmt(s.tc)}</div></div><div class="card"><div class="stat-label">Current Value</div><div class="stat-value">${fmt(s.tv)}</div></div><div class="card"><div class="stat-label">Gain/Loss</div><div class="stat-value" style="color:${s.gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(s.gl)}<br><span style="font-size:13px">${fmtPct(s.glPct)}</span></div></div><div class="card"><div class="stat-label">Max Drift</div><div class="stat-value" style="color:${s.maxDrift>5?'var(--red)':s.maxDrift>2?'var(--yellow-cat)':'var(--green-cat)'}">${s.maxDrift.toFixed(1)}%</div></div>`;
+
+// Pie
+const pd=Object.keys(CM).map(c=>({c,pct:s.cats[c].pct,color:CM[c].color}));$('pie-chart').style.background=`conic-gradient(${pd.map((d,i)=>{const st=pd.slice(0,i).reduce((a,x)=>a+x.pct,0);return`${d.color} ${st}% ${st+d.pct}%`;}).join(',')})`;$('pie-chart').style.boxShadow='inset 0 0 0 36px var(--navy-deep)';$('pie-legend').innerHTML=pd.map(d=>`<div class="pie-legend-item"><div class="pie-dot" style="background:${d.color}"></div>${CM[d.c].label.split('/')[0].trim()} ${d.pct.toFixed(1)}%</div>`).join('');
+
+// Alloc
+$('alloc-bars').innerHTML=Object.keys(CM).map(c=>{const p=s.cats[c].pct,t=TARGETS[c],dr=p-t,dc=Math.abs(dr)>5?'var(--red)':Math.abs(dr)>2?'var(--yellow-cat)':'var(--green-cat)';return`<div style="margin-bottom:20px;"><div style="display:flex;justify-content:space-between;"><span class="badge ${CM[c].badge}">${CM[c].label}</span><span style="font-size:12px;"><span style="color:${dc};font-weight:600;">${p.toFixed(1)}%</span><span style="color:var(--muted)">/${t}%</span></span></div><div class="alloc-bar-track"><div class="alloc-bar-fill" style="width:${Math.min(p,100)}%;background:${CM[c].color}"></div><div class="alloc-marker" style="left:${t}%"></div></div></div>`;}).join('');
+
+// Table
+$('holdings-tbody').innerHTML=getSorted().map(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis>0?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,pp=s.tv>0?(v/s.tv)*100:0,dc=h._dp||0;return`<tr><td class="mono" style="font-weight:600;color:var(--white)">${h.ticker}</td><td style="color:var(--secondary);font-size:12px">${h.name}</td><td><span class="badge ${CM[h.category]?.badge||''}">${h.category}</span></td><td class="text-right" style="font-size:11px;color:var(--muted)">${h.datePurchased||'—'}</td><td class="text-right mono">${h.shares}</td><td class="text-right mono">${fmt(h.costBasis)}</td><td class="text-right"><span class="mono">${fmt(h.currentPrice)}</span>${dc?`<br><span style="font-size:10px;color:${dc>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dc)}</span>`:''}</td><td class="text-right mono" style="font-weight:600;color:var(--white)">${fmt(v)}</td><td class="text-right mono" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(gl)}<br><span style="font-size:10px">${fmtPct(gp)}</span></td><td class="text-right mono" style="font-size:11px">${pp.toFixed(1)}%</td>${isOfficer?`<td class="text-right"><button class="btn-danger" onclick="removeHolding(${h.id})" style="font-size:10px;padding:4px 8px;">✕</button></td>`:''}</tr>`;}).join('');
+
+// Rebalance
+const sug=[];for(const c of['index','alpha','fixed']){const p=s.cats[c].pct,t=TARGETS[c],d=p-t;if(Math.abs(d)>2)sug.push({c,act:d>0?'reduce':'add',amt:Math.abs(d/100*s.tv),dr:d});}
+$('rebalance-content').innerHTML=!sug.length?`<div class="card" style="text-align:center;padding:30px;"><div style="font-size:32px;">✅</div><div style="font-weight:600;color:var(--green-cat);margin-top:8px;">Balanced!</div></div>`:sug.map(g=>`<div class="card" style="margin-bottom:10px;border-left:3px solid ${g.act==='reduce'?'var(--red)':'var(--green-cat)'}"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;"><div><span class="badge ${CM[g.c].badge}">${CM[g.c].label}</span> <span style="font-weight:600;color:var(--white);margin-left:8px;">${g.act==='reduce'?'📉 Reduce':'📈 Add'} ~${fmt(g.amt)}</span></div><span style="font-size:12px;color:var(--muted)">${s.cats[g.c].pct.toFixed(1)}%→${TARGETS[g.c]}%</span></div></div>`).join('');
+
+// Analysis
+$('analysis-cards').innerHTML=holdings.map(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,info=SI[h.ticker]||{desc:'Research this stock!',why:'Add thesis.',sector:'—',type:'Stock'},dp=h._dp||0;let m=`<div class="analysis-metric"><div class="analysis-metric-label">Shares</div><div class="analysis-metric-val">${h.shares}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Cost</div><div class="analysis-metric-val">${fmt(h.costBasis)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Invested</div><div class="analysis-metric-val">${fmt(h.shares*h.costBasis)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Value</div><div class="analysis-metric-val">${fmt(v)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Return</div><div class="analysis-metric-val" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(gp)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Purchased</div><div class="analysis-metric-val" style="font-size:12px">${h.datePurchased||'—'}</div></div>`;if(h._o)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Open</div><div class="analysis-metric-val">${fmt(h._o)}</div></div>`;if(h._h)m+=`<div class="analysis-metric"><div class="analysis-metric-label">High</div><div class="analysis-metric-val">${fmt(h._h)}</div></div>`;if(h._l)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Low</div><div class="analysis-metric-val">${fmt(h._l)}</div></div>`;if(h._pc)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Prev Close</div><div class="analysis-metric-val">${fmt(h._pc)}</div></div>`;
+return`<div class="analysis-card"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px"><div><div style="font-family:'JetBrains Mono';font-size:18px;font-weight:700;color:var(--white)">${h.ticker} <span class="badge ${CM[h.category]?.badge}" style="font-size:9px">${h.category}</span></div><div style="font-size:12px;color:var(--secondary)">${h.name} · ${info.sector}</div></div><div style="text-align:right"><div style="font-family:'JetBrains Mono';font-size:20px;font-weight:700;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmt(h.currentPrice)}</div>${dp?`<div style="font-size:11px;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dp)} today</div>`:''}</div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">${m}</div><div style="font-size:13px;color:var(--secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><b style="color:var(--white)">About:</b> ${info.desc}</div><div style="font-size:12px;color:var(--muted);margin-top:6px;">💡 ${info.why}</div></div>`;}).join('');
+
+// Watchlist
+if(watchlist.length){$('no-wl').classList.add('hidden');$('watchlist-list').innerHTML=watchlist.map(w=>`<div class="card wl-card" style="margin-bottom:10px;"><div><div style="font-family:'JetBrains Mono';font-weight:700;color:var(--white)">${w.ticker} <span style="font-weight:400;color:var(--secondary);font-family:'DM Sans';font-size:13px">· ${w.name}</span></div><div style="font-size:12px;color:var(--muted);margin-top:3px;">${w.reason||'No notes'} · Added by ${w.by}</div></div><div style="text-align:right;display:flex;align-items:center;gap:12px;">${w.price?`<div><div class="mono" style="font-weight:600;color:var(--white)">${fmt(w.price)}</div>${w.dp?`<div style="font-size:10px;color:${w.dp>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(w.dp)}</div>`:''}</div>`:''}<div>${isOfficer?`<button class="btn-danger" onclick="removeWL(${w.id})" style="font-size:10px;padding:4px 8px;">✕</button>`:''}</div></div></div>`).join('');}else{$('no-wl').classList.remove('hidden');$('watchlist-list').innerHTML='';}
+
+// Calendar
+const now=new Date().toISOString();const upcoming=calendar.filter(c=>c.date>=now.slice(0,16));
+if(upcoming.length){$('no-cal').classList.add('hidden');$('calendar-list').innerHTML=upcoming.map(c=>{const d=new Date(c.date);const mo=d.toLocaleString('en',{month:'short'}).toUpperCase();const dy=d.getDate();const tm=d.toLocaleString('en',{hour:'numeric',minute:'2-digit'});return`<div class="calendar-item"><div class="cal-date-box"><div class="cal-month">${mo}</div><div class="cal-day">${dy}</div></div><div><div style="font-weight:700;color:var(--white);font-size:14px;">${c.title}</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">🕐 ${tm} · 📍 ${c.loc||'TBD'}</div></div>${isOfficer?`<button class="btn-danger" onclick="removeCal(${c.id})" style="font-size:10px;padding:3px 8px;margin-left:auto;">✕</button>`:''}</div>`;}).join('');}else{$('no-cal').classList.remove('hidden');}
+
+// Slides
+if(slides.length){$('no-slides').classList.add('hidden');$('slides-grid').innerHTML=slides.map(s=>`<div class="card slide-card"${s.link?` onclick="window.open('${s.link}','_blank')"`:''}><div class="slide-thumb">📊</div><div class="slide-date">${s.date}</div><div class="slide-title">${s.title}</div><div class="slide-desc">${s.desc||''}</div><div style="margin-top:8px;display:flex;gap:6px;">${s.link?`<a href="${s.link}" target="_blank" class="btn btn-ghost btn-sm" onclick="event.stopPropagation()" style="font-size:11px;">Open</a>`:''} ${isOfficer?`<button class="btn-danger" onclick="event.stopPropagation();deleteSlide(${s.id})" style="font-size:10px;">Del</button>`:''}</div></div>`).join('');}else{$('no-slides').classList.remove('hidden');$('slides-grid').innerHTML='';}
+
+// Newsletter
+if(newsletters.length){$('no-nl').classList.add('hidden');$('newsletter-feed').innerHTML=newsletters.map(n=>{const pr=n.body.length>250?n.body.substring(0,250)+'...':n.body,long=n.body.length>250;return`<div class="card" style="margin-bottom:14px;"><div class="nl-date" style="font-size:11px;color:var(--muted)">${n.date} · ${n.author}</div><div style="font-size:16px;font-weight:700;color:var(--white);margin:4px 0 6px;">${n.title}</div><div style="font-size:14px;color:var(--secondary);line-height:1.7;white-space:pre-wrap;">${long?pr:n.body}</div>${long?`<div id="nlf-${n.id}" class="nl-full" style="white-space:pre-wrap;">${n.body}</div><span id="nlb-${n.id}" class="nl-toggle" onclick="toggleNL(${n.id})">More ▼</span>`:''} ${isOfficer?`<button class="btn-danger" style="margin-top:8px;font-size:10px;" onclick="deleteNL(${n.id})">Delete</button>`:''}</div>`;}).join('');}else{$('no-nl').classList.remove('hidden');$('newsletter-feed').innerHTML='';}
+
+// Team
+$('team-grid').innerHTML=OFFICERS.map(o=>`<div class="team-card"><div class="team-avatar">${o.initials}</div><div class="team-name">${o.name}</div><div class="team-role">${o.role}</div></div>`).join('');
+rGloss();updateOfficerUI();
+}
+
+// ===== INIT =====
+(async function(){
+  await loadAll();
+  // Apply fallback prices if first load
+  if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:664.43,BND:75.03};holdings.forEach(h=>{if(fb[h.ticker])h.currentPrice=fb[h.ticker];});await sv();}
+  renderAll();
+  listenForUpdates();
+  await fetchAllPrices();
+  setInterval(fetchAllPrices,60000);
+})();
+</script>
+</body></html>
