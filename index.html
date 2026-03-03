@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -144,6 +144,17 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 .cal-day{font-size:22px;font-weight:800;color:var(--text-primary);line-height:1;}
 .wl-card{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;flex-wrap:wrap;gap:8px;}
 .analysis-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin-bottom:16px;}
+.accordion{border:1px solid var(--border);border-radius:4px;margin-bottom:10px;overflow:hidden;}
+.accordion-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;cursor:pointer;background:var(--white);transition:background 0.15s;}
+.accordion-head:hover{background:var(--off-white);}
+.accordion-title{font-size:14px;font-weight:700;color:var(--text-primary);}
+.accordion-toggle{font-size:12px;color:var(--text-muted);font-weight:600;flex-shrink:0;margin-left:12px;transition:transform 0.2s;}
+.accordion-body{display:none;padding:0 18px 18px;background:var(--white);}
+.accordion.open .accordion-body{display:block;}
+.accordion.open .accordion-toggle{transform:rotate(180deg);}
+.slide-embed{width:100%;aspect-ratio:16/9;border:1px solid var(--border);border-radius:3px;background:var(--off-white);margin-bottom:14px;}
+.slide-embed iframe{width:100%;height:100%;border:none;border-radius:3px;}
+.slide-placeholder{width:100%;aspect-ratio:16/9;border:1px solid var(--border);border-radius:3px;background:var(--off-white);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-muted);margin-bottom:14px;}
 .analysis-metric{background:var(--off-white);border:1px solid var(--border);border-radius:3px;padding:10px 12px;}
 .analysis-metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:3px;}
 .analysis-metric-val{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--text-primary);}
@@ -168,6 +179,7 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <button class="topnav-link" data-page="portfolio" onclick="navTo('portfolio')">Team Portfolio</button>
 <button class="topnav-link" data-page="myportfolio" onclick="navTo('myportfolio')">My Portfolio</button>
 <button class="topnav-link" data-page="about" onclick="navTo('about')">About</button>
+<button class="topnav-link" data-page="support" onclick="navTo('support')">Support</button>
 </div></div></nav>
 
 <!-- Officer unlock bar -->
@@ -373,103 +385,39 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <!-- Module 1: Investment Basics -->
 <div class="section">
 <div class="section-header"><div class="section-title">Module 1: Investment Basics</div><div class="section-desc">Start here if you have never invested before.</div></div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">How much money do you need to invest?</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">As little as one cent, depending on your brokerage. Most modern brokerages like Fidelity, Schwab, and Vanguard have no account minimums. You can buy fractional shares of stocks and ETFs. The point is to start, even if it is small. You do not need thousands of dollars to begin.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is a stock?</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">A stock is a small piece of ownership in a company. When you buy a share of Apple, you literally own a fraction of Apple. As a shareholder, you are entitled to a part of that company's profits. If the company does well, your shares go up in value. If it does poorly, they go down.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is a bond?</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">A bond is a loan you make to somebody, usually the government or a big company. They pay you interest on that loan (called coupon payments, usually every 6 months), and at the end of the term (1, 10, or 30 years) they give you your money back. Bonds are lower risk than stocks. They preserve your wealth and give you steady, predictable income.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is an ETF?</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">An ETF is a basket of investments bundled into one thing you can buy like a stock. That basket can hold stocks, bonds, bitcoin, commodities like gold, basically anything. The value of the ETF equals whatever is inside it. We love ETFs because they are very accessible, have low fees, and give you easy diversification. Instead of buying 500 individual stocks, you buy one ETF like VOO and you own all of them.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is a portfolio?</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:12px;">A portfolio is all your investments together. It is the mix of stocks, bonds, ETFs, and anything else you own. The most important thing about a portfolio is diversification. You want to mix it up so that if one investment does poorly, others can balance it out.</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Before you invest, think about your income (is it consistent?), your expenses (any big purchases coming?), and how much you can realistically put aside after building an emergency fund. A high-yield savings account can earn you up to 3-5% interest on cash you are not investing yet.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">How to open an investment account</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:12px;">Step 1: Choose a brokerage (Fidelity, Schwab, or Vanguard are all good for beginners). Step 2: Apply online. You will need your Social Security Number, an ID, and your bank info. Step 3: Deposit money and buy your first stock or ETF.</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;"><b style="color:var(--text-primary)">Types of accounts:</b> A regular brokerage account lets you invest in anything with no limits, but you pay taxes on gains. A Roth IRA lets you invest after-tax money that grows tax-free, but there are contribution limits. A 401(k) is through your employer and may include matching. For most students, start with a brokerage account or a Roth IRA.</div>
-</div>
+<div class="slide-placeholder" id="embed-mod1">Slides: Paste your Google Slides embed link here</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">This module covers what stocks, bonds, and ETFs are, how to build a portfolio, and how to open your first brokerage account.</div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">What is a stock?</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">A stock is a small piece of ownership in a company. When you buy a share of Apple, you literally own a fraction of Apple. As a shareholder, you are entitled to a part of that company's profits. If the company does well, your shares go up in value. If it does poorly, they go down.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">What is a bond?</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">A bond is a loan you make to somebody, usually the government or a big company. They pay you interest on that loan (called coupon payments, usually every 6 months), and at the end of the term they give you your money back. Bonds are lower risk than stocks. They preserve your wealth and give you steady, predictable income. Terms range from 1 to 30 years.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">What is an ETF?</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">An ETF is a basket of investments bundled into one thing you can buy like a stock. That basket can hold stocks, bonds, bitcoin, gold, basically anything. The value of the ETF equals whatever is inside it. We love ETFs because they are accessible, have low fees, and give you easy diversification. Instead of buying 500 individual stocks, you buy one ETF like VOO and you own all of them.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">What is a portfolio?</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">A portfolio is all your investments together. The most important thing about a portfolio is diversification: mix it up so that if one investment does poorly, others can balance it out. Before you invest, think about your income, your expenses, and how much you can realistically put aside after building an emergency fund.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">How much money do you need to start?</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">As little as one cent. Most modern brokerages like Fidelity, Schwab, and Vanguard have no account minimums. You can buy fractional shares. The point is to start, even if it is small.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">How to open an investment account</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">Choose a brokerage (Fidelity, Schwab, or Vanguard are all solid). Apply online with your SSN, an ID, and bank info. Deposit money and buy your first stock or ETF. A regular brokerage account has no limits but you pay taxes on gains. A Roth IRA grows tax-free but has contribution limits. A 401(k) is through your employer and may include matching. For most students, start with a brokerage account or a Roth IRA.</div></div></div>
 </div>
 
 <!-- Module 2: Risk and Reward -->
-<div class="section section-warm" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
+<div class="section">
 <div class="section-header"><div class="section-title">Module 2: Risk and Reward</div><div class="section-desc">Understanding why some investments go up more than others.</div></div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is risk?</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Risk is volatility. It is how much your investment goes up and down. A stock that swings 5% in a day is riskier than one that barely moves. Risk is not bad or good. It is just something you need to be aware of. How much risk does your portfolio have? How much are you comfortable with?</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is reward?</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Reward is returns. It is how much money your investment makes. Risk and reward are two sides of the same coin. When you take on more risk, you are compensated with potentially higher returns. Lower risk gives you lower but more predictable returns. That tradeoff is the most fundamental idea in investing.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Time reduces risk</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Investing over a long period of time reduces your exposure to risk. You can tolerate volatility because big ups and downs are okay when you are not selling anytime soon. This is why as a college student, time is your biggest advantage. You have decades before retirement. That means you can take on more risk now and ride out the bumps.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Market sectors</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">The stock market is divided into sectors: Technology, Healthcare, Financials, Energy, Industrials, Consumer Staples, Consumer Discretionary, Communication Services, Utilities, Real Estate, and Basic Materials. Each sector has a different risk and reward profile. Tech tends to be higher risk, higher reward. Utilities tend to be lower risk, lower reward. Diversifying across sectors protects you if one industry has a bad stretch.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Value vs Growth</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Value investing is about finding companies that are cheap relative to what they are worth. If a good company is trading at a low price, that is good value and there is more room for the price to go up. Growth investing is about betting on companies that are growing fast. They tend to be more expensive, but you can still make money if they keep growing. Think of Nvidia. Smaller companies and growth stocks tend to be riskier. Larger value companies tend to be more stable.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Patience beats timing</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Institutions are better than you at day trading. Trying to buy low and sell high based on short-term moves is a losing game. The stock market is extremely efficient. Information is "priced in" almost instantly. The real way to make money is to hold. Prices fluctuate, but the market always trends upwards over long periods. Remove emotion from your decision making. Diversification and patience are how you win.</div>
-</div>
+<div class="slide-placeholder" id="embed-mod2">Slides: Paste your Google Slides embed link here</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">This module covers risk, reward, market sectors, value vs growth investing, and why patience is your biggest advantage.</div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">What is risk?</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">Risk is volatility. It is how much your investment goes up and down. A stock that swings 5% in a day is riskier than one that barely moves. Risk is not bad or good. It is just something you need to be aware of.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Risk and reward are connected</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">When you take on more risk, you are compensated with potentially higher returns. Lower risk gives you lower but more predictable returns. That tradeoff is the most fundamental idea in investing. There is no free lunch.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Time reduces risk</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">Investing over a long period of time reduces your exposure to risk. Big ups and downs are okay when you are not selling anytime soon. As a college student, time is your biggest advantage. You have decades ahead, which means you can take on more risk now and ride out the bumps.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Market sectors</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">The stock market is divided into sectors: Technology, Healthcare, Financials, Energy, Industrials, Consumer Staples, Consumer Discretionary, Communication Services, Utilities, Real Estate, and Basic Materials. Each has a different risk/reward profile. Tech is higher risk, higher reward. Utilities are lower risk, lower reward. Diversifying across sectors means one bad industry will not tank your whole portfolio.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Value vs Growth</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">Value investing is about finding companies that are cheap relative to what they are worth. If a good company is trading at a low price, there is more room for it to go up. Growth investing is about betting on companies growing fast. They tend to be more expensive, but you can still profit if they keep growing. Smaller companies and growth stocks are generally riskier. Larger value companies are more stable.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Patience beats timing</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">Institutions are better than you at day trading. Trying to buy low and sell high based on short-term moves is a losing game. The stock market is extremely efficient and information is priced in almost instantly. The real way to make money is to hold. Prices fluctuate, but the market always trends upwards over long periods. Remove emotion from your decision making.</div></div></div>
 </div>
 
 <!-- Module 3: Picking Stocks -->
 <div class="section">
 <div class="section-header"><div class="section-title">Module 3: Picking Stocks</div><div class="section-desc">How to evaluate a company before you buy it.</div></div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Financial position</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Before you buy a stock, look at how the company is doing right now. What do they own? What do they owe? You can find this on their balance sheet. A quick way to check: look at the Debt to Assets ratio (Total Liabilities divided by Total Assets). It tells you what percentage of their stuff is paid for with debt. Lower is generally better.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Profitability</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;"><b style="color:var(--text-primary)">Gross Margin</b> is Revenue minus Direct Costs, divided by Revenue. It tells you how much money is coming in before expenses. <b style="color:var(--text-primary)">Net Margin</b> is Revenue minus everything (all costs, all expenses), divided by Revenue. It tells you how much the company actually keeps. <b style="color:var(--text-primary)">EPS (Earnings Per Share)</b> is Total Earnings divided by Shares Outstanding. It tells you how much of the company's profit each share of stock entitles you to.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Growth</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Look at revenue growth over time. Is the company making more money each year, or is it slowing down? Historical growth informs your expectations for the future. Also look at dividends. Some companies pay a portion of their profits directly to shareholders. The Dividend Yield (dividend per share divided by stock price) tells you what percentage return you get just from holding the stock.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Valuation</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">How expensive is it to invest in this company? We measure this with the P/E Ratio: Stock Price divided by Earnings Per Share. A lower P/E means you are paying less for each dollar of earnings. Cheaper is generally better, but fast-growing companies often have high P/E ratios because investors expect future earnings to catch up. Compare P/E to other companies in the same industry, not across different industries.</div>
-</div>
-
-<div class="card" style="margin-bottom:14px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Other factors</div>
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Numbers are not everything. Who is running the company? Are they doing a good job? What is happening in the broader economy? Business cycles and political events affect stock prices. Who are the competitors? Is another company doing it better? All of these factors influence whether a stock is a good investment beyond just the financial statements.</div>
-</div>
+<div class="slide-placeholder" id="embed-mod3">Slides: Paste your Google Slides embed link here</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">This module covers financial statements, profitability metrics, growth analysis, and valuation.</div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Financial position</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">Before you buy a stock, look at how the company is doing right now. What do they own? What do they owe? Check the balance sheet. A quick measure: Debt to Assets ratio (Total Liabilities / Total Assets). It tells you what percentage of their stuff is paid for with debt. Lower is generally better.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Profitability</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">Gross Margin is Revenue minus Direct Costs, divided by Revenue. It tells you how much money is coming in before expenses. Net Margin subtracts everything and tells you how much the company actually keeps. EPS (Earnings Per Share) is Total Earnings divided by Shares Outstanding. It tells you how much of the company's profit one share entitles you to.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Growth and dividends</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">Look at revenue growth over time. Is the company making more money each year or slowing down? Some companies also pay dividends, which is a portion of profits paid directly to shareholders. Dividend Yield (dividend per share / stock price) tells you what percentage return you get just from holding.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Valuation</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">How expensive is it to invest in this company? The P/E Ratio (Stock Price / Earnings Per Share) tells you. A lower P/E means you pay less for each dollar of earnings. Cheaper is generally better, but fast-growing companies often have high P/E ratios because investors expect earnings to catch up. Compare P/E within the same industry, not across different ones.</div></div></div>
+<div class="accordion" onclick="this.classList.toggle('open')"><div class="accordion-head"><span class="accordion-title">Other factors to consider</span><span class="accordion-toggle">&#9660;</span></div><div class="accordion-body"><div style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding-top:4px;">Numbers are not everything. Who is running the company? What is happening in the broader economy and in business cycles? Who are the competitors and are they doing it better? All of these factors influence whether a stock is a good investment beyond just the financial statements.</div></div></div>
 </div>
 
 <!-- Glossary -->
@@ -575,19 +523,70 @@ Networking opportunities and community events<br>
 <div id="topic-sent" class="hidden" style="margin-top:8px;color:var(--green);font-size:13px;">Topic submitted.</div>
 </div></div></div>
 
-<!-- Support -->
+</div></div>
+
+<!-- SUPPORT -->
+<div class="page" id="page-support"><div class="container">
 <div class="section">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">Support Us</div>
-<div class="card" style="margin-bottom:14px;padding:24px;">
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">Your contribution directly funds educational programming, speaker honorariums, event hosting, and research tools for our members.</div>
-</div>
-<div style="padding:20px;background:var(--blue-tint);border:1px solid var(--accent-border);border-radius:4px;">
-<div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">Make a contribution</div>
-<a id="donate-link" href="#" class="btn btn-primary">Donate</a>
-<p style="color:var(--text-muted);font-size:11px;margin-top:10px;">Donation link coming soon.</p>
+<div class="section-header"><div class="section-title">Support the Financial Literacy Club</div></div>
+
+<div class="card" style="margin-bottom:20px;padding:28px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">Why Your Support Matters</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.8;">
+The Financial Literacy Club at UC Santa Barbara is one of the only organizations on campus dedicated entirely to investment education. We serve students across all majors, most of whom have never been exposed to personal finance or portfolio management before college. Our members learn to analyze securities, build diversified portfolios, and develop the financial decision-making skills they will use for the rest of their lives.
+<br><br>
+We operate entirely on volunteer effort and donated resources. Your contribution directly funds the tools and programming that make this possible: research subscriptions, educational materials, guest speaker honorariums, event production, and the technology infrastructure behind our portfolio simulation platform. Every dollar extends our reach to more students who would otherwise graduate without basic financial literacy.
 </div>
 </div>
 
+<div class="section-warm" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:16px;">Where Your Contribution Goes</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+<div>
+<div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Educational Resources</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Market data subscriptions, financial analysis tools, and reference materials that give students access to the same information professionals use.</div>
+</div>
+<div>
+<div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Guest Speaker Program</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Honorariums and event costs for industry professionals, portfolio managers, financial advisors, and UCSB alumni working in finance.</div>
+</div>
+<div>
+<div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Events and Competitions</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Stock pitch competitions, networking events, and workshops that give students practical experience presenting investment analysis.</div>
+</div>
+<div>
+<div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Technology Infrastructure</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Our portfolio simulation platform, live market data feeds, and the web tools that let students practice building and managing real portfolios.</div>
+</div>
+</div>
+</div>
+
+<div style="padding:24px;background:var(--blue-tint);border:1px solid var(--accent-border);border-radius:4px;margin-bottom:20px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Make a Contribution</div>
+<div style="font-size:13px;color:var(--text-secondary);margin-bottom:14px;">Contributions of any size make a meaningful difference. If you are interested in sponsoring a specific program or event, please reach out to us directly.</div>
+<a id="donate-link" href="#" class="btn btn-primary">Donate</a>
+<span style="color:var(--text-muted);font-size:11px;margin-left:12px;">Donation link coming soon.</span>
+</div>
+
+<div style="margin-bottom:20px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">What Our Members Say</div>
+<div class="card" style="margin-bottom:10px;padding:20px;">
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;">PLACEHOLDER</div>
+</div>
+<div class="card" style="margin-bottom:10px;padding:20px;">
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;">PLACEHOLDER</div>
+</div>
+<div class="card" style="margin-bottom:10px;padding:20px;">
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;">PLACEHOLDER</div>
+</div>
+</div>
+
+<div class="card" style="padding:20px;">
+<div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Contact Us About Giving</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">For questions about contributions, corporate sponsorships, or partnership opportunities, please email us at ucsbfinlit@gmail.com or use the contact form on our About page.</div>
+</div>
+
+</div>
 </div></div>
 
 <!-- FOOTER -->
@@ -872,6 +871,9 @@ $('team-grid').innerHTML=OFFICERS.map(o=>`<div class="team-card"><div class="tea
 rGloss();updateOfficerUI();
 }
 
+// ===== ACCORDION TOGGLE =====
+// Handled inline via onclick="this.classList.toggle('open')" on accordion elements
+
 // ===== RISK QUIZ =====
 const QUIZ_QUESTIONS=[
   {q:"When do you need this money?",opts:["Within 2 years","2 to 5 years","5 to 10 years","10+ years (retirement, long term)"],scores:[1,2,3,4]},
@@ -1126,5 +1128,6 @@ function mpRender(){
 </script>
 </body>
 </html>
+
 
 
