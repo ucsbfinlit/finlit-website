@@ -164,44 +164,62 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <button class="hamburger" onclick="document.querySelector('.topnav-links').classList.toggle('open')">☰</button>
 <div class="topnav-links">
 <button class="topnav-link active" data-page="home" onclick="navTo('home')">Home</button>
-<button class="topnav-link" data-page="portfolio" onclick="navTo('portfolio')">Portfolio</button>
+<button class="topnav-link" data-page="learn" onclick="navTo('learn')">Learn</button>
+<button class="topnav-link" data-page="portfolio" onclick="navTo('portfolio')">Team Portfolio</button>
 <button class="topnav-link" data-page="myportfolio" onclick="navTo('myportfolio')">My Portfolio</button>
-<button class="topnav-link" data-page="analysis" onclick="navTo('analysis')">Analysis</button>
-<button class="topnav-link" data-page="watchlist" onclick="navTo('watchlist')">Watchlist</button>
-<button class="topnav-link" data-page="slides" onclick="navTo('slides')">Meetings</button>
-<button class="topnav-link" data-page="newsletter" onclick="navTo('newsletter')">Newsletter</button>
-<button class="topnav-link" data-page="team" onclick="navTo('team')">Team</button>
-<button class="topnav-link" data-page="support" onclick="navTo('support')">Support Us</button>
-<button class="topnav-link" data-page="join" onclick="navTo('join')">Join</button>
-<button class="topnav-link" data-page="resources" onclick="navTo('resources')">Resources</button>
-<button class="topnav-link" data-page="contact" onclick="navTo('contact')">Contact</button>
-<button class="topnav-link" data-page="learn" onclick="navTo('learn')">Glossary</button>
+<button class="topnav-link" data-page="about" onclick="navTo('about')">About</button>
 </div></div></nav>
 
 <!-- Officer unlock bar -->
 <div id="officer-bar" class="hidden" style="max-width:1200px;margin:10px auto 0;padding:0 32px;"><div class="officer-bar">Officer Mode — you can edit holdings, meetings, newsletters, and watchlist <button class="btn btn-sm btn-ghost" onclick="lockOfficer()" style="padding:4px 12px;font-size:11px;">Lock</button></div></div>
 
 <!-- HOME -->
+
+<!-- HOME -->
 <div class="page active" id="page-home"><div class="container">
 <div class="hero"><div class="hero-content">
 <img id="hero-logo" class="hero-logo" alt="FLC">
 <h1>Learn to <span class="accent">Invest</span>, Together.</h1>
-<p>The Financial Literacy Club at UCSB provides investment education through hands-on portfolio management. Members learn to analyze securities, construct diversified portfolios, and make informed investment decisions using a structured 60/30/10 asset allocation model with $10,000 in simulated capital.</p>
-<div class="hero-btns"><button class="btn btn-primary" onclick="navTo('portfolio')">View Portfolio</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('join')">Join the Club</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('learn')">Learn</button></div>
+<p>The Financial Literacy Club at UCSB teaches real investing skills through hands-on education. No experience needed. No real money required. Just show up and start learning.</p>
+<div class="hero-btns"><button class="btn btn-primary" onclick="navTo('learn')">Start Learning</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('myportfolio')">Build a Portfolio</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('about')">Join Us</button></div>
 </div></div>
-<div class="section section-blue"><div class="card-grid cols-5" id="home-stats"></div></div>
+
 <div class="section">
-<div class="section-header"><div class="section-title">Investment Model</div><div class="section-desc">Our portfolio follows a structured 60/30/10 asset allocation framework.</div></div>
-<div class="card" style="padding:0;overflow:hidden;">
-<table style="width:100%;">
-<thead><tr><th><span class="tip">Allocation<span class="tip-i">?</span><span class="tip-box">How we split money across different types of investments. Asset allocation is the most important decision in portfolio construction — it determines most of your risk and return over time.</span></span></th><th>Category</th><th>Description</th><th class="text-right"><span class="tip">Target<span class="tip-i">?</span><span class="tip-box">The percentage of total portfolio value we aim to keep in each category. This is our asset allocation strategy — it determines how we balance risk and reward across different investment types.</span></span></th></tr></thead>
-<tbody>
-<tr><td><span class="badge badge-index">Index</span></td><td style="font-weight:600;color:var(--text-primary)">Index / Core</td><td style="color:var(--text-secondary);font-size:13px;">Broad market ETFs tracking the S&P 500 and total market indices. Provides diversified exposure to 500+ companies at minimal cost.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;color:var(--text-primary)">60%</td></tr>
-<tr><td><span class="badge badge-alpha">Alpha</span></td><td style="font-weight:600;color:var(--text-primary)">Alpha / Active</td><td style="color:var(--text-secondary);font-size:13px;">Individual stock positions selected through member research and analysis. Aims to outperform the benchmark through active security selection.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;color:var(--text-primary)">30%</td></tr>
-<tr><td><span class="badge badge-fixed">Fixed</span></td><td style="font-weight:600;color:var(--text-primary)">Fixed Income / Low Risk</td><td style="color:var(--text-secondary);font-size:13px;">Investment-grade bonds and treasury securities. Provides portfolio stability, income generation, and downside protection during equity drawdowns.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;color:var(--text-primary)">10%</td></tr>
-</tbody>
-</table>
+<div class="section-header"><div class="section-title">What You'll Learn</div></div>
+<div class="card-grid cols-3">
+<div class="card" style="cursor:pointer;" onclick="navTo('learn')">
+<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Module 1</div>
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Investment Basics</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">What stocks, bonds, and ETFs actually are. How to open a brokerage account. How much money you need to start (less than you think).</div>
+</div>
+<div class="card" style="cursor:pointer;" onclick="navTo('learn')">
+<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Module 2</div>
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Risk and Reward</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Why some investments go up more than others. How to think about risk. Sectors, value vs growth, and why patience beats timing.</div>
+</div>
+<div class="card" style="cursor:pointer;" onclick="navTo('learn')">
+<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Module 3</div>
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Picking Stocks</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">How to read a balance sheet. What margins and earnings tell you. How to figure out if a stock is cheap or expensive.</div>
+</div>
 </div></div>
+
+<div class="section section-blue" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+<div><div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">What kind of investor are you?</div><div style="font-size:13px;color:var(--text-secondary);">Take a 2-minute quiz to find your risk profile and get a personalized starting point.</div></div>
+<button class="btn btn-primary" onclick="navTo('learn');setTimeout(()=>{const el=document.getElementById('risk-quiz-section');if(el)el.scrollIntoView({behavior:'smooth'});},300)">Take the Quiz</button>
+</div></div>
+
+<div class="section">
+<div class="section-header"><div class="section-title">How We Invest</div><div class="section-desc">Our mock portfolio uses a 60/30/10 allocation model. This is a teaching framework, not a recommendation.</div></div>
+<div class="card" style="padding:0;overflow:hidden;">
+<table style="width:100%;"><thead><tr><th>Category</th><th>What It Is</th><th class="text-right">Target</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-index">Index</span> Core Holdings</td><td style="color:var(--text-secondary);font-size:13px;">ETFs that track the whole market. You own a little piece of 500+ companies at once. Low fees, broad diversification. This is the foundation.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">60%</td></tr>
+<tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-alpha">Alpha</span> Stock Picks</td><td style="color:var(--text-secondary);font-size:13px;">Individual stocks our members research and pitch. Higher risk, higher potential reward. This is where you learn to analyze companies.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">30%</td></tr>
+<tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-fixed">Fixed</span> Bonds</td><td style="color:var(--text-secondary);font-size:13px;">Bonds and treasuries. You are lending money to the government or a company and they pay you interest. Stable, low risk. Your safety net.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">10%</td></tr>
+</tbody></table></div></div>
+
 <div class="section"><div class="charts-row"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Meeting</div><div id="home-latest-slide"></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Newsletter</div><div id="home-latest-nl"></div></div></div></div>
 </div></div>
 
@@ -235,6 +253,19 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <div style="margin-top:10px;display:flex;gap:8px;"><button class="btn btn-primary btn-sm" onclick="addHolding()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleAdd()">Cancel</button></div></div>
 <div class="card" style="padding:0;overflow:hidden;"><div class="table-wrap"><table><thead><tr><th><span class="tip">Ticker<span class="tip-i">?</span><span class="tip-box">The short code identifying a stock on an exchange. Example: AAPL = Apple, VOO = Vanguard S&P 500 ETF.</span></span></th><th>Name</th><th><span class="tip">Cat<span class="tip-i">?</span><span class="tip-box">Which bucket in our 60/30/10 model: Index (broad market ETFs), Alpha (individual stock picks), or Fixed (bonds and low-risk assets). Diversifying across these reduces your overall risk.</span></span></th><th><span class="tip">Sector<span class="tip-i">?</span><span class="tip-box">The industry a company operates in (Tech, Industrials, Healthcare, etc.). Each sector has a different risk/reward profile. Spreading across sectors means one bad industry won't tank your whole portfolio.</span></span></th><th class="text-right"><span class="tip">Date<span class="tip-i">?</span><span class="tip-box">When we bought this position. Holding period matters — patience is key. Investing over a long time reduces your exposure to short-term volatility.</span></span></th><th class="text-right"><span class="tip">Shares<span class="tip-i">?</span><span class="tip-box">How many units of this stock or ETF we own. More shares = more exposure to that investment's price movements, both up and down.</span></span></th><th class="text-right"><span class="tip">Cost<span class="tip-i">?</span><span class="tip-box">The price we paid per share — our cost basis. This is the baseline for calculating whether we've made or lost money on this position.</span></span></th><th class="text-right"><span class="tip">Price<span class="tip-i">?</span><span class="tip-box">The current market price. Prices are set by supply and demand — the equilibrium of buyers and sellers. Is it overvalued or undervalued? That's the key question.</span></span></th><th class="text-right"><span class="tip">Value<span class="tip-i">?</span><span class="tip-box">Shares x Current Price. This is what the position is worth right now if we sold it today.</span></span></th><th class="text-right"><span class="tip">G/L<span class="tip-i">?</span><span class="tip-box">Gain or Loss — the difference between current value and what we paid. Green = making money, red = losing money. Remember: unrealized gains aren't real until you sell.</span></span></th><th class="text-right"><span class="tip">Beta<span class="tip-i">?</span><span class="tip-box">How much this investment moves relative to the overall market. Beta of 1.0 = moves with the S&P 500. Below 1.0 = less volatile (like bonds). Above 1.0 = more volatile. Risk and reward are two sides of the same coin.</span></span></th><th class="text-right"><span class="tip">%Port<span class="tip-i">?</span><span class="tip-box">What percentage of our total portfolio this position represents. If one holding is too large, we're concentrated — the opposite of diversification.</span></span></th><th class="text-right officer-only hidden"></th></tr></thead><tbody id="holdings-tbody"></tbody></table></div></div>
 <div style="margin-top:24px;"><div class="section-title" style="margin-bottom:14px;">Rebalance Advisor <span class="tip"><span class="tip-i">?</span><span class="tip-box">Over time, some investments grow faster than others, causing your allocation to drift from the 60/30/10 target. Rebalancing means selling some of what has grown too large and buying more of what has shrunk — bringing you back to your target mix. This is a disciplined way to buy low and sell high.</span></span></div><div id="rebalance-content"></div></div>
+
+<!-- Holdings Analysis (within portfolio page) -->
+<div style="margin-top:24px;"><div class="section-title" style="margin-bottom:6px;">Holdings Analysis</div><div class="section-desc" style="margin-bottom:14px;">Detailed position data, sector classification, and investment thesis for each holding.</div><div id="analysis-cards"></div></div>
+
+<!-- Watchlist (within portfolio page) -->
+<div style="margin-top:24px;"><div class="section-title" style="margin-bottom:6px;">Watchlist</div><div class="section-desc" style="margin-bottom:14px;">Securities under research and evaluation prior to allocation.</div>
+<div id="wl-add" class="card officer-only hidden" style="margin-bottom:18px;border:1px solid var(--accent-border);">
+<div class="form-grid form-grid-2"><div><label>Ticker</label><input class="input" id="wl-ticker" placeholder="MSFT" style="text-transform:uppercase"></div><div><label>Company Name</label><input class="input" id="wl-name" placeholder="Microsoft Corp."></div><div><label>Why are we watching?</label><input class="input" id="wl-reason" placeholder="Strong AI investment, growing cloud revenue..."></div><div><label>Added by</label><input class="input" id="wl-by" placeholder="Your name"></div></div>
+<div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addWatchlist()">Add to Watchlist</button></div></div>
+<div id="watchlist-list"></div>
+<div id="no-wl" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">Watchlist is empty.</div>
+</div>
+
 </div></div></div>
 
 <!-- MY PORTFOLIO -->
@@ -312,80 +343,186 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 </div>
 </div></div></div>
 
-<!-- ANALYSIS -->
-<div class="page" id="page-analysis"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Holdings Analysis</div><div class="section-desc">Detailed position data, sector classification, and investment thesis for each holding.</div></div>
-<div id="analysis-cards"></div>
-</div></div></div>
 
-<!-- WATCHLIST -->
-<div class="page" id="page-watchlist"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Watchlist</div><div class="section-desc">Securities under research and evaluation prior to allocation.</div></div>
-<div class="edu"><h4>About the Watchlist</h4><p>Securities under consideration are tracked here prior to a portfolio allocation decision. Members conduct fundamental and technical analysis before presenting a buy recommendation to the group.</p></div>
-<div id="wl-add" class="card officer-only hidden" style="margin-bottom:18px;border:1px solid var(--accent-border);">
-<div class="form-grid form-grid-2"><div><label>Ticker</label><input class="input" id="wl-ticker" placeholder="MSFT" style="text-transform:uppercase"></div><div><label>Company Name</label><input class="input" id="wl-name" placeholder="Microsoft Corp."></div><div><label>Why are we watching?</label><input class="input" id="wl-reason" placeholder="Strong AI investment, growing cloud revenue..."></div><div><label>Added by</label><input class="input" id="wl-by" placeholder="Your name"></div></div>
-<div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addWatchlist()">Add to Watchlist</button></div></div>
-<div id="watchlist-list"></div>
-<div id="no-wl" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">Watchlist is empty. Officers can add stocks to research!</div>
-</div></div></div>
+<!-- LEARN -->
+<div class="page" id="page-learn"><div class="container">
 
-<!-- MEETINGS -->
-<div class="page" id="page-slides"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Meetings</div></div>
-<!-- Calendar -->
-<div class="card" style="margin-bottom:20px;"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Upcoming Schedule</div><div id="calendar-list"></div><div id="no-cal" style="color:var(--muted);font-size:13px;padding:10px 0;">No upcoming meetings scheduled.</div>
-<div id="cal-add" class="officer-only hidden" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);"><div class="form-grid form-grid-2"><div><label>Event Title</label><input class="input" id="cal-title" placeholder="Weekly Meeting"></div><div><label>Date & Time</label><input class="input" id="cal-date" type="datetime-local"></div><div><label>Location</label><input class="input" id="cal-loc" placeholder="Room 204 / Zoom link"></div><div style="display:flex;align-items:end;"><button class="btn btn-primary btn-sm" onclick="addCalEvent()">Add Event</button></div></div></div></div>
-<!-- Slides -->
-<div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Past Meeting Slides</div>
-<div id="slide-add" class="card officer-only hidden" style="margin-bottom:18px;border:1px solid var(--accent-border);"><div class="form-grid form-grid-2"><div><label>Title</label><input class="input" id="slide-title" placeholder="Week 5: P/E Ratios"></div><div><label>Date</label><input class="input" id="slide-date" type="date"></div><div><label>Description</label><input class="input" id="slide-desc" placeholder="What was covered?"></div><div><label>Link</label><input class="input" id="slide-link" placeholder="https://docs.google.com/..."></div></div><div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addSlide()">Publish</button></div></div>
-<div class="card-grid cols-2" id="slides-grid"></div>
-<div id="no-slides" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">No slides yet.</div>
-</div></div></div>
+<!-- Risk Quiz -->
+<div class="section" id="risk-quiz-section">
+<div class="section-header"><div class="section-title">What Kind of Investor Are You?</div><div class="section-desc">Answer 6 questions to find your risk profile. This helps you figure out how to structure a portfolio that fits you.</div></div>
+<div id="quiz-container">
+<div id="quiz-questions">
+<div class="card" style="margin-bottom:14px;" id="q-wrap">
+<div id="quiz-progress" style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:12px;">Question 1 of 6</div>
+<div id="quiz-question" style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:16px;"></div>
+<div id="quiz-options"></div>
+</div>
+</div>
+<div id="quiz-result" class="hidden">
+<div class="card" style="border:1px solid var(--accent-border);background:var(--blue-tint);padding:28px;">
+<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Your Investor Profile</div>
+<div id="quiz-result-title" style="font-size:22px;font-weight:700;color:var(--text-primary);margin-bottom:10px;"></div>
+<div id="quiz-result-desc" style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;"></div>
+<div id="quiz-result-alloc" style="margin-bottom:16px;"></div>
+<div style="display:flex;gap:8px;"><button class="btn btn-primary btn-sm" onclick="navTo('myportfolio')">Try Building a Portfolio</button><button class="btn btn-ghost btn-sm" onclick="resetQuiz()">Retake Quiz</button></div>
+</div>
+</div>
+</div>
+</div>
 
-<!-- NEWSLETTER -->
-<div class="page" id="page-newsletter"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Newsletter</div></div>
-<div id="nl-compose" class="card officer-only hidden" style="margin-bottom:24px;border:1px solid var(--accent-border);"><h4 style="margin-bottom:10px;color:var(--text-primary)">Write a Post</h4><div class="form-grid form-grid-2"><div><label>Title</label><input class="input" id="nl-title" placeholder="Weekly Update"></div><div><label>Author</label><input class="input" id="nl-author" placeholder="Your name"></div></div><div style="margin-top:10px;"><label>Content</label><textarea class="input" id="nl-body" placeholder="Write about performance, market news, research..."></textarea></div><div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addNewsletter()">Publish</button></div></div>
-<div id="newsletter-feed"></div>
-<div id="no-nl" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">No posts yet.</div>
-</div></div></div>
+<!-- Module 1: Investment Basics -->
+<div class="section">
+<div class="section-header"><div class="section-title">Module 1: Investment Basics</div><div class="section-desc">Start here if you have never invested before.</div></div>
 
-<!-- TEAM -->
-<div class="page" id="page-team"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Leadership</div></div>
-<div style="text-align:center;margin-bottom:28px;"><img id="team-logo" alt="FLC" style="width:80px;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.08);"></div>
-<div class="section-warm" style="border-radius:4px;padding:24px;margin:0;">
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">How much money do you need to invest?</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">As little as one cent, depending on your brokerage. Most modern brokerages like Fidelity, Schwab, and Vanguard have no account minimums. You can buy fractional shares of stocks and ETFs. The point is to start, even if it is small. You do not need thousands of dollars to begin.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is a stock?</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">A stock is a small piece of ownership in a company. When you buy a share of Apple, you literally own a fraction of Apple. As a shareholder, you are entitled to a part of that company's profits. If the company does well, your shares go up in value. If it does poorly, they go down.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is a bond?</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">A bond is a loan you make to somebody, usually the government or a big company. They pay you interest on that loan (called coupon payments, usually every 6 months), and at the end of the term (1, 10, or 30 years) they give you your money back. Bonds are lower risk than stocks. They preserve your wealth and give you steady, predictable income.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is an ETF?</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">An ETF is a basket of investments bundled into one thing you can buy like a stock. That basket can hold stocks, bonds, bitcoin, commodities like gold, basically anything. The value of the ETF equals whatever is inside it. We love ETFs because they are very accessible, have low fees, and give you easy diversification. Instead of buying 500 individual stocks, you buy one ETF like VOO and you own all of them.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is a portfolio?</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:12px;">A portfolio is all your investments together. It is the mix of stocks, bonds, ETFs, and anything else you own. The most important thing about a portfolio is diversification. You want to mix it up so that if one investment does poorly, others can balance it out.</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Before you invest, think about your income (is it consistent?), your expenses (any big purchases coming?), and how much you can realistically put aside after building an emergency fund. A high-yield savings account can earn you up to 3-5% interest on cash you are not investing yet.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">How to open an investment account</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:12px;">Step 1: Choose a brokerage (Fidelity, Schwab, or Vanguard are all good for beginners). Step 2: Apply online. You will need your Social Security Number, an ID, and your bank info. Step 3: Deposit money and buy your first stock or ETF.</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;"><b style="color:var(--text-primary)">Types of accounts:</b> A regular brokerage account lets you invest in anything with no limits, but you pay taxes on gains. A Roth IRA lets you invest after-tax money that grows tax-free, but there are contribution limits. A 401(k) is through your employer and may include matching. For most students, start with a brokerage account or a Roth IRA.</div>
+</div>
+</div>
+
+<!-- Module 2: Risk and Reward -->
+<div class="section section-warm" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
+<div class="section-header"><div class="section-title">Module 2: Risk and Reward</div><div class="section-desc">Understanding why some investments go up more than others.</div></div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is risk?</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Risk is volatility. It is how much your investment goes up and down. A stock that swings 5% in a day is riskier than one that barely moves. Risk is not bad or good. It is just something you need to be aware of. How much risk does your portfolio have? How much are you comfortable with?</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">What is reward?</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Reward is returns. It is how much money your investment makes. Risk and reward are two sides of the same coin. When you take on more risk, you are compensated with potentially higher returns. Lower risk gives you lower but more predictable returns. That tradeoff is the most fundamental idea in investing.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Time reduces risk</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Investing over a long period of time reduces your exposure to risk. You can tolerate volatility because big ups and downs are okay when you are not selling anytime soon. This is why as a college student, time is your biggest advantage. You have decades before retirement. That means you can take on more risk now and ride out the bumps.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Market sectors</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">The stock market is divided into sectors: Technology, Healthcare, Financials, Energy, Industrials, Consumer Staples, Consumer Discretionary, Communication Services, Utilities, Real Estate, and Basic Materials. Each sector has a different risk and reward profile. Tech tends to be higher risk, higher reward. Utilities tend to be lower risk, lower reward. Diversifying across sectors protects you if one industry has a bad stretch.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Value vs Growth</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Value investing is about finding companies that are cheap relative to what they are worth. If a good company is trading at a low price, that is good value and there is more room for the price to go up. Growth investing is about betting on companies that are growing fast. They tend to be more expensive, but you can still make money if they keep growing. Think of Nvidia. Smaller companies and growth stocks tend to be riskier. Larger value companies tend to be more stable.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Patience beats timing</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Institutions are better than you at day trading. Trying to buy low and sell high based on short-term moves is a losing game. The stock market is extremely efficient. Information is "priced in" almost instantly. The real way to make money is to hold. Prices fluctuate, but the market always trends upwards over long periods. Remove emotion from your decision making. Diversification and patience are how you win.</div>
+</div>
+</div>
+
+<!-- Module 3: Picking Stocks -->
+<div class="section">
+<div class="section-header"><div class="section-title">Module 3: Picking Stocks</div><div class="section-desc">How to evaluate a company before you buy it.</div></div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Financial position</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Before you buy a stock, look at how the company is doing right now. What do they own? What do they owe? You can find this on their balance sheet. A quick way to check: look at the Debt to Assets ratio (Total Liabilities divided by Total Assets). It tells you what percentage of their stuff is paid for with debt. Lower is generally better.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Profitability</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;"><b style="color:var(--text-primary)">Gross Margin</b> is Revenue minus Direct Costs, divided by Revenue. It tells you how much money is coming in before expenses. <b style="color:var(--text-primary)">Net Margin</b> is Revenue minus everything (all costs, all expenses), divided by Revenue. It tells you how much the company actually keeps. <b style="color:var(--text-primary)">EPS (Earnings Per Share)</b> is Total Earnings divided by Shares Outstanding. It tells you how much of the company's profit each share of stock entitles you to.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Growth</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Look at revenue growth over time. Is the company making more money each year, or is it slowing down? Historical growth informs your expectations for the future. Also look at dividends. Some companies pay a portion of their profits directly to shareholders. The Dividend Yield (dividend per share divided by stock price) tells you what percentage return you get just from holding the stock.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Valuation</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">How expensive is it to invest in this company? We measure this with the P/E Ratio: Stock Price divided by Earnings Per Share. A lower P/E means you are paying less for each dollar of earnings. Cheaper is generally better, but fast-growing companies often have high P/E ratios because investors expect future earnings to catch up. Compare P/E to other companies in the same industry, not across different industries.</div>
+</div>
+
+<div class="card" style="margin-bottom:14px;">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">Other factors</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Numbers are not everything. Who is running the company? Are they doing a good job? What is happening in the broader economy? Business cycles and political events affect stock prices. Who are the competitors? Is another company doing it better? All of these factors influence whether a stock is a good investment beyond just the financial statements.</div>
+</div>
+</div>
+
+<!-- Glossary -->
+<div class="section section-blue" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
+<div class="section-header"><div class="section-title">Glossary</div></div>
+<div class="gloss-filter" id="gloss-filter"><button class="btn-tab active" onclick="filterGloss('all',this)">All</button><button class="btn-tab" onclick="filterGloss('basics',this)">Basics</button><button class="btn-tab" onclick="filterGloss('performance',this)">Performance</button><button class="btn-tab" onclick="filterGloss('portfolio',this)">Portfolio</button><button class="btn-tab" onclick="filterGloss('analysis',this)">Analysis</button></div>
+<div id="glossary-content"></div>
+</div>
+
+<!-- Resources -->
+<div class="section">
+<div class="section-header"><div class="section-title">Recommended Resources</div></div>
+<div class="section-title" style="font-size:14px;margin-bottom:12px;">Books</div>
+<div class="card-grid cols-2" style="margin-bottom:24px;">
+<div class="card resource-card"><div><div class="resource-title">The Intelligent Investor by Benjamin Graham</div><div class="resource-desc">The foundational text on value investing. Covers margin of safety, Mr. Market, and long-term investment principles.</div></div></div>
+<div class="card resource-card"><div><div class="resource-title">A Random Walk Down Wall Street by Burton Malkiel</div><div class="resource-desc">The case for index investing and efficient market theory. Core reading for understanding our 60/30/10 allocation rationale.</div></div></div>
+<div class="card resource-card"><div><div class="resource-title">The Psychology of Money by Morgan Housel</div><div class="resource-desc">Behavioral finance and the role of psychology in investment decision-making. Accessible introduction to common cognitive biases.</div></div></div>
+<div class="card resource-card"><div><div class="resource-title">One Up On Wall Street by Peter Lynch</div><div class="resource-desc">Practical framework for identifying investment opportunities through everyday observation and fundamental analysis.</div></div></div>
+</div>
+<div class="section-title" style="font-size:14px;margin-bottom:12px;">Podcasts and Video</div>
+<div class="card-grid cols-2">
+<div class="card resource-card"><div><div class="resource-title">The Motley Fool Money</div><div class="resource-desc">Weekly market commentary and equity analysis from experienced investors.</div></div></div>
+<div class="card resource-card"><div><div class="resource-title">We Study Billionaires</div><div class="resource-desc">In-depth analysis of investment strategies employed by leading capital allocators.</div></div></div>
+<div class="card resource-card"><div><div class="resource-title">Graham Stephan</div><div class="resource-desc">Personal finance and investing fundamentals for early-career investors.</div></div></div>
+<div class="card resource-card"><div><div class="resource-title">Patrick Boyle</div><div class="resource-desc">Market analysis and financial commentary from a former hedge fund manager.</div></div></div>
+</div>
+</div>
+
+</div></div>
+
+
+<!-- ABOUT (consolidated: Team, Meetings, Newsletter, Join, Contact, Support) -->
+<div class="page" id="page-about"><div class="container">
+
+<div class="section">
+<div class="section-header"><div class="section-title">About the Club</div><div class="section-desc">A student-run organization at UCSB focused on investment education.</div></div>
+</div>
+
+<!-- Team -->
+<div class="section">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">Leadership</div>
+<div style="text-align:center;margin-bottom:20px;"><img id="team-logo" alt="FLC" style="width:70px;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.08);"></div>
+<div class="section-warm" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
 <div class="team-grid" id="team-grid"></div>
-</div>
-</div></div></div>
+</div></div>
 
-<!-- SUPPORT -->
-<div class="page" id="page-support"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Support the Financial Literacy Club</div><div class="section-desc">Your contribution directly funds educational programming and resources for UCSB students.</div></div>
-<div class="card" style="margin-bottom:20px;padding:30px;">
-<h3 style="color:var(--text-primary);font-size:16px;margin-bottom:10px;">About Our Mission</h3>
-<p style="color:var(--text-secondary);line-height:1.7;font-size:14px;margin-bottom:16px;">The Financial Literacy Club exists to bridge the gap between academic finance and real-world investment decision-making. Through hands-on portfolio management, guest lectures, and structured curriculum, we equip students with practical skills for long-term financial planning. Donations fund educational materials, speaker honorariums, event hosting, and research tools for our members.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding-top:16px;border-top:1px solid var(--border);">
-<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Educational Materials</div><div style="font-size:13px;color:var(--text-secondary);">Books, subscriptions, and analytical tools</div></div>
-<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Guest Speakers</div><div style="font-size:13px;color:var(--text-secondary);">Industry professionals and alumni</div></div>
-<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Events</div><div style="font-size:13px;color:var(--text-secondary);">Stock pitch competitions and workshops</div></div>
-</div>
-</div>
-<div style="padding:24px;margin-bottom:20px;background:var(--blue-tint);border:1px solid var(--accent-border);border-radius:4px;">
-<h3 style="color:var(--text-primary);font-size:16px;margin-bottom:8px;">Make a Contribution</h3>
-<p style="color:var(--text-secondary);font-size:13px;margin-bottom:14px;">All contributions go directly to supporting member education and programming.</p>
-<a id="donate-link" href="#" class="btn btn-primary">Donate</a>
-<p style="color:var(--text-muted);font-size:11px;margin-top:10px;">Donation link coming soon.</p>
-</div>
-</div></div></div>
-
-<!-- JOIN -->
-<div class="page" id="page-join"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Membership</div><div class="section-desc">Open to all UCSB students regardless of major or experience level.</div></div>
+<!-- Join -->
+<div class="section">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">Membership</div>
 <div class="charts-row">
 <div class="card">
-<h3 style="color:var(--text-primary);font-size:15px;margin-bottom:12px;">What Members Receive</h3>
-<div style="font-size:14px;color:var(--text-secondary);line-height:2;">
+<div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:10px;">What members receive</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:2;">
 Investment education curriculum designed by students for students<br>
 Weekly meetings covering fundamentals, analysis, and portfolio strategy<br>
 Hands-on experience analyzing securities and building investment theses<br>
@@ -393,63 +530,65 @@ Access to guest speakers from the finance industry<br>
 Networking opportunities and community events<br>
 </div></div>
 <div class="card">
-<h3 style="color:var(--text-primary);font-size:15px;margin-bottom:12px;">Express Interest</h3>
-<div class="form-grid"><div><label>Full Name</label><input class="input" id="join-name" placeholder="Your name"></div><div><label>Email</label><input class="input" id="join-email" type="email" placeholder="you@school.edu"></div><div><label>Year</label><select class="input" id="join-year"><option>Freshman</option><option>Sophomore</option><option>Junior</option><option>Senior</option><option>Graduate</option><option>Other</option></select></div><div><label>What interests you most?</label><input class="input" id="join-interest" placeholder="Stocks, crypto, real estate..."></div><div><button class="btn btn-primary" onclick="submitJoin()" style="width:100%;">Submit Interest Form</button></div></div>
-<div id="join-msg" class="hidden" style="margin-top:12px;color:var(--green-cat);font-size:14px;font-weight:600;"> Thanks for your interest! We'll be in touch.</div>
-</div></div>
+<div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:10px;">Express interest</div>
+<div class="form-grid"><div><label>Full Name</label><input class="input" id="join-name" placeholder="Your name"></div><div><label>Email</label><input class="input" id="join-email" type="email" placeholder="you@ucsb.edu"></div><div><label>Year</label><select class="input" id="join-year"><option>Freshman</option><option>Sophomore</option><option>Junior</option><option>Senior</option><option>Graduate</option><option>Other</option></select></div><div><label>What interests you most?</label><input class="input" id="join-interest" placeholder="Stocks, real estate, personal finance..."></div><div><button class="btn btn-primary" onclick="submitJoin()" style="width:100%;">Submit</button></div></div>
+<div id="join-msg" class="hidden" style="margin-top:12px;color:var(--green);font-size:14px;font-weight:600;">Thanks for your interest. We will be in touch.</div>
 </div></div></div>
 
-<!-- RESOURCES -->
-<div class="page" id="page-resources"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Resources</div><div class="section-desc">Recommended reading, podcasts, and educational content.</div></div>
-<div class="section-title" style="font-size:14px;margin-bottom:12px;">Books</div>
-<div class="card-grid cols-2" style="margin-bottom:24px;">
-<div class="card resource-card"><div><div class="resource-title">The Intelligent Investor — Benjamin Graham</div><div class="resource-desc">The foundational text on value investing. Covers margin of safety, Mr. Market, and long-term investment principles.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">A Random Walk Down Wall Street — Burton Malkiel</div><div class="resource-desc">The case for index investing and efficient market theory. Core reading for understanding our 60/30/10 allocation rationale.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">The Psychology of Money — Morgan Housel</div><div class="resource-desc">Behavioral finance and the role of psychology in investment decision-making. Accessible introduction to common cognitive biases.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">One Up On Wall Street — Peter Lynch</div><div class="resource-desc">Practical framework for identifying investment opportunities through everyday observation and fundamental analysis.</div></div></div>
+<!-- Meetings + Calendar -->
+<div class="section">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">Meetings</div>
+<div class="card" style="margin-bottom:20px;"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Upcoming Schedule</div><div id="calendar-list"></div><div id="no-cal" style="color:var(--muted);font-size:13px;padding:10px 0;">No upcoming meetings scheduled.</div>
+<div id="cal-add" class="officer-only hidden" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);"><div class="form-grid form-grid-2"><div><label>Event Title</label><input class="input" id="cal-title" placeholder="Weekly Meeting"></div><div><label>Date & Time</label><input class="input" id="cal-date" type="datetime-local"></div><div><label>Location</label><input class="input" id="cal-loc" placeholder="Room 204 / Zoom link"></div><div style="display:flex;align-items:end;"><button class="btn btn-primary btn-sm" onclick="addCalEvent()">Add Event</button></div></div></div></div>
+<div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Past Meeting Slides</div>
+<div id="slide-add" class="card officer-only hidden" style="margin-bottom:18px;border:1px solid var(--accent-border);"><div class="form-grid form-grid-2"><div><label>Title</label><input class="input" id="slide-title" placeholder="Week 5: P/E Ratios"></div><div><label>Date</label><input class="input" id="slide-date" type="date"></div><div><label>Description</label><input class="input" id="slide-desc" placeholder="What was covered?"></div><div><label>Link</label><input class="input" id="slide-link" placeholder="https://docs.google.com/..."></div></div><div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addSlide()">Publish</button></div></div>
+<div class="card-grid cols-2" id="slides-grid"></div>
+<div id="no-slides" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">No slides yet.</div>
 </div>
-<div class="section-title" style="font-size:14px;margin-bottom:12px;">Podcasts</div>
-<div class="card-grid cols-2" style="margin-bottom:24px;">
-<div class="card resource-card"><div><div class="resource-title">The Motley Fool Money</div><div class="resource-desc">Weekly market commentary and equity analysis from experienced investors.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">We Study Billionaires</div><div class="resource-desc">In-depth analysis of investment strategies employed by leading capital allocators.</div></div></div>
-</div>
-<div class="section-title" style="font-size:14px;margin-bottom:12px;">Video</div>
-<div class="card-grid cols-2">
-<div class="card resource-card"><div><div class="resource-title">Graham Stephan</div><div class="resource-desc">Personal finance and investing fundamentals for early-career investors.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">Patrick Boyle</div><div class="resource-desc">Market analysis and financial commentary from a former hedge fund manager.</div></div></div>
-</div></div></div></div>
 
-<!-- CONTACT -->
-<div class="page" id="page-contact"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Contact</div><div class="section-desc">Questions, topic requests, or partnership inquiries.</div></div>
+<!-- Newsletter -->
+<div class="section">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">Newsletter</div>
+<div id="nl-compose" class="card officer-only hidden" style="margin-bottom:24px;border:1px solid var(--accent-border);"><div style="font-size:14px;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Write a Post</div><div class="form-grid form-grid-2"><div><label>Title</label><input class="input" id="nl-title" placeholder="Weekly Update"></div><div><label>Author</label><input class="input" id="nl-author" placeholder="Your name"></div></div><div style="margin-top:10px;"><label>Content</label><textarea class="input" id="nl-body" placeholder="Write about performance, market news, research..."></textarea></div><div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addNewsletter()">Publish</button></div></div>
+<div id="newsletter-feed"></div>
+<div id="no-nl" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">No posts yet.</div>
+</div>
+
+<!-- Contact -->
+<div class="section">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">Contact</div>
 <div class="charts-row">
 <div class="card">
-<h3 style="color:var(--text-primary);font-size:15px;margin-bottom:12px;">Send a Message</h3>
-<div class="form-grid"><div><label>Your Name</label><input class="input" id="ct-name" placeholder="Name"></div><div><label>Email</label><input class="input" id="ct-email" type="email" placeholder="you@school.edu"></div><div><label>Type</label><select class="input" id="ct-type"><option>General Question</option><option>Topic Request</option><option>Feedback</option><option>Bug Report</option><option>Partnership Inquiry</option></select></div><div><label>Message</label><textarea class="input" id="ct-msg" placeholder="What's on your mind?"></textarea></div><div><button class="btn btn-primary" onclick="submitContact()" style="width:100%;">Send Message</button></div></div>
-<div id="ct-sent" class="hidden" style="margin-top:12px;color:var(--green-cat);font-size:14px;font-weight:600;"> Message sent! We'll get back to you soon.</div>
+<div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:10px;">Send a message</div>
+<div class="form-grid"><div><label>Your Name</label><input class="input" id="ct-name" placeholder="Name"></div><div><label>Email</label><input class="input" id="ct-email" type="email" placeholder="you@ucsb.edu"></div><div><label>Type</label><select class="input" id="ct-type"><option>General Question</option><option>Topic Request</option><option>Feedback</option><option>Bug Report</option><option>Partnership Inquiry</option></select></div><div><label>Message</label><textarea class="input" id="ct-msg" placeholder="What is on your mind?"></textarea></div><div><button class="btn btn-primary" onclick="submitContact()" style="width:100%;">Send</button></div></div>
+<div id="ct-sent" class="hidden" style="margin-top:12px;color:var(--green);font-size:14px;font-weight:600;">Message sent. We will get back to you.</div>
 </div>
 <div class="card">
-<h3 style="color:var(--text-primary);font-size:15px;margin-bottom:12px;">Information</h3>
-<div style="font-size:14px;color:var(--secondary);line-height:2.2;">
-&bull; <b>Email:</b> [<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee9b8d9d8c88878082879aae89838f8782c08d8183">[email&#160;protected]</a>]<br>
-<b>Meeting Location:</b> [NH 1105]<br>
-&bull; <b>Meeting Time:</b> [Wednesdays at 6pm]<br>
+<div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:10px;">Information</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+&bull; <b>Meeting Location:</b> NH 1105<br>
+&bull; <b>Meeting Time:</b> Wednesdays at 6pm<br>
 &bull; <b>Instagram:</b> <a href="https://instagram.com/" target="_blank">@flc_official</a>
 </div>
-<h3 style="color:var(--text-primary);font-size:15px;margin:20px 0 12px;">Request a Topic</h3>
-<p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;">Suggest a topic for an upcoming meeting or workshop.</p>
+<div style="font-size:14px;font-weight:600;color:var(--text-primary);margin:20px 0 10px;">Request a topic</div>
 <div style="display:flex;gap:8px;"><input class="input" id="topic-input" placeholder="e.g., How to read an earnings report"><button class="btn btn-primary btn-sm" onclick="submitTopic()">Submit</button></div>
-<div id="topic-sent" class="hidden" style="margin-top:8px;color:var(--green-cat);font-size:13px;"> Topic submitted!</div>
-</div></div>
+<div id="topic-sent" class="hidden" style="margin-top:8px;color:var(--green);font-size:13px;">Topic submitted.</div>
 </div></div></div>
 
-<!-- LEARN -->
-<div class="page" id="page-learn"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Glossary</div></div>
-<div class="gloss-filter" id="gloss-filter"><button class="btn-tab active" onclick="filterGloss('all',this)">All</button><button class="btn-tab" onclick="filterGloss('basics',this)">Basics</button><button class="btn-tab" onclick="filterGloss('performance',this)">Performance</button><button class="btn-tab" onclick="filterGloss('portfolio',this)">Portfolio</button><button class="btn-tab" onclick="filterGloss('analysis',this)">Analysis</button></div>
-<div id="glossary-content"></div>
-</div></div></div>
+<!-- Support -->
+<div class="section">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">Support Us</div>
+<div class="card" style="margin-bottom:14px;padding:24px;">
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">Your contribution directly funds educational programming, speaker honorariums, event hosting, and research tools for our members.</div>
+</div>
+<div style="padding:20px;background:var(--blue-tint);border:1px solid var(--accent-border);border-radius:4px;">
+<div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">Make a contribution</div>
+<a id="donate-link" href="#" class="btn btn-primary">Donate</a>
+<p style="color:var(--text-muted);font-size:11px;margin-top:10px;">Donation link coming soon.</p>
+</div>
+</div>
+
+</div></div>
 
 <!-- FOOTER -->
 <div class="site-footer">
@@ -627,7 +766,7 @@ function renderAll(){
 const s=calcStats();const roi=((s.tv-INITIAL_INVESTMENT)/INITIAL_INVESTMENT*100);
 
 // Home
-$('home-stats').innerHTML=`<div class="card"><div class="stat-label">Invested</div><div class="stat-value">${fmt(INITIAL_INVESTMENT)}</div></div><div class="card"><div class="stat-label">Current Value</div><div class="stat-value">${fmt(s.tv)}</div></div><div class="card"><div class="stat-label">Total Return</div><div class="stat-value" style="color:${s.gl>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(roi)}</div><div class="stat-sub">${fmt(s.tv-INITIAL_INVESTMENT)}</div></div><div class="card"><div class="stat-label">Holdings</div><div class="stat-value">${holdings.length}</div></div><div class="card"><div class="stat-label">Meetings</div><div class="stat-value">${slides.length}</div></div>`;
+// home stats removed from new layout
 $('home-latest-slide').innerHTML=slides.length?`<div class="slide-date">${slides[0].date}</div><div class="slide-title">${slides[0].title}</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">${slides[0].desc||''}</div>${slides[0].link?`<a href="${slides[0].link}" target="_blank" class="btn btn-ghost btn-sm" style="margin-top:8px;">View →</a>`:''}`:`<span style="color:var(--muted);font-size:13px;">No meetings yet.</span>`;
 $('home-latest-nl').innerHTML=newsletters.length?`<div class="slide-date">${newsletters[0].date} · ${newsletters[0].author}</div><div class="slide-title">${newsletters[0].title}</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">${newsletters[0].body.substring(0,180)}...</div>`:`<span style="color:var(--muted);font-size:13px;">No posts yet.</span>`;
 
@@ -732,6 +871,56 @@ if(newsletters.length){$('no-nl').classList.add('hidden');$('newsletter-feed').i
 $('team-grid').innerHTML=OFFICERS.map(o=>`<div class="team-card"><div class="team-avatar">${o.initials}</div><div class="team-name">${o.name}</div><div class="team-role">${o.role}</div></div>`).join('');
 rGloss();updateOfficerUI();
 }
+
+// ===== RISK QUIZ =====
+const QUIZ_QUESTIONS=[
+  {q:"When do you need this money?",opts:["Within 2 years","2 to 5 years","5 to 10 years","10+ years (retirement, long term)"],scores:[1,2,3,4]},
+  {q:"The market drops 20% in one month. What do you do?",opts:["Sell everything before it gets worse","Sell some to be safe","Do nothing and wait it out","Buy more while it is cheap"],scores:[1,2,3,4]},
+  {q:"How stable is your income right now?",opts:["No income or very unstable","Part-time or inconsistent","Steady job or reliable support","Strong income with savings built up"],scores:[1,2,3,4]},
+  {q:"How much do you know about investing?",opts:["Nothing, I am brand new","I know the basics but not much more","I understand stocks, bonds, and ETFs pretty well","I have invested before and follow markets"],scores:[1,2,3,4]},
+  {q:"What is your main goal?",opts:["Keep my money safe above all else","Grow it slowly and steadily","Grow it as much as possible","I am here to learn, the returns are secondary"],scores:[1,3,4,3]},
+  {q:"Your portfolio loses 10% in one month. How do you feel?",opts:["Very uncomfortable, I would want to sell","A little nervous but I would hold","Fine, that happens sometimes","Excited because I can buy at lower prices"],scores:[1,2,3,4]}
+];
+let quizStep=0,quizScores=[];
+function renderQuiz(){
+  if(quizStep>=QUIZ_QUESTIONS.length){showQuizResult();return;}
+  const q=QUIZ_QUESTIONS[quizStep];
+  document.getElementById('quiz-progress').textContent='Question '+(quizStep+1)+' of '+QUIZ_QUESTIONS.length;
+  document.getElementById('quiz-question').textContent=q.q;
+  document.getElementById('quiz-options').innerHTML=q.opts.map((o,i)=>`<div style="padding:12px 16px;margin-bottom:8px;border:1px solid var(--border);border-radius:3px;cursor:pointer;font-size:14px;color:var(--text-secondary);transition:all 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.background='var(--accent-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background=''" onclick="quizAnswer(${q.scores[i]})">${o}</div>`).join('');
+}
+function quizAnswer(score){quizScores.push(score);quizStep++;renderQuiz();}
+function showQuizResult(){
+  document.getElementById('quiz-questions').classList.add('hidden');
+  document.getElementById('quiz-result').classList.remove('hidden');
+  const total=quizScores.reduce((a,b)=>a+b,0);
+  const max=QUIZ_QUESTIONS.length*4;
+  const pct=total/max;
+  let title,desc,alloc;
+  if(pct<=0.35){
+    title='Conservative';
+    desc='You prefer stability over big gains. That is perfectly fine. A conservative portfolio leans heavily on bonds and index funds with very little individual stock picking. Your goal is to preserve what you have and grow it slowly. Think of it like a savings account with better returns. For someone like you, consider putting more into fixed income (bonds) and index funds, and less into individual stocks.';
+    alloc='Suggested starting point: 50% Index, 15% Stocks, 35% Bonds';
+  }else if(pct<=0.55){
+    title='Moderate';
+    desc='You want your money to grow but big drops make you uncomfortable. Our 60/30/10 model is a good fit for you. The majority in index funds gives you broad market growth, the stock picks add some upside, and the bonds smooth out the bumps. This is a balanced approach that most financial advisors would recommend for someone building long-term wealth.';
+    alloc='Suggested starting point: 60% Index, 30% Stocks, 10% Bonds (our 60/30/10 model)';
+  }else if(pct<=0.8){
+    title='Growth';
+    desc='You are comfortable with risk and you have time on your side. A growth portfolio tilts more toward stocks and accepts more volatility in exchange for higher potential returns. You understand that the market goes down sometimes and you are okay with that because you are not selling anytime soon. You could increase your stock allocation beyond our standard model.';
+    alloc='Suggested starting point: 50% Index, 40% Stocks, 10% Bonds';
+  }else{
+    title='Aggressive';
+    desc='You have a long time horizon, strong risk tolerance, and you are ready to accept big swings for the chance at big returns. An aggressive portfolio is heavy on stocks and may include higher-risk sectors like tech or small caps. Just remember that even the most aggressive investors keep some diversification. Do not put everything in one stock no matter how confident you are.';
+    alloc='Suggested starting point: 40% Index, 50% Stocks, 10% Bonds';
+  }
+  document.getElementById('quiz-result-title').textContent=title;
+  document.getElementById('quiz-result-desc').textContent=desc;
+  document.getElementById('quiz-result-alloc').innerHTML='<div style="font-size:13px;font-weight:600;color:var(--accent);padding:12px 16px;background:var(--white);border:1px solid var(--border);border-radius:3px;">'+alloc+'</div>';
+}
+function resetQuiz(){quizStep=0;quizScores=[];document.getElementById('quiz-questions').classList.remove('hidden');document.getElementById('quiz-result').classList.add('hidden');renderQuiz();}
+// Init quiz on page load
+setTimeout(renderQuiz,100);
 
 // ===== MY PORTFOLIO (Google Auth + Personal Holdings) =====
 let currentUser=null;
@@ -937,4 +1126,5 @@ function mpRender(){
 </script>
 </body>
 </html>
+
 
