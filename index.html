@@ -357,6 +357,13 @@ What is the thesis? Why would this stock go up from here?
 <div class="add-grid"><div><label>Ticker</label><input class="input" id="add-ticker" placeholder="AAPL" style="text-transform:uppercase"></div><div><label>Company Name</label><input class="input" id="add-name" placeholder="Apple Inc."></div><div><label>Category</label><select class="input" id="add-cat"><option value="index">Index</option><option value="alpha">Alpha</option><option value="fixed">Fixed</option></select></div><div><label>Shares</label><input class="input" id="add-shares" type="number" placeholder="10"></div><div><label>Cost ($)</label><input class="input" id="add-cost" type="number" step="0.01" placeholder="150"></div><div><label>Date</label><input class="input" id="add-date" type="date"></div></div>
 <div style="display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-top:10px;"><div><label>Pitched By</label><input class="input" id="add-pitchedby" placeholder="Member name"></div><div><label>Investment Thesis</label><input class="input" id="add-thesis" placeholder="Why are we buying this? What is the case?"></div></div>
 <div style="margin-top:10px;display:flex;gap:8px;"><button class="btn btn-primary btn-sm" onclick="addHolding()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleAdd()">Cancel</button></div></div>
+<div id="edit-form" class="card hidden" style="margin-bottom:14px;border:1px solid var(--accent-border);">
+<div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--text-primary);">Edit Position</div>
+<input type="hidden" id="edit-id">
+<div class="add-grid"><div><label>Ticker</label><input class="input" id="edit-ticker" disabled style="opacity:0.6;text-transform:uppercase"></div><div><label>Company Name</label><input class="input" id="edit-name"></div><div><label>Category</label><select class="input" id="edit-cat"><option value="index">Index</option><option value="alpha">Alpha</option><option value="fixed">Fixed</option></select></div><div><label>Shares</label><input class="input" id="edit-shares" type="number"></div><div><label>Cost ($)</label><input class="input" id="edit-cost" type="number" step="0.01"></div><div><label>Date</label><input class="input" id="edit-date" type="date"></div></div>
+<div style="display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-top:10px;"><div><label>Pitched By</label><input class="input" id="edit-pitchedby"></div><div><label>Investment Thesis</label><input class="input" id="edit-thesis"></div></div>
+<div style="margin-top:10px;display:flex;gap:8px;"><button class="btn btn-primary btn-sm" onclick="saveEdit()">Save Changes</button><button class="btn btn-ghost btn-sm" onclick="$('edit-form').classList.add('hidden')">Cancel</button></div>
+</div>
 <div class="card" style="padding:0;overflow:hidden;"><div class="table-wrap"><table><thead><tr><th><span class="tip">Ticker<span class="tip-i">?</span><span class="tip-box">The short code identifying a stock on an exchange. Example: AAPL = Apple, VOO = Vanguard S&P 500 ETF.</span></span></th><th>Name</th><th><span class="tip">Cat<span class="tip-i">?</span><span class="tip-box">Which bucket in our 60/30/10 model: Index (broad market ETFs), Alpha (individual stock picks), or Fixed (bonds and low-risk assets). Diversifying across these reduces your overall risk.</span></span></th><th><span class="tip">Sector<span class="tip-i">?</span><span class="tip-box">The industry a company operates in (Tech, Industrials, Healthcare, etc.). Each sector has a different risk/reward profile. Spreading across sectors means one bad industry won't tank your whole portfolio.</span></span></th><th class="text-right"><span class="tip">Date<span class="tip-i">?</span><span class="tip-box">When we bought this position. Holding period matters — patience is key. Investing over a long time reduces your exposure to short-term volatility.</span></span></th><th class="text-right"><span class="tip">Shares<span class="tip-i">?</span><span class="tip-box">How many units of this stock or ETF we own. More shares = more exposure to that investment's price movements, both up and down.</span></span></th><th class="text-right"><span class="tip">Cost<span class="tip-i">?</span><span class="tip-box">The price we paid per share — our cost basis. This is the baseline for calculating whether we've made or lost money on this position.</span></span></th><th class="text-right"><span class="tip">Price<span class="tip-i">?</span><span class="tip-box">The current market price. Prices are set by supply and demand — the equilibrium of buyers and sellers. Is it overvalued or undervalued? That's the key question.</span></span></th><th class="text-right"><span class="tip">Value<span class="tip-i">?</span><span class="tip-box">Shares x Current Price. This is what the position is worth right now if we sold it today.</span></span></th><th class="text-right"><span class="tip">G/L<span class="tip-i">?</span><span class="tip-box">Gain or Loss — the difference between current value and what we paid. Green = making money, red = losing money. Remember: unrealized gains aren't real until you sell.</span></span></th><th class="text-right"><span class="tip">Beta<span class="tip-i">?</span><span class="tip-box">How much this investment moves relative to the overall market. Beta of 1.0 = moves with the S&P 500. Below 1.0 = less volatile (like bonds). Above 1.0 = more volatile. Risk and reward are two sides of the same coin.</span></span></th><th class="text-right"><span class="tip">%Port<span class="tip-i">?</span><span class="tip-box">What percentage of our total portfolio this position represents. If one holding is too large, we're concentrated — the opposite of diversification.</span></span></th><th class="text-right officer-only hidden"></th></tr></thead><tbody id="holdings-tbody"></tbody></table></div></div>
 <div style="margin-top:24px;"><div class="section-title" style="margin-bottom:14px;">Rebalance Advisor <span class="tip"><span class="tip-i">?</span><span class="tip-box">Over time, some investments grow faster than others, causing your allocation to drift from the 60/30/10 target. Rebalancing means selling some of what has grown too large and buying more of what has shrunk — bringing you back to your target mix. This is a disciplined way to buy low and sell high.</span></span></div><div id="rebalance-content"></div></div>
 
@@ -754,6 +761,7 @@ const db=firebase.firestore();
 const FINNHUB_KEY="d6flfbhr01qqnmbp4sv0d6flfbhr01qqnmbp4svg";
 const OFFICER_PASS="FLC2025";
 const INITIAL_INVESTMENT=10000;
+let cashBalance=INITIAL_INVESTMENT; // Will be recalculated from holdings
 
 // ===== STATE =====
 let isOfficer=localStorage.getItem('flc_officer')==='true';
@@ -866,6 +874,8 @@ function navTo(p){document.querySelectorAll('.page').forEach(e=>e.classList.remo
 
 // ===== PRICES =====
 async function fetchPrice(t){try{const r=await fetch(`https://finnhub.io/api/v1/quote?symbol=${t}&token=${FINNHUB_KEY}`);const d=await r.json();return(d.c&&d.c>0)?d:null;}catch(e){return null;}}
+async function fetchMetrics(t){try{const r=await fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${t}&metric=all&token=${FINNHUB_KEY}`);const d=await r.json();return d&&d.metric?d.metric:null;}catch(e){return null;}}
+async function fetchProfile(t){try{const r=await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${t}&token=${FINNHUB_KEY}`);const d=await r.json();return d&&d.name?d:null;}catch(e){return null;}}
 async function fetchAllPrices(){
   $('live-label').textContent='···';
   for(const h of holdings){const d=await fetchPrice(h.ticker);if(d){h.currentPrice=d.c;h._dp=d.dp||0;h._h=d.h||0;h._l=d.l||0;h._o=d.o||0;h._pc=d.pc||0;}await new Promise(r=>setTimeout(r,250));}
@@ -876,12 +886,66 @@ async function fetchAllPrices(){
 }
 
 // ===== PORTFOLIO =====
-function calcStats(){const tv=holdings.reduce((s,h)=>s+h.shares*h.currentPrice,0),tc=holdings.reduce((s,h)=>s+h.shares*h.costBasis,0),cats={};for(const c of['index','alpha','fixed']){const ch=holdings.filter(h=>h.category===c),v=ch.reduce((s,h)=>s+h.shares*h.currentPrice,0);cats[c]={value:v,pct:tv>0?(v/tv)*100:0,holdings:ch};}return{tv,tc,gl:tv-tc,glPct:tc>0?((tv-tc)/tc)*100:0,cats,maxDrift:Math.max(...Object.keys(cats).map(c=>Math.abs(cats[c].pct-TARGETS[c])))};}
+function calcStats(){const tv=holdings.reduce((s,h)=>s+h.shares*h.currentPrice,0),tc=holdings.reduce((s,h)=>s+h.shares*h.costBasis,0);cashBalance=INITIAL_INVESTMENT-tc;if(cashBalance<0)cashBalance=0;const totalPortfolio=tv+cashBalance;const cats={};for(const c of['index','alpha','fixed']){const ch=holdings.filter(h=>h.category===c),v=ch.reduce((s,h)=>s+h.shares*h.currentPrice,0);cats[c]={value:v,pct:totalPortfolio>0?(v/totalPortfolio)*100:0,holdings:ch};}return{tv,tc,gl:tv-tc,glPct:tc>0?((tv-tc)/tc)*100:0,cats,cashBalance,totalPortfolio,cashPct:totalPortfolio>0?(cashBalance/totalPortfolio)*100:0,maxDrift:Math.max(...Object.keys(cats).map(c=>Math.abs(cats[c].pct-TARGETS[c])))};}
 function setSort(s,btn){sortBy=s;btn.parentElement.querySelectorAll('.btn-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAll();}
 function getSorted(){return[...holdings].sort((a,b)=>{if(sortBy==='category')return a.category.localeCompare(b.category);if(sortBy==='ticker')return a.ticker.localeCompare(b.ticker);if(sortBy==='value')return(b.shares*b.currentPrice)-(a.shares*a.currentPrice);if(sortBy==='gl')return((b.currentPrice-b.costBasis)/b.costBasis)-((a.currentPrice-a.costBasis)/a.costBasis);return 0;});}
 function toggleAdd(){$('add-form').classList.toggle('hidden');}
-async function addHolding(){const t=$('add-ticker').value.trim().toUpperCase(),n=$('add-name').value.trim()||t,c=$('add-cat').value,sh=parseFloat($('add-shares').value),cb=parseFloat($('add-cost').value),dt=$('add-date').value||new Date().toISOString().split('T')[0],pb=$('add-pitchedby').value.trim()||'—',th=$('add-thesis').value.trim()||'';if(!t||!sh||!cb)return alert('Fill in all fields.');const h={id:Date.now(),ticker:t,name:n,category:c,shares:sh,costBasis:cb,currentPrice:cb,datePurchased:dt,pitchedBy:pb,thesis:th};const d=await fetchPrice(t);if(d&&d.c>0){h.currentPrice=d.c;h._dp=d.dp||0;h._h=d.h||0;h._l=d.l||0;h._o=d.o||0;h._pc=d.pc||0;}holdings.push(h);sv();renderAll();$('add-ticker').value='';$('add-name').value='';$('add-shares').value='';$('add-cost').value='';$('add-date').value='';$('add-pitchedby').value='';$('add-thesis').value='';$('add-form').classList.add('hidden');}
-function removeHolding(id){if(!confirm('Remove this position? It will be logged in trade history.'))return;const h=holdings.find(x=>x.id===id);if(h){const info=SI[h.ticker]||{};tradeHistory.unshift({id:Date.now(),ticker:h.ticker,name:h.name,action:'SOLD',shares:h.shares,costBasis:h.costBasis,exitPrice:h.currentPrice,date:new Date().toISOString().split('T')[0],datePurchased:h.datePurchased,pitchedBy:h.pitchedBy||info.pitchedBy||'—',thesis:h.thesis||info.thesis||'',gl:((h.currentPrice-h.costBasis)/h.costBasis*100)});svTH();}holdings=holdings.filter(h=>h.id!==id);sv();renderAll();}
+async function addHolding(){const t=$('add-ticker').value.trim().toUpperCase(),n=$('add-name').value.trim()||t,c=$('add-cat').value,sh=parseFloat($('add-shares').value),cb=parseFloat($('add-cost').value),dt=$('add-date').value||new Date().toISOString().split('T')[0],pb=$('add-pitchedby').value.trim()||'—',th=$('add-thesis').value.trim()||'';if(!t||!sh||!cb)return alert('Fill in all fields.');
+const totalCost=sh*cb;const currentCash=INITIAL_INVESTMENT-holdings.reduce((s,h)=>s+h.shares*h.costBasis,0);
+if(totalCost>currentCash)return alert('Not enough cash. You have '+fmt(currentCash)+' available but this purchase costs '+fmt(totalCost)+'.');const h={id:Date.now(),ticker:t,name:n,category:c,shares:sh,costBasis:cb,currentPrice:cb,datePurchased:dt,pitchedBy:pb,thesis:th};const d=await fetchPrice(t);if(d&&d.c>0){h.currentPrice=d.c;h._dp=d.dp||0;h._h=d.h||0;h._l=d.l||0;h._o=d.o||0;h._pc=d.pc||0;}
+// Fetch real beta and sector from Finnhub
+const metrics=await fetchMetrics(t);const profile=await fetchProfile(t);
+if(metrics&&metrics.beta){if(!SI[t])SI[t]={};SI[t].beta=metrics.beta;}
+if(profile){if(!SI[t])SI[t]={};if(profile.finnhubIndustry)SI[t].sector=profile.finnhubIndustry;if(profile.name&&h.name===t)h.name=profile.name;if(!SI[t].desc)SI[t].desc=profile.name+(profile.finnhubIndustry?' · '+profile.finnhubIndustry:'');}
+holdings.push(h);sv();renderAll();$('add-ticker').value='';$('add-name').value='';$('add-shares').value='';$('add-cost').value='';$('add-date').value='';$('add-pitchedby').value='';$('add-thesis').value='';$('add-form').classList.add('hidden');}
+function removeHolding(id){
+  const h=holdings.find(x=>x.id===id);if(!h)return;
+  const sellShares=prompt('How many shares of '+h.ticker+' to sell? (You own '+h.shares+')');
+  if(sellShares===null)return;
+  const num=parseFloat(sellShares);
+  if(isNaN(num)||num<=0)return alert('Enter a valid number.');
+  if(num>h.shares)return alert('You only own '+h.shares+' shares.');
+  const info=SI[h.ticker]||{};
+  tradeHistory.unshift({id:Date.now(),ticker:h.ticker,name:h.name,action:num>=h.shares?'SOLD ALL':'PARTIAL SELL',shares:num,costBasis:h.costBasis,exitPrice:h.currentPrice,date:new Date().toISOString().split('T')[0],datePurchased:h.datePurchased,pitchedBy:h.pitchedBy||info.pitchedBy||'—',thesis:h.thesis||info.thesis||'',gl:((h.currentPrice-h.costBasis)/h.costBasis*100)});
+  svTH();
+  if(num>=h.shares){holdings=holdings.filter(x=>x.id!==id);}else{h.shares=h.shares-num;}
+  sv();renderAll();
+}
+function editHolding(id){
+  const h=holdings.find(x=>x.id===id);if(!h)return;
+  $('edit-form').classList.remove('hidden');
+  $('edit-id').value=id;
+  $('edit-ticker').value=h.ticker;
+  $('edit-name').value=h.name;
+  $('edit-cat').value=h.category;
+  $('edit-shares').value=h.shares;
+  $('edit-cost').value=h.costBasis;
+  $('edit-date').value=h.datePurchased||'';
+  $('edit-pitchedby').value=h.pitchedBy||'';
+  $('edit-thesis').value=h.thesis||'';
+  $('edit-form').scrollIntoView({behavior:'smooth'});
+}
+function saveEdit(){
+  const id=parseInt($('edit-id').value);
+  const h=holdings.find(x=>x.id===id);if(!h)return;
+  const newShares=parseFloat($('edit-shares').value);
+  const newCost=parseFloat($('edit-cost').value);
+  // Check cash impact if cost changed
+  const oldTotal=h.shares*h.costBasis;
+  const newTotal=newShares*newCost;
+  const cashDiff=newTotal-oldTotal;
+  const currentCash=INITIAL_INVESTMENT-holdings.reduce((s,x)=>s+x.shares*x.costBasis,0);
+  if(cashDiff>0&&cashDiff>currentCash)return alert('Not enough cash for this change. Available: '+fmt(currentCash));
+  h.name=$('edit-name').value.trim()||h.ticker;
+  h.category=$('edit-cat').value;
+  h.shares=newShares;
+  h.costBasis=newCost;
+  h.datePurchased=$('edit-date').value||h.datePurchased;
+  h.pitchedBy=$('edit-pitchedby').value.trim()||h.pitchedBy;
+  h.thesis=$('edit-thesis').value.trim()||h.thesis;
+  $('edit-form').classList.add('hidden');
+  sv();renderAll();
+}
 function exportCSV(){const rows=[['Ticker','Name','Category','Date Purchased','Shares','Cost Basis','Current Price','Market Value','Gain/Loss','G/L %']];holdings.forEach(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,p=((h.currentPrice-h.costBasis)/h.costBasis*100).toFixed(2);rows.push([h.ticker,h.name,h.category,h.datePurchased,h.shares,h.costBasis.toFixed(2),h.currentPrice.toFixed(2),v.toFixed(2),gl.toFixed(2),p+'%']);});const csv=rows.map(r=>r.join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='FLC_Portfolio_'+new Date().toISOString().split('T')[0]+'.csv';a.click();}
 
 // ===== SLIDES, NL, WATCHLIST, CALENDAR =====
@@ -1049,7 +1113,7 @@ $('home-latest-slide').innerHTML=slides.length?`<div class="slide-date">${slides
 $('home-latest-nl').innerHTML=newsletters.length?`<div class="slide-date">${newsletters[0].date} · ${newsletters[0].author}</div><div class="slide-title">${newsletters[0].title}</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">${newsletters[0].body.substring(0,180)}...</div>`:`<span style="color:var(--muted);font-size:13px;">No posts yet.</span>`;
 
 // Port stats
-$('port-stats').innerHTML=`<div class="card"><div class="stat-label"><span class="tip">Invested<span class="tip-i">?</span><span class="tip-box">The total amount of money originally put into the portfolio. This is your starting point — what you began with before any market movements.</span></span></div><div class="stat-value">${fmt(INITIAL_INVESTMENT)}</div></div><div class="card"><div class="stat-label"><span class="tip">Cost Basis<span class="tip-i">?</span><span class="tip-box">The total amount spent to acquire all current positions (shares x cost per share for each holding). Compared to current value, this tells you if you're up or down overall.</span></span></div><div class="stat-value">${fmt(s.tc)}</div></div><div class="card"><div class="stat-label"><span class="tip">Current Value<span class="tip-i">?</span><span class="tip-box">What the entire portfolio is worth right now at today's market prices. This number goes up and down — that's volatility, and it's normal.</span></span></div><div class="stat-value">${fmt(s.tv)}</div></div><div class="card"><div class="stat-label"><span class="tip">Gain/Loss<span class="tip-i">?</span><span class="tip-box">Current Value minus Cost Basis. This is how much money the portfolio has made or lost. Remember: prices fluctuate but the market trends upward over time — patience is key.</span></span></div><div class="stat-value" style="color:${s.gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(s.gl)}<br><span style="font-size:13px">${fmtPct(s.glPct)}</span></div></div><div class="card"><div class="stat-label"><span class="tip">Max Drift<span class="tip-i">?</span><span class="tip-box">How far our actual allocation has drifted from the 60/30/10 target. Over 5% means we should consider rebalancing — selling some of what's overweight and buying what's underweight.</span></span></div><div class="stat-value" style="color:${s.maxDrift>5?'var(--red)':s.maxDrift>2?'var(--yellow-cat)':'var(--green-cat)'}">${s.maxDrift.toFixed(1)}%</div></div>`;
+$('port-stats').innerHTML=`<div class="card"><div class="stat-label"><span class="tip">Cash Available<span class="tip-i">?</span><span class="tip-box">Money not currently invested. This is what you have left to buy new positions. Cash earns nothing in this simulation, so too much cash means missed opportunities.</span></span></div><div class="stat-value">${fmt(s.cashBalance)}</div></div><div class="card"><div class="stat-label"><span class="tip">Cost Basis<span class="tip-i">?</span><span class="tip-box">The total amount spent to acquire all current positions (shares x cost per share for each holding). Compared to current value, this tells you if you're up or down overall.</span></span></div><div class="stat-value">${fmt(s.tc)}</div></div><div class="card"><div class="stat-label"><span class="tip">Current Value<span class="tip-i">?</span><span class="tip-box">What the entire portfolio is worth right now at today's market prices. This number goes up and down — that's volatility, and it's normal.</span></span></div><div class="stat-value">${fmt(s.tv)}</div></div><div class="card"><div class="stat-label"><span class="tip">Gain/Loss<span class="tip-i">?</span><span class="tip-box">Current Value minus Cost Basis. This is how much money the portfolio has made or lost. Remember: prices fluctuate but the market trends upward over time — patience is key.</span></span></div><div class="stat-value" style="color:${s.gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(s.gl)}<br><span style="font-size:13px">${fmtPct(s.glPct)}</span></div></div><div class="card"><div class="stat-label"><span class="tip">Max Drift<span class="tip-i">?</span><span class="tip-box">How far our actual allocation has drifted from the 60/30/10 target. Over 5% means we should consider rebalancing — selling some of what's overweight and buying what's underweight.</span></span></div><div class="stat-value" style="color:${s.maxDrift>5?'var(--red)':s.maxDrift>2?'var(--yellow-cat)':'var(--green-cat)'}">${s.maxDrift.toFixed(1)}%</div></div>`;
 
 // Pie
 const pd=Object.keys(CM).map(c=>({c,pct:s.cats[c].pct,color:CM[c].color}));
@@ -1084,9 +1148,9 @@ if(riskEl){
   else healthNotes.push('Our portfolio beta of '+wBeta.toFixed(2)+' means we move roughly with or more than the market. Consider adding lower-volatility positions to reduce overall risk.');
   if(maxHolding>40)healthNotes.push('Our largest position is '+maxHolding.toFixed(0)+'% of the portfolio. That is a lot of concentration. Even though VOO itself holds 500 stocks internally, having too much in one position reduces diversification at the portfolio level.');
   if(sharpe<0.5)healthNotes.push('The Sharpe ratio of '+sharpe.toFixed(2)+' suggests we are not being well compensated for the risk we are taking. To improve this, we could either increase returns (better stock picks) or reduce risk (more bonds/index).');
-  const healthEl=document.createElement('div');healthEl.style.cssText='font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding:12px 14px;background:var(--off-white);border-radius:3px;';
-  healthEl.innerHTML='<b style="color:var(--text-primary)">What this means:</b> '+healthNotes.join(' ');
-  riskEl.parentNode.appendChild(healthEl);
+  let existingHealth=document.getElementById('risk-health-narrative');
+  if(!existingHealth){existingHealth=document.createElement('div');existingHealth.id='risk-health-narrative';existingHealth.style.cssText='font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding:12px 14px;background:var(--off-white);border-radius:3px;';riskEl.parentNode.appendChild(existingHealth);}
+  existingHealth.innerHTML='<b style="color:var(--text-primary)">What this means:</b> '+healthNotes.join(' ');
 }
 
 // Sector Diversification
@@ -1131,7 +1195,7 @@ $('pie-chart').style.background=`conic-gradient(${pd.map((d,i)=>{const st=pd.sli
 $('alloc-bars').innerHTML=Object.keys(CM).map(c=>{const p=s.cats[c].pct,t=TARGETS[c],dr=p-t,dc=Math.abs(dr)>5?'var(--red)':Math.abs(dr)>2?'var(--yellow-cat)':'var(--green-cat)';return`<div style="margin-bottom:20px;"><div style="display:flex;justify-content:space-between;"><span class="badge ${CM[c].badge}">${CM[c].label}</span><span style="font-size:12px;"><span style="color:${dc};font-weight:600;">${p.toFixed(1)}%</span><span style="color:var(--muted)">/${t}%</span></span></div><div class="alloc-bar-track"><div class="alloc-bar-fill" style="width:${Math.min(p,100)}%;background:${CM[c].color}"></div><div class="alloc-marker" style="left:${t}%"></div></div></div>`;}).join('');
 
 // Table
-$('holdings-tbody').innerHTML=getSorted().map(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis>0?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,pp=s.tv>0?(v/s.tv)*100:0,dc=h._dp||0,info=SI[h.ticker]||{sector:'—',beta:1.0};return`<tr><td class="mono" style="font-weight:600;color:var(--text-primary)">${h.ticker}</td><td style="color:var(--secondary);font-size:12px">${h.name}</td><td><span class="badge ${CM[h.category]?.badge||''}">${h.category}</span></td><td style="font-size:11px;color:var(--muted)">${info.sector||'—'}</td><td class="text-right" style="font-size:11px;color:var(--muted)">${h.datePurchased||'—'}</td><td class="text-right mono">${h.shares}</td><td class="text-right mono">${fmt(h.costBasis)}</td><td class="text-right"><span class="mono">${fmt(h.currentPrice)}</span>${dc?`<br><span style="font-size:10px;color:${dc>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dc)}</span>`:''}</td><td class="text-right mono" style="font-weight:600;color:var(--text-primary)">${fmt(v)}</td><td class="text-right mono" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(gl)}<br><span style="font-size:10px">${fmtPct(gp)}</span></td><td class="text-right mono" style="font-size:11px">${(info.beta||1.0).toFixed(2)}</td><td class="text-right mono" style="font-size:11px">${pp.toFixed(1)}%</td>${isOfficer?`<td class="text-right"><button class="btn-danger" onclick="removeHolding(${h.id})" style="font-size:10px;padding:4px 8px;">Remove</button></td>`:''}</tr>`;}).join('');
+$('holdings-tbody').innerHTML=getSorted().map(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis>0?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,pp=s.tv>0?(v/s.tv)*100:0,dc=h._dp||0,info=SI[h.ticker]||{sector:'—',beta:1.0};return`<tr><td class="mono" style="font-weight:600;color:var(--text-primary)">${h.ticker}</td><td style="color:var(--secondary);font-size:12px">${h.name}</td><td><span class="badge ${CM[h.category]?.badge||''}">${h.category}</span></td><td style="font-size:11px;color:var(--muted)">${info.sector||'—'}</td><td class="text-right" style="font-size:11px;color:var(--muted)">${h.datePurchased||'—'}</td><td class="text-right mono">${h.shares}</td><td class="text-right mono">${fmt(h.costBasis)}</td><td class="text-right"><span class="mono">${fmt(h.currentPrice)}</span>${dc?`<br><span style="font-size:10px;color:${dc>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dc)}</span>`:''}</td><td class="text-right mono" style="font-weight:600;color:var(--text-primary)">${fmt(v)}</td><td class="text-right mono" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(gl)}<br><span style="font-size:10px">${fmtPct(gp)}</span></td><td class="text-right mono" style="font-size:11px">${(info.beta||1.0).toFixed(2)}</td><td class="text-right mono" style="font-size:11px">${pp.toFixed(1)}%</td>${isOfficer?`<td class="text-right"><button class="btn-ghost btn-sm" onclick="editHolding(${h.id})" style="font-size:10px;padding:3px 6px;margin-right:4px;">Edit</button><button class="btn-danger" onclick="removeHolding(${h.id})" style="font-size:10px;padding:3px 6px;">Sell</button></td>`:''}</tr>`;}).join('');
 
 // Rebalance
 const sug=[];for(const c of['index','alpha','fixed']){const p=s.cats[c].pct,t=TARGETS[c],d=p-t;if(Math.abs(d)>2)sug.push({c,act:d>0?'reduce':'add',amt:Math.abs(d/100*s.tv),dr:d});}
@@ -1202,11 +1266,7 @@ const RESEARCH_DATA={
   BA:{name:'Boeing Co.',sector:'Industrials',mcap:'$130B',beta:1.45,pe:'N/A (negative earnings)',gm:'-2.1%',nm:'-5.8%',eps:'-$8.35',dta:'106%',divYield:'0%',revGrowth:'+10.8%'},
 };
 
-const FMP_KEY='ZPgmrci1M6rh0Q46Ev4MDFK9T5n1E9n7';
 
-async function fmpFetch(url){
-  try{const r=await fetch(url);return await r.json();}catch(e){return null;}
-}
 
 async function researchStock(){
   const ticker=$('research-ticker').value.trim().toUpperCase();
@@ -1214,34 +1274,23 @@ async function researchStock(){
   $('research-loading').classList.remove('hidden');
   $('research-result').classList.add('hidden');
 
-  // Fetch live price from Finnhub
-  const priceData=await fetchPrice(ticker);
-
-  // Fetch fundamentals from FMP (try multiple endpoints for best coverage)
-  const [profileArr,ratiosArr,growthArr,metricsArr]=await Promise.all([
-    fmpFetch(`https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=${FMP_KEY}`),
-    fmpFetch(`https://financialmodelingprep.com/api/v3/ratios-ttm/${ticker}?apikey=${FMP_KEY}`),
-    fmpFetch(`https://financialmodelingprep.com/api/v3/financial-growth/${ticker}?limit=1&apikey=${FMP_KEY}`),
-    fmpFetch(`https://financialmodelingprep.com/api/v3/key-metrics-ttm/${ticker}?apikey=${FMP_KEY}`)
+  // Fetch all data from Finnhub (which works from browser)
+  const [priceData,metrics,profile]=await Promise.all([
+    fetchPrice(ticker),
+    fetchMetrics(ticker),
+    fetchProfile(ticker)
   ]);
 
   $('research-loading').classList.add('hidden');
 
-  const profile=profileArr&&profileArr.length>0?profileArr[0]:null;
-  const ratios=ratiosArr&&ratiosArr.length>0?ratiosArr[0]:null;
-  const growth=growthArr&&growthArr.length>0?growthArr[0]:null;
-  const metrics=metricsArr&&metricsArr.length>0?metricsArr[0]:null;
-
-  // Show whatever we have, even if partial
-  if((!priceData||!priceData.c||priceData.c<=0)&&!profile){
-    // Try showing just from hardcoded data
+  if((!priceData||!priceData.c||priceData.c<=0)&&!profile&&!metrics){
     const rd=RESEARCH_DATA[ticker];
     if(!rd){
       $('research-result').classList.remove('hidden');
       $('res-ticker').textContent=ticker;
       $('res-name').textContent='Data unavailable';
       $('res-price').textContent='--';
-      $('res-change').innerHTML='<span style="color:var(--text-muted)">Could not find live data for this ticker. It may be a recently listed company, an international stock, or the ticker may be incorrect.</span>';
+      $('res-change').innerHTML='<span style="color:var(--text-muted)">Could not find data for this ticker. Check the symbol and try again.</span>';
       $('res-price-metrics').innerHTML='';
       $('res-fundamentals').classList.add('hidden');
       $('res-no-fundamentals').classList.remove('hidden');
@@ -1250,94 +1299,74 @@ async function researchStock(){
   }
 
   $('research-result').classList.remove('hidden');
-
-  // Price header - use FMP profile price as fallback
-  const price=priceData&&priceData.c>0?priceData.c:(profile?profile.price:0);
+  const price=priceData&&priceData.c>0?priceData.c:0;
   const dp=priceData?priceData.dp||0:0;
 
+  // Price header
   $('res-ticker').textContent=ticker;
-  $('res-name').textContent=profile?profile.companyName:(RESEARCH_DATA[ticker]?RESEARCH_DATA[ticker].name:ticker);
-  $('res-price').textContent=fmt(price);
+  $('res-name').textContent=profile?profile.name:(RESEARCH_DATA[ticker]?RESEARCH_DATA[ticker].name:ticker);
+  $('res-price').textContent=price>0?fmt(price):'--';
   const dpColor=dp>=0?'var(--green)':'var(--red)';
-  $('res-change').innerHTML='<span style="color:'+dpColor+'">'+fmtPct(dp)+' today</span>';
+  $('res-change').innerHTML=price>0?'<span style="color:'+dpColor+'">'+fmtPct(dp)+' today</span>':'';
 
   const o=priceData?priceData.o||0:0;
   const h=priceData?priceData.h||0:0;
   const l=priceData?priceData.l||0:0;
   const pc=priceData?priceData.pc||0:0;
-  $('res-price-metrics').innerHTML=
+  $('res-price-metrics').innerHTML=price>0?
     '<div class="card"><div class="stat-label">Open</div><div class="stat-value" style="font-size:15px;">'+fmt(o)+'</div></div>'+
     '<div class="card"><div class="stat-label">High</div><div class="stat-value" style="font-size:15px;">'+fmt(h)+'</div></div>'+
     '<div class="card"><div class="stat-label">Low</div><div class="stat-value" style="font-size:15px;">'+fmt(l)+'</div></div>'+
-    '<div class="card"><div class="stat-label">Prev Close</div><div class="stat-value" style="font-size:15px;">'+fmt(pc)+'</div></div>';
+    '<div class="card"><div class="stat-label">Prev Close</div><div class="stat-value" style="font-size:15px;">'+fmt(pc)+'</div></div>':'';
 
-  // Check if we have fundamental data
-  if(profile||ratios||metrics){
+  // Use Finnhub metrics if available, fall back to hardcoded
+  const m=metrics||{};
+  const rd=RESEARCH_DATA[ticker]||{};
+
+  if(metrics||RESEARCH_DATA[ticker]){
     $('res-fundamentals').classList.remove('hidden');
     $('res-no-fundamentals').classList.add('hidden');
 
-    // Financial Position - Debt to Assets
-    const dta=ratios&&ratios.debtRatioTTM!=null?ratios.debtRatioTTM:(metrics&&metrics.debtToAssetsTTM!=null?metrics.debtToAssetsTTM:null);
-    const dtaPct=dta!=null?(dta*100).toFixed(1)+'%':'N/A';
-    $('res-dta').textContent=dtaPct;
-    const dtaNum=dta!=null?dta*100:null;
-    $('res-dta-explain').textContent=dtaNum==null?'Data not available for this security.':dtaNum>80?'High debt. Over 80% of assets are financed by debt. This company is heavily leveraged, which increases risk if revenue drops.':dtaNum>50?'Moderate debt. About half of assets are debt-financed. Not unusual for this industry, but worth monitoring.':'Low debt. The company owns more than it owes. This is a strong financial position.';
+    // Financial Position
+    const dtaVal=m.totalDebt&&m.totalAssets?(m.totalDebt/m.totalAssets*100):null;
+    const dtaDisplay=dtaVal!=null?dtaVal.toFixed(1)+'%':(rd.dta||'N/A');
+    $('res-dta').textContent=dtaDisplay;
+    const dtaNum=dtaVal!=null?dtaVal:parseFloat(rd.dta);
+    $('res-dta-explain').textContent=isNaN(dtaNum)?'Data not available for this security.':dtaNum>80?'High debt. Over 80% of assets are financed by debt. This increases risk if revenue drops.':dtaNum>50?'Moderate debt. About half of assets are debt-financed. Worth monitoring.':'Low debt. The company owns more than it owes. Strong financial position.';
 
     // Profitability
-    const gm=ratios&&ratios.grossProfitMarginTTM!=null?(ratios.grossProfitMarginTTM*100).toFixed(1)+'%':'N/A';
-    const nm=ratios&&ratios.netProfitMarginTTM!=null?(ratios.netProfitMarginTTM*100).toFixed(1)+'%':'N/A';
-    const eps=profile&&profile.eps!=null?'$'+profile.eps.toFixed(2):'N/A';
-    $('res-gm').textContent=gm;
-    $('res-nm').textContent=nm;
-    $('res-eps').textContent=eps;
+    const gmVal=m.grossMarginTTM!=null?(m.grossMarginTTM*100).toFixed(1)+'%':(m.grossMarginAnnual!=null?(m.grossMarginAnnual*100).toFixed(1)+'%':(rd.gm||'N/A'));
+    const nmVal=m.netProfitMarginTTM!=null?(m.netProfitMarginTTM*100).toFixed(1)+'%':(m.netProfitMarginAnnual!=null?(m.netProfitMarginAnnual*100).toFixed(1)+'%':(rd.nm||'N/A'));
+    const epsVal=m.epsBasicExclExtraItemsTTM!=null?'$'+m.epsBasicExclExtraItemsTTM.toFixed(2):(m.epsNormalizedAnnual!=null?'$'+m.epsNormalizedAnnual.toFixed(2):(rd.eps||'N/A'));
+    $('res-gm').textContent=gmVal;
+    $('res-nm').textContent=nmVal;
+    $('res-eps').textContent=epsVal;
 
     // Growth
-    const revGr=growth&&growth.revenueGrowth!=null?(growth.revenueGrowth>=0?'+':'')+(growth.revenueGrowth*100).toFixed(1)+'%':'N/A';
-    const divY=ratios&&ratios.dividendYielTTM!=null?(ratios.dividendYielTTM*100).toFixed(2)+'%':(metrics&&metrics.dividendYieldTTM!=null?(metrics.dividendYieldTTM*100).toFixed(2)+'%':(profile&&profile.lastDiv!=null&&price>0?(profile.lastDiv/price*100).toFixed(2)+'%':'0%'));
-    $('res-revgrowth').textContent=revGr;
-    $('res-divyield').textContent=divY;
+    const revGrVal=m.revenueGrowthTTMYoy!=null?(m.revenueGrowthTTMYoy>=0?'+':'')+(m.revenueGrowthTTMYoy*100).toFixed(1)+'%':(m.revenueGrowth3Y!=null?(m.revenueGrowth3Y>=0?'+':'')+(m.revenueGrowth3Y*100).toFixed(1)+'% (3yr avg)':(rd.revGrowth||'N/A'));
+    const divYVal=m.dividendYieldIndicatedAnnual!=null?(m.dividendYieldIndicatedAnnual).toFixed(2)+'%':(rd.divYield||'0%');
+    $('res-revgrowth').textContent=revGrVal;
+    $('res-divyield').textContent=divYVal;
 
-    // Valuation - P/E
-    const pe=ratios&&ratios.peRatioTTM!=null?ratios.peRatioTTM:(profile&&profile.eps&&profile.eps>0?price/profile.eps:null);
-    const peDisplay=pe!=null&&pe>0?pe.toFixed(1):(pe!=null&&pe<=0?'N/A (negative earnings)':'N/A');
+    // Valuation
+    const peVal=m.peBasicExclExtraTTM||m.peNormalizedAnnual||(typeof rd.pe==='number'?rd.pe:null);
+    const peDisplay=peVal!=null&&peVal>0?peVal.toFixed(1):(peVal!=null&&peVal<=0?'N/A (negative earnings)':'N/A');
     $('res-pe').textContent=peDisplay;
-    const peNum=pe!=null&&pe>0?pe:0;
-    $('res-pe-explain').textContent=peNum>50?'High P/E. You are paying $'+peNum.toFixed(0)+' for every $1 of earnings. This is expensive, but could be justified if the company is growing fast. Compare to others in the same sector.':peNum>25?'Moderate P/E. Reasonably priced for a growing company. Not cheap, not expensive.':peNum>0?'Low P/E. You are paying relatively little per dollar of earnings. Could be good value, or it could mean the market expects growth to slow. Look at revenue growth to decide.':'P/E is not available. The company may have negative earnings, meaning it is currently losing money.';
+    const peNum=peVal!=null&&peVal>0?peVal:0;
+    $('res-pe-explain').textContent=peNum>50?'High P/E. You are paying $'+peNum.toFixed(0)+' for every $1 of earnings. Expensive, but could be justified if growing fast. Compare to others in the same sector.':peNum>25?'Moderate P/E. Reasonably priced for a growing company.':peNum>0?'Low P/E. Relatively cheap per dollar of earnings. Could be good value, or the market may expect growth to slow.':'P/E not available. The company may have negative earnings.';
 
     // Risk
-    const beta=profile&&profile.beta!=null?profile.beta:1.0;
-    const mcapRaw=profile?profile.mktCap:0;
-    const mcap=mcapRaw>1e12?'$'+(mcapRaw/1e12).toFixed(1)+'T':mcapRaw>1e9?'$'+(mcapRaw/1e9).toFixed(0)+'B':mcapRaw>1e6?'$'+(mcapRaw/1e6).toFixed(0)+'M':'N/A';
-    const sector=profile?profile.sector||'N/A':'N/A';
-    $('res-beta').textContent=beta.toFixed(2);
-    $('res-beta-explain').textContent=beta<0.5?'Very low volatility':beta<0.8?'Less volatile than the market':beta<1.2?'Moves with the market':'More volatile than the market';
-    $('res-mcap').textContent=mcap;
-    $('res-sector').textContent=sector;
+    const betaVal=m.beta!=null?m.beta:(rd.beta||1.0);
+    const mcapVal=profile?profile.marketCapitalization:null;
+    const mcapDisplay=mcapVal?mcapVal>1000?'$'+(mcapVal/1000).toFixed(1)+'T':'$'+mcapVal.toFixed(0)+'B':(rd.mcap||'N/A');
+    const sectorVal=profile?profile.finnhubIndustry||'N/A':(rd.sector||'N/A');
+    $('res-beta').textContent=betaVal.toFixed(2);
+    $('res-beta-explain').textContent=betaVal<0.5?'Very low volatility':betaVal<0.8?'Less volatile than the market':betaVal<1.2?'Moves with the market':'More volatile than the market';
+    $('res-mcap').textContent=mcapDisplay;
+    $('res-sector').textContent=sectorVal;
   }else{
-    // Fall back to hardcoded data
-    const rd=RESEARCH_DATA[ticker];
-    if(rd){
-      $('res-fundamentals').classList.remove('hidden');
-      $('res-no-fundamentals').classList.add('hidden');
-      $('res-dta').textContent=rd.dta;
-      const dtaNum=parseFloat(rd.dta);
-      $('res-dta-explain').textContent=isNaN(dtaNum)?'This metric does not apply to ETFs.':dtaNum>80?'High debt. Over 80% of assets are financed by debt.':dtaNum>50?'Moderate debt. About half of assets are debt-financed.':'Low debt. Strong financial position.';
-      $('res-gm').textContent=rd.gm;
-      $('res-nm').textContent=rd.nm;
-      $('res-eps').textContent=rd.eps;
-      $('res-revgrowth').textContent=rd.revGrowth;
-      $('res-divyield').textContent=rd.divYield;
-      $('res-pe').textContent=typeof rd.pe==='number'?rd.pe.toFixed(1):rd.pe;
-      const peNum=typeof rd.pe==='number'?rd.pe:0;
-      $('res-pe-explain').textContent=peNum>50?'High P/E.':peNum>25?'Moderate P/E.':peNum>0?'Low P/E.':'P/E not applicable.';
-      $('res-beta').textContent=rd.beta.toFixed(2);
-      $('res-beta-explain').textContent=rd.beta<0.5?'Very low volatility':rd.beta<0.8?'Less volatile than the market':rd.beta<1.2?'Moves with the market':'More volatile than the market';
-      $('res-mcap').textContent=rd.mcap;
-      $('res-sector').textContent=rd.sector;
-    }else{
-      $('res-fundamentals').classList.add('hidden');
-      $('res-no-fundamentals').classList.remove('hidden');
-    }
+    $('res-fundamentals').classList.add('hidden');
+    $('res-no-fundamentals').classList.remove('hidden');
   }
 }
 
