@@ -4,155 +4,138 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Financial Literacy Club</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
-:root{--white:#FFFFFF;--off-white:#F7F8FA;--light-gray:#EEF0F4;--mid-gray:#E2E4E8;--border-color:#D5D8DC;--navy-band:#1B2A4A;--navy-band-text:#E8EDF2;--blue-tint:#EDF2F9;--warm-gray:#F4F3F1;--text-primary:#1A1D23;--text-secondary:#4A5568;--text-muted:#718096;--accent:#0056B3;--accent-hover:#004494;--accent-light:#E8F0FE;--accent-border:#B3D4FC;--green:#0D7D4D;--green-bg:#E6F5EE;--green-border:#B3E0CC;--red:#C53030;--red-bg:#FFF5F5;--red-border:#FEB2B2;--yellow:#B7791F;--yellow-bg:#FFFFF0;--blue-cat:#0056B3;--yellow-cat:#B7791F;--green-cat:#0D7D4D;--border:var(--border-color);--muted:var(--text-muted);--secondary:var(--text-secondary);--text:var(--text-primary);--surface-alt:var(--light-gray);--radius:3px;--radius-lg:4px;--font-sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;--font-mono:'IBM Plex Mono',monospace;}
+:root{--navy:#14243D;--navy-deep:#0C1A2E;--navy-light:#1E3456;--navy-mid:#1A2E4A;--white:#FFF;--accent:#5B9CF6;--accent-dark:#3B7DD8;--accent-bg:rgba(91,156,246,0.1);--accent-border:rgba(91,156,246,0.25);--gold-bg:rgba(232,185,49,0.1);--green:#34D399;--green-bg:rgba(52,211,153,0.12);--green-border:rgba(52,211,153,0.25);--red:#F87171;--red-bg:rgba(248,113,113,0.1);--blue-cat:#60A5FA;--yellow-cat:#FBBF24;--green-cat:#34D399;--border:rgba(255,255,255,0.08);--muted:#8896AB;--secondary:#B0BEC5;--text:#E8EDF2;--surface2:rgba(255,255,255,0.06);--radius:12px;--radius-lg:16px;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:var(--font-sans);background:var(--white);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body{font-family:'DM Sans',sans-serif;background:var(--navy-deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
 a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
-.topnav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:2px solid var(--accent);padding:0 32px;}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(12,26,46,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 32px;}
 .topnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
-.topnav-brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;cursor:pointer;user-select:none;color:var(--text-primary);}
-.topnav-brand img{height:38px;border-radius:3px;}
+.topnav-brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;cursor:pointer;user-select:none;color:var(--white);}
+.topnav-brand img{height:38px;border-radius:6px;}
 .topnav-links{display:flex;gap:1px;flex-wrap:wrap;}
-.topnav-link{padding:7px 12px;border-radius:3px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:inherit;transition:all 0.15s;white-space:nowrap;text-transform:uppercase;letter-spacing:0.5px;}
-.topnav-link:hover{color:var(--text-primary);}
-.topnav-link.active{color:var(--accent);background:var(--accent-light);}
-.hamburger{display:none;background:none;border:1px solid var(--border);border-radius:3px;padding:6px 10px;color:var(--text-primary);cursor:pointer;font-size:18px;font-family:inherit;}
-@media(max-width:900px){.topnav{padding:0 16px;}.topnav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);flex-direction:column;padding:8px 16px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}.topnav-links.open{display:flex;}.hamburger{display:block;}.topnav-link{padding:12px 16px;width:100%;}}
+.topnav-link{padding:7px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:inherit;transition:all 0.15s;white-space:nowrap;}
+.topnav-link:hover{color:var(--white);}
+.topnav-link.active{color:var(--white);background:rgba(255,255,255,0.08);}
+.hamburger{display:none;background:none;border:1px solid var(--border);border-radius:8px;padding:6px 10px;color:var(--white);cursor:pointer;font-size:18px;font-family:inherit;}
+@media(max-width:900px){.topnav{padding:0 16px;}.topnav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(12,26,46,0.97);border-bottom:1px solid var(--border);flex-direction:column;padding:8px 16px;backdrop-filter:blur(20px);}.topnav-links.open{display:flex;}.hamburger{display:block;}.topnav-link{padding:12px 16px;width:100%;}}
 .page{display:none;animation:fadeIn 0.25s ease;}.page.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .container{max-width:1200px;margin:0 auto;padding:0 32px;}
 @media(max-width:768px){.container{padding:0 16px;}}
 .section{padding:28px 0;}.section-header{margin-bottom:20px;}
-.section-alt{background:var(--off-white);margin:0 -32px;padding:28px 32px;}
-.section-navy{background:var(--navy-band);margin:0 -32px;padding:28px 32px;color:var(--navy-band-text);}
-.section-navy .section-title{color:var(--navy-band-text);}
-.section-navy .section-desc{color:rgba(232,237,242,0.7);}
-.section-navy .card{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);}
-.section-navy .stat-label{color:rgba(232,237,242,0.6);}
-.section-navy .stat-value{color:var(--navy-band-text);}
-.section-navy .stat-sub{color:rgba(232,237,242,0.5);}
-.section-blue{background:var(--blue-tint);margin:0 -32px;padding:28px 32px;}
-.section-warm{background:var(--warm-gray);margin:0 -32px;padding:28px 32px;}
-@media(max-width:768px){.section-alt,.section-navy,.section-blue,.section-warm{margin:0 -16px;padding:28px 16px;}}
-.section-title{font-size:18px;font-weight:700;letter-spacing:-0.2px;color:var(--text-primary);text-transform:none;}
+.section-title{font-size:21px;font-weight:700;letter-spacing:-0.3px;color:var(--white);}
 .section-desc{font-size:14px;color:var(--muted);margin-top:5px;line-height:1.6;}
-.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;transition:border-color 0.2s;}
-.card:hover{border-color:#B0B8C4;}
+.card{background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(255,255,255,0.14);}
 .card-grid{display:grid;gap:14px;}
 .cols-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
 .cols-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
 .cols-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
 .cols-5{grid-template-columns:repeat(auto-fit,minmax(175px,1fr));}
-.hero{padding:60px 0 40px;position:relative;overflow:hidden;background:var(--navy-band);margin:0 -32px;padding-left:32px;padding-right:32px;}
-.hero::before{content:'';display:none;}
+.hero{padding:60px 0 40px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(91,156,246,0.07),transparent 70%);pointer-events:none;}
 .hero-content{position:relative;z-index:1;max-width:700px;}
-.hero-logo{width:100px;border-radius:4px;margin-bottom:20px;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
-.hero h1{font-family:var(--font-sans);font-size:40px;font-weight:700;line-height:1.15;letter-spacing:-0.5px;margin-bottom:14px;color:#FFFFFF;}
-.hero .accent{color:#7CB3F0;}
-.hero p{font-size:16px;color:rgba(232,237,242,0.8);line-height:1.7;margin-bottom:28px;max-width:550px;}
+.hero-logo{width:110px;border-radius:12px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.3);}
+.hero h1{font-family:'Playfair Display',serif;font-size:44px;font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:14px;color:var(--white);}
+.hero .accent{background:linear-gradient(135deg,var(--accent),#93C5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{font-size:17px;color:var(--secondary);line-height:1.7;margin-bottom:28px;max-width:550px;}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
 @media(max-width:600px){.hero h1{font-size:30px;}.hero{padding:36px 0 24px;}.hero-logo{width:80px;}}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:3px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;border:none;transition:all 0.15s;letter-spacing:0.2px;}
-.btn-primary{background:var(--accent);color:#FFFFFF;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;border:none;transition:all 0.15s;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:var(--white);}
 .btn-primary:hover{opacity:0.9;text-decoration:none;}
-.btn-ghost{background:var(--white);border:1px solid var(--border);color:var(--text-primary);}
-.btn-ghost:hover{border-color:#999;text-decoration:none;}
-.btn-sm{padding:7px 14px;font-size:12px;border-radius:3px;}
-.btn-danger{background:transparent;border:1px solid var(--red-border);color:var(--red);padding:5px 12px;border-radius:3px;font-size:11px;cursor:pointer;font-family:inherit;text-transform:uppercase;letter-spacing:0.5px;}
-.btn-tab{padding:5px 12px;border-radius:3px;border:none;cursor:pointer;font-size:11px;font-weight:600;font-family:inherit;background:transparent;color:var(--text-muted);transition:all 0.15s;text-transform:uppercase;letter-spacing:0.5px;}
-.btn-tab.active{background:var(--accent-light);color:var(--accent);}
-.input{background:var(--white);border:1px solid var(--border);border-radius:3px;padding:10px 14px;color:var(--text);font-size:13px;width:100%;font-family:inherit;outline:none;transition:border-color 0.2s;}
+.btn-ghost{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--white);}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.25);text-decoration:none;}
+.btn-sm{padding:8px 16px;font-size:13px;border-radius:8px;}
+.btn-danger{background:transparent;border:1px solid rgba(248,113,113,0.3);color:var(--red);padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;}
+.btn-tab{padding:6px 14px;border-radius:8px;border:none;cursor:pointer;font-size:12px;font-weight:600;font-family:inherit;background:transparent;color:var(--muted);transition:all 0.15s;}
+.btn-tab.active{background:rgba(255,255,255,0.08);color:var(--white);}
+.input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 16px;color:var(--text);font-size:14px;width:100%;font-family:inherit;outline:none;transition:border-color 0.2s;}
 .input:focus{border-color:var(--accent);}
-select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23718096' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238896AB' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
 textarea.input{resize:vertical;min-height:90px;line-height:1.6;}
 label{font-size:11px;color:var(--muted);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
-.badge{display:inline-block;padding:2px 8px;border-radius:2px;font-size:10px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;}
-.badge-index{background:var(--green-bg);color:var(--green);}
-.badge-alpha{background:var(--yellow-bg);color:var(--yellow);}
-.badge-fixed{background:var(--accent-light);color:var(--accent);}
+.badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
+.badge-index{background:var(--green-bg);color:var(--green-cat);}
+.badge-alpha{background:var(--gold-bg);color:var(--yellow-cat);}
+.badge-fixed{background:var(--accent-bg);color:var(--blue-cat);}
 .tip{position:relative;display:inline-flex;align-items:center;cursor:help;}
-.tip-i{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:2px;background:var(--accent-light);color:var(--accent);font-size:9px;font-weight:700;margin-left:4px;flex-shrink:0;}
-.tip-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:250px;padding:10px 12px;background:var(--white);border:1px solid var(--border);border-radius:3px;font-size:12px;color:var(--text-secondary);line-height:1.5;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,0.12);font-weight:400;text-transform:none;letter-spacing:0;}
-.tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--text-primary);}
+.tip-i{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;background:var(--accent-bg);color:var(--accent);font-size:9px;font-weight:700;margin-left:4px;flex-shrink:0;}
+.tip-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:250px;padding:10px 12px;background:var(--navy);border:1px solid var(--accent-border);border-radius:10px;font-size:12px;color:var(--secondary);line-height:1.5;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,0.5);font-weight:400;text-transform:none;letter-spacing:0;}
+.tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy);}
 .tip:hover .tip-box{display:block;}
-.edu{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:var(--radius);padding:14px 18px;margin-bottom:18px;}
+.edu{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);padding:14px 18px;margin-bottom:18px;}
 .edu h4{color:var(--accent);font-size:13px;margin-bottom:5px;}
-.edu p{font-size:13px;color:var(--text-secondary);line-height:1.6;}
+.edu p{font-size:13px;color:var(--secondary);line-height:1.6;}
 .stat-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:600;}
-.stat-value{font-size:20px;font-weight:700;letter-spacing:-0.3px;font-family:var(--font-mono);color:var(--text-primary);}
+.stat-value{font-size:21px;font-weight:700;letter-spacing:-0.5px;font-family:'JetBrains Mono',monospace;color:var(--white);}
 .stat-sub{font-size:11px;color:var(--muted);margin-top:2px;}
 .table-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;}
-th{text-align:left;padding:9px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted);font-weight:600;border-bottom:2px solid var(--border);background:var(--blue-tint);}
-td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
-.mono{font-family:var(--font-mono);font-size:12px;}
+th{text-align:left;padding:9px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border);}
+td{padding:11px 12px;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.025);}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;}
 .text-right{text-align:right;}
 .pie-wrap{display:flex;justify-content:center;align-items:center;flex-direction:column;padding:16px;}
 .pie{width:180px;height:180px;border-radius:50%;}
 .pie-legend{display:flex;gap:14px;margin-top:12px;flex-wrap:wrap;justify-content:center;}
 .pie-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--secondary);}
-.pie-dot{width:10px;height:10px;border-radius:2px;}
-.alloc-bar-track{background:var(--light-gray);border-radius:2px;height:6px;position:relative;margin-top:6px;}
-.alloc-bar-fill{height:6px;border-radius:2px;transition:width 0.5s;position:absolute;top:0;left:0;}
-.alloc-marker{position:absolute;top:-4px;width:2px;height:14px;background:var(--white);border-radius:0;opacity:0.4;}
+.pie-dot{width:10px;height:10px;border-radius:3px;}
+.alloc-bar-track{background:rgba(255,255,255,0.06);border-radius:4px;height:8px;position:relative;margin-top:6px;}
+.alloc-bar-fill{height:8px;border-radius:4px;transition:width 0.5s;position:absolute;top:0;left:0;}
+.alloc-marker{position:absolute;top:-3px;width:2px;height:14px;background:var(--white);border-radius:1px;opacity:0.5;}
 .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
-.team-card{text-align:center;padding:24px 16px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);transition:all 0.2s;}
-.team-card:hover{border-color:#999;transform:translateY(-1px);}
-.team-avatar{width:64px;height:64px;border-radius:4px;background:var(--accent-light);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--accent);border:1px solid var(--accent-border);font-weight:700;font-family:var(--font-mono);}
-.team-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:3px;}
+.team-card{text-align:center;padding:24px 16px;background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--border);border-radius:var(--radius-lg);transition:all 0.2s;}
+.team-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-2px);}
+.team-avatar{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--accent);border:2px solid var(--accent-border);font-weight:700;}
+.team-name{font-size:15px;font-weight:700;color:var(--white);margin-bottom:3px;}
 .team-role{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:600;}
 .slide-card{cursor:pointer;transition:transform 0.15s;}
 .slide-card:hover{transform:translateY(-2px);}
-.slide-thumb{width:100%;aspect-ratio:16/9;background:var(--light-gray);border-radius:3px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+.slide-thumb{width:100%;aspect-ratio:16/9;background:var(--navy-light);border-radius:10px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;font-size:32px;}
 .slide-date{font-size:11px;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:1px;}
-.slide-title{font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:3px;}
+.slide-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
 .slide-desc{font-size:12px;color:var(--secondary);line-height:1.4;}
 .hidden{display:none!important;}
 .add-grid{display:grid;grid-template-columns:1fr 2fr 1fr 1fr 1fr 1fr;gap:10px;align-items:end;}
 @media(max-width:768px){.add-grid{grid-template-columns:1fr 1fr;}}
-.drift-warning{background:var(--red-bg);border:1px solid rgba(248,113,113,0.15);border-radius:var(--radius);padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.drift-warning{background:var(--red-bg);border:1px solid rgba(248,113,113,0.2);border-radius:var(--radius);padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
 .model-ref{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
 @media(max-width:768px){.model-ref{grid-template-columns:1fr;}}
-.model-item{padding:18px;background:var(--off-white);border:1px solid var(--border);border-radius:4px;text-align:center;}
+.model-item{padding:18px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-align:center;}
 .charts-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media(max-width:800px){.charts-row{grid-template-columns:1fr;}}
-.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green-cat);animation:pulse 2s infinite;display:inline-block;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;vertical-align:middle;}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.1);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;vertical-align:middle;}
 @keyframes spin{to{transform:rotate(360deg)}}
-.site-footer{border-top:none;padding:28px 32px;text-align:center;font-size:12px;color:rgba(232,237,242,0.6);line-height:1.8;margin-top:32px;background:var(--navy-band);}
-.site-footer a{color:#7CB3F0;margin:0 6px;}
+.site-footer{border-top:1px solid var(--border);padding:28px 32px;text-align:center;font-size:12px;color:var(--muted);line-height:1.8;margin-top:32px;}
+.site-footer a{color:var(--accent);margin:0 6px;}
 .gloss-filter{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
-.gloss-term{font-weight:700;color:var(--text-primary);font-size:14px;}
+.gloss-term{font-weight:700;color:var(--white);font-size:14px;}
 .gloss-def{color:var(--secondary);font-size:13px;line-height:1.6;margin-bottom:10px;}
-.officer-bar{background:var(--green-bg);border:1px solid var(--green-border);border-radius:3px;padding:8px 16px;font-size:12px;color:var(--green);display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.officer-bar{background:rgba(52,211,153,0.08);border:1px solid var(--green-border);border-radius:8px;padding:8px 16px;font-size:12px;color:var(--green-cat);display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
 .lock-icon{cursor:pointer;font-size:16px;}
 .form-grid{display:grid;gap:12px;}
 .form-grid-2{grid-template-columns:1fr 1fr;}
 @media(max-width:600px){.form-grid-2{grid-template-columns:1fr;}}
-.testimony{border-left:3px solid var(--accent);padding:14px 18px;margin-bottom:14px;background:var(--off-white);border-radius:0 3px 3px 0;}
+.testimony{border-left:3px solid var(--accent);padding:14px 18px;margin-bottom:14px;background:rgba(255,255,255,0.02);border-radius:0 10px 10px 0;}
 .testimony-text{font-style:italic;color:var(--secondary);font-size:14px;line-height:1.7;margin-bottom:6px;}
 .testimony-author{font-size:12px;color:var(--muted);font-weight:600;}
 .resource-card{display:flex;gap:14px;padding:16px;align-items:flex-start;}
-.resource-title{font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:3px;}
+.resource-icon{font-size:28px;flex-shrink:0;}
+.resource-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
 .resource-desc{font-size:12px;color:var(--secondary);line-height:1.5;}
 .calendar-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);}
-.cal-date-box{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:4px;padding:8px 12px;text-align:center;min-width:60px;}
+.cal-date-box{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:10px;padding:8px 12px;text-align:center;min-width:60px;}
 .cal-month{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:700;}
-.cal-day{font-size:22px;font-weight:800;color:var(--text-primary);line-height:1;}
+.cal-day{font-size:22px;font-weight:800;color:var(--white);line-height:1;}
 .wl-card{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;flex-wrap:wrap;gap:8px;}
-.analysis-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin-bottom:16px;}
-.analysis-metric{background:var(--off-white);border:1px solid var(--border);border-radius:3px;padding:10px 12px;}
-.analysis-metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:3px;}
-.analysis-metric-val{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--text-primary);}
-.nl-full{display:none;font-size:14px;color:var(--secondary);line-height:1.7;margin-top:8px;}.nl-full.open{display:block;}
-.nl-toggle{font-size:12px;color:var(--accent);cursor:pointer;display:inline-block;margin-top:6px;}
 @media print{.topnav,.btn,.btn-primary,.btn-ghost,.btn-danger,.btn-tab,.hamburger,.officer-bar,.edu,.add-grid,#add-form{display:none!important;}.page{display:block!important;page-break-after:always;}.card{break-inside:avoid;border:1px solid #ccc;}.site-footer{display:none;}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
@@ -165,7 +148,6 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <div class="topnav-links">
 <button class="topnav-link active" data-page="home" onclick="navTo('home')">Home</button>
 <button class="topnav-link" data-page="portfolio" onclick="navTo('portfolio')">Portfolio</button>
-<button class="topnav-link" data-page="myportfolio" onclick="navTo('myportfolio')">My Portfolio</button>
 <button class="topnav-link" data-page="analysis" onclick="navTo('analysis')">Analysis</button>
 <button class="topnav-link" data-page="watchlist" onclick="navTo('watchlist')">Watchlist</button>
 <button class="topnav-link" data-page="slides" onclick="navTo('slides')">Meetings</button>
@@ -175,153 +157,58 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <button class="topnav-link" data-page="join" onclick="navTo('join')">Join</button>
 <button class="topnav-link" data-page="resources" onclick="navTo('resources')">Resources</button>
 <button class="topnav-link" data-page="contact" onclick="navTo('contact')">Contact</button>
-<button class="topnav-link" data-page="learn" onclick="navTo('learn')">Glossary</button>
+<button class="topnav-link" data-page="learn" onclick="navTo('learn')">📚 Learn</button>
 </div></div></nav>
 
 <!-- Officer unlock bar -->
-<div id="officer-bar" class="hidden" style="max-width:1200px;margin:10px auto 0;padding:0 32px;"><div class="officer-bar">Officer Mode — you can edit holdings, meetings, newsletters, and watchlist <button class="btn btn-sm btn-ghost" onclick="lockOfficer()" style="padding:4px 12px;font-size:11px;">Lock</button></div></div>
+<div id="officer-bar" class="hidden" style="max-width:1200px;margin:10px auto 0;padding:0 32px;"><div class="officer-bar">🔓 Officer Mode — you can edit holdings, meetings, newsletters, and watchlist <button class="btn btn-sm btn-ghost" onclick="lockOfficer()" style="padding:4px 12px;font-size:11px;">Lock</button></div></div>
 
 <!-- HOME -->
 <div class="page active" id="page-home"><div class="container">
 <div class="hero"><div class="hero-content">
 <img id="hero-logo" class="hero-logo" alt="FLC">
 <h1>Learn to <span class="accent">Invest</span>, Together.</h1>
-<p>The Financial Literacy Club at UCSB provides investment education through hands-on portfolio management. Members learn to analyze securities, construct diversified portfolios, and make informed investment decisions using a structured 60/30/10 asset allocation model with $10,000 in simulated capital.</p>
-<div class="hero-btns"><button class="btn btn-primary" onclick="navTo('portfolio')">View Portfolio</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('join')">Join the Club</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('learn')">Learn</button></div>
+<p>We're a student-run club that started with <b>$10,000</b> and manages a real portfolio using our 60/30/10 model. Join us to build investing skills that last a lifetime.</p>
+<div class="hero-btns"><button class="btn btn-primary" onclick="navTo('portfolio')">📈 Our Portfolio</button><button class="btn btn-ghost" onclick="navTo('join')">✋ Join the Club</button><button class="btn btn-ghost" onclick="navTo('learn')">📚 Learn</button></div>
 </div></div>
-<div class="section section-blue"><div class="card-grid cols-5" id="home-stats"></div></div>
+<div class="section"><div class="card-grid cols-5" id="home-stats"></div></div>
 <div class="section">
-<div class="section-header"><div class="section-title">Investment Model</div><div class="section-desc">Our portfolio follows a structured 60/30/10 asset allocation framework.</div></div>
-<div class="card" style="padding:0;overflow:hidden;">
-<table style="width:100%;">
-<thead><tr><th>Allocation</th><th>Category</th><th>Description</th><th class="text-right">Target</th></tr></thead>
-<tbody>
-<tr><td><span class="badge badge-index">Index</span></td><td style="font-weight:600;color:var(--text-primary)">Index / Core</td><td style="color:var(--text-secondary);font-size:13px;">Broad market ETFs tracking the S&P 500 and total market indices. Provides diversified exposure to 500+ companies at minimal cost.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;color:var(--text-primary)">60%</td></tr>
-<tr><td><span class="badge badge-alpha">Alpha</span></td><td style="font-weight:600;color:var(--text-primary)">Alpha / Active</td><td style="color:var(--text-secondary);font-size:13px;">Individual stock positions selected through member research and analysis. Aims to outperform the benchmark through active security selection.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;color:var(--text-primary)">30%</td></tr>
-<tr><td><span class="badge badge-fixed">Fixed</span></td><td style="font-weight:600;color:var(--text-primary)">Fixed Income / Low Risk</td><td style="color:var(--text-secondary);font-size:13px;">Investment-grade bonds and treasury securities. Provides portfolio stability, income generation, and downside protection during equity drawdowns.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;color:var(--text-primary)">10%</td></tr>
-</tbody>
-</table>
+<div class="section-header"><div class="section-title">Our 60/30/10 Model</div></div>
+<div class="model-ref">
+<div class="model-item"><div style="font-size:32px;font-weight:800;color:var(--green-cat);font-family:'JetBrains Mono',monospace;">60%</div><div style="font-weight:700;margin-top:4px;color:var(--white)">Index / Core</div><div style="font-size:12px;color:var(--secondary);margin-top:6px;line-height:1.5;">Broad market ETFs. Own 500+ companies at once.</div></div>
+<div class="model-item"><div style="font-size:32px;font-weight:800;color:var(--yellow-cat);font-family:'JetBrains Mono',monospace;">30%</div><div style="font-weight:700;margin-top:4px;color:var(--white)">Alpha / Active</div><div style="font-size:12px;color:var(--secondary);margin-top:6px;line-height:1.5;">Individual stock picks. Members research & pitch.</div></div>
+<div class="model-item"><div style="font-size:32px;font-weight:800;color:var(--blue-cat);font-family:'JetBrains Mono',monospace;">10%</div><div style="font-weight:700;margin-top:4px;color:var(--white)">Fixed / Low Risk</div><div style="font-size:12px;color:var(--secondary);margin-top:6px;line-height:1.5;">Bonds & treasuries. Our safety net.</div></div>
 </div></div>
-<div class="section"><div class="charts-row"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Meeting</div><div id="home-latest-slide"></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Newsletter</div><div id="home-latest-nl"></div></div></div></div>
+<div class="section"><div class="charts-row"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--white)">📋 Latest Meeting</div><div id="home-latest-slide"></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--white)">📰 Latest Newsletter</div><div id="home-latest-nl"></div></div></div></div>
 </div></div>
 
 <!-- PORTFOLIO -->
 <div class="page" id="page-portfolio"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Team Portfolio <span style="font-size:12px;"><span class="live-dot"></span> <span id="live-label" style="color:var(--green-cat);font-weight:600;">LIVE</span></span></div><div class="section-desc">$10,000 initial investment · 60/30/10 model</div></div>
-<div class="edu"><h4>Dashboard Overview</h4><p>This dashboard tracks the club's simulated portfolio in real time. <b>Cost Basis</b> reflects the original purchase price per share. <b>Current Value</b> is the mark-to-market valuation. <b>Max Drift</b> indicates the largest deviation from target allocation.</p></div>
+<div class="section-header"><div class="section-title">📈 Team Portfolio <span style="font-size:12px;"><span class="live-dot"></span> <span id="live-label" style="color:var(--green-cat);font-weight:600;">LIVE</span></span></div><div class="section-desc">$10,000 initial investment · 60/30/10 model</div></div>
+<div class="edu"><h4>📖 Reading the Dashboard</h4><p><b>Original Investment</b> = $10,000 starting capital. <b>Current Value</b> = what it's worth today. <b>Total Return</b> = profit/loss. The pie chart shows allocation; the table shows each holding.</p></div>
 <div class="card-grid cols-5" id="port-stats" style="margin-bottom:18px;"></div>
-
-<!-- Portfolio Risk Metrics -->
-<div class="section-blue" style="margin-bottom:18px;border-radius:4px;margin:0 0 18px 0;padding:20px;">
-<div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Portfolio Risk Metrics</div>
-<div class="card-grid cols-4" id="risk-metrics"></div>
-<div class="edu" style="margin-top:14px;"><h4>Risk Metrics</h4><p><b>Sharpe Ratio</b> measures risk-adjusted return per unit of volatility. Values above 1.0 indicate favorable risk-adjusted performance. <b>Portfolio Beta</b> quantifies systematic risk relative to the S&P 500 (1.0 = market equivalent). <b>Concentration</b> measures single-position risk exposure.</p></div>
-</div>
-
-<!-- Sector Diversification -->
-<div class="section-warm" style="margin-bottom:18px;border-radius:4px;margin:0 0 18px 0;padding:20px;">
-<div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Sector Diversification</div>
-<div class="edu" style="margin-bottom:14px;"><h4>Sector Allocation</h4><p>Asset class diversification (the 60/30/10 model) manages macro-level risk. Sector diversification adds a second layer within each asset class. Concentrating alpha positions in a single sector exposes the portfolio to industry-specific drawdowns. Distributing holdings across multiple sectors reduces unsystematic risk.</p></div>
-<div id="sector-bars"></div>
-<div id="sector-warning" class="hidden" style="margin-top:12px;padding:12px 16px;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:3px;font-size:13px;color:var(--yellow-cat);"></div>
-</div>
-<div class="charts-row" style="margin-bottom:20px;"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text-primary)">Allocation <span class="tip"><span class="tip-i">?</span><span class="tip-box">How your portfolio splits between the three buckets.</span></span></div><div class="pie-wrap"><div class="pie" id="pie-chart"></div><div class="pie-legend" id="pie-legend"></div></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text-primary)">Allocation vs Target</div><div id="alloc-bars"></div></div></div>
+<div class="charts-row" style="margin-bottom:20px;"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--white)">Allocation <span class="tip"><span class="tip-i">?</span><span class="tip-box">How your portfolio splits between the three buckets.</span></span></div><div class="pie-wrap"><div class="pie" id="pie-chart"></div><div class="pie-legend" id="pie-legend"></div></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--white)">Allocation vs Target</div><div id="alloc-bars"></div></div></div>
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
 <div style="display:flex;gap:4px;align-items:center;"><span style="font-size:11px;color:var(--muted)">Sort:</span><button class="btn-tab active" onclick="setSort('category',this)">Category</button><button class="btn-tab" onclick="setSort('ticker',this)">Ticker</button><button class="btn-tab" onclick="setSort('value',this)">Value</button><button class="btn-tab" onclick="setSort('gl',this)">G/L%</button></div>
-<div style="display:flex;gap:6px;align-items:center;"><button class="btn btn-ghost btn-sm" onclick="exportCSV()">Export CSV</button><button class="btn btn-ghost btn-sm" onclick="window.print()">Print</button><button class="btn btn-primary btn-sm officer-only hidden" onclick="toggleAdd()">+ Add Holding</button></div>
+<div style="display:flex;gap:6px;align-items:center;"><button class="btn btn-ghost btn-sm" onclick="exportCSV()">📥 Export CSV</button><button class="btn btn-ghost btn-sm" onclick="window.print()">🖨️ Print</button><button class="btn btn-primary btn-sm officer-only hidden" onclick="toggleAdd()">+ Add Holding</button></div>
 </div>
 <div id="add-form" class="card hidden" style="margin-bottom:14px;border:1px solid var(--accent-border);">
 <div class="add-grid"><div><label>Ticker</label><input class="input" id="add-ticker" placeholder="AAPL" style="text-transform:uppercase"></div><div><label>Company Name</label><input class="input" id="add-name" placeholder="Apple Inc."></div><div><label>Category</label><select class="input" id="add-cat"><option value="index">Index</option><option value="alpha">Alpha</option><option value="fixed">Fixed</option></select></div><div><label>Shares</label><input class="input" id="add-shares" type="number" placeholder="10"></div><div><label>Cost ($)</label><input class="input" id="add-cost" type="number" step="0.01" placeholder="150"></div><div><label>Date</label><input class="input" id="add-date" type="date"></div></div>
 <div style="margin-top:10px;display:flex;gap:8px;"><button class="btn btn-primary btn-sm" onclick="addHolding()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleAdd()">Cancel</button></div></div>
-<div class="card" style="padding:0;overflow:hidden;"><div class="table-wrap"><table><thead><tr><th>Ticker</th><th>Name</th><th>Cat</th><th>Sector</th><th class="text-right">Date</th><th class="text-right">Shares</th><th class="text-right">Cost</th><th class="text-right">Price</th><th class="text-right">Value</th><th class="text-right">G/L</th><th class="text-right">Beta</th><th class="text-right">%Port</th><th class="text-right officer-only hidden"></th></tr></thead><tbody id="holdings-tbody"></tbody></table></div></div>
-<div style="margin-top:24px;"><div class="section-title" style="margin-bottom:14px;">Rebalance Advisor</div><div id="rebalance-content"></div></div>
-</div></div></div>
-
-<!-- MY PORTFOLIO -->
-<div class="page" id="page-myportfolio"><div class="container"><div class="section">
-
-<!-- Signed Out State -->
-<div id="mp-signedout">
-<div class="section-header"><div class="section-title">My Portfolio</div><div class="section-desc">Sign in to create and manage your personal practice portfolio.</div></div>
-<div style="max-width:480px;padding:32px;background:var(--blue-tint);border:1px solid var(--accent-border);border-radius:4px;">
-<h3 style="color:var(--text-primary);font-size:15px;margin-bottom:8px;">Get Started</h3>
-<p style="color:var(--text-secondary);font-size:13px;line-height:1.6;margin-bottom:18px;">Sign in with your Google account to create a personal portfolio. Your holdings are private and saved automatically. Use the same 60/30/10 model to practice building a diversified portfolio.</p>
-<button class="btn btn-primary" onclick="googleSignIn()" style="width:100%;">Sign in with Google</button>
-</div>
-</div>
-
-<!-- Signed In State -->
-<div id="mp-signedin" class="hidden">
-<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
-<div>
-<div class="section-title">My Portfolio</div>
-<div class="section-desc" id="mp-user-info"></div>
-</div>
-<button class="btn btn-ghost btn-sm" onclick="googleSignOut()">Sign Out</button>
-</div>
-
-<div class="edu"><h4>Personal Portfolio</h4><p>This is your private practice portfolio. Add holdings to simulate your own investment strategy. Prices update automatically using live market data. Your data is saved to your Google account and persists across sessions.</p></div>
-
-<!-- Personal Stats -->
-<div class="card-grid cols-5" id="mp-stats" style="margin-bottom:18px;"></div>
-
-<!-- Personal Risk Metrics -->
-<div class="card" style="margin-bottom:18px;">
-<div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Risk Metrics</div>
-<div class="card-grid cols-4" id="mp-risk-metrics"></div>
-</div>
-
-<!-- Personal Allocation -->
-<div class="charts-row" style="margin-bottom:20px;">
-<div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text-primary)">Allocation</div><div class="pie-wrap"><div class="pie" id="mp-pie-chart"></div><div class="pie-legend" id="mp-pie-legend"></div></div></div>
-<div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text-primary)">Allocation vs Target</div><div id="mp-alloc-bars"></div></div>
-</div>
-
-<!-- Personal Sector Diversification -->
-<div class="card" style="margin-bottom:18px;">
-<div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Sector Diversification</div>
-<div id="mp-sector-bars"></div>
-</div>
-
-<!-- Add Holding Form -->
-<div class="card" style="margin-bottom:14px;border:1px solid var(--accent-border);">
-<div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--text-primary)">Add Position</div>
-<div class="add-grid">
-<div><label>Ticker</label><input class="input" id="mp-add-ticker" placeholder="AAPL" style="text-transform:uppercase"></div>
-<div><label>Company Name</label><input class="input" id="mp-add-name" placeholder="Apple Inc."></div>
-<div><label>Category</label><select class="input" id="mp-add-cat"><option value="index">Index</option><option value="alpha">Alpha</option><option value="fixed">Fixed</option></select></div>
-<div><label>Shares</label><input class="input" id="mp-add-shares" type="number" placeholder="10"></div>
-<div><label>Cost ($)</label><input class="input" id="mp-add-cost" type="number" step="0.01" placeholder="150"></div>
-<div><label>Date</label><input class="input" id="mp-add-date" type="date"></div>
-</div>
-<div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="mpAddHolding()">Add Position</button></div>
-</div>
-
-<!-- Personal Holdings Table -->
-<div class="card" style="padding:0;overflow:hidden;"><div class="table-wrap"><table>
-<thead><tr><th>Ticker</th><th>Name</th><th>Cat</th><th>Sector</th><th class="text-right">Shares</th><th class="text-right">Cost</th><th class="text-right">Price</th><th class="text-right">Value</th><th class="text-right">G/L</th><th class="text-right">Beta</th><th class="text-right">%Port</th><th class="text-right"></th></tr></thead>
-<tbody id="mp-holdings-tbody"></tbody>
-</table></div></div>
-
-<!-- Empty State -->
-<div id="mp-empty" class="hidden" style="text-align:center;padding:40px 20px;color:var(--text-muted);">
-<div style="font-size:15px;font-weight:600;margin-bottom:6px;color:var(--text-secondary);">No holdings yet</div>
-<div style="font-size:13px;">Use the form above to add your first position.</div>
-</div>
-
-</div>
+<div class="card" style="padding:0;overflow:hidden;"><div class="table-wrap"><table><thead><tr><th>Ticker</th><th>Name</th><th>Cat</th><th class="text-right">Date</th><th class="text-right">Shares</th><th class="text-right">Cost</th><th class="text-right">Price</th><th class="text-right">Value</th><th class="text-right">G/L</th><th class="text-right">%Port</th><th class="text-right officer-only hidden"></th></tr></thead><tbody id="holdings-tbody"></tbody></table></div></div>
+<div style="margin-top:24px;"><div class="section-title" style="margin-bottom:14px;">⚖️ Rebalance Advisor</div><div id="rebalance-content"></div></div>
 </div></div></div>
 
 <!-- ANALYSIS -->
 <div class="page" id="page-analysis"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Holdings Analysis</div><div class="section-desc">Detailed position data, sector classification, and investment thesis for each holding.</div></div>
+<div class="section-header"><div class="section-title">🔬 Stock Analysis</div><div class="section-desc">What each company does, metrics, and why we own it.</div></div>
 <div id="analysis-cards"></div>
 </div></div></div>
 
 <!-- WATCHLIST -->
 <div class="page" id="page-watchlist"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Watchlist</div><div class="section-desc">Securities under research and evaluation prior to allocation.</div></div>
-<div class="edu"><h4>About the Watchlist</h4><p>Securities under consideration are tracked here prior to a portfolio allocation decision. Members conduct fundamental and technical analysis before presenting a buy recommendation to the group.</p></div>
+<div class="section-header"><div class="section-title">👀 Watchlist</div><div class="section-desc">Stocks we're researching but haven't bought yet.</div></div>
+<div class="edu"><h4>📖 What's a Watchlist?</h4><p>Before buying a stock, smart investors research it first. This is our list of companies we're considering. We track them here before deciding whether to add them to the portfolio.</p></div>
 <div id="wl-add" class="card officer-only hidden" style="margin-bottom:18px;border:1px solid var(--accent-border);">
 <div class="form-grid form-grid-2"><div><label>Ticker</label><input class="input" id="wl-ticker" placeholder="MSFT" style="text-transform:uppercase"></div><div><label>Company Name</label><input class="input" id="wl-name" placeholder="Microsoft Corp."></div><div><label>Why are we watching?</label><input class="input" id="wl-reason" placeholder="Strong AI investment, growing cloud revenue..."></div><div><label>Added by</label><input class="input" id="wl-by" placeholder="Your name"></div></div>
 <div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addWatchlist()">Add to Watchlist</button></div></div>
@@ -331,12 +218,12 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 
 <!-- MEETINGS -->
 <div class="page" id="page-slides"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Meetings</div></div>
+<div class="section-header"><div class="section-title">📋 Meetings</div></div>
 <!-- Calendar -->
-<div class="card" style="margin-bottom:20px;"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Upcoming Schedule</div><div id="calendar-list"></div><div id="no-cal" style="color:var(--muted);font-size:13px;padding:10px 0;">No upcoming meetings scheduled.</div>
+<div class="card" style="margin-bottom:20px;"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--white)">📅 Upcoming Schedule</div><div id="calendar-list"></div><div id="no-cal" style="color:var(--muted);font-size:13px;padding:10px 0;">No upcoming meetings scheduled.</div>
 <div id="cal-add" class="officer-only hidden" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);"><div class="form-grid form-grid-2"><div><label>Event Title</label><input class="input" id="cal-title" placeholder="Weekly Meeting"></div><div><label>Date & Time</label><input class="input" id="cal-date" type="datetime-local"></div><div><label>Location</label><input class="input" id="cal-loc" placeholder="Room 204 / Zoom link"></div><div style="display:flex;align-items:end;"><button class="btn btn-primary btn-sm" onclick="addCalEvent()">Add Event</button></div></div></div></div>
 <!-- Slides -->
-<div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Past Meeting Slides</div>
+<div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--white)">📊 Past Meeting Slides</div>
 <div id="slide-add" class="card officer-only hidden" style="margin-bottom:18px;border:1px solid var(--accent-border);"><div class="form-grid form-grid-2"><div><label>Title</label><input class="input" id="slide-title" placeholder="Week 5: P/E Ratios"></div><div><label>Date</label><input class="input" id="slide-date" type="date"></div><div><label>Description</label><input class="input" id="slide-desc" placeholder="What was covered?"></div><div><label>Link</label><input class="input" id="slide-link" placeholder="https://docs.google.com/..."></div></div><div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addSlide()">Publish</button></div></div>
 <div class="card-grid cols-2" id="slides-grid"></div>
 <div id="no-slides" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">No slides yet.</div>
@@ -344,124 +231,130 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 
 <!-- NEWSLETTER -->
 <div class="page" id="page-newsletter"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Newsletter</div></div>
-<div id="nl-compose" class="card officer-only hidden" style="margin-bottom:24px;border:1px solid var(--accent-border);"><h4 style="margin-bottom:10px;color:var(--text-primary)">Write a Post</h4><div class="form-grid form-grid-2"><div><label>Title</label><input class="input" id="nl-title" placeholder="Weekly Update"></div><div><label>Author</label><input class="input" id="nl-author" placeholder="Your name"></div></div><div style="margin-top:10px;"><label>Content</label><textarea class="input" id="nl-body" placeholder="Write about performance, market news, research..."></textarea></div><div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addNewsletter()">Publish</button></div></div>
+<div class="section-header"><div class="section-title">📰 Newsletter</div></div>
+<div id="nl-compose" class="card officer-only hidden" style="margin-bottom:24px;border:1px solid var(--accent-border);"><h4 style="margin-bottom:10px;color:var(--white)">✍️ Write a Post</h4><div class="form-grid form-grid-2"><div><label>Title</label><input class="input" id="nl-title" placeholder="Weekly Update"></div><div><label>Author</label><input class="input" id="nl-author" placeholder="Your name"></div></div><div style="margin-top:10px;"><label>Content</label><textarea class="input" id="nl-body" placeholder="Write about performance, market news, research..."></textarea></div><div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addNewsletter()">Publish</button></div></div>
 <div id="newsletter-feed"></div>
 <div id="no-nl" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">No posts yet.</div>
 </div></div></div>
 
 <!-- TEAM -->
 <div class="page" id="page-team"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Leadership</div></div>
-<div style="text-align:center;margin-bottom:28px;"><img id="team-logo" alt="FLC" style="width:80px;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.08);"></div>
-<div class="section-warm" style="border-radius:4px;padding:24px;margin:0;">
+<div class="section-header"><div class="section-title">👥 Our Team</div></div>
+<div style="text-align:center;margin-bottom:28px;"><img id="team-logo" alt="FLC" style="width:90px;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.3);"></div>
 <div class="team-grid" id="team-grid"></div>
-</div>
 </div></div></div>
 
 <!-- SUPPORT -->
 <div class="page" id="page-support"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Support the Financial Literacy Club</div><div class="section-desc">Your contribution directly funds educational programming and resources for UCSB students.</div></div>
-<div class="card" style="margin-bottom:20px;padding:30px;">
-<h3 style="color:var(--text-primary);font-size:16px;margin-bottom:10px;">About Our Mission</h3>
-<p style="color:var(--text-secondary);line-height:1.7;font-size:14px;margin-bottom:16px;">The Financial Literacy Club exists to bridge the gap between academic finance and real-world investment decision-making. Through hands-on portfolio management, guest lectures, and structured curriculum, we equip students with practical skills for long-term financial planning. Donations fund educational materials, speaker honorariums, event hosting, and research tools for our members.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding-top:16px;border-top:1px solid var(--border);">
-<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Educational Materials</div><div style="font-size:13px;color:var(--text-secondary);">Books, subscriptions, and analytical tools</div></div>
-<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Guest Speakers</div><div style="font-size:13px;color:var(--text-secondary);">Industry professionals and alumni</div></div>
-<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Events</div><div style="font-size:13px;color:var(--text-secondary);">Stock pitch competitions and workshops</div></div>
+<div class="section-header"><div class="section-title">💙 Support the Financial Literacy Club</div><div class="section-desc">Help us empower students with the knowledge to build financial futures.</div></div>
+<div class="card" style="margin-bottom:20px;text-align:center;padding:36px;">
+<div style="font-size:40px;margin-bottom:12px;">🎓</div>
+<h3 style="color:var(--white);font-size:20px;margin-bottom:10px;">Our Mission</h3>
+<p style="color:var(--secondary);line-height:1.7;max-width:600px;margin:0 auto;font-size:15px;">We believe every student deserves to understand how money works. Our club teaches real-world investing, financial planning, and money management through hands-on experience with a live portfolio. Your support helps us host events, bring in guest speakers, and provide resources to our members.</p>
 </div>
+<div class="card" style="margin-bottom:20px;text-align:center;padding:30px;">
+<h3 style="color:var(--white);font-size:18px;margin-bottom:8px;">How Your Donation Helps</h3>
+<div class="card-grid cols-3" style="margin-top:16px;text-align:center;">
+<div style="padding:14px;"><div style="font-size:28px;margin-bottom:8px;">📚</div><div style="font-weight:600;color:var(--white);font-size:14px;">Educational Materials</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">Books, subscriptions, and tools for members</div></div>
+<div style="padding:14px;"><div style="font-size:28px;margin-bottom:8px;">🎤</div><div style="font-weight:600;color:var(--white);font-size:14px;">Guest Speakers</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">Industry professionals sharing real-world insights</div></div>
+<div style="padding:14px;"><div style="font-size:28px;margin-bottom:8px;">🏆</div><div style="font-weight:600;color:var(--white);font-size:14px;">Events & Competitions</div><div style="font-size:12px;color:var(--secondary);margin-top:4px;">Stock pitch competitions, workshops, and networking</div></div>
+</div></div>
+<div class="card" style="text-align:center;padding:30px;margin-bottom:20px;border:1px solid var(--accent-border);">
+<h3 style="color:var(--white);font-size:18px;margin-bottom:12px;">Make a Donation</h3>
+<p style="color:var(--secondary);font-size:14px;margin-bottom:16px;">Every dollar goes directly to supporting our members' financial education.</p>
+<a id="donate-link" href="#" class="btn btn-primary" style="font-size:16px;padding:14px 36px;">💙 Donate Now</a>
+<p style="color:var(--muted);font-size:11px;margin-top:10px;">[Donation link coming soon]</p>
 </div>
-<div style="padding:24px;margin-bottom:20px;background:var(--blue-tint);border:1px solid var(--accent-border);border-radius:4px;">
-<h3 style="color:var(--text-primary);font-size:16px;margin-bottom:8px;">Make a Contribution</h3>
-<p style="color:var(--text-secondary);font-size:13px;margin-bottom:14px;">All contributions go directly to supporting member education and programming.</p>
-<a id="donate-link" href="#" class="btn btn-primary">Donate</a>
-<p style="color:var(--text-muted);font-size:11px;margin-top:10px;">Donation link coming soon.</p>
-</div>
-</div></div></div>
+<div style="margin-top:24px;"><div class="section-title" style="margin-bottom:14px;">💬 Member Testimonials</div>
+<div class="testimony"><div class="testimony-text">"This club completely changed how I think about money. I went from knowing nothing about investing to managing a real portfolio with my peers."</div><div class="testimony-author">— Club Member</div></div>
+<div class="testimony"><div class="testimony-text">"The hands-on approach is what makes this club special. We're not just reading about stocks — we're actually buying them and tracking our returns."</div><div class="testimony-author">— Club Member</div></div>
+<div class="testimony"><div class="testimony-text">"I've learned more about finance here in one semester than I did in four years of school. The 60/30/10 model taught me how to actually build a balanced portfolio."</div><div class="testimony-author">— Club Member</div></div>
+</div></div></div></div>
 
 <!-- JOIN -->
 <div class="page" id="page-join"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Membership</div><div class="section-desc">Open to all UCSB students regardless of major or experience level.</div></div>
+<div class="section-header"><div class="section-title">✋ Join the Financial Literacy Club</div><div class="section-desc">No experience needed — just a willingness to learn!</div></div>
 <div class="charts-row">
 <div class="card">
-<h3 style="color:var(--text-primary);font-size:15px;margin-bottom:12px;">What Members Receive</h3>
-<div style="font-size:14px;color:var(--text-secondary);line-height:2;">
-Investment education curriculum designed by students for students<br>
-Weekly meetings covering fundamentals, analysis, and portfolio strategy<br>
-Hands-on experience analyzing securities and building investment theses<br>
-Access to guest speakers from the finance industry<br>
-Networking opportunities and community events<br>
+<h3 style="color:var(--white);font-size:16px;margin-bottom:12px;">What You'll Get</h3>
+<div style="font-size:14px;color:var(--secondary);line-height:2;">
+📈 Hands-on experience managing a real portfolio<br>
+📚 Weekly meetings covering investing fundamentals<br>
+🔬 Learn to analyze stocks and build investment theses<br>
+👥 Network with like-minded students<br>
+🎤 Access to guest speakers from the finance industry<br>
+🏆 Compete in stock pitch competitions
 </div></div>
 <div class="card">
-<h3 style="color:var(--text-primary);font-size:15px;margin-bottom:12px;">Express Interest</h3>
+<h3 style="color:var(--white);font-size:16px;margin-bottom:12px;">Sign Up</h3>
 <div class="form-grid"><div><label>Full Name</label><input class="input" id="join-name" placeholder="Your name"></div><div><label>Email</label><input class="input" id="join-email" type="email" placeholder="you@school.edu"></div><div><label>Year</label><select class="input" id="join-year"><option>Freshman</option><option>Sophomore</option><option>Junior</option><option>Senior</option><option>Graduate</option><option>Other</option></select></div><div><label>What interests you most?</label><input class="input" id="join-interest" placeholder="Stocks, crypto, real estate..."></div><div><button class="btn btn-primary" onclick="submitJoin()" style="width:100%;">Submit Interest Form</button></div></div>
-<div id="join-msg" class="hidden" style="margin-top:12px;color:var(--green-cat);font-size:14px;font-weight:600;"> Thanks for your interest! We'll be in touch.</div>
+<div id="join-msg" class="hidden" style="margin-top:12px;color:var(--green-cat);font-size:14px;font-weight:600;">✅ Thanks for your interest! We'll be in touch.</div>
 </div></div>
 </div></div></div>
 
 <!-- RESOURCES -->
 <div class="page" id="page-resources"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Resources</div><div class="section-desc">Recommended reading, podcasts, and educational content.</div></div>
-<div class="section-title" style="font-size:14px;margin-bottom:12px;">Books</div>
+<div class="section-header"><div class="section-title">📖 Resources</div><div class="section-desc">Our favorite books, podcasts, and channels for learning to invest.</div></div>
+<div class="section-title" style="font-size:16px;margin-bottom:12px;">📚 Books</div>
 <div class="card-grid cols-2" style="margin-bottom:24px;">
-<div class="card resource-card"><div><div class="resource-title">The Intelligent Investor — Benjamin Graham</div><div class="resource-desc">The foundational text on value investing. Covers margin of safety, Mr. Market, and long-term investment principles.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">A Random Walk Down Wall Street — Burton Malkiel</div><div class="resource-desc">The case for index investing and efficient market theory. Core reading for understanding our 60/30/10 allocation rationale.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">The Psychology of Money — Morgan Housel</div><div class="resource-desc">Behavioral finance and the role of psychology in investment decision-making. Accessible introduction to common cognitive biases.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">One Up On Wall Street — Peter Lynch</div><div class="resource-desc">Practical framework for identifying investment opportunities through everyday observation and fundamental analysis.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">📘</div><div><div class="resource-title">The Intelligent Investor — Benjamin Graham</div><div class="resource-desc">The classic value investing book. Warren Buffett calls it "the best book on investing ever written."</div></div></div>
+<div class="card resource-card"><div class="resource-icon">📗</div><div><div class="resource-title">A Random Walk Down Wall Street — Burton Malkiel</div><div class="resource-desc">Why index funds work and why most stock pickers fail. Essential reading for our 60/30/10 model.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">📙</div><div><div class="resource-title">The Psychology of Money — Morgan Housel</div><div class="resource-desc">Short stories about the weird ways people think about money. Easy, fun read.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">📕</div><div><div class="resource-title">One Up On Wall Street — Peter Lynch</div><div class="resource-desc">How regular people can find great stocks before Wall Street does.</div></div></div>
 </div>
-<div class="section-title" style="font-size:14px;margin-bottom:12px;">Podcasts</div>
+<div class="section-title" style="font-size:16px;margin-bottom:12px;">🎧 Podcasts</div>
 <div class="card-grid cols-2" style="margin-bottom:24px;">
-<div class="card resource-card"><div><div class="resource-title">The Motley Fool Money</div><div class="resource-desc">Weekly market commentary and equity analysis from experienced investors.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">We Study Billionaires</div><div class="resource-desc">In-depth analysis of investment strategies employed by leading capital allocators.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">🎙️</div><div><div class="resource-title">The Motley Fool Money</div><div class="resource-desc">Weekly market recap and stock analysis. Great for staying current.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">🎙️</div><div><div class="resource-title">We Study Billionaires</div><div class="resource-desc">Deep dives into how the world's best investors think.</div></div></div>
 </div>
-<div class="section-title" style="font-size:14px;margin-bottom:12px;">Video</div>
+<div class="section-title" style="font-size:16px;margin-bottom:12px;">📺 YouTube Channels</div>
 <div class="card-grid cols-2">
-<div class="card resource-card"><div><div class="resource-title">Graham Stephan</div><div class="resource-desc">Personal finance and investing fundamentals for early-career investors.</div></div></div>
-<div class="card resource-card"><div><div class="resource-title">Patrick Boyle</div><div class="resource-desc">Market analysis and financial commentary from a former hedge fund manager.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">▶️</div><div><div class="resource-title">Graham Stephan</div><div class="resource-desc">Personal finance and investing explained for beginners.</div></div></div>
+<div class="card resource-card"><div class="resource-icon">▶️</div><div><div class="resource-title">Patrick Boyle</div><div class="resource-desc">Former hedge fund manager breaking down markets with humor.</div></div></div>
 </div></div></div></div>
 
 <!-- CONTACT -->
 <div class="page" id="page-contact"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Contact</div><div class="section-desc">Questions, topic requests, or partnership inquiries.</div></div>
+<div class="section-header"><div class="section-title">📬 Contact & Feedback</div><div class="section-desc">Have a question, topic request, or feedback? We'd love to hear from you.</div></div>
 <div class="charts-row">
 <div class="card">
-<h3 style="color:var(--text-primary);font-size:15px;margin-bottom:12px;">Send a Message</h3>
+<h3 style="color:var(--white);font-size:16px;margin-bottom:12px;">Send us a Message</h3>
 <div class="form-grid"><div><label>Your Name</label><input class="input" id="ct-name" placeholder="Name"></div><div><label>Email</label><input class="input" id="ct-email" type="email" placeholder="you@school.edu"></div><div><label>Type</label><select class="input" id="ct-type"><option>General Question</option><option>Topic Request</option><option>Feedback</option><option>Bug Report</option><option>Partnership Inquiry</option></select></div><div><label>Message</label><textarea class="input" id="ct-msg" placeholder="What's on your mind?"></textarea></div><div><button class="btn btn-primary" onclick="submitContact()" style="width:100%;">Send Message</button></div></div>
-<div id="ct-sent" class="hidden" style="margin-top:12px;color:var(--green-cat);font-size:14px;font-weight:600;"> Message sent! We'll get back to you soon.</div>
+<div id="ct-sent" class="hidden" style="margin-top:12px;color:var(--green-cat);font-size:14px;font-weight:600;">✅ Message sent! We'll get back to you soon.</div>
 </div>
 <div class="card">
-<h3 style="color:var(--text-primary);font-size:15px;margin-bottom:12px;">Information</h3>
+<h3 style="color:var(--white);font-size:16px;margin-bottom:12px;">Quick Links</h3>
 <div style="font-size:14px;color:var(--secondary);line-height:2.2;">
-&bull; <b>Email:</b> [<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee9b8d9d8c88878082879aae89838f8782c08d8183">[email&#160;protected]</a>]<br>
-<b>Meeting Location:</b> [NH 1105]<br>
-&bull; <b>Meeting Time:</b> [Wednesdays at 6pm]<br>
-&bull; <b>Instagram:</b> <a href="https://instagram.com/" target="_blank">@flc_official</a>
+📧 <b>Email:</b> [club-email@school.edu]<br>
+📍 <b>Meeting Location:</b> [Room TBD]<br>
+📅 <b>Meeting Time:</b> [Day & Time TBD]<br>
+📱 <b>Instagram:</b> <a href="https://instagram.com/" target="_blank">@flc_official</a>
 </div>
-<h3 style="color:var(--text-primary);font-size:15px;margin:20px 0 12px;">Request a Topic</h3>
-<p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;">Suggest a topic for an upcoming meeting or workshop.</p>
+<h3 style="color:var(--white);font-size:16px;margin:20px 0 12px;">Request a Topic</h3>
+<p style="font-size:13px;color:var(--secondary);margin-bottom:10px;">Want us to cover something specific? Drop it here!</p>
 <div style="display:flex;gap:8px;"><input class="input" id="topic-input" placeholder="e.g., How to read an earnings report"><button class="btn btn-primary btn-sm" onclick="submitTopic()">Submit</button></div>
-<div id="topic-sent" class="hidden" style="margin-top:8px;color:var(--green-cat);font-size:13px;"> Topic submitted!</div>
+<div id="topic-sent" class="hidden" style="margin-top:8px;color:var(--green-cat);font-size:13px;">✅ Topic submitted!</div>
 </div></div>
 </div></div></div>
 
 <!-- LEARN -->
 <div class="page" id="page-learn"><div class="container"><div class="section">
-<div class="section-header"><div class="section-title">Glossary</div></div>
+<div class="section-header"><div class="section-title">📚 Investing Glossary</div></div>
 <div class="gloss-filter" id="gloss-filter"><button class="btn-tab active" onclick="filterGloss('all',this)">All</button><button class="btn-tab" onclick="filterGloss('basics',this)">Basics</button><button class="btn-tab" onclick="filterGloss('performance',this)">Performance</button><button class="btn-tab" onclick="filterGloss('portfolio',this)">Portfolio</button><button class="btn-tab" onclick="filterGloss('analysis',this)">Analysis</button></div>
 <div id="glossary-content"></div>
 </div></div></div>
 
 <!-- FOOTER -->
 <div class="site-footer">
-<div style="margin-bottom:8px;color:rgba(232,237,242,0.8);">Financial Literacy Club</div>
-<a href="https://instagram.com/" target="_blank">Instagram</a> ·
-<span style="cursor:pointer;color:#7CB3F0;" onclick="navTo('contact')">Contact</span> ·
-<span style="cursor:pointer;color:#7CB3F0;" onclick="navTo('support')">Support Us</span> ·
-<span style="cursor:pointer;color:#7CB3F0;" onclick="navTo('join')">Join</span>
+<div style="margin-bottom:8px;">Financial Literacy Club</div>
+<a href="https://instagram.com/" target="_blank">📷 Instagram</a> ·
+<span style="cursor:pointer;color:var(--accent);" onclick="navTo('contact')">📬 Contact</span> ·
+<span style="cursor:pointer;color:var(--accent);" onclick="navTo('support')">💙 Support Us</span> ·
+<span style="cursor:pointer;color:var(--accent);" onclick="navTo('join')">✋ Join</span>
 <div style="margin-top:8px;">For educational purposes only · Not financial advice · <span id="last-updated">—</span></div>
-<div style="margin-top:6px;"><span class="lock-icon" onclick="toggleOfficerLogin()" title="Officer login" style="font-size:11px;color:rgba(232,237,242,0.4);text-transform:uppercase;letter-spacing:1px;cursor:pointer;">Admin</span></div>
+<div style="margin-top:6px;"><span class="lock-icon" onclick="toggleOfficerLogin()" title="Officer login">🔒</span></div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ===== LOGOS =====
 document.getElementById('nav-logo').src=LOGO_SRC;
 document.getElementById('hero-logo').src=LOGO_SRC;
@@ -493,42 +386,42 @@ let sortBy='category';
 const TARGETS={index:60,alpha:30,fixed:10};
 const CM={index:{label:"Index / Core",color:"#34D399",badge:"badge-index",desc:"ETFs & Index Funds"},alpha:{label:"Alpha / Active",color:"#FBBF24",badge:"badge-alpha",desc:"Individual Stock Picks"},fixed:{label:"Fixed / Low Risk",color:"#60A5FA",badge:"badge-fixed",desc:"Bonds, CDs & Treasuries"}};
 const SI={
-  VOO:{desc:"Tracks the S&P 500 — 500 largest U.S. companies. Own Apple, Microsoft, Amazon & 497 more at 0.03% fee.",why:"Core index position (60% target). Provides broad market exposure with historical annualized returns of approximately 10%.",sector:"Broad Market",type:"ETF",beta:1.0,divYield:1.3},
-  CAT:{desc:"World's largest construction & mining equipment maker. 190+ countries. 30+ years of dividends. Bellwether for the global economy.",why:"Alpha position. Blue-chip industrial with global infrastructure spending tailwind and 30+ year dividend history.",sector:"Industrials",type:"Stock",beta:1.05,divYield:1.6},
-  LMT:{desc:"World's largest defense contractor. F-35 jets, Black Hawks, missile defense. Approx 74% revenue from U.S. government.",why:"Alpha position. Largest global defense contractor with long-duration government contract backlog and consistent dividend growth.",sector:"Aerospace & Defense",type:"Stock",beta:0.55,divYield:2.5},
-  BND:{desc:"10,000+ U.S. investment-grade bonds. Monthly dividends, very low volatility. Your money earns interest steadily.",why:"Fixed income allocation providing portfolio stability and negative correlation to equities during market stress.",sector:"Fixed Income",type:"Bond ETF",beta:0.05,divYield:3.5},
+  VOO:{desc:"Tracks the S&P 500 — 500 largest U.S. companies. Own Apple, Microsoft, Amazon & 497 more at 0.03% fee.",why:"INDEX FUND core (60%). IS the market. ~10% avg annual return.",sector:"Broad Market",type:"ETF"},
+  CAT:{desc:"World's largest construction & mining equipment maker. 190+ countries. 30+ years of dividends. Bellwether for the global economy.",why:"ALPHA pick. Blue-chip industrial benefiting from infrastructure spending.",sector:"Industrials",type:"Stock"},
+  LMT:{desc:"World's largest defense contractor. F-35 jets, Black Hawks, missile defense. ~74% revenue from U.S. government.",why:"ALPHA pick. Stable government contracts, consistent dividends.",sector:"Aerospace & Defense",type:"Stock"},
+  BND:{desc:"10,000+ U.S. investment-grade bonds. Monthly dividends, very low volatility. Your money earns interest steadily.",why:"FIXED INCOME safety cushion. Bonds go up when stocks drop.",sector:"Fixed Income",type:"Bond ETF"},
 };
 const OFFICERS=[
-  {name:"[Name]",role:"President",initials:"P"},{name:"[Giselle Alexander]",role:"Secretary",initials:"S"},
+  {name:"[Name]",role:"President",initials:"P"},{name:"[Name]",role:"Secretary",initials:"S"},
   {name:"[Name]",role:"Internal Affairs",initials:"IA"},{name:"[Name]",role:"Dir. of Marketing",initials:"DM"},
   {name:"[Name]",role:"Dir. of Creative Media",initials:"CM"},{name:"[Name]",role:"Dir. of Outreach",initials:"DO"},
   {name:"[Name]",role:"Dir. of Events",initials:"DE"},
 ];
 const GLOSSARY=[
-  {term:"Stock",def:"A unit of ownership in a corporation, representing a proportional claim on assets and earnings.",cat:"basics"},
-  {term:"Share",def:"A single unit of equity ownership in a company.",cat:"basics"},{term:"Ticker Symbol",def:"An abbreviated identifier used to uniquely identify publicly traded securities (e.g., AAPL for Apple Inc.).",cat:"basics"},
-  {term:"ETF",def:"A fund that holds a basket of securities and trades on an exchange like an individual stock.",cat:"basics"},
-  {term:"Index Fund",def:"A passively managed fund that replicates the performance of a specific market index.",cat:"basics"},
-  {term:"Bond",def:"A fixed-income security representing a loan to a corporation or government entity, paying periodic interest.",cat:"basics"},
-  {term:"Portfolio",def:"The complete collection of financial assets held by an investor.",cat:"basics"},
-  {term:"Dividend",def:"A distribution of corporate earnings to shareholders, typically paid quarterly.",cat:"basics"},
-  {term:"Cost Basis",def:"The original purchase price per share, used as the reference point for calculating realized and unrealized gains.",cat:"performance"},
-  {term:"Market Value",def:"The current market price multiplied by the number of shares held.",cat:"performance"},
-  {term:"Gain/Loss",def:"The difference between current market value and original cost basis.",cat:"performance"},
-  {term:"Return (%)",def:"Gain or loss expressed as a percentage of the original investment.",cat:"performance"},
-  {term:"Market Cap",def:"Total market value of a company, calculated as share price multiplied by shares outstanding.",cat:"performance"},
-  {term:"P/E Ratio",def:"Share price divided by earnings per share. A valuation metric indicating how much investors pay per dollar of earnings.",cat:"analysis"},
-  {term:"Dividend Yield",def:"Annual dividend payment expressed as a percentage of the current share price.",cat:"analysis"},
-  {term:"52-Week High/Low",def:"The highest and lowest traded prices for a security over the preceding 12-month period.",cat:"analysis"},
-  {term:"Bull Market",def:"A sustained period in which broad market indices rise 20% or more from recent lows.",cat:"analysis"},
-  {term:"Bear Market",def:"A sustained decline of 20% or more in broad market indices from recent highs.",cat:"analysis"},
-  {term:"Allocation",def:"The strategic distribution of portfolio capital across different asset classes.",cat:"portfolio"},
-  {term:"Diversification",def:"The practice of distributing investments across multiple securities, sectors, and asset classes to reduce portfolio risk.",cat:"portfolio"},
-  {term:"Rebalancing",def:"The process of realigning portfolio weights to match the original target allocation.",cat:"portfolio"},
-  {term:"Drift",def:"The deviation of actual portfolio weights from target allocations, typically triggering rebalancing when exceeding a set threshold.",cat:"portfolio"},
-  {term:"Alpha",def:"Excess return generated above a benchmark index, attributable to active management.",cat:"portfolio"},
-  {term:"Beta",def:"A measure of systematic risk relative to the overall market. A beta of 1.0 indicates market-equivalent volatility.",cat:"portfolio"},
-  {term:"Dollar-Cost Averaging",def:"An investment strategy of allocating a fixed dollar amount at regular intervals regardless of market conditions.",cat:"portfolio"},
+  {term:"Stock",def:"Ownership in a company. Buy Apple stock = own a fraction of Apple.",cat:"basics"},
+  {term:"Share",def:"One unit of stock.",cat:"basics"},{term:"Ticker Symbol",def:"Short code for a stock (AAPL=Apple).",cat:"basics"},
+  {term:"ETF",def:"Basket of stocks in one security. VOO = 500 companies.",cat:"basics"},
+  {term:"Index Fund",def:"Automatically tracks a market index. No human picks stocks.",cat:"basics"},
+  {term:"Bond",def:"Loan to a company/government. They pay interest. Safer than stocks.",cat:"basics"},
+  {term:"Portfolio",def:"All your investments together.",cat:"basics"},
+  {term:"Dividend",def:"Cash paid to you for owning a stock.",cat:"basics"},
+  {term:"Cost Basis",def:"Price you paid per share. Used to calc profit/loss.",cat:"performance"},
+  {term:"Market Value",def:"Shares × Current Price.",cat:"performance"},
+  {term:"Gain/Loss",def:"Current value minus what you paid.",cat:"performance"},
+  {term:"Return (%)",def:"Gain/loss as %. +10% = earned 10¢ per dollar.",cat:"performance"},
+  {term:"Market Cap",def:"Share Price × All Shares. Company size.",cat:"performance"},
+  {term:"P/E Ratio",def:"Price÷Earnings. High=growth expected.",cat:"analysis"},
+  {term:"Dividend Yield",def:"Annual dividend÷price as %.",cat:"analysis"},
+  {term:"52-Week High/Low",def:"Price range over past year.",cat:"analysis"},
+  {term:"Bull Market 🐂",def:"Prices rising 20%+.",cat:"analysis"},
+  {term:"Bear Market 🐻",def:"Prices falling 20%+.",cat:"analysis"},
+  {term:"Allocation",def:"How you split money: 60/30/10.",cat:"portfolio"},
+  {term:"Diversification",def:"Spread money to reduce risk.",cat:"portfolio"},
+  {term:"Rebalancing",def:"Adjust back to target %.",cat:"portfolio"},
+  {term:"Drift",def:"How far from target. 5%+=rebalance.",cat:"portfolio"},
+  {term:"Alpha",def:"Returns above the market.",cat:"portfolio"},
+  {term:"Beta",def:"Volatility vs market. 1.0=same.",cat:"portfolio"},
+  {term:"Dollar-Cost Averaging",def:"Invest fixed amount regularly.",cat:"portfolio"},
 ];
 
 // ===== HELPERS =====
@@ -614,9 +507,10 @@ function addCalEvent(){const t=$('cal-title').value.trim();if(!t)return alert('E
 function removeCal(id){calendar=calendar.filter(c=>c.id!==id);svC();renderAll();}
 
 // ===== FORMS =====
-async function submitJoin(){const name=$('join-name').value.trim(),email=$('join-email').value.trim();if(!name||!email)return alert('Enter name and email.');await db.collection('submissions').add({type:'join',name,email,year:$('join-year').value,interest:$('join-interest').value.trim(),date:new Date().toISOString()});$('join-msg').classList.remove('hidden');$('join-name').value='';$('join-email').value='';$('join-interest').value='';}
-async function submitContact(){const msg=$('ct-msg').value.trim();if(!msg)return alert('Enter a message.');await db.collection('submissions').add({type:'contact',name:$('ct-name').value.trim(),email:$('ct-email').value.trim(),category:$('ct-type').value,message:msg,date:new Date().toISOString()});$('ct-sent').classList.remove('hidden');$('ct-name').value='';$('ct-email').value='';$('ct-msg').value='';}
-async function submitTopic(){const t=$('topic-input').value.trim();if(!t)return;await db.collection('submissions').add({type:'topic',topic:t,date:new Date().toISOString()});$('topic-sent').classList.remove('hidden');$('topic-input').value='';}
+function submitJoin(){if(!$('join-name').value.trim()||!$('join-email').value.trim())return alert('Enter name and email.');$('join-msg').classList.remove('hidden');}
+function submitContact(){if(!$('ct-msg').value.trim())return alert('Enter a message.');$('ct-sent').classList.remove('hidden');}
+function submitTopic(){if(!$('topic-input').value.trim())return;$('topic-sent').classList.remove('hidden');$('topic-input').value='';}
+
 // ===== GLOSSARY =====
 let gf='all';
 function filterGloss(c,b){gf=c;document.querySelectorAll('#gloss-filter .btn-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');rGloss();}
@@ -635,306 +529,51 @@ $('home-latest-nl').innerHTML=newsletters.length?`<div class="slide-date">${news
 $('port-stats').innerHTML=`<div class="card"><div class="stat-label">Invested</div><div class="stat-value">${fmt(INITIAL_INVESTMENT)}</div></div><div class="card"><div class="stat-label">Cost Basis</div><div class="stat-value">${fmt(s.tc)}</div></div><div class="card"><div class="stat-label">Current Value</div><div class="stat-value">${fmt(s.tv)}</div></div><div class="card"><div class="stat-label">Gain/Loss</div><div class="stat-value" style="color:${s.gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(s.gl)}<br><span style="font-size:13px">${fmtPct(s.glPct)}</span></div></div><div class="card"><div class="stat-label">Max Drift</div><div class="stat-value" style="color:${s.maxDrift>5?'var(--red)':s.maxDrift>2?'var(--yellow-cat)':'var(--green-cat)'}">${s.maxDrift.toFixed(1)}%</div></div>`;
 
 // Pie
-const pd=Object.keys(CM).map(c=>({c,pct:s.cats[c].pct,color:CM[c].color}));
-
-// Risk Metrics
-const riskEl=$('risk-metrics');
-if(riskEl){
-  // Portfolio Beta (weighted)
-  let wBeta=0,wYield=0,totalVal=s.tv||1;
-  holdings.forEach(h=>{
-    const v=h.shares*h.currentPrice;
-    const info=SI[h.ticker]||{};
-    const b=info.beta||1.0;
-    const dy=info.divYield||0;
-    wBeta+=(v/totalVal)*b;
-    wYield+=(v/totalVal)*dy;
-  });
-  // Simplified Sharpe: (portfolio return - risk free) / estimated vol
-  const riskFree=4.5; // approx current T-bill rate
-  const portReturn=s.glPct||0;
-  const estVol=wBeta*15; // rough: market vol ~15%, scale by beta
-  const sharpe=estVol>0?(portReturn-riskFree)/estVol:0;
-  // Concentration: largest holding as % of portfolio
-  const maxHolding=Math.max(...holdings.map(h=>(h.shares*h.currentPrice/totalVal)*100));
-  const concColor=maxHolding>40?'var(--red)':maxHolding>25?'var(--yellow-cat)':'var(--green-cat)';
-  const sharpeColor=sharpe>=1?'var(--green-cat)':sharpe>=0.5?'var(--yellow-cat)':'var(--red)';
-  const betaColor=wBeta>1.2?'var(--red)':wBeta>0.8?'var(--yellow-cat)':'var(--green-cat)';
-  riskEl.innerHTML=`<div class="card"><div class="stat-label">Sharpe Ratio</div><div class="stat-value" style="color:${sharpeColor}">${sharpe.toFixed(2)}</div><div class="stat-sub">Risk-adjusted return</div></div><div class="card"><div class="stat-label">Portfolio Beta</div><div class="stat-value" style="color:${betaColor}">${wBeta.toFixed(2)}</div><div class="stat-sub">vs S&P 500</div></div><div class="card"><div class="stat-label">Wtd Avg Yield</div><div class="stat-value">${wYield.toFixed(2)}%</div><div class="stat-sub">Blended dividend</div></div><div class="card"><div class="stat-label">Concentration</div><div class="stat-value" style="color:${concColor}">${maxHolding.toFixed(1)}%</div><div class="stat-sub">Top holding weight</div></div>`;
-}
-
-// Sector Diversification
-const sectorEl=$('sector-bars');
-if(sectorEl){
-  const sectors={};
-  holdings.forEach(h=>{
-    const info=SI[h.ticker]||{sector:'Other'};
-    const sec=info.sector||'Other';
-    const v=h.shares*h.currentPrice;
-    if(!sectors[sec])sectors[sec]={value:0,tickers:[]};
-    sectors[sec].value+=v;
-    sectors[sec].tickers.push(h.ticker);
-  });
-  const sectorArr=Object.entries(sectors).map(([name,d])=>({name,value:d.value,pct:s.tv>0?(d.value/s.tv)*100:0,tickers:d.tickers})).sort((a,b)=>b.pct-a.pct);
-  const sectorColors=['#5B9CF6','#34D399','#FBBF24','#F87171','#A78BFA','#FB923C','#2DD4BF','#F472B6'];
-  sectorEl.innerHTML=sectorArr.map((sec,i)=>{
-    const c=sectorColors[i%sectorColors.length];
-    return`<div style="margin-bottom:14px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;"><span style="font-size:13px;font-weight:600;color:var(--text-primary)">${sec.name}</span><span style="font-size:12px;color:var(--muted)">${sec.pct.toFixed(1)}% · ${sec.tickers.join(', ')}</span></div><div class="alloc-bar-track"><div class="alloc-bar-fill" style="width:${Math.min(sec.pct,100)}%;background:${c}"></div></div></div>`;
-  }).join('');
-  // Sector warning
-  const warnEl=$('sector-warning');
-  const alphaHoldings=holdings.filter(h=>h.category==='alpha');
-  const alphaSectors=new Set(alphaHoldings.map(h=>(SI[h.ticker]||{}).sector||'Other'));
-  if(alphaHoldings.length>1&&alphaSectors.size<alphaHoldings.length&&alphaSectors.size<=2){
-    warnEl.classList.remove('hidden');
-    warnEl.textContent='Note: Your alpha (stock pick) holdings are concentrated in '+alphaSectors.size+' sector'+(alphaSectors.size===1?'':'s')+'. Consider adding picks from different sectors to reduce industry-specific risk.';
-  }else if(alphaHoldings.length>2&&alphaSectors.size>=alphaHoldings.length){
-    warnEl.classList.remove('hidden');
-    warnEl.style.background='rgba(52,211,153,0.08)';
-    warnEl.style.borderColor='rgba(52,211,153,0.2)';
-    warnEl.style.color='var(--green-cat)';
-    warnEl.textContent='Good sector diversification — your alpha picks span '+alphaSectors.size+' different sectors.';
-  }else{
-    warnEl.classList.add('hidden');
-  }
-}
-
-$('pie-chart').style.background=`conic-gradient(${pd.map((d,i)=>{const st=pd.slice(0,i).reduce((a,x)=>a+x.pct,0);return`${d.color} ${st}% ${st+d.pct}%`;}).join(',')})`;$('pie-chart').style.boxShadow='inset 0 0 0 36px #FFFFFF';$('pie-legend').innerHTML=pd.map(d=>`<div class="pie-legend-item"><div class="pie-dot" style="background:${d.color}"></div>${CM[d.c].label.split('/')[0].trim()} ${d.pct.toFixed(1)}%</div>`).join('');
+const pd=Object.keys(CM).map(c=>({c,pct:s.cats[c].pct,color:CM[c].color}));$('pie-chart').style.background=`conic-gradient(${pd.map((d,i)=>{const st=pd.slice(0,i).reduce((a,x)=>a+x.pct,0);return`${d.color} ${st}% ${st+d.pct}%`;}).join(',')})`;$('pie-chart').style.boxShadow='inset 0 0 0 36px var(--navy-deep)';$('pie-legend').innerHTML=pd.map(d=>`<div class="pie-legend-item"><div class="pie-dot" style="background:${d.color}"></div>${CM[d.c].label.split('/')[0].trim()} ${d.pct.toFixed(1)}%</div>`).join('');
 
 // Alloc
 $('alloc-bars').innerHTML=Object.keys(CM).map(c=>{const p=s.cats[c].pct,t=TARGETS[c],dr=p-t,dc=Math.abs(dr)>5?'var(--red)':Math.abs(dr)>2?'var(--yellow-cat)':'var(--green-cat)';return`<div style="margin-bottom:20px;"><div style="display:flex;justify-content:space-between;"><span class="badge ${CM[c].badge}">${CM[c].label}</span><span style="font-size:12px;"><span style="color:${dc};font-weight:600;">${p.toFixed(1)}%</span><span style="color:var(--muted)">/${t}%</span></span></div><div class="alloc-bar-track"><div class="alloc-bar-fill" style="width:${Math.min(p,100)}%;background:${CM[c].color}"></div><div class="alloc-marker" style="left:${t}%"></div></div></div>`;}).join('');
 
 // Table
-$('holdings-tbody').innerHTML=getSorted().map(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis>0?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,pp=s.tv>0?(v/s.tv)*100:0,dc=h._dp||0,info=SI[h.ticker]||{sector:'—',beta:1.0};return`<tr><td class="mono" style="font-weight:600;color:var(--text-primary)">${h.ticker}</td><td style="color:var(--secondary);font-size:12px">${h.name}</td><td><span class="badge ${CM[h.category]?.badge||''}">${h.category}</span></td><td style="font-size:11px;color:var(--muted)">${info.sector||'—'}</td><td class="text-right" style="font-size:11px;color:var(--muted)">${h.datePurchased||'—'}</td><td class="text-right mono">${h.shares}</td><td class="text-right mono">${fmt(h.costBasis)}</td><td class="text-right"><span class="mono">${fmt(h.currentPrice)}</span>${dc?`<br><span style="font-size:10px;color:${dc>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dc)}</span>`:''}</td><td class="text-right mono" style="font-weight:600;color:var(--text-primary)">${fmt(v)}</td><td class="text-right mono" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(gl)}<br><span style="font-size:10px">${fmtPct(gp)}</span></td><td class="text-right mono" style="font-size:11px">${(info.beta||1.0).toFixed(2)}</td><td class="text-right mono" style="font-size:11px">${pp.toFixed(1)}%</td>${isOfficer?`<td class="text-right"><button class="btn-danger" onclick="removeHolding(${h.id})" style="font-size:10px;padding:4px 8px;">Remove</button></td>`:''}</tr>`;}).join('');
+$('holdings-tbody').innerHTML=getSorted().map(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis>0?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,pp=s.tv>0?(v/s.tv)*100:0,dc=h._dp||0;return`<tr><td class="mono" style="font-weight:600;color:var(--white)">${h.ticker}</td><td style="color:var(--secondary);font-size:12px">${h.name}</td><td><span class="badge ${CM[h.category]?.badge||''}">${h.category}</span></td><td class="text-right" style="font-size:11px;color:var(--muted)">${h.datePurchased||'—'}</td><td class="text-right mono">${h.shares}</td><td class="text-right mono">${fmt(h.costBasis)}</td><td class="text-right"><span class="mono">${fmt(h.currentPrice)}</span>${dc?`<br><span style="font-size:10px;color:${dc>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dc)}</span>`:''}</td><td class="text-right mono" style="font-weight:600;color:var(--white)">${fmt(v)}</td><td class="text-right mono" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(gl)}<br><span style="font-size:10px">${fmtPct(gp)}</span></td><td class="text-right mono" style="font-size:11px">${pp.toFixed(1)}%</td>${isOfficer?`<td class="text-right"><button class="btn-danger" onclick="removeHolding(${h.id})" style="font-size:10px;padding:4px 8px;">✕</button></td>`:''}</tr>`;}).join('');
 
 // Rebalance
 const sug=[];for(const c of['index','alpha','fixed']){const p=s.cats[c].pct,t=TARGETS[c],d=p-t;if(Math.abs(d)>2)sug.push({c,act:d>0?'reduce':'add',amt:Math.abs(d/100*s.tv),dr:d});}
-$('rebalance-content').innerHTML=!sug.length?`<div class="card" style="text-align:center;padding:30px;"><div style="font-size:32px;"></div><div style="font-weight:600;color:var(--green-cat);margin-top:8px;">Balanced!</div></div>`:sug.map(g=>`<div class="card" style="margin-bottom:10px;border-left:3px solid ${g.act==='reduce'?'var(--red)':'var(--green-cat)'}"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;"><div><span class="badge ${CM[g.c].badge}">${CM[g.c].label}</span> <span style="font-weight:600;color:var(--text-primary);margin-left:8px;">${g.act==='reduce'?'Reduce':'Add'} ~${fmt(g.amt)}</span></div><span style="font-size:12px;color:var(--muted)">${s.cats[g.c].pct.toFixed(1)}%→${TARGETS[g.c]}%</span></div></div>`).join('');
+$('rebalance-content').innerHTML=!sug.length?`<div class="card" style="text-align:center;padding:30px;"><div style="font-size:32px;">✅</div><div style="font-weight:600;color:var(--green-cat);margin-top:8px;">Balanced!</div></div>`:sug.map(g=>`<div class="card" style="margin-bottom:10px;border-left:3px solid ${g.act==='reduce'?'var(--red)':'var(--green-cat)'}"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;"><div><span class="badge ${CM[g.c].badge}">${CM[g.c].label}</span> <span style="font-weight:600;color:var(--white);margin-left:8px;">${g.act==='reduce'?'📉 Reduce':'📈 Add'} ~${fmt(g.amt)}</span></div><span style="font-size:12px;color:var(--muted)">${s.cats[g.c].pct.toFixed(1)}%→${TARGETS[g.c]}%</span></div></div>`).join('');
 
 // Analysis
-$('analysis-cards').innerHTML=holdings.map(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,info=SI[h.ticker]||{desc:'No description available.',why:'No investment thesis provided.',sector:'—',type:'Stock'},dp=h._dp||0;let m=`<div class="analysis-metric"><div class="analysis-metric-label">Shares</div><div class="analysis-metric-val">${h.shares}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Cost</div><div class="analysis-metric-val">${fmt(h.costBasis)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Invested</div><div class="analysis-metric-val">${fmt(h.shares*h.costBasis)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Value</div><div class="analysis-metric-val">${fmt(v)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Return</div><div class="analysis-metric-val" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(gp)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Purchased</div><div class="analysis-metric-val" style="font-size:12px">${h.datePurchased||'—'}</div></div>`;if(h._o)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Open</div><div class="analysis-metric-val">${fmt(h._o)}</div></div>`;if(h._h)m+=`<div class="analysis-metric"><div class="analysis-metric-label">High</div><div class="analysis-metric-val">${fmt(h._h)}</div></div>`;if(h._l)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Low</div><div class="analysis-metric-val">${fmt(h._l)}</div></div>`;if(h._pc)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Prev Close</div><div class="analysis-metric-val">${fmt(h._pc)}</div></div>`;
-return`<div class="analysis-card"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px"><div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--text-primary)">${h.ticker} <span class="badge ${CM[h.category]?.badge}" style="font-size:9px">${h.category}</span></div><div style="font-size:12px;color:var(--secondary)">${h.name} · ${info.sector}</div></div><div style="text-align:right"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmt(h.currentPrice)}</div>${dp?`<div style="font-size:11px;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dp)} today</div>`:''}</div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">${m}</div><div style="font-size:13px;color:var(--secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><b style="color:var(--text-primary)">Overview:</b> ${info.desc}</div><div style="font-size:12px;color:var(--muted);margin-top:6px;">${info.why}</div></div>`;}).join('');
+$('analysis-cards').innerHTML=holdings.map(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,info=SI[h.ticker]||{desc:'Research this stock!',why:'Add thesis.',sector:'—',type:'Stock'},dp=h._dp||0;let m=`<div class="analysis-metric"><div class="analysis-metric-label">Shares</div><div class="analysis-metric-val">${h.shares}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Cost</div><div class="analysis-metric-val">${fmt(h.costBasis)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Invested</div><div class="analysis-metric-val">${fmt(h.shares*h.costBasis)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Value</div><div class="analysis-metric-val">${fmt(v)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Return</div><div class="analysis-metric-val" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(gp)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Purchased</div><div class="analysis-metric-val" style="font-size:12px">${h.datePurchased||'—'}</div></div>`;if(h._o)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Open</div><div class="analysis-metric-val">${fmt(h._o)}</div></div>`;if(h._h)m+=`<div class="analysis-metric"><div class="analysis-metric-label">High</div><div class="analysis-metric-val">${fmt(h._h)}</div></div>`;if(h._l)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Low</div><div class="analysis-metric-val">${fmt(h._l)}</div></div>`;if(h._pc)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Prev Close</div><div class="analysis-metric-val">${fmt(h._pc)}</div></div>`;
+return`<div class="analysis-card"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px"><div><div style="font-family:'JetBrains Mono';font-size:18px;font-weight:700;color:var(--white)">${h.ticker} <span class="badge ${CM[h.category]?.badge}" style="font-size:9px">${h.category}</span></div><div style="font-size:12px;color:var(--secondary)">${h.name} · ${info.sector}</div></div><div style="text-align:right"><div style="font-family:'JetBrains Mono';font-size:20px;font-weight:700;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmt(h.currentPrice)}</div>${dp?`<div style="font-size:11px;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dp)} today</div>`:''}</div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">${m}</div><div style="font-size:13px;color:var(--secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><b style="color:var(--white)">About:</b> ${info.desc}</div><div style="font-size:12px;color:var(--muted);margin-top:6px;">💡 ${info.why}</div></div>`;}).join('');
 
 // Watchlist
-if(watchlist.length){$('no-wl').classList.add('hidden');$('watchlist-list').innerHTML=watchlist.map(w=>`<div class="card wl-card" style="margin-bottom:10px;"><div><div style="font-family:var(--font-mono);font-weight:700;color:var(--text-primary)">${w.ticker} <span style="font-weight:400;color:var(--secondary);font-family:var(--font-sans);font-size:13px">· ${w.name}</span></div><div style="font-size:12px;color:var(--muted);margin-top:3px;">${w.reason||'No notes'} · Added by ${w.by}</div></div><div style="text-align:right;display:flex;align-items:center;gap:12px;">${w.price?`<div><div class="mono" style="font-weight:600;color:var(--text-primary)">${fmt(w.price)}</div>${w.dp?`<div style="font-size:10px;color:${w.dp>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(w.dp)}</div>`:''}</div>`:''}<div>${isOfficer?`<button class="btn-danger" onclick="removeWL(${w.id})" style="font-size:10px;padding:4px 8px;">Remove</button>`:''}</div></div></div>`).join('');}else{$('no-wl').classList.remove('hidden');$('watchlist-list').innerHTML='';}
+if(watchlist.length){$('no-wl').classList.add('hidden');$('watchlist-list').innerHTML=watchlist.map(w=>`<div class="card wl-card" style="margin-bottom:10px;"><div><div style="font-family:'JetBrains Mono';font-weight:700;color:var(--white)">${w.ticker} <span style="font-weight:400;color:var(--secondary);font-family:'DM Sans';font-size:13px">· ${w.name}</span></div><div style="font-size:12px;color:var(--muted);margin-top:3px;">${w.reason||'No notes'} · Added by ${w.by}</div></div><div style="text-align:right;display:flex;align-items:center;gap:12px;">${w.price?`<div><div class="mono" style="font-weight:600;color:var(--white)">${fmt(w.price)}</div>${w.dp?`<div style="font-size:10px;color:${w.dp>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(w.dp)}</div>`:''}</div>`:''}<div>${isOfficer?`<button class="btn-danger" onclick="removeWL(${w.id})" style="font-size:10px;padding:4px 8px;">✕</button>`:''}</div></div></div>`).join('');}else{$('no-wl').classList.remove('hidden');$('watchlist-list').innerHTML='';}
 
 // Calendar
 const now=new Date().toISOString();const upcoming=calendar.filter(c=>c.date>=now.slice(0,16));
-if(upcoming.length){$('no-cal').classList.add('hidden');$('calendar-list').innerHTML=upcoming.map(c=>{const d=new Date(c.date);const mo=d.toLocaleString('en',{month:'short'}).toUpperCase();const dy=d.getDate();const tm=d.toLocaleString('en',{hour:'numeric',minute:'2-digit'});return`<div class="calendar-item"><div class="cal-date-box"><div class="cal-month">${mo}</div><div class="cal-day">${dy}</div></div><div><div style="font-weight:700;color:var(--text-primary);font-size:14px;">${c.title}</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">${tm} · ${c.loc||'TBD'}</div></div>${isOfficer?`<button class="btn-danger" onclick="removeCal(${c.id})" style="font-size:10px;padding:3px 8px;margin-left:auto;">Remove</button>`:''}</div>`;}).join('');}else{$('no-cal').classList.remove('hidden');}
+if(upcoming.length){$('no-cal').classList.add('hidden');$('calendar-list').innerHTML=upcoming.map(c=>{const d=new Date(c.date);const mo=d.toLocaleString('en',{month:'short'}).toUpperCase();const dy=d.getDate();const tm=d.toLocaleString('en',{hour:'numeric',minute:'2-digit'});return`<div class="calendar-item"><div class="cal-date-box"><div class="cal-month">${mo}</div><div class="cal-day">${dy}</div></div><div><div style="font-weight:700;color:var(--white);font-size:14px;">${c.title}</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">🕐 ${tm} · 📍 ${c.loc||'TBD'}</div></div>${isOfficer?`<button class="btn-danger" onclick="removeCal(${c.id})" style="font-size:10px;padding:3px 8px;margin-left:auto;">✕</button>`:''}</div>`;}).join('');}else{$('no-cal').classList.remove('hidden');}
 
 // Slides
-if(slides.length){$('no-slides').classList.add('hidden');$('slides-grid').innerHTML=slides.map(s=>`<div class="card slide-card"${s.link?` onclick="window.open('${s.link}','_blank')"`:''}><div class="slide-thumb"></div><div class="slide-date">${s.date}</div><div class="slide-title">${s.title}</div><div class="slide-desc">${s.desc||''}</div><div style="margin-top:8px;display:flex;gap:6px;">${s.link?`<a href="${s.link}" target="_blank" class="btn btn-ghost btn-sm" onclick="event.stopPropagation()" style="font-size:11px;">Open</a>`:''} ${isOfficer?`<button class="btn-danger" onclick="event.stopPropagation();deleteSlide(${s.id})" style="font-size:10px;">Del</button>`:''}</div></div>`).join('');}else{$('no-slides').classList.remove('hidden');$('slides-grid').innerHTML='';}
+if(slides.length){$('no-slides').classList.add('hidden');$('slides-grid').innerHTML=slides.map(s=>`<div class="card slide-card"${s.link?` onclick="window.open('${s.link}','_blank')"`:''}><div class="slide-thumb">📊</div><div class="slide-date">${s.date}</div><div class="slide-title">${s.title}</div><div class="slide-desc">${s.desc||''}</div><div style="margin-top:8px;display:flex;gap:6px;">${s.link?`<a href="${s.link}" target="_blank" class="btn btn-ghost btn-sm" onclick="event.stopPropagation()" style="font-size:11px;">Open</a>`:''} ${isOfficer?`<button class="btn-danger" onclick="event.stopPropagation();deleteSlide(${s.id})" style="font-size:10px;">Del</button>`:''}</div></div>`).join('');}else{$('no-slides').classList.remove('hidden');$('slides-grid').innerHTML='';}
 
 // Newsletter
-if(newsletters.length){$('no-nl').classList.add('hidden');$('newsletter-feed').innerHTML=newsletters.map(n=>{const pr=n.body.length>250?n.body.substring(0,250)+'...':n.body,long=n.body.length>250;return`<div class="card" style="margin-bottom:14px;"><div class="nl-date" style="font-size:11px;color:var(--muted)">${n.date} · ${n.author}</div><div style="font-size:16px;font-weight:700;color:var(--text-primary);margin:4px 0 6px;">${n.title}</div><div style="font-size:14px;color:var(--secondary);line-height:1.7;white-space:pre-wrap;">${long?pr:n.body}</div>${long?`<div id="nlf-${n.id}" class="nl-full" style="white-space:pre-wrap;">${n.body}</div><span id="nlb-${n.id}" class="nl-toggle" onclick="toggleNL(${n.id})">More ▼</span>`:''} ${isOfficer?`<button class="btn-danger" style="margin-top:8px;font-size:10px;" onclick="deleteNL(${n.id})">Delete</button>`:''}</div>`;}).join('');}else{$('no-nl').classList.remove('hidden');$('newsletter-feed').innerHTML='';}
+if(newsletters.length){$('no-nl').classList.add('hidden');$('newsletter-feed').innerHTML=newsletters.map(n=>{const pr=n.body.length>250?n.body.substring(0,250)+'...':n.body,long=n.body.length>250;return`<div class="card" style="margin-bottom:14px;"><div class="nl-date" style="font-size:11px;color:var(--muted)">${n.date} · ${n.author}</div><div style="font-size:16px;font-weight:700;color:var(--white);margin:4px 0 6px;">${n.title}</div><div style="font-size:14px;color:var(--secondary);line-height:1.7;white-space:pre-wrap;">${long?pr:n.body}</div>${long?`<div id="nlf-${n.id}" class="nl-full" style="white-space:pre-wrap;">${n.body}</div><span id="nlb-${n.id}" class="nl-toggle" onclick="toggleNL(${n.id})">More ▼</span>`:''} ${isOfficer?`<button class="btn-danger" style="margin-top:8px;font-size:10px;" onclick="deleteNL(${n.id})">Delete</button>`:''}</div>`;}).join('');}else{$('no-nl').classList.remove('hidden');$('newsletter-feed').innerHTML='';}
 
 // Team
 $('team-grid').innerHTML=OFFICERS.map(o=>`<div class="team-card"><div class="team-avatar">${o.initials}</div><div class="team-name">${o.name}</div><div class="team-role">${o.role}</div></div>`).join('');
 rGloss();updateOfficerUI();
 }
 
-// ===== MY PORTFOLIO (Google Auth + Personal Holdings) =====
-let currentUser=null;
-let mpHoldings=[];
-const MP_INITIAL=10000;
-
-// Google Sign In
-function googleSignIn(){
-  const provider=new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).catch(e=>{
-    console.error('Sign-in error:',e);
-    alert('Sign-in failed. Please try again.');
-  });
-}
-function googleSignOut(){
-  firebase.auth().signOut();
-}
-
-// Auth state listener
-firebase.auth().onAuthStateChanged(async user=>{
-  currentUser=user;
-  if(user){
-    $('mp-signedout').classList.add('hidden');
-    $('mp-signedin').classList.remove('hidden');
-    $('mp-user-info').textContent=user.displayName+' · '+user.email;
-    await mpLoad();
-    await mpFetchPrices();
-    mpRender();
-    // Listen for real-time updates to personal portfolio
-    db.collection('portfolios').doc(user.uid).onSnapshot(doc=>{
-      if(doc.exists&&doc.data().holdings){
-        mpHoldings=JSON.parse(doc.data().holdings);
-        mpRender();
-      }
-    });
-  }else{
-    $('mp-signedout').classList.remove('hidden');
-    $('mp-signedin').classList.add('hidden');
-    mpHoldings=[];
-  }
-});
-
-// Load personal holdings from Firestore
-async function mpLoad(){
-  if(!currentUser)return;
-  try{
-    const doc=await db.collection('portfolios').doc(currentUser.uid).get();
-    if(doc.exists&&doc.data().holdings){
-      mpHoldings=JSON.parse(doc.data().holdings);
-    }
-  }catch(e){console.warn('Failed to load personal portfolio',e);}
-}
-
-// Save personal holdings to Firestore
-async function mpSave(){
-  if(!currentUser)return;
-  try{
-    await db.collection('portfolios').doc(currentUser.uid).set({
-      holdings:JSON.stringify(mpHoldings),
-      name:currentUser.displayName||'',
-      email:currentUser.email||'',
-      updated:new Date().toISOString()
-    });
-  }catch(e){console.error('Failed to save personal portfolio',e);}
-}
-
-// Add holding to personal portfolio
-async function mpAddHolding(){
-  if(!currentUser)return alert('Please sign in first.');
-  const t=$('mp-add-ticker').value.trim().toUpperCase();
-  const n=$('mp-add-name').value.trim()||t;
-  const c=$('mp-add-cat').value;
-  const sh=parseFloat($('mp-add-shares').value);
-  const cb=parseFloat($('mp-add-cost').value);
-  const dt=$('mp-add-date').value||new Date().toISOString().split('T')[0];
-  if(!t||!sh||!cb)return alert('Please fill in ticker, shares, and cost basis.');
-  const h={id:Date.now(),ticker:t,name:n,category:c,shares:sh,costBasis:cb,currentPrice:cb,datePurchased:dt};
-  // Fetch live price
-  const d=await fetchPrice(t);
-  if(d&&d.c>0){h.currentPrice=d.c;h._dp=d.dp||0;h._h=d.h||0;h._l=d.l||0;h._o=d.o||0;h._pc=d.pc||0;}
-  mpHoldings.push(h);
-  await mpSave();
-  mpRender();
-  // Clear form
-  $('mp-add-ticker').value='';$('mp-add-name').value='';$('mp-add-shares').value='';$('mp-add-cost').value='';$('mp-add-date').value='';
-}
-
-// Remove holding from personal portfolio
-async function mpRemoveHolding(id){
-  if(!confirm('Remove this position?'))return;
-  mpHoldings=mpHoldings.filter(h=>h.id!==id);
-  await mpSave();
-  mpRender();
-}
-
-// Fetch prices for personal holdings
-async function mpFetchPrices(){
-  for(const h of mpHoldings){
-    const d=await fetchPrice(h.ticker);
-    if(d&&d.c>0){h.currentPrice=d.c;h._dp=d.dp||0;h._h=d.h||0;h._l=d.l||0;h._o=d.o||0;h._pc=d.pc||0;}
-    await new Promise(r=>setTimeout(r,250));
-  }
-  if(mpHoldings.length>0)await mpSave();
-}
-
-// Calculate personal portfolio stats (reuses same logic)
-function mpCalcStats(){
-  const tv=mpHoldings.reduce((s,h)=>s+h.shares*h.currentPrice,0);
-  const tc=mpHoldings.reduce((s,h)=>s+h.shares*h.costBasis,0);
-  const cats={};
-  for(const c of['index','alpha','fixed']){
-    const ch=mpHoldings.filter(h=>h.category===c);
-    const v=ch.reduce((s,h)=>s+h.shares*h.currentPrice,0);
-    cats[c]={value:v,pct:tv>0?(v/tv)*100:0,holdings:ch};
-  }
-  return{tv,tc,gl:tv-tc,glPct:tc>0?((tv-tc)/tc)*100:0,cats,maxDrift:Math.max(...Object.keys(cats).map(c=>Math.abs(cats[c].pct-TARGETS[c])),0)};
-}
-
-// Render personal portfolio
-function mpRender(){
-  if(!currentUser)return;
-  const s=mpCalcStats();
-
-  // Empty state
-  if(mpHoldings.length===0){
-    $('mp-empty').classList.remove('hidden');
-    $('mp-stats').innerHTML='';
-    $('mp-risk-metrics').innerHTML='';
-    $('mp-pie-chart').style.background='var(--light-gray)';
-    $('mp-pie-chart').style.boxShadow='inset 0 0 0 36px #FFFFFF';
-    $('mp-pie-legend').innerHTML='';
-    $('mp-alloc-bars').innerHTML='';
-    $('mp-sector-bars').innerHTML='';
-    $('mp-holdings-tbody').innerHTML='';
-    return;
-  }
-  $('mp-empty').classList.add('hidden');
-
-  // Stats
-  const roi=s.tc>0?((s.tv-s.tc)/s.tc*100):0;
-  $('mp-stats').innerHTML=`<div class="card"><div class="stat-label">Cost Basis</div><div class="stat-value">${fmt(s.tc)}</div></div><div class="card"><div class="stat-label">Current Value</div><div class="stat-value">${fmt(s.tv)}</div></div><div class="card"><div class="stat-label">Gain/Loss</div><div class="stat-value" style="color:${s.gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(s.gl)}<br><span style="font-size:13px">${fmtPct(s.glPct)}</span></div></div><div class="card"><div class="stat-label">Holdings</div><div class="stat-value">${mpHoldings.length}</div></div><div class="card"><div class="stat-label">Max Drift</div><div class="stat-value" style="color:${s.maxDrift>5?'var(--red)':s.maxDrift>2?'var(--yellow-cat)':'var(--green-cat)'}">${s.maxDrift.toFixed(1)}%</div></div>`;
-
-  // Risk metrics
-  let wBeta=0,wYield=0,totalVal=s.tv||1;
-  mpHoldings.forEach(h=>{
-    const v=h.shares*h.currentPrice;
-    const info=SI[h.ticker]||{};
-    wBeta+=(v/totalVal)*(info.beta||1.0);
-    wYield+=(v/totalVal)*(info.divYield||0);
-  });
-  const riskFree=4.5;const portReturn=s.glPct||0;const estVol=wBeta*15;
-  const sharpe=estVol>0?(portReturn-riskFree)/estVol:0;
-  const maxHolding=mpHoldings.length>0?Math.max(...mpHoldings.map(h=>(h.shares*h.currentPrice/totalVal)*100)):0;
-  const sharpeColor=sharpe>=1?'var(--green-cat)':sharpe>=0.5?'var(--yellow-cat)':'var(--red)';
-  const betaColor=wBeta>1.2?'var(--red)':wBeta>0.8?'var(--yellow-cat)':'var(--green-cat)';
-  const concColor=maxHolding>40?'var(--red)':maxHolding>25?'var(--yellow-cat)':'var(--green-cat)';
-  $('mp-risk-metrics').innerHTML=`<div class="card"><div class="stat-label">Sharpe Ratio</div><div class="stat-value" style="color:${sharpeColor}">${sharpe.toFixed(2)}</div><div class="stat-sub">Risk-adjusted return</div></div><div class="card"><div class="stat-label">Portfolio Beta</div><div class="stat-value" style="color:${betaColor}">${wBeta.toFixed(2)}</div><div class="stat-sub">vs S&P 500</div></div><div class="card"><div class="stat-label">Wtd Avg Yield</div><div class="stat-value">${wYield.toFixed(2)}%</div><div class="stat-sub">Blended dividend</div></div><div class="card"><div class="stat-label">Concentration</div><div class="stat-value" style="color:${concColor}">${maxHolding.toFixed(1)}%</div><div class="stat-sub">Top holding weight</div></div>`;
-
-  // Pie chart
-  const pd=Object.keys(CM).map(c=>({c,pct:s.cats[c].pct,color:CM[c].color}));
-  $('mp-pie-chart').style.background=`conic-gradient(${pd.map((d,i)=>{const st=pd.slice(0,i).reduce((a,x)=>a+x.pct,0);return`${d.color} ${st}% ${st+d.pct}%`;}).join(',')})`;
-  $('mp-pie-chart').style.boxShadow='inset 0 0 0 36px #FFFFFF';
-  $('mp-pie-legend').innerHTML=pd.map(d=>`<div class="pie-legend-item"><div class="pie-dot" style="background:${d.color}"></div>${CM[d.c].label.split('/')[0].trim()} ${d.pct.toFixed(1)}%</div>`).join('');
-
-  // Allocation bars
-  $('mp-alloc-bars').innerHTML=Object.keys(CM).map(c=>{const p=s.cats[c].pct,t=TARGETS[c],dr=p-t,dc=Math.abs(dr)>5?'var(--red)':Math.abs(dr)>2?'var(--yellow-cat)':'var(--green-cat)';return`<div style="margin-bottom:20px;"><div style="display:flex;justify-content:space-between;"><span class="badge ${CM[c].badge}">${CM[c].label}</span><span style="font-size:12px;"><span style="color:${dc};font-weight:600;">${p.toFixed(1)}%</span><span style="color:var(--muted)">/${t}%</span></span></div><div class="alloc-bar-track"><div class="alloc-bar-fill" style="width:${Math.min(p,100)}%;background:${CM[c].color}"></div><div class="alloc-marker" style="left:${t}%"></div></div></div>`;}).join('');
-
-  // Sector bars
-  const sectors={};
-  mpHoldings.forEach(h=>{
-    const info=SI[h.ticker]||{sector:'Other'};
-    const sec=info.sector||'Other';
-    const v=h.shares*h.currentPrice;
-    if(!sectors[sec])sectors[sec]={value:0,tickers:[]};
-    sectors[sec].value+=v;
-    sectors[sec].tickers.push(h.ticker);
-  });
-  const sectorArr=Object.entries(sectors).map(([name,d])=>({name,value:d.value,pct:s.tv>0?(d.value/s.tv)*100:0,tickers:d.tickers})).sort((a,b)=>b.pct-a.pct);
-  const sectorColors=['#0056B3','#0D7D4D','#B7791F','#C53030','#6B46C1','#C05621','#2B6CB0','#B83280'];
-  $('mp-sector-bars').innerHTML=sectorArr.map((sec,i)=>{
-    const c=sectorColors[i%sectorColors.length];
-    return`<div style="margin-bottom:14px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;"><span style="font-size:13px;font-weight:600;color:var(--text-primary)">${sec.name}</span><span style="font-size:12px;color:var(--muted)">${sec.pct.toFixed(1)}% · ${sec.tickers.join(', ')}</span></div><div class="alloc-bar-track"><div class="alloc-bar-fill" style="width:${Math.min(sec.pct,100)}%;background:${c}"></div></div></div>`;
-  }).join('');
-
-  // Holdings table
-  $('mp-holdings-tbody').innerHTML=mpHoldings.map(h=>{
-    const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis>0?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,pp=s.tv>0?(v/s.tv)*100:0,dc=h._dp||0,info=SI[h.ticker]||{sector:'—',beta:1.0};
-    return`<tr><td class="mono" style="font-weight:600;color:var(--text-primary)">${h.ticker}</td><td style="color:var(--text-secondary);font-size:12px">${h.name}</td><td><span class="badge ${CM[h.category]?.badge||''}">${h.category}</span></td><td style="font-size:11px;color:var(--muted)">${info.sector||'—'}</td><td class="text-right mono">${h.shares}</td><td class="text-right mono">${fmt(h.costBasis)}</td><td class="text-right"><span class="mono">${fmt(h.currentPrice)}</span>${dc?`<br><span style="font-size:10px;color:${dc>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dc)}</span>`:''}</td><td class="text-right mono" style="font-weight:600;color:var(--text-primary)">${fmt(v)}</td><td class="text-right mono" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(gl)}<br><span style="font-size:10px">${fmtPct(gp)}</span></td><td class="text-right mono" style="font-size:11px">${(info.beta||1.0).toFixed(2)}</td><td class="text-right mono" style="font-size:11px">${pp.toFixed(1)}%</td><td class="text-right"><button class="btn-danger" onclick="mpRemoveHolding(${h.id})" style="font-size:10px;padding:4px 8px;">Remove</button></td></tr>`;
-  }).join('');
-}
-
 // ===== INIT =====
 (async function(){
   await loadAll();
   // Apply fallback prices if first load
-  if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:489.55,BND:72.88};holdings.forEach(h=>{if(fb[h.ticker])h.currentPrice=fb[h.ticker];});}
+  if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:664.43,BND:75.03};holdings.forEach(h=>{if(fb[h.ticker])h.currentPrice=fb[h.ticker];});await sv();}
   renderAll();
-  fetchAllPrices();
   listenForUpdates();
-  // Refresh prices every 5 minutes
-  setInterval(fetchAllPrices,300000);
+  await fetchAllPrices();
+  setInterval(fetchAllPrices,60000);
 })();
 </script>
-</body>
-</html>
+</body></html>
+
 
