@@ -162,9 +162,6 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 .nl-toggle{font-size:12px;color:var(--accent);cursor:pointer;display:inline-block;margin-top:6px;}
 @media print{.topnav,.btn,.btn-primary,.btn-ghost,.btn-danger,.btn-tab,.hamburger,.officer-bar,.edu,.add-grid,#add-form{display:none!important;}.page{display:block!important;page-break-after:always;}.card{break-inside:avoid;border:1px solid #ccc;}.site-footer{display:none;}}
 </style>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 <script>const LOGO_SRC="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/9k=";</script>
@@ -176,6 +173,7 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <div class="topnav-links">
 <button class="topnav-link active" data-page="home" onclick="navTo('home')">Home</button>
 <button class="topnav-link" data-page="learn" onclick="navTo('learn')">Learn</button>
+<button class="topnav-link" data-page="research" onclick="navTo('research')">Research</button>
 <button class="topnav-link" data-page="portfolio" onclick="navTo('portfolio')">Team Portfolio</button>
 <button class="topnav-link" data-page="myportfolio" onclick="navTo('myportfolio')">My Portfolio</button>
 <button class="topnav-link" data-page="about" onclick="navTo('about')">About</button>
@@ -235,6 +233,101 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <div class="section"><div class="charts-row"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Meeting</div><div id="home-latest-slide"></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Newsletter</div><div id="home-latest-nl"></div></div></div></div>
 </div></div>
 
+<!-- RESEARCH -->
+<div class="page" id="page-research"><div class="container"><div class="section">
+<div class="section-header"><div class="section-title">Stock Research</div><div class="section-desc">Look up any stock and see the metrics that matter. This tool covers the core fundamentals from our curriculum.</div></div>
+<div style="font-size:12px;color:var(--text-muted);padding:10px 14px;background:var(--blue-tint);border-radius:3px;margin-bottom:18px;line-height:1.6;">This research tool pulls live market data and fundamentals for any U.S.-listed stock. It focuses on the metrics we teach in Module 3: financial position, profitability, growth, and valuation. More features are in development, including stock comparison and historical performance tracking.</div>
+
+<div style="display:flex;gap:8px;margin-bottom:20px;"><input class="input" id="research-ticker" placeholder="Enter a ticker symbol (e.g. AAPL)" style="text-transform:uppercase;max-width:300px;" onkeydown="if(event.key==='Enter')researchStock()"><button class="btn btn-primary" onclick="researchStock()">Look Up</button></div>
+
+<div id="research-loading" class="hidden" style="color:var(--text-muted);font-size:13px;padding:20px 0;">Loading...</div>
+
+<div id="research-result" class="hidden">
+
+<!-- Price Header -->
+<div class="card" style="margin-bottom:14px;">
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:flex-start;">
+<div>
+<div id="res-ticker" style="font-family:var(--font-mono);font-size:24px;font-weight:700;color:var(--text-primary);"></div>
+<div id="res-name" style="font-size:13px;color:var(--text-secondary);"></div>
+</div>
+<div style="text-align:right;">
+<div id="res-price" style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--text-primary);"></div>
+<div id="res-change" style="font-size:13px;font-family:var(--font-mono);"></div>
+</div>
+</div>
+<div class="card-grid cols-4" style="margin-top:14px;" id="res-price-metrics"></div>
+</div>
+
+<!-- Fundamentals -->
+<div id="res-fundamentals">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">Fundamental Analysis</div>
+<div style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">These are the four things we teach you to look at before buying any stock (Module 3).</div>
+
+<!-- Financial Position -->
+<div class="card" style="margin-bottom:10px;">
+<div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">1. Financial Position</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;"><span style="font-size:13px;color:var(--text-secondary);">Debt to Assets</span><span id="res-dta" style="font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--text-primary);"></span></div>
+<div id="res-dta-explain" style="font-size:12px;color:var(--text-muted);line-height:1.5;"></div>
+</div>
+
+<!-- Profitability -->
+<div class="card" style="margin-bottom:10px;">
+<div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">2. Profitability</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+<div><div style="font-size:12px;color:var(--text-muted);">Gross Margin</div><div id="res-gm" style="font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--text-primary);"></div><div style="font-size:11px;color:var(--text-muted);">Revenue minus direct costs</div></div>
+<div><div style="font-size:12px;color:var(--text-muted);">Net Margin</div><div id="res-nm" style="font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--text-primary);"></div><div style="font-size:11px;color:var(--text-muted);">What the company actually keeps</div></div>
+<div><div style="font-size:12px;color:var(--text-muted);">EPS</div><div id="res-eps" style="font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--text-primary);"></div><div style="font-size:11px;color:var(--text-muted);">Earnings per share of stock</div></div>
+</div>
+</div>
+
+<!-- Growth -->
+<div class="card" style="margin-bottom:10px;">
+<div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">3. Growth</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<div><div style="font-size:12px;color:var(--text-muted);">Revenue Growth (YoY)</div><div id="res-revgrowth" style="font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--text-primary);"></div><div style="font-size:11px;color:var(--text-muted);">Is the company making more money each year?</div></div>
+<div><div style="font-size:12px;color:var(--text-muted);">Dividend Yield</div><div id="res-divyield" style="font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--text-primary);"></div><div style="font-size:11px;color:var(--text-muted);">Cash you get paid just for holding</div></div>
+</div>
+</div>
+
+<!-- Valuation -->
+<div class="card" style="margin-bottom:10px;">
+<div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">4. Valuation</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;"><span style="font-size:13px;color:var(--text-secondary);">P/E Ratio</span><span id="res-pe" style="font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--text-primary);"></span></div>
+<div id="res-pe-explain" style="font-size:12px;color:var(--text-muted);line-height:1.5;"></div>
+</div>
+
+<!-- Risk -->
+<div class="card" style="margin-bottom:10px;">
+<div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Risk Profile</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+<div><div style="font-size:12px;color:var(--text-muted);">Beta</div><div id="res-beta" style="font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--text-primary);"></div><div id="res-beta-explain" style="font-size:11px;color:var(--text-muted);"></div></div>
+<div><div style="font-size:12px;color:var(--text-muted);">Market Cap</div><div id="res-mcap" style="font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--text-primary);"></div><div style="font-size:11px;color:var(--text-muted);">Company size</div></div>
+<div><div style="font-size:12px;color:var(--text-muted);">Sector</div><div id="res-sector" style="font-weight:600;font-size:14px;color:var(--text-primary);"></div><div style="font-size:11px;color:var(--text-muted);">Industry classification</div></div>
+</div>
+</div>
+</div>
+
+<div id="res-no-fundamentals" class="hidden" style="padding:16px;background:var(--warm-gray);border-radius:3px;margin-top:14px;">
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Fundamental data is not available for this ticker. This may be because it is an ETF, a recently listed company, or a non-U.S. security. Price data above is live. Try searching for a U.S.-listed stock like AAPL, MSFT, or TSLA.</div>
+</div>
+
+<!-- Framework -->
+<div style="margin-top:20px;padding:16px;background:var(--blue-tint);border-radius:3px;">
+<div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Before you decide: ask yourself these questions</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.8;">
+Is the company making money? (Look at net margin and EPS)<br>
+Is it growing? (Look at revenue growth)<br>
+Is it cheap or expensive? (Compare P/E to others in the same sector)<br>
+How much debt does it have? (Look at debt to assets)<br>
+How risky is it? (Look at beta)<br>
+What is the thesis? Why would this stock go up from here?
+</div>
+</div>
+</div>
+
+</div></div></div>
+
 <!-- PORTFOLIO -->
 <div class="page" id="page-portfolio"><div class="container"><div class="section">
 <div class="section-header"><div class="section-title">Team Portfolio <span style="font-size:12px;"><span class="live-dot"></span> <span id="live-label" style="color:var(--green-cat);font-weight:600;">LIVE</span></span></div><div class="section-desc">$10,000 initial investment · 60/30/10 model</div></div>
@@ -262,6 +355,7 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 </div>
 <div id="add-form" class="card hidden" style="margin-bottom:14px;border:1px solid var(--accent-border);">
 <div class="add-grid"><div><label>Ticker</label><input class="input" id="add-ticker" placeholder="AAPL" style="text-transform:uppercase"></div><div><label>Company Name</label><input class="input" id="add-name" placeholder="Apple Inc."></div><div><label>Category</label><select class="input" id="add-cat"><option value="index">Index</option><option value="alpha">Alpha</option><option value="fixed">Fixed</option></select></div><div><label>Shares</label><input class="input" id="add-shares" type="number" placeholder="10"></div><div><label>Cost ($)</label><input class="input" id="add-cost" type="number" step="0.01" placeholder="150"></div><div><label>Date</label><input class="input" id="add-date" type="date"></div></div>
+<div style="display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-top:10px;"><div><label>Pitched By</label><input class="input" id="add-pitchedby" placeholder="Member name"></div><div><label>Investment Thesis</label><input class="input" id="add-thesis" placeholder="Why are we buying this? What is the case?"></div></div>
 <div style="margin-top:10px;display:flex;gap:8px;"><button class="btn btn-primary btn-sm" onclick="addHolding()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleAdd()">Cancel</button></div></div>
 <div class="card" style="padding:0;overflow:hidden;"><div class="table-wrap"><table><thead><tr><th><span class="tip">Ticker<span class="tip-i">?</span><span class="tip-box">The short code identifying a stock on an exchange. Example: AAPL = Apple, VOO = Vanguard S&P 500 ETF.</span></span></th><th>Name</th><th><span class="tip">Cat<span class="tip-i">?</span><span class="tip-box">Which bucket in our 60/30/10 model: Index (broad market ETFs), Alpha (individual stock picks), or Fixed (bonds and low-risk assets). Diversifying across these reduces your overall risk.</span></span></th><th><span class="tip">Sector<span class="tip-i">?</span><span class="tip-box">The industry a company operates in (Tech, Industrials, Healthcare, etc.). Each sector has a different risk/reward profile. Spreading across sectors means one bad industry won't tank your whole portfolio.</span></span></th><th class="text-right"><span class="tip">Date<span class="tip-i">?</span><span class="tip-box">When we bought this position. Holding period matters — patience is key. Investing over a long time reduces your exposure to short-term volatility.</span></span></th><th class="text-right"><span class="tip">Shares<span class="tip-i">?</span><span class="tip-box">How many units of this stock or ETF we own. More shares = more exposure to that investment's price movements, both up and down.</span></span></th><th class="text-right"><span class="tip">Cost<span class="tip-i">?</span><span class="tip-box">The price we paid per share — our cost basis. This is the baseline for calculating whether we've made or lost money on this position.</span></span></th><th class="text-right"><span class="tip">Price<span class="tip-i">?</span><span class="tip-box">The current market price. Prices are set by supply and demand — the equilibrium of buyers and sellers. Is it overvalued or undervalued? That's the key question.</span></span></th><th class="text-right"><span class="tip">Value<span class="tip-i">?</span><span class="tip-box">Shares x Current Price. This is what the position is worth right now if we sold it today.</span></span></th><th class="text-right"><span class="tip">G/L<span class="tip-i">?</span><span class="tip-box">Gain or Loss — the difference between current value and what we paid. Green = making money, red = losing money. Remember: unrealized gains aren't real until you sell.</span></span></th><th class="text-right"><span class="tip">Beta<span class="tip-i">?</span><span class="tip-box">How much this investment moves relative to the overall market. Beta of 1.0 = moves with the S&P 500. Below 1.0 = less volatile (like bonds). Above 1.0 = more volatile. Risk and reward are two sides of the same coin.</span></span></th><th class="text-right"><span class="tip">%Port<span class="tip-i">?</span><span class="tip-box">What percentage of our total portfolio this position represents. If one holding is too large, we're concentrated — the opposite of diversification.</span></span></th><th class="text-right officer-only hidden"></th></tr></thead><tbody id="holdings-tbody"></tbody></table></div></div>
 <div style="margin-top:24px;"><div class="section-title" style="margin-bottom:14px;">Rebalance Advisor <span class="tip"><span class="tip-i">?</span><span class="tip-box">Over time, some investments grow faster than others, causing your allocation to drift from the 60/30/10 target. Rebalancing means selling some of what has grown too large and buying more of what has shrunk — bringing you back to your target mix. This is a disciplined way to buy low and sell high.</span></span></div><div id="rebalance-content"></div></div>
@@ -276,6 +370,49 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="addWatchlist()">Add to Watchlist</button></div></div>
 <div id="watchlist-list"></div>
 <div id="no-wl" class="hidden" style="text-align:center;padding:36px;color:var(--muted);">Watchlist is empty.</div>
+</div>
+
+<!-- Stock Lookup Tool -->
+<div style="margin-top:24px;">
+<div class="section-title" style="margin-bottom:6px;">Stock Lookup</div>
+<div class="section-desc" style="margin-bottom:14px;">Look up any stock to see the key metrics we teach in our curriculum. Type a ticker symbol and hit search.</div>
+<div style="display:flex;gap:8px;margin-bottom:14px;"><input class="input" id="lookup-ticker" placeholder="AAPL" style="text-transform:uppercase;max-width:200px;" onkeydown="if(event.key==='Enter')lookupStock()"><button class="btn btn-primary btn-sm" onclick="lookupStock()">Search</button><span id="lookup-loading" class="hidden"><span class="spinner"></span></span></div>
+<div id="lookup-result"></div>
+</div>
+
+<!-- What If You Had Invested -->
+<div style="margin-top:24px;">
+<div class="section-title" style="margin-bottom:14px;">The Power of Long-Term Investing</div>
+<div class="section-desc" style="margin-bottom:14px;">These are real historical returns. This is what patience looks like.</div>
+<div class="card-grid cols-3" id="whatif-cards">
+<div class="card" style="border-left:3px solid var(--accent);">
+<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;">$1,000 in the S&P 500</div>
+<div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">10 years ago (2016)</div>
+<div style="font-size:24px;font-weight:700;font-family:var(--font-mono);color:var(--green);">$3,240</div>
+<div style="font-size:12px;color:var(--text-secondary);margin-top:6px;">224% total return. That is the market doing the work for you. No stock picking required.</div>
+</div>
+<div class="card" style="border-left:3px solid var(--green);">
+<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;">$1,000 in Apple (AAPL)</div>
+<div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">10 years ago (2016)</div>
+<div style="font-size:24px;font-weight:700;font-family:var(--font-mono);color:var(--green);">$8,700</div>
+<div style="font-size:12px;color:var(--text-secondary);margin-top:6px;">770% return. But you had to pick Apple and hold through multiple 20%+ drops. Most people panic and sell.</div>
+</div>
+<div class="card" style="border-left:3px solid var(--yellow);">
+<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;">$1,000 in a Savings Account</div>
+<div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">10 years ago (2016)</div>
+<div style="font-size:24px;font-weight:700;font-family:var(--font-mono);color:var(--text-muted);">$1,150</div>
+<div style="font-size:12px;color:var(--text-secondary);margin-top:6px;">15% total. Barely kept up with inflation. Your money actually lost purchasing power.</div>
+</div>
+</div>
+<div style="font-size:12px;color:var(--text-muted);margin-top:10px;font-style:italic;">Past performance does not guarantee future results. These figures are approximate and for educational purposes only.</div>
+</div>
+
+<!-- Trade History -->
+<div style="margin-top:24px;">
+<div class="section-title" style="margin-bottom:6px;">Trade History</div>
+<div class="section-desc" style="margin-bottom:14px;">Every decision we have made, and what happened. This is how we learn.</div>
+<div id="trade-history"></div>
+<div id="no-trades" style="color:var(--text-muted);font-size:13px;padding:10px 0;">No trade history recorded yet. As holdings are added and removed, they will appear here.</div>
 </div>
 
 </div></div></div>
@@ -599,6 +736,9 @@ We operate entirely on volunteer effort and donated resources. Your contribution
 <div style="margin-top:8px;">For educational purposes only · Not financial advice · <span id="last-updated">—</span></div>
 <div style="margin-top:6px;"><span class="lock-icon" onclick="toggleOfficerLogin()" title="Officer login" style="font-size:11px;color:rgba(232,237,242,0.4);text-transform:uppercase;letter-spacing:1px;cursor:pointer;">Admin</span></div>
 </div>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
 // ===== LOGOS =====
 document.getElementById('nav-logo').src=LOGO_SRC;
@@ -627,14 +767,15 @@ let slides=[];
 let newsletters=[];
 let watchlist=[];
 let calendar=[];
+let tradeHistory=[];
 let sortBy='category';
 const TARGETS={index:60,alpha:30,fixed:10};
 const CM={index:{label:"Index / Core",color:"#34D399",badge:"badge-index",desc:"ETFs & Index Funds"},alpha:{label:"Alpha / Active",color:"#FBBF24",badge:"badge-alpha",desc:"Individual Stock Picks"},fixed:{label:"Fixed / Low Risk",color:"#60A5FA",badge:"badge-fixed",desc:"Bonds, CDs & Treasuries"}};
 const SI={
-  VOO:{desc:"Tracks the S&P 500 — 500 largest U.S. companies. Own Apple, Microsoft, Amazon & 497 more at 0.03% fee.",why:"Core index position (60% target). Provides broad market exposure with historical annualized returns of approximately 10%.",sector:"Broad Market",type:"ETF",beta:1.0,divYield:1.3},
-  CAT:{desc:"World's largest construction & mining equipment maker. 190+ countries. 30+ years of dividends. Bellwether for the global economy.",why:"Alpha position. Blue-chip industrial with global infrastructure spending tailwind and 30+ year dividend history.",sector:"Industrials",type:"Stock",beta:1.05,divYield:1.6},
-  LMT:{desc:"World's largest defense contractor. F-35 jets, Black Hawks, missile defense. Approx 74% revenue from U.S. government.",why:"Alpha position. Largest global defense contractor with long-duration government contract backlog and consistent dividend growth.",sector:"Aerospace & Defense",type:"Stock",beta:0.55,divYield:2.5},
-  BND:{desc:"10,000+ U.S. investment-grade bonds. Monthly dividends, very low volatility. Your money earns interest steadily.",why:"Fixed income allocation providing portfolio stability and negative correlation to equities during market stress.",sector:"Fixed Income",type:"Bond ETF",beta:0.05,divYield:3.5},
+  VOO:{desc:"Tracks the S&P 500. You own a piece of 500+ of the largest U.S. companies including Apple, Microsoft, Amazon, and more. The expense ratio is 0.03%.",why:"Core index position (60% target). The foundation of our portfolio.",sector:"Broad Market",type:"ETF",beta:1.0,divYield:1.3,pitchedBy:"Founding Officers",thesis:"Instead of trying to pick winners, you own the entire market. Over any 20-year period in history, the S&P 500 has never lost money. This is what patience looks like.",thesisCheck:"Still the core. The S&P 500 continues to be the benchmark that most professional fund managers fail to beat."},
+  CAT:{desc:"World's largest construction and mining equipment maker. Operates in 190+ countries with over 30 years of consecutive dividends.",why:"Blue-chip industrial benefiting from global infrastructure spending.",sector:"Industrials",type:"Stock",beta:1.05,divYield:1.6,pitchedBy:"Member Pitch",thesis:"Infrastructure spending is increasing globally. The U.S. Infrastructure Investment and Jobs Act is driving demand. CAT has pricing power, strong margins, and manageable debt-to-assets.",thesisCheck:"Infrastructure spending remains elevated. Watch quarterly revenue growth to see if the thesis is holding."},
+  LMT:{desc:"World's largest defense contractor. Makes F-35 jets, Black Hawk helicopters, and missile defense systems. About 74% of revenue comes from U.S. government contracts.",why:"Stable government contracts, low volatility, consistent dividend growth.",sector:"Aerospace & Defense",type:"Stock",beta:0.55,divYield:2.5,pitchedBy:"Member Pitch",thesis:"Defense budgets are rising. Government contracts are long-term and recession-resistant. Beta of 0.55 means this stock moves about half as much as the market, balancing riskier positions.",thesisCheck:"Defense spending continues to grow. The low beta is doing exactly what we expected: providing stability when markets get volatile."},
+  BND:{desc:"Holds over 10,000 U.S. investment-grade bonds. Pays monthly dividends with very low volatility.",why:"Portfolio stability and negative correlation to equities during market stress.",sector:"Fixed Income",type:"Bond ETF",beta:0.05,divYield:3.5,pitchedBy:"Founding Officers",thesis:"Bonds tend to go up when stocks go down. That is called negative correlation. When the market crashes, this is the part of the portfolio that holds steady or gains value.",thesisCheck:"Interest rates are elevated, meaning bond yields are attractive right now. BND is doing exactly what it should: providing income and stability."},
 };
 const OFFICERS=[
   {name:"[Name]",role:"President",initials:"P"},{name:"[Giselle Alexander]",role:"Secretary",initials:"S"},
@@ -678,19 +819,21 @@ async function svS(){await db.collection('data').doc('slides').set({v:JSON.strin
 async function svN(){await db.collection('data').doc('newsletters').set({v:JSON.stringify(newsletters)});}
 async function svW(){await db.collection('data').doc('watchlist').set({v:JSON.stringify(watchlist)});}
 async function svC(){await db.collection('data').doc('calendar').set({v:JSON.stringify(calendar)});}
+async function svTH(){await db.collection('data').doc('tradeHistory').set({v:JSON.stringify(tradeHistory)});}
 async function loadAll(){
   try{
-    const docs=await Promise.all(['holdings','slides','newsletters','watchlist','calendar'].map(k=>db.collection('data').doc(k).get()));
+    const docs=await Promise.all(['holdings','slides','newsletters','watchlist','calendar','tradeHistory'].map(k=>db.collection('data').doc(k).get()));
     if(docs[0].exists)holdings=JSON.parse(docs[0].data().v);
     if(docs[1].exists)slides=JSON.parse(docs[1].data().v);
     if(docs[2].exists)newsletters=JSON.parse(docs[2].data().v);
     if(docs[3].exists)watchlist=JSON.parse(docs[3].data().v);
     if(docs[4].exists)calendar=JSON.parse(docs[4].data().v);
+    if(docs[5].exists)tradeHistory=JSON.parse(docs[5].data().v);
   }catch(e){console.warn('Firebase load failed, using defaults',e);}
 }
 // Listen for real-time updates so all users see changes instantly
 function listenForUpdates(){
-  ['holdings','slides','newsletters','watchlist','calendar'].forEach(key=>{
+  ['holdings','slides','newsletters','watchlist','calendar','tradeHistory'].forEach(key=>{
     db.collection('data').doc(key).onSnapshot(doc=>{
       if(!doc.exists)return;
       const d=JSON.parse(doc.data().v);
@@ -699,6 +842,7 @@ function listenForUpdates(){
       if(key==='newsletters')newsletters=d;
       if(key==='watchlist')watchlist=d;
       if(key==='calendar')calendar=d;
+      if(key==='tradeHistory')tradeHistory=d;
       renderAll();
     });
   });
@@ -736,8 +880,8 @@ function calcStats(){const tv=holdings.reduce((s,h)=>s+h.shares*h.currentPrice,0
 function setSort(s,btn){sortBy=s;btn.parentElement.querySelectorAll('.btn-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAll();}
 function getSorted(){return[...holdings].sort((a,b)=>{if(sortBy==='category')return a.category.localeCompare(b.category);if(sortBy==='ticker')return a.ticker.localeCompare(b.ticker);if(sortBy==='value')return(b.shares*b.currentPrice)-(a.shares*a.currentPrice);if(sortBy==='gl')return((b.currentPrice-b.costBasis)/b.costBasis)-((a.currentPrice-a.costBasis)/a.costBasis);return 0;});}
 function toggleAdd(){$('add-form').classList.toggle('hidden');}
-async function addHolding(){const t=$('add-ticker').value.trim().toUpperCase(),n=$('add-name').value.trim()||t,c=$('add-cat').value,sh=parseFloat($('add-shares').value),cb=parseFloat($('add-cost').value),dt=$('add-date').value||new Date().toISOString().split('T')[0];if(!t||!sh||!cb)return alert('Fill in all fields.');const h={id:Date.now(),ticker:t,name:n,category:c,shares:sh,costBasis:cb,currentPrice:cb,datePurchased:dt};const d=await fetchPrice(t);if(d&&d.c>0){h.currentPrice=d.c;h._dp=d.dp||0;h._h=d.h||0;h._l=d.l||0;h._o=d.o||0;h._pc=d.pc||0;}holdings.push(h);sv();renderAll();$('add-ticker').value='';$('add-name').value='';$('add-shares').value='';$('add-cost').value='';$('add-date').value='';$('add-form').classList.add('hidden');}
-function removeHolding(id){if(!confirm('Remove?'))return;holdings=holdings.filter(h=>h.id!==id);sv();renderAll();}
+async function addHolding(){const t=$('add-ticker').value.trim().toUpperCase(),n=$('add-name').value.trim()||t,c=$('add-cat').value,sh=parseFloat($('add-shares').value),cb=parseFloat($('add-cost').value),dt=$('add-date').value||new Date().toISOString().split('T')[0],pb=$('add-pitchedby').value.trim()||'—',th=$('add-thesis').value.trim()||'';if(!t||!sh||!cb)return alert('Fill in all fields.');const h={id:Date.now(),ticker:t,name:n,category:c,shares:sh,costBasis:cb,currentPrice:cb,datePurchased:dt,pitchedBy:pb,thesis:th};const d=await fetchPrice(t);if(d&&d.c>0){h.currentPrice=d.c;h._dp=d.dp||0;h._h=d.h||0;h._l=d.l||0;h._o=d.o||0;h._pc=d.pc||0;}holdings.push(h);sv();renderAll();$('add-ticker').value='';$('add-name').value='';$('add-shares').value='';$('add-cost').value='';$('add-date').value='';$('add-pitchedby').value='';$('add-thesis').value='';$('add-form').classList.add('hidden');}
+function removeHolding(id){if(!confirm('Remove this position? It will be logged in trade history.'))return;const h=holdings.find(x=>x.id===id);if(h){const info=SI[h.ticker]||{};tradeHistory.unshift({id:Date.now(),ticker:h.ticker,name:h.name,action:'SOLD',shares:h.shares,costBasis:h.costBasis,exitPrice:h.currentPrice,date:new Date().toISOString().split('T')[0],datePurchased:h.datePurchased,pitchedBy:h.pitchedBy||info.pitchedBy||'—',thesis:h.thesis||info.thesis||'',gl:((h.currentPrice-h.costBasis)/h.costBasis*100)});svTH();}holdings=holdings.filter(h=>h.id!==id);sv();renderAll();}
 function exportCSV(){const rows=[['Ticker','Name','Category','Date Purchased','Shares','Cost Basis','Current Price','Market Value','Gain/Loss','G/L %']];holdings.forEach(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,p=((h.currentPrice-h.costBasis)/h.costBasis*100).toFixed(2);rows.push([h.ticker,h.name,h.category,h.datePurchased,h.shares,h.costBasis.toFixed(2),h.currentPrice.toFixed(2),v.toFixed(2),gl.toFixed(2),p+'%']);});const csv=rows.map(r=>r.join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='FLC_Portfolio_'+new Date().toISOString().split('T')[0]+'.csv';a.click();}
 
 // ===== SLIDES, NL, WATCHLIST, CALENDAR =====
@@ -759,6 +903,141 @@ async function submitTopic(){const t=$('topic-input').value.trim();if(!t)return;
 let gf='all';
 function filterGloss(c,b){gf=c;document.querySelectorAll('#gloss-filter .btn-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');rGloss();}
 function rGloss(){const f=gf==='all'?GLOSSARY:GLOSSARY.filter(g=>g.cat===gf);$('glossary-content').innerHTML=f.map(g=>`<div style="margin-bottom:10px;"><div class="gloss-term">${g.term}</div><div class="gloss-def">${g.def}</div></div>`).join('');}
+
+// ===== STOCK LOOKUP =====
+async function lookupStock(){
+  const ticker=$('lookup-ticker').value.trim().toUpperCase();
+  if(!ticker)return;
+  $('lookup-loading').classList.remove('hidden');
+  $('lookup-result').innerHTML='';
+  try{
+    // Fetch quote
+    const qRes=await fetch(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${FINNHUB_KEY}`);
+    const q=await qRes.json();
+    // Fetch profile
+    const pRes=await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${ticker}&token=${FINNHUB_KEY}`);
+    const p=await pRes.json();
+    // Fetch basic financials
+    const fRes=await fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${ticker}&metric=all&token=${FINNHUB_KEY}`);
+    const f=await fRes.json();
+    const m=f.metric||{};
+
+    $('lookup-loading').classList.add('hidden');
+
+    if(!q.c||q.c===0){$('lookup-result').innerHTML='<div class="card" style="color:var(--text-muted);padding:20px;">Could not find data for that ticker. Make sure you are using the U.S. stock symbol (like AAPL, not Apple).</div>';return;}
+
+    const price=q.c;
+    const change=q.d||0;
+    const changePct=q.dp||0;
+    const prevClose=q.pc||0;
+    const high=q.h||0;
+    const low=q.l||0;
+    const name=p.name||ticker;
+    const industry=p.finnhubIndustry||'—';
+    const marketCap=p.marketCapitalization||0; // in millions
+    const pe=m.peNormalizedAnnual||m.peTTM||0;
+    const eps=m.epsNormalizedAnnual||m.epsTTM||0;
+    const divYield=m.dividendYieldIndicatedAnnual||0;
+    const wk52High=m['52WeekHigh']||0;
+    const wk52Low=m['52WeekLow']||0;
+    const beta=m.beta||0;
+
+    // Context generators
+    let peContext='';
+    if(pe>0&&pe<15)peContext='Below the S&P 500 average of about 20-25. This stock may be relatively cheap, or the market expects slower growth.';
+    else if(pe>=15&&pe<25)peContext='Near the S&P 500 average. The market is pricing in moderate growth expectations.';
+    else if(pe>=25&&pe<50)peContext='Above average. Investors are paying a premium, usually because they expect strong future earnings growth.';
+    else if(pe>=50)peContext='Very high. The market expects exceptional growth, or earnings are temporarily depressed. High P/E stocks can drop sharply if growth disappoints.';
+    else peContext='Not available or the company is not currently profitable.';
+
+    let betaContext='';
+    if(beta>0&&beta<0.5)betaContext='Very low volatility. This stock barely moves when the market swings. Good for stability.';
+    else if(beta>=0.5&&beta<0.8)betaContext='Less volatile than the market. Tends to drop less in downturns but also gains less in rallies.';
+    else if(beta>=0.8&&beta<1.2)betaContext='Moves roughly with the market. Standard volatility.';
+    else if(beta>=1.2)betaContext='More volatile than the market. Bigger swings both up and down. Higher risk, higher potential reward.';
+    else betaContext='Not available.';
+
+    let divContext='';
+    if(divYield>0&&divYield<1)divContext='Low yield. This company returns little cash to shareholders through dividends, probably reinvesting in growth instead.';
+    else if(divYield>=1&&divYield<3)divContext='Moderate yield. A reasonable balance between growth reinvestment and returning cash to shareholders.';
+    else if(divYield>=3)divContext='High yield. This company returns a significant portion of profits to shareholders. Good for income, but very high yields can sometimes signal the market expects trouble.';
+    else divContext='This company does not currently pay a dividend.';
+
+    const capStr=marketCap>=1000?(marketCap/1000).toFixed(1)+'T':marketCap>=1?marketCap.toFixed(1)+'B':(marketCap*1000).toFixed(0)+'M';
+    const capContext=marketCap>=200?'Mega cap. One of the largest companies in the world.':marketCap>=10?'Large cap. Well-established company with significant market presence.':marketCap>=2?'Mid cap. Medium-sized company. Can offer a blend of growth and stability.':marketCap>0?'Small cap. Smaller company with more growth potential but also more risk.':'—';
+
+    $('lookup-result').innerHTML=`
+    <div class="card" style="padding:0;overflow:hidden;">
+    <div style="padding:18px 20px;background:var(--blue-tint);border-bottom:1px solid var(--border);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:20px;font-weight:700;color:var(--text-primary)">${ticker}</div>
+          <div style="font-size:13px;color:var(--text-secondary)">${name} · ${industry}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:var(--font-mono);font-size:22px;font-weight:700;color:var(--text-primary)">${fmt(price)}</div>
+          <div style="font-size:12px;color:${changePct>=0?'var(--green)':'var(--red)'};">${changePct>=0?'+':''}${changePct.toFixed(2)}% (${change>=0?'+':''}${fmt(change)}) today</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:18px 20px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+
+        <div style="padding:12px;background:var(--off-white);border-radius:3px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Market Cap</div>
+          <div style="font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--text-primary);">$${capStr}</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;line-height:1.4;">${capContext}</div>
+        </div>
+
+        <div style="padding:12px;background:var(--off-white);border-radius:3px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">P/E Ratio</div>
+          <div style="font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--text-primary);">${pe>0?pe.toFixed(1):'N/A'}</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;line-height:1.4;">${peContext}</div>
+        </div>
+
+        <div style="padding:12px;background:var(--off-white);border-radius:3px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">EPS (Earnings Per Share)</div>
+          <div style="font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--text-primary);">${eps?fmt(eps):'N/A'}</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;line-height:1.4;">How much profit one share of stock entitles you to. Higher is better.</div>
+        </div>
+
+        <div style="padding:12px;background:var(--off-white);border-radius:3px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Dividend Yield</div>
+          <div style="font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--text-primary);">${divYield>0?divYield.toFixed(2)+'%':'None'}</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;line-height:1.4;">${divContext}</div>
+        </div>
+
+        <div style="padding:12px;background:var(--off-white);border-radius:3px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Beta</div>
+          <div style="font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--text-primary);">${beta>0?beta.toFixed(2):'N/A'}</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;line-height:1.4;">${betaContext}</div>
+        </div>
+
+        <div style="padding:12px;background:var(--off-white);border-radius:3px;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">52-Week Range</div>
+          <div style="font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--text-primary);">${fmt(wk52Low)} — ${fmt(wk52High)}</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;line-height:1.4;">The lowest and highest price over the past year. ${price>0&&wk52High>0?'Currently trading at '+(price/wk52High*100).toFixed(0)+'% of the 52-week high.':''}</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:14px;padding:12px;background:var(--warm-gray);border-radius:3px;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;margin-bottom:4px;">Today's Trading</div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--text-secondary);">
+          <span>Open: <b style="color:var(--text-primary)">${fmt(q.o||0)}</b></span>
+          <span>High: <b style="color:var(--text-primary)">${fmt(high)}</b></span>
+          <span>Low: <b style="color:var(--text-primary)">${fmt(low)}</b></span>
+          <span>Prev Close: <b style="color:var(--text-primary)">${fmt(prevClose)}</b></span>
+        </div>
+      </div>
+
+    </div></div>`;
+  }catch(e){
+    $('lookup-loading').classList.add('hidden');
+    $('lookup-result').innerHTML='<div class="card" style="color:var(--red);padding:20px;">Something went wrong. Check the ticker and try again. The free API has rate limits, so wait a moment if you have been searching a lot.</div>';
+    console.error('Lookup error:',e);
+  }
+}
 
 // ===== RENDER =====
 function renderAll(){
@@ -799,6 +1078,15 @@ if(riskEl){
   const sharpeColor=sharpe>=1?'var(--green-cat)':sharpe>=0.5?'var(--yellow-cat)':'var(--red)';
   const betaColor=wBeta>1.2?'var(--red)':wBeta>0.8?'var(--yellow-cat)':'var(--green-cat)';
   riskEl.innerHTML=`<div class="card"><div class="stat-label"><span class="tip">Sharpe Ratio<span class="tip-i">?</span><span class="tip-box">How much return are you getting for the risk you're taking? It divides your return (minus the risk-free rate) by your volatility. Above 1.0 is good — it means you're being well-compensated for the risk. Below 0.5 means you might be taking on risk without enough reward.</span></span></div><div class="stat-value" style="color:${sharpeColor}">${sharpe.toFixed(2)}</div><div class="stat-sub">Risk-adjusted return</div></div><div class="card"><div class="stat-label"><span class="tip">Portfolio Beta<span class="tip-i">?</span><span class="tip-box">How much does the portfolio go up and down compared to the overall market? A beta of 1.0 means it moves in sync with the S&P 500. Below 1.0 = less volatile (our bonds bring this down). Above 1.0 = more volatile. Risk is neither bad nor good — it's just something to be aware of.</span></span></div><div class="stat-value" style="color:${betaColor}">${wBeta.toFixed(2)}</div><div class="stat-sub">vs S&P 500</div></div><div class="card"><div class="stat-label"><span class="tip">Wtd Avg Yield<span class="tip-i">?</span><span class="tip-box">The blended dividend yield across all holdings. Dividends are cash payments companies make to shareholders — a way to get stable returns without selling. Calculated as: dividend per share / stock price, weighted by position size.</span></span></div><div class="stat-value">${wYield.toFixed(2)}%</div><div class="stat-sub">Blended dividend</div></div><div class="card"><div class="stat-label"><span class="tip">Concentration<span class="tip-i">?</span><span class="tip-box">How much of the portfolio is in a single holding. If one position is 40%+ of your portfolio, you're concentrated — the opposite of diversification. Spreading across assets reduces the impact of any single investment's poor performance.</span></span></div><div class="stat-value" style="color:${concColor}">${maxHolding.toFixed(1)}%</div><div class="stat-sub">Top holding weight</div></div>`;
+  // Portfolio health narrative
+  let healthNotes=[];
+  if(wBeta<1.0)healthNotes.push('Our portfolio beta of '+wBeta.toFixed(2)+' means we are less volatile than the S&P 500. When the market drops 10%, our portfolio would historically drop about '+(wBeta*10).toFixed(1)+'%. The bonds and low-beta stocks like LMT are doing their job.');
+  else healthNotes.push('Our portfolio beta of '+wBeta.toFixed(2)+' means we move roughly with or more than the market. Consider adding lower-volatility positions to reduce overall risk.');
+  if(maxHolding>40)healthNotes.push('Our largest position is '+maxHolding.toFixed(0)+'% of the portfolio. That is a lot of concentration. Even though VOO itself holds 500 stocks internally, having too much in one position reduces diversification at the portfolio level.');
+  if(sharpe<0.5)healthNotes.push('The Sharpe ratio of '+sharpe.toFixed(2)+' suggests we are not being well compensated for the risk we are taking. To improve this, we could either increase returns (better stock picks) or reduce risk (more bonds/index).');
+  const healthEl=document.createElement('div');healthEl.style.cssText='font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding:12px 14px;background:var(--off-white);border-radius:3px;';
+  healthEl.innerHTML='<b style="color:var(--text-primary)">What this means:</b> '+healthNotes.join(' ');
+  riskEl.parentNode.appendChild(healthEl);
 }
 
 // Sector Diversification
@@ -851,10 +1139,29 @@ $('rebalance-content').innerHTML=!sug.length?`<div class="card" style="text-alig
 
 // Analysis
 $('analysis-cards').innerHTML=holdings.map(h=>{const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,info=SI[h.ticker]||{desc:'No description available.',why:'No investment thesis provided.',sector:'—',type:'Stock'},dp=h._dp||0;let m=`<div class="analysis-metric"><div class="analysis-metric-label">Shares</div><div class="analysis-metric-val">${h.shares}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Cost</div><div class="analysis-metric-val">${fmt(h.costBasis)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Invested</div><div class="analysis-metric-val">${fmt(h.shares*h.costBasis)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Value</div><div class="analysis-metric-val">${fmt(v)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Return</div><div class="analysis-metric-val" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(gp)}</div></div><div class="analysis-metric"><div class="analysis-metric-label">Purchased</div><div class="analysis-metric-val" style="font-size:12px">${h.datePurchased||'—'}</div></div>`;if(h._o)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Open</div><div class="analysis-metric-val">${fmt(h._o)}</div></div>`;if(h._h)m+=`<div class="analysis-metric"><div class="analysis-metric-label">High</div><div class="analysis-metric-val">${fmt(h._h)}</div></div>`;if(h._l)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Low</div><div class="analysis-metric-val">${fmt(h._l)}</div></div>`;if(h._pc)m+=`<div class="analysis-metric"><div class="analysis-metric-label">Prev Close</div><div class="analysis-metric-val">${fmt(h._pc)}</div></div>`;
-return`<div class="analysis-card"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px"><div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--text-primary)">${h.ticker} <span class="badge ${CM[h.category]?.badge}" style="font-size:9px">${h.category}</span></div><div style="font-size:12px;color:var(--secondary)">${h.name} · ${info.sector}</div></div><div style="text-align:right"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmt(h.currentPrice)}</div>${dp?`<div style="font-size:11px;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dp)} today</div>`:''}</div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">${m}</div><div style="font-size:13px;color:var(--secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><b style="color:var(--text-primary)">Overview:</b> ${info.desc}</div><div style="font-size:12px;color:var(--muted);margin-top:6px;">${info.why}</div></div>`;}).join('');
+const pitchedBy=h.pitchedBy||info.pitchedBy||'—';
+const thesis=h.thesis||info.thesis||'';
+const thesisCheck=info.thesisCheck||'';
+const betaVal=info.beta||1.0;
+const betaContext=betaVal<0.5?'Very low volatility. This holding barely moves when the market swings. It is acting as a stabilizer in the portfolio.':betaVal<0.8?'Lower volatility than the market. When the S&P drops 10%, this would historically drop about '+(betaVal*10).toFixed(0)+'%. Good for reducing overall portfolio risk.':betaVal<1.1?'Moves roughly with the market. A beta near 1.0 means this holding does not add or reduce overall portfolio volatility.':'More volatile than the market. When the S&P drops 10%, this could drop '+(betaVal*10).toFixed(0)+'% or more. Higher risk, but also higher potential reward.';
+return`<div class="analysis-card"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px"><div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--text-primary)">${h.ticker} <span class="badge ${CM[h.category]?.badge}" style="font-size:9px">${h.category}</span></div><div style="font-size:12px;color:var(--secondary)">${h.name} · ${info.sector}</div></div><div style="text-align:right"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmt(h.currentPrice)}</div>${dp?`<div style="font-size:11px;color:${dp>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dp)} today</div>`:''}</div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">${m}</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><b style="color:var(--text-primary)">Overview:</b> ${info.desc}</div>${pitchedBy!=='—'?`<div style="font-size:12px;color:var(--text-muted);margin-top:8px;"><b style="color:var(--text-secondary)">Pitched by:</b> ${pitchedBy} · ${h.datePurchased||'—'}</div>`:''} ${thesis?`<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-top:8px;padding:10px 14px;background:var(--blue-tint);border-radius:3px;border-left:3px solid var(--accent);"><b style="color:var(--text-primary)">Investment Thesis:</b> ${thesis}</div>`:''} ${thesisCheck?`<div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:6px;padding:8px 14px;background:var(--off-white);border-radius:3px;"><b style="color:var(--text-primary)">Thesis Check:</b> ${thesisCheck}</div>`:''}<div style="font-size:12px;color:var(--text-secondary);line-height:1.5;margin-top:8px;padding:8px 14px;background:var(--warm-gray);border-radius:3px;"><b style="color:var(--text-primary)">Beta: ${betaVal.toFixed(2)}</b> · ${betaContext}</div></div>`;}).join('');
 
 // Watchlist
 if(watchlist.length){$('no-wl').classList.add('hidden');$('watchlist-list').innerHTML=watchlist.map(w=>`<div class="card wl-card" style="margin-bottom:10px;"><div><div style="font-family:var(--font-mono);font-weight:700;color:var(--text-primary)">${w.ticker} <span style="font-weight:400;color:var(--secondary);font-family:var(--font-sans);font-size:13px">· ${w.name}</span></div><div style="font-size:12px;color:var(--muted);margin-top:3px;">${w.reason||'No notes'} · Added by ${w.by}</div></div><div style="text-align:right;display:flex;align-items:center;gap:12px;">${w.price?`<div><div class="mono" style="font-weight:600;color:var(--text-primary)">${fmt(w.price)}</div>${w.dp?`<div style="font-size:10px;color:${w.dp>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(w.dp)}</div>`:''}</div>`:''}<div>${isOfficer?`<button class="btn-danger" onclick="removeWL(${w.id})" style="font-size:10px;padding:4px 8px;">Remove</button>`:''}</div></div></div>`).join('');}else{$('no-wl').classList.remove('hidden');$('watchlist-list').innerHTML='';}
+
+// Trade History
+if(tradeHistory.length>0){
+  $('no-trades').classList.add('hidden');
+  $('trade-history').innerHTML=tradeHistory.map(t=>{
+    const glPct=t.gl||0;
+    const glColor=glPct>=0?'var(--green)':'var(--red)';
+    const glAmt=t.shares*(t.exitPrice-t.costBasis);
+    return`<div class="card" style="margin-bottom:10px;border-left:3px solid ${glColor}"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;"><div><div style="font-family:var(--font-mono);font-weight:700;color:var(--text-primary)">${t.ticker} <span style="font-weight:400;font-family:var(--font-sans);color:var(--text-muted);font-size:12px">${t.name}</span></div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Sold ${t.date} · Bought ${t.datePurchased||'—'} · ${t.shares} shares · Pitched by ${t.pitchedBy}</div>${t.thesis?`<div style="font-size:12px;color:var(--text-secondary);margin-top:6px;font-style:italic;">Thesis: ${t.thesis}</div>`:''}</div><div style="text-align:right;"><div style="font-family:var(--font-mono);font-weight:700;color:${glColor}">${fmtPct(glPct)}</div><div style="font-size:11px;color:var(--text-muted)">${fmt(t.costBasis)} to ${fmt(t.exitPrice)}</div><div style="font-size:11px;font-weight:600;color:${glColor}">${glAmt>=0?'+':''}${fmt(glAmt)}</div></div></div></div>`;
+  }).join('');
+}else{
+  $('no-trades').classList.remove('hidden');
+  $('trade-history').innerHTML='';
+}
 
 // Calendar
 const now=new Date().toISOString();const upcoming=calendar.filter(c=>c.date>=now.slice(0,16));
@@ -869,6 +1176,156 @@ if(newsletters.length){$('no-nl').classList.add('hidden');$('newsletter-feed').i
 // Team
 $('team-grid').innerHTML=OFFICERS.map(o=>`<div class="team-card"><div class="team-avatar">${o.initials}</div><div class="team-name">${o.name}</div><div class="team-role">${o.role}</div></div>`).join('');
 rGloss();updateOfficerUI();
+}
+
+// ===== STOCK RESEARCH DATA =====
+const RESEARCH_DATA={
+  AAPL:{name:'Apple Inc.',sector:'Technology',mcap:'$3.4T',beta:1.2,pe:33.5,gm:'46.2%',nm:'26.3%',eps:'$6.42',dta:'32%',divYield:'0.5%',revGrowth:'+8.1%'},
+  MSFT:{name:'Microsoft Corp.',sector:'Technology',mcap:'$3.1T',beta:0.9,pe:35.2,gm:'69.4%',nm:'35.6%',eps:'$11.80',dta:'27%',divYield:'0.7%',revGrowth:'+16.0%'},
+  GOOG:{name:'Alphabet Inc.',sector:'Technology',mcap:'$2.1T',beta:1.05,pe:23.8,gm:'57.2%',nm:'25.9%',eps:'$7.54',dta:'12%',divYield:'0.5%',revGrowth:'+14.3%'},
+  AMZN:{name:'Amazon.com Inc.',sector:'Consumer Discretionary',mcap:'$2.3T',beta:1.15,pe:42.1,gm:'48.4%',nm:'8.1%',eps:'$4.90',dta:'38%',divYield:'0%',revGrowth:'+12.5%'},
+  TSLA:{name:'Tesla Inc.',sector:'Consumer Discretionary',mcap:'$780B',beta:2.05,pe:68.3,gm:'18.2%',nm:'7.4%',eps:'$3.12',dta:'18%',divYield:'0%',revGrowth:'+1.2%'},
+  NVDA:{name:'NVIDIA Corp.',sector:'Technology',mcap:'$3.3T',beta:1.65,pe:55.2,gm:'75.0%',nm:'55.8%',eps:'$2.94',dta:'22%',divYield:'0.03%',revGrowth:'+122%'},
+  META:{name:'Meta Platforms Inc.',sector:'Communication Services',mcap:'$1.6T',beta:1.25,pe:27.4,gm:'81.5%',nm:'33.1%',eps:'$22.10',dta:'25%',divYield:'0.3%',revGrowth:'+22.1%'},
+  JPM:{name:'JPMorgan Chase & Co.',sector:'Financial Services',mcap:'$680B',beta:1.1,pe:12.1,gm:'N/A',nm:'32.8%',eps:'$19.75',dta:'91%',divYield:'2.1%',revGrowth:'+11.2%'},
+  JNJ:{name:'Johnson & Johnson',sector:'Healthcare',mcap:'$380B',beta:0.55,pe:15.2,gm:'68.9%',nm:'21.4%',eps:'$9.92',dta:'44%',divYield:'3.2%',revGrowth:'+4.3%'},
+  KO:{name:'Coca-Cola Co.',sector:'Consumer Staples',mcap:'$310B',beta:0.6,pe:28.5,gm:'60.5%',nm:'22.7%',eps:'$2.47',dta:'56%',divYield:'2.8%',revGrowth:'+3.1%'},
+  DIS:{name:'Walt Disney Co.',sector:'Communication Services',mcap:'$205B',beta:1.25,pe:38.9,gm:'34.2%',nm:'4.8%',eps:'$2.88',dta:'45%',divYield:'0.9%',revGrowth:'+3.7%'},
+  NFLX:{name:'Netflix Inc.',sector:'Communication Services',mcap:'$420B',beta:1.35,pe:48.2,gm:'45.3%',nm:'22.5%',eps:'$19.83',dta:'34%',divYield:'0%',revGrowth:'+15.9%'},
+  VOO:{name:'Vanguard S&P 500 ETF',sector:'Broad Market',mcap:'N/A (ETF)',beta:1.0,pe:'21.5 (index avg)',gm:'N/A',nm:'N/A',eps:'N/A',dta:'N/A',divYield:'1.3%',revGrowth:'N/A'},
+  CAT:{name:'Caterpillar Inc.',sector:'Industrials',mcap:'$185B',beta:1.05,pe:17.8,gm:'37.4%',nm:'16.2%',eps:'$22.05',dta:'44%',divYield:'1.6%',revGrowth:'+3.5%'},
+  LMT:{name:'Lockheed Martin Corp.',sector:'Aerospace & Defense',mcap:'$120B',beta:0.55,pe:17.2,gm:'13.2%',nm:'9.8%',eps:'$27.55',dta:'52%',divYield:'2.5%',revGrowth:'+5.4%'},
+  BND:{name:'Vanguard Total Bond Market ETF',sector:'Fixed Income',mcap:'N/A (ETF)',beta:0.05,pe:'N/A',gm:'N/A',nm:'N/A',eps:'N/A',dta:'N/A',divYield:'3.5%',revGrowth:'N/A'},
+  WMT:{name:'Walmart Inc.',sector:'Consumer Staples',mcap:'$670B',beta:0.5,pe:38.5,gm:'24.5%',nm:'2.4%',eps:'$2.41',dta:'42%',divYield:'1.0%',revGrowth:'+5.7%'},
+  V:{name:'Visa Inc.',sector:'Financial Services',mcap:'$620B',beta:0.95,pe:31.2,gm:'67.8%',nm:'54.2%',eps:'$9.73',dta:'48%',divYield:'0.7%',revGrowth:'+10.2%'},
+  UNH:{name:'UnitedHealth Group',sector:'Healthcare',mcap:'$460B',beta:0.65,pe:19.5,gm:'24.1%',nm:'6.4%',eps:'$27.28',dta:'42%',divYield:'1.5%',revGrowth:'+8.5%'},
+  BA:{name:'Boeing Co.',sector:'Industrials',mcap:'$130B',beta:1.45,pe:'N/A (negative earnings)',gm:'-2.1%',nm:'-5.8%',eps:'-$8.35',dta:'106%',divYield:'0%',revGrowth:'+10.8%'},
+};
+
+const FMP_KEY='ZPgmrci1M6rh0Q46Ev4MDFK9T5n1E9n7';
+
+async function fmpFetch(url){
+  try{const r=await fetch(url);return await r.json();}catch(e){return null;}
+}
+
+async function researchStock(){
+  const ticker=$('research-ticker').value.trim().toUpperCase();
+  if(!ticker)return;
+  $('research-loading').classList.remove('hidden');
+  $('research-result').classList.add('hidden');
+
+  // Fetch live price from Finnhub
+  const priceData=await fetchPrice(ticker);
+
+  // Fetch fundamentals from FMP
+  const [profileArr,ratiosArr,growthArr]=await Promise.all([
+    fmpFetch(`https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=${FMP_KEY}`),
+    fmpFetch(`https://financialmodelingprep.com/api/v3/ratios-ttm/${ticker}?apikey=${FMP_KEY}`),
+    fmpFetch(`https://financialmodelingprep.com/api/v3/financial-growth/${ticker}?limit=1&apikey=${FMP_KEY}`)
+  ]);
+
+  $('research-loading').classList.add('hidden');
+
+  const profile=profileArr&&profileArr.length>0?profileArr[0]:null;
+  const ratios=ratiosArr&&ratiosArr.length>0?ratiosArr[0]:null;
+  const growth=growthArr&&growthArr.length>0?growthArr[0]:null;
+
+  // Need at least price data or profile to show anything
+  if((!priceData||!priceData.c||priceData.c<=0)&&!profile){
+    alert('Could not find data for '+ticker+'. Check the ticker symbol and try again.');
+    return;
+  }
+
+  $('research-result').classList.remove('hidden');
+
+  // Price header - use FMP profile price as fallback
+  const price=priceData&&priceData.c>0?priceData.c:(profile?profile.price:0);
+  const dp=priceData?priceData.dp||0:0;
+
+  $('res-ticker').textContent=ticker;
+  $('res-name').textContent=profile?profile.companyName:(RESEARCH_DATA[ticker]?RESEARCH_DATA[ticker].name:ticker);
+  $('res-price').textContent=fmt(price);
+  const dpColor=dp>=0?'var(--green)':'var(--red)';
+  $('res-change').innerHTML='<span style="color:'+dpColor+'">'+fmtPct(dp)+' today</span>';
+
+  const o=priceData?priceData.o||0:0;
+  const h=priceData?priceData.h||0:0;
+  const l=priceData?priceData.l||0:0;
+  const pc=priceData?priceData.pc||0:0;
+  $('res-price-metrics').innerHTML=
+    '<div class="card"><div class="stat-label">Open</div><div class="stat-value" style="font-size:15px;">'+fmt(o)+'</div></div>'+
+    '<div class="card"><div class="stat-label">High</div><div class="stat-value" style="font-size:15px;">'+fmt(h)+'</div></div>'+
+    '<div class="card"><div class="stat-label">Low</div><div class="stat-value" style="font-size:15px;">'+fmt(l)+'</div></div>'+
+    '<div class="card"><div class="stat-label">Prev Close</div><div class="stat-value" style="font-size:15px;">'+fmt(pc)+'</div></div>';
+
+  // Check if we have fundamental data
+  if(profile||ratios){
+    $('res-fundamentals').classList.remove('hidden');
+    $('res-no-fundamentals').classList.add('hidden');
+
+    // Financial Position - Debt to Assets
+    const dta=ratios&&ratios.debtEquityRatioTTM!=null?ratios.debtRatioTTM:null;
+    const dtaPct=dta!=null?(dta*100).toFixed(1)+'%':'N/A';
+    $('res-dta').textContent=dtaPct;
+    const dtaNum=dta!=null?dta*100:null;
+    $('res-dta-explain').textContent=dtaNum==null?'Data not available for this security.':dtaNum>80?'High debt. Over 80% of assets are financed by debt. This company is heavily leveraged, which increases risk if revenue drops.':dtaNum>50?'Moderate debt. About half of assets are debt-financed. Not unusual for this industry, but worth monitoring.':'Low debt. The company owns more than it owes. This is a strong financial position.';
+
+    // Profitability
+    const gm=ratios&&ratios.grossProfitMarginTTM!=null?(ratios.grossProfitMarginTTM*100).toFixed(1)+'%':'N/A';
+    const nm=ratios&&ratios.netProfitMarginTTM!=null?(ratios.netProfitMarginTTM*100).toFixed(1)+'%':'N/A';
+    const eps=profile&&profile.eps!=null?'$'+profile.eps.toFixed(2):'N/A';
+    $('res-gm').textContent=gm;
+    $('res-nm').textContent=nm;
+    $('res-eps').textContent=eps;
+
+    // Growth
+    const revGr=growth&&growth.revenueGrowth!=null?(growth.revenueGrowth>=0?'+':'')+(growth.revenueGrowth*100).toFixed(1)+'%':'N/A';
+    const divY=ratios&&ratios.dividendYielTTM!=null?(ratios.dividendYielTTM*100).toFixed(2)+'%':(profile&&profile.lastDiv!=null&&price>0?(profile.lastDiv/price*100).toFixed(2)+'%':'0%');
+    $('res-revgrowth').textContent=revGr;
+    $('res-divyield').textContent=divY;
+
+    // Valuation - P/E
+    const pe=ratios&&ratios.peRatioTTM!=null?ratios.peRatioTTM:(profile&&profile.eps&&profile.eps>0?price/profile.eps:null);
+    const peDisplay=pe!=null&&pe>0?pe.toFixed(1):(pe!=null&&pe<=0?'N/A (negative earnings)':'N/A');
+    $('res-pe').textContent=peDisplay;
+    const peNum=pe!=null&&pe>0?pe:0;
+    $('res-pe-explain').textContent=peNum>50?'High P/E. You are paying $'+peNum.toFixed(0)+' for every $1 of earnings. This is expensive, but could be justified if the company is growing fast. Compare to others in the same sector.':peNum>25?'Moderate P/E. Reasonably priced for a growing company. Not cheap, not expensive.':peNum>0?'Low P/E. You are paying relatively little per dollar of earnings. Could be good value, or it could mean the market expects growth to slow. Look at revenue growth to decide.':'P/E is not available. The company may have negative earnings, meaning it is currently losing money.';
+
+    // Risk
+    const beta=profile&&profile.beta!=null?profile.beta:1.0;
+    const mcapRaw=profile?profile.mktCap:0;
+    const mcap=mcapRaw>1e12?'$'+(mcapRaw/1e12).toFixed(1)+'T':mcapRaw>1e9?'$'+(mcapRaw/1e9).toFixed(0)+'B':mcapRaw>1e6?'$'+(mcapRaw/1e6).toFixed(0)+'M':'N/A';
+    const sector=profile?profile.sector||'N/A':'N/A';
+    $('res-beta').textContent=beta.toFixed(2);
+    $('res-beta-explain').textContent=beta<0.5?'Very low volatility':beta<0.8?'Less volatile than the market':beta<1.2?'Moves with the market':'More volatile than the market';
+    $('res-mcap').textContent=mcap;
+    $('res-sector').textContent=sector;
+  }else{
+    // Fall back to hardcoded data
+    const rd=RESEARCH_DATA[ticker];
+    if(rd){
+      $('res-fundamentals').classList.remove('hidden');
+      $('res-no-fundamentals').classList.add('hidden');
+      $('res-dta').textContent=rd.dta;
+      const dtaNum=parseFloat(rd.dta);
+      $('res-dta-explain').textContent=isNaN(dtaNum)?'This metric does not apply to ETFs.':dtaNum>80?'High debt. Over 80% of assets are financed by debt.':dtaNum>50?'Moderate debt. About half of assets are debt-financed.':'Low debt. Strong financial position.';
+      $('res-gm').textContent=rd.gm;
+      $('res-nm').textContent=rd.nm;
+      $('res-eps').textContent=rd.eps;
+      $('res-revgrowth').textContent=rd.revGrowth;
+      $('res-divyield').textContent=rd.divYield;
+      $('res-pe').textContent=typeof rd.pe==='number'?rd.pe.toFixed(1):rd.pe;
+      const peNum=typeof rd.pe==='number'?rd.pe:0;
+      $('res-pe-explain').textContent=peNum>50?'High P/E.':peNum>25?'Moderate P/E.':peNum>0?'Low P/E.':'P/E not applicable.';
+      $('res-beta').textContent=rd.beta.toFixed(2);
+      $('res-beta-explain').textContent=rd.beta<0.5?'Very low volatility':rd.beta<0.8?'Less volatile than the market':rd.beta<1.2?'Moves with the market':'More volatile than the market';
+      $('res-mcap').textContent=rd.mcap;
+      $('res-sector').textContent=rd.sector;
+    }else{
+      $('res-fundamentals').classList.add('hidden');
+      $('res-no-fundamentals').classList.remove('hidden');
+    }
+  }
 }
 
 // ===== ACCORDION TOGGLE =====
