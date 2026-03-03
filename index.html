@@ -1217,11 +1217,12 @@ async function researchStock(){
   // Fetch live price from Finnhub
   const priceData=await fetchPrice(ticker);
 
-  // Fetch fundamentals from FMP
-  const [profileArr,ratiosArr,growthArr]=await Promise.all([
+  // Fetch fundamentals from FMP (try multiple endpoints for best coverage)
+  const [profileArr,ratiosArr,growthArr,metricsArr]=await Promise.all([
     fmpFetch(`https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=${FMP_KEY}`),
     fmpFetch(`https://financialmodelingprep.com/api/v3/ratios-ttm/${ticker}?apikey=${FMP_KEY}`),
-    fmpFetch(`https://financialmodelingprep.com/api/v3/financial-growth/${ticker}?limit=1&apikey=${FMP_KEY}`)
+    fmpFetch(`https://financialmodelingprep.com/api/v3/financial-growth/${ticker}?limit=1&apikey=${FMP_KEY}`),
+    fmpFetch(`https://financialmodelingprep.com/api/v3/key-metrics-ttm/${ticker}?apikey=${FMP_KEY}`)
   ]);
 
   $('research-loading').classList.add('hidden');
@@ -1229,11 +1230,23 @@ async function researchStock(){
   const profile=profileArr&&profileArr.length>0?profileArr[0]:null;
   const ratios=ratiosArr&&ratiosArr.length>0?ratiosArr[0]:null;
   const growth=growthArr&&growthArr.length>0?growthArr[0]:null;
+  const metrics=metricsArr&&metricsArr.length>0?metricsArr[0]:null;
 
-  // Need at least price data or profile to show anything
+  // Show whatever we have, even if partial
   if((!priceData||!priceData.c||priceData.c<=0)&&!profile){
-    alert('Could not find data for '+ticker+'. Check the ticker symbol and try again.');
-    return;
+    // Try showing just from hardcoded data
+    const rd=RESEARCH_DATA[ticker];
+    if(!rd){
+      $('research-result').classList.remove('hidden');
+      $('res-ticker').textContent=ticker;
+      $('res-name').textContent='Data unavailable';
+      $('res-price').textContent='--';
+      $('res-change').innerHTML='<span style="color:var(--text-muted)">Could not find live data for this ticker. It may be a recently listed company, an international stock, or the ticker may be incorrect.</span>';
+      $('res-price-metrics').innerHTML='';
+      $('res-fundamentals').classList.add('hidden');
+      $('res-no-fundamentals').classList.remove('hidden');
+      return;
+    }
   }
 
   $('research-result').classList.remove('hidden');
@@ -1259,12 +1272,12 @@ async function researchStock(){
     '<div class="card"><div class="stat-label">Prev Close</div><div class="stat-value" style="font-size:15px;">'+fmt(pc)+'</div></div>';
 
   // Check if we have fundamental data
-  if(profile||ratios){
+  if(profile||ratios||metrics){
     $('res-fundamentals').classList.remove('hidden');
     $('res-no-fundamentals').classList.add('hidden');
 
     // Financial Position - Debt to Assets
-    const dta=ratios&&ratios.debtEquityRatioTTM!=null?ratios.debtRatioTTM:null;
+    const dta=ratios&&ratios.debtRatioTTM!=null?ratios.debtRatioTTM:(metrics&&metrics.debtToAssetsTTM!=null?metrics.debtToAssetsTTM:null);
     const dtaPct=dta!=null?(dta*100).toFixed(1)+'%':'N/A';
     $('res-dta').textContent=dtaPct;
     const dtaNum=dta!=null?dta*100:null;
@@ -1280,7 +1293,7 @@ async function researchStock(){
 
     // Growth
     const revGr=growth&&growth.revenueGrowth!=null?(growth.revenueGrowth>=0?'+':'')+(growth.revenueGrowth*100).toFixed(1)+'%':'N/A';
-    const divY=ratios&&ratios.dividendYielTTM!=null?(ratios.dividendYielTTM*100).toFixed(2)+'%':(profile&&profile.lastDiv!=null&&price>0?(profile.lastDiv/price*100).toFixed(2)+'%':'0%');
+    const divY=ratios&&ratios.dividendYielTTM!=null?(ratios.dividendYielTTM*100).toFixed(2)+'%':(metrics&&metrics.dividendYieldTTM!=null?(metrics.dividendYieldTTM*100).toFixed(2)+'%':(profile&&profile.lastDiv!=null&&price>0?(profile.lastDiv/price*100).toFixed(2)+'%':'0%'));
     $('res-revgrowth').textContent=revGr;
     $('res-divyield').textContent=divY;
 
@@ -1585,5 +1598,6 @@ function mpRender(){
 </script>
 </body>
 </html>
+
 
 
