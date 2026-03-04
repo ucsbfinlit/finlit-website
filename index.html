@@ -798,10 +798,12 @@ document.getElementById('team-logo').src=LOGO_SRC;
 // ===== FIREBASE =====
 let db=null;
 try{
-  const firebaseConfig={apiKey:"AIzaSyBOIt3sGDr6CBOTZPGdjsl4d-1UzJwIT8o",authDomain:"flc-website-8999c.firebaseapp.com",projectId:"flc-website-8999c",storageBucket:"flc-website-8999c.firebasestorage.app",messagingSenderId:"614437995336",appId:"1:614437995336:web:36822c5af65d6cb294e97d"};
-  firebase.initializeApp(firebaseConfig);
-  db=firebase.firestore();
-}catch(e){console.warn('Firebase not available — site will run with defaults.',e);}
+  if(typeof firebase!=='undefined'){
+    const firebaseConfig={apiKey:"AIzaSyBOIt3sGDr6CBOTZPGdjsl4d-1UzJwIT8o",authDomain:"flc-website-8999c.firebaseapp.com",projectId:"flc-website-8999c",storageBucket:"flc-website-8999c.firebasestorage.app",messagingSenderId:"614437995336",appId:"1:614437995336:web:36822c5af65d6cb294e97d"};
+    firebase.initializeApp(firebaseConfig);
+    db=firebase.firestore();
+  }else{console.warn('Firebase SDK not loaded — site will run with defaults.');}
+}catch(e){console.warn('Firebase init failed — site will run with defaults.',e);}
 
 // ===== CONFIG =====
 const FINNHUB_KEY="d6flfbhr01qqnmbp4sv0d6flfbhr01qqnmbp4svg";
@@ -1664,6 +1666,7 @@ const MP_INITIAL=10000;
 
 // Google Sign In
 function googleSignIn(){
+  if(typeof firebase==='undefined'||!firebase.auth){alert('Sign-in not available. Please disable tracking prevention or try another browser.');return;}
   const provider=new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).catch(e=>{
     console.error('Sign-in error:',e);
@@ -1671,10 +1674,12 @@ function googleSignIn(){
   });
 }
 function googleSignOut(){
+  if(typeof firebase==='undefined'||!firebase.auth)return;
   firebase.auth().signOut();
 }
 
 // Auth state listener
+if(typeof firebase!=='undefined'&&firebase.auth){
 firebase.auth().onAuthStateChanged(async user=>{
   currentUser=user;
   if(user){
@@ -1697,6 +1702,7 @@ firebase.auth().onAuthStateChanged(async user=>{
     mpHoldings=[];
   }
 });
+} // end firebase auth check
 
 // Load personal holdings from Firestore
 async function mpLoad(){
@@ -1854,5 +1860,3 @@ function mpRender(){
   if(isEditor)enableEditor();
   // Apply fallback prices if first load
   if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:489.55,BND:72.88};ho
-
-
