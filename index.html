@@ -157,6 +157,9 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 .slide-placeholder{width:100%;aspect-ratio:16/9;border:1px solid var(--border);border-radius:3px;background:var(--off-white);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-muted);margin-bottom:14px;}
 .analysis-metric{background:var(--off-white);border:1px solid var(--border);border-radius:3px;padding:10px 12px;}
 .analysis-metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:3px;}
+.editable-active{outline:2px dashed var(--accent);outline-offset:3px;cursor:text;min-height:20px;}
+.editable-active:hover{background:var(--accent-light);}
+.editor-bar{background:#FFF8E1;border:1px solid #FFD54F;border-radius:3px;padding:8px 16px;font-size:12px;color:#F57F17;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
 .analysis-metric-val{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--text-primary);}
 .nl-full{display:none;font-size:14px;color:var(--secondary);line-height:1.7;margin-top:8px;}.nl-full.open{display:block;}
 .nl-toggle{font-size:12px;color:var(--accent);cursor:pointer;display:inline-block;margin-top:6px;}
@@ -182,6 +185,7 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 
 <!-- Officer unlock bar -->
 <div id="officer-bar" class="hidden" style="max-width:1200px;margin:10px auto 0;padding:0 32px;"><div class="officer-bar">Officer Mode — you can edit holdings, meetings, newsletters, and watchlist <button class="btn btn-sm btn-ghost" onclick="lockOfficer()" style="padding:4px 12px;font-size:11px;">Lock</button></div></div>
+<div id="editor-bar" class="hidden" style="max-width:1200px;margin:10px auto 0;padding:0 32px;"><div class="editor-bar">Editor Mode — click on highlighted text to edit. <button class="btn btn-sm btn-primary" onclick="saveAllEdits()" style="padding:4px 12px;font-size:11px;">Save All Changes</button> <button class="btn btn-sm btn-ghost" onclick="lockEditor()" style="padding:4px 12px;font-size:11px;">Exit Editor</button></div></div>
 
 <!-- HOME -->
 
@@ -189,8 +193,8 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <div class="page active" id="page-home"><div class="container">
 <div class="hero"><div class="hero-content">
 <img id="hero-logo" class="hero-logo" alt="FLC">
-<h1>Learn to <span class="accent">Invest</span>, Together.</h1>
-<p>The Financial Literacy Club at UCSB teaches real investing skills through hands-on education. No experience needed. No real money required. Just show up and start learning.</p>
+<h1 id="ed-hero-title" data-editable="hero-title">Learn to <span class="accent">Invest</span>, Together.</h1>
+<p>The Financial Literacy Club at UCSB <span data-editable="hero-desc">teaches real investing skills through hands-on education. No experience needed. No real money required. Just show up and start learning.</span></p>
 <div class="hero-btns"><button class="btn btn-primary" onclick="navTo('learn')">Start Learning</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('myportfolio')">Build a Portfolio</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('about')">Join Us</button></div>
 </div></div>
 
@@ -200,17 +204,17 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <div class="card" style="cursor:pointer;" onclick="navTo('learn')">
 <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Module 1</div>
 <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Investment Basics</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">What stocks, bonds, and ETFs actually are. How to open a brokerage account. How much money you need to start (less than you think).</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;"><span data-editable="mod1-desc">What stocks, bonds, and ETFs actually are. How to open a brokerage account. How much money you need to start (less than you think).</span></div>
 </div>
 <div class="card" style="cursor:pointer;" onclick="navTo('learn')">
 <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Module 2</div>
 <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Risk and Reward</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Why some investments go up more than others. How to think about risk. Sectors, value vs growth, and why patience beats timing.</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;"><span data-editable="mod2-desc">Why some investments go up more than others. How to think about risk. Sectors, value vs growth, and why patience beats timing.</span></div>
 </div>
 <div class="card" style="cursor:pointer;" onclick="navTo('learn')">
 <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Module 3</div>
 <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Picking Stocks</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">How to read a balance sheet. What margins and earnings tell you. How to figure out if a stock is cheap or expensive.</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;"><span data-editable="mod3-desc">How to read a balance sheet. What margins and earnings tell you. How to figure out if a stock is cheap or expensive.</span></div>
 </div>
 </div></div>
 
@@ -221,7 +225,7 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 </div></div>
 
 <div class="section">
-<div class="section-header"><div class="section-title">How We Invest</div><div class="section-desc">Our mock portfolio uses a 60/30/10 allocation model. This is a teaching framework, not a recommendation.</div></div>
+<div class="section-header"><div class="section-title" data-editable="model-title">How We Invest</div><div class="section-desc" data-editable="model-desc">Our mock portfolio uses a 60/30/10 allocation model. This is a teaching framework, not a recommendation.</div></div>
 <div class="card" style="padding:0;overflow:hidden;">
 <table style="width:100%;"><thead><tr><th>Category</th><th>What It Is</th><th class="text-right">Target</th></tr></thead>
 <tbody>
@@ -338,6 +342,7 @@ What is the thesis? Why would this stock go up from here?
 <div class="section-blue" style="margin-bottom:18px;border-radius:4px;margin:0 0 18px 0;padding:20px;">
 <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Portfolio Risk Metrics <span class="tip"><span class="tip-i">?</span><span class="tip-box">These numbers tell you about the risk profile of the portfolio as a whole. Risk is defined as volatility — how much your investment goes up and down. Higher risk can mean higher rewards, but also bigger losses. Understanding your risk helps you make better decisions.</span></span></div>
 <div class="card-grid cols-4" id="risk-metrics"></div>
+<div id="risk-health-narrative" style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding:12px 14px;background:var(--off-white);border-radius:3px;"></div>
 <div class="edu" style="margin-top:14px;"><h4>Risk Metrics</h4><p><b>Sharpe Ratio</b> measures risk-adjusted return per unit of volatility. Values above 1.0 indicate favorable risk-adjusted performance. <b>Portfolio Beta</b> quantifies systematic risk relative to the S&P 500 (1.0 = market equivalent). <b>Concentration</b> measures single-position risk exposure.</p></div>
 </div>
 
@@ -597,7 +602,7 @@ What is the thesis? Why would this stock go up from here?
 <div class="page" id="page-about"><div class="container">
 
 <div class="section">
-<div class="section-header"><div class="section-title">About the Club</div><div class="section-desc">A student-run organization at UCSB focused on investment education.</div></div>
+<div class="section-header"><div class="section-title">About the Club</div><div class="section-desc" data-editable="about-desc">A student-run organization at UCSB focused on investment education.</div></div>
 </div>
 
 <!-- Team -->
@@ -677,9 +682,9 @@ Networking opportunities and community events<br>
 <div class="card" style="margin-bottom:20px;padding:28px;">
 <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">Why Your Support Matters</div>
 <div style="font-size:14px;color:var(--text-secondary);line-height:1.8;">
-The Financial Literacy Club at UC Santa Barbara is one of the only organizations on campus dedicated entirely to investment education. We serve students across all majors, most of whom have never been exposed to personal finance or portfolio management before college. Our members learn to analyze securities, build diversified portfolios, and develop the financial decision-making skills they will use for the rest of their lives.
+<span data-editable="support-why">The Financial Literacy Club at UC Santa Barbara is one of the only organizations on campus dedicated entirely to investment education. We serve students across all majors, most of whom have never been exposed to personal finance or portfolio management before college. Our members learn to analyze securities, build diversified portfolios, and develop the financial decision-making skills they will use for the rest of their lives.</span>
 <br><br>
-We operate entirely on volunteer effort and donated resources. Your contribution directly funds the tools and programming that make this possible: research subscriptions, educational materials, guest speaker honorariums, event production, and the technology infrastructure behind our portfolio simulation platform. Every dollar extends our reach to more students who would otherwise graduate without basic financial literacy.
+<span data-editable="support-where">We operate entirely on volunteer effort and donated resources. Your contribution directly funds the tools and programming that make this possible: research subscriptions, educational materials, guest speaker honorariums, event production, and the technology infrastructure behind our portfolio simulation platform. Every dollar extends our reach to more students who would otherwise graduate without basic financial literacy.</span>
 </div>
 </div>
 
@@ -715,13 +720,13 @@ We operate entirely on volunteer effort and donated resources. Your contribution
 <div style="margin-bottom:20px;">
 <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">What Our Members Say</div>
 <div class="card" style="margin-bottom:10px;padding:20px;">
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;">PLACEHOLDER</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;" data-editable="testimonial-1">PLACEHOLDER</div>
 </div>
 <div class="card" style="margin-bottom:10px;padding:20px;">
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;">PLACEHOLDER</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;" data-editable="testimonial-2">PLACEHOLDER</div>
 </div>
 <div class="card" style="margin-bottom:10px;padding:20px;">
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;">PLACEHOLDER</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;" data-editable="testimonial-3">PLACEHOLDER</div>
 </div>
 </div>
 
@@ -760,6 +765,9 @@ const db=firebase.firestore();
 // ===== CONFIG =====
 const FINNHUB_KEY="d6flfbhr01qqnmbp4sv0d6flfbhr01qqnmbp4svg";
 const OFFICER_PASS="FLC2025";
+const EDITOR_PASS="WEBFLC2025";
+let isEditor=localStorage.getItem('flc_editor')==='true';
+let siteContent={}; // Stores all editable text from Firebase
 const INITIAL_INVESTMENT=10000;
 let cashBalance=INITIAL_INVESTMENT; // Will be recalculated from holdings
 
@@ -858,15 +866,92 @@ function listenForUpdates(){
 
 // ===== OFFICER AUTH =====
 function toggleOfficerLogin(){
-  if(isOfficer){lockOfficer();return;}
-  const p=prompt('Enter officer password:');
-  if(p===OFFICER_PASS){isOfficer=true;localStorage.setItem('flc_officer','true');renderAll();updateOfficerUI();}
-  else if(p!==null) alert('Incorrect password.');
+  if(isOfficer||isEditor){lockOfficer();lockEditor();return;}
+  const mode=prompt('Enter access code:\n(Officers: portfolio management)\n(Editors: website content)');
+  if(mode===null)return;
+  if(mode===OFFICER_PASS){isOfficer=true;localStorage.setItem('flc_officer','true');renderAll();updateOfficerUI();}
+  else if(mode===EDITOR_PASS){isEditor=true;localStorage.setItem('flc_editor','true');enableEditor();}
+  else alert('Incorrect code.');
 }
 function lockOfficer(){isOfficer=false;localStorage.removeItem('flc_officer');renderAll();updateOfficerUI();}
+function lockEditor(){isEditor=false;localStorage.removeItem('flc_editor');disableEditor();}
 function updateOfficerUI(){
   document.querySelectorAll('.officer-only').forEach(el=>el.classList.toggle('hidden',!isOfficer));
   $('officer-bar').classList.toggle('hidden',!isOfficer);
+}
+
+// ===== EDITOR MODE =====
+const EDITABLE_FIELDS={
+  'hero-title':'Learn to Invest, Together.',
+  'hero-desc':'The Financial Literacy Club at UCSB teaches real investing skills through hands-on education. No experience needed. No real money required. Just show up and start learning.',
+  'model-title':'How We Invest',
+  'model-desc':'Our mock portfolio uses a 60/30/10 allocation model. This is a teaching framework, not a recommendation.',
+  'support-why':'<span data-editable="support-why">The Financial Literacy Club at UC Santa Barbara is one of the only organizations on campus dedicated entirely to investment education. We serve students across all majors, most of whom have never been exposed to personal finance or portfolio management before college. Our members learn to analyze securities, build diversified portfolios, and develop the financial decision-making skills they will use for the rest of their lives.</span>',
+  'support-where':'We operate entirely on volunteer effort and donated resources. Your contribution directly funds the tools and programming that make this possible: research subscriptions, educational materials, guest speaker honorariums, event production, and the technology infrastructure behind our portfolio simulation platform.',
+  'officer-0-name':'[Name]','officer-0-role':'President',
+  'officer-1-name':'[Giselle Alexander]','officer-1-role':'Secretary',
+  'officer-2-name':'[Name]','officer-2-role':'Internal Affairs',
+  'officer-3-name':'[Name]','officer-3-role':'Dir. of Marketing',
+  'officer-4-name':'[Name]','officer-4-role':'Dir. of Creative Media',
+  'officer-5-name':'[Name]','officer-5-role':'Dir. of Outreach',
+  'officer-6-name':'[Name]','officer-6-role':'Dir. of Events',
+};
+
+async function loadSiteContent(){
+  try{
+    const doc=await db.collection('data').doc('siteContent').get();
+    if(doc.exists)siteContent=JSON.parse(doc.data().v)||{};
+  }catch(e){console.warn('Failed to load site content',e);}
+  applySiteContent();
+}
+
+function applySiteContent(){
+  // Apply saved content to elements
+  document.querySelectorAll('[data-editable]').forEach(el=>{
+    const key=el.getAttribute('data-editable');
+    if(siteContent[key]){
+      el.textContent=siteContent[key];
+    }
+  });
+  // Apply officer names
+  for(let i=0;i<OFFICERS.length;i++){
+    if(siteContent['officer-'+i+'-name'])OFFICERS[i].name=siteContent['officer-'+i+'-name'];
+    if(siteContent['officer-'+i+'-role'])OFFICERS[i].role=siteContent['officer-'+i+'-role'];
+  }
+}
+
+function enableEditor(){
+  $('editor-bar').classList.remove('hidden');
+  document.querySelectorAll('[data-editable]').forEach(el=>{
+    el.classList.add('editable-active');
+    el.contentEditable=true;
+  });
+}
+
+function disableEditor(){
+  $('editor-bar').classList.add('hidden');
+  document.querySelectorAll('[data-editable]').forEach(el=>{
+    el.classList.remove('editable-active');
+    el.contentEditable=false;
+  });
+}
+
+async function saveAllEdits(){
+  // Collect all edited content
+  document.querySelectorAll('[data-editable]').forEach(el=>{
+    const key=el.getAttribute('data-editable');
+    siteContent[key]=el.textContent.trim();
+  });
+  // Save officer data back
+  for(let i=0;i<OFFICERS.length;i++){
+    if(siteContent['officer-'+i+'-name'])OFFICERS[i].name=siteContent['officer-'+i+'-name'];
+    if(siteContent['officer-'+i+'-role'])OFFICERS[i].role=siteContent['officer-'+i+'-role'];
+  }
+  try{
+    await db.collection('data').doc('siteContent').set({v:JSON.stringify(siteContent)});
+    alert('Changes saved.');
+    renderAll();
+  }catch(e){alert('Failed to save. Try again.');console.error(e);}
 }
 
 // ===== NAV =====
@@ -1148,9 +1233,7 @@ if(riskEl){
   else healthNotes.push('Our portfolio beta of '+wBeta.toFixed(2)+' means we move roughly with or more than the market. Consider adding lower-volatility positions to reduce overall risk.');
   if(maxHolding>40)healthNotes.push('Our largest position is '+maxHolding.toFixed(0)+'% of the portfolio. That is a lot of concentration. Even though VOO itself holds 500 stocks internally, having too much in one position reduces diversification at the portfolio level.');
   if(sharpe<0.5)healthNotes.push('The Sharpe ratio of '+sharpe.toFixed(2)+' suggests we are not being well compensated for the risk we are taking. To improve this, we could either increase returns (better stock picks) or reduce risk (more bonds/index).');
-  let existingHealth=document.getElementById('risk-health-narrative');
-  if(!existingHealth){existingHealth=document.createElement('div');existingHealth.id='risk-health-narrative';existingHealth.style.cssText='font-size:12px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding:12px 14px;background:var(--off-white);border-radius:3px;';riskEl.parentNode.appendChild(existingHealth);}
-  existingHealth.innerHTML='<b style="color:var(--text-primary)">What this means:</b> '+healthNotes.join(' ');
+  $('risk-health-narrative').innerHTML='<b style="color:var(--text-primary)">What this means:</b> '+healthNotes.join(' ');
 }
 
 // Sector Diversification
@@ -1616,6 +1699,8 @@ function mpRender(){
 // ===== INIT =====
 (async function(){
   await loadAll();
+  await loadSiteContent();
+  if(isEditor)enableEditor();
   // Apply fallback prices if first load
   if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:489.55,BND:72.88};holdings.forEach(h=>{if(fb[h.ticker])h.currentPrice=fb[h.ticker];});}
   renderAll();
@@ -1627,6 +1712,7 @@ function mpRender(){
 </script>
 </body>
 </html>
+
 
 
 
