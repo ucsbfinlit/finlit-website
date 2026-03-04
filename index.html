@@ -61,7 +61,7 @@ a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
 .hero .accent{color:#7CB3F0;}
 .hero p{font-size:16px;color:rgba(232,237,242,0.8);line-height:1.7;margin-bottom:28px;max-width:550px;}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
-@media(max-width:600px){.hero h1{font-size:30px;}.hero{padding:36px 0 24px;}.hero-logo{width:80px;}}
+@media(max-width:600px){.hero h1{font-size:30px;}.hero{padding:36px 0 24px;}.hero-logo{width:80px;}.hero-grid-layout{grid-template-columns:1fr!important;gap:28px!important;}}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:3px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;border:none;transition:all 0.15s;letter-spacing:0.2px;}
 .btn-primary{background:var(--accent);color:#FFFFFF;}
 .btn-primary:hover{opacity:0.9;text-decoration:none;}
@@ -199,17 +199,19 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 
 <!-- HOME -->
 <div class="page active" id="page-home"><div class="container">
-<div class="hero"><div class="hero-content">
+<div class="hero">
+<div style="display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;" class="hero-grid-layout">
+<div class="hero-content">
 <img id="hero-logo" class="hero-logo" alt="FLC">
 <h1 id="ed-hero-title" data-editable="hero-title">Learn to <span class="accent">Invest</span>, Together.</h1>
 <p>The Financial Literacy Club at UCSB <span data-editable="hero-desc">teaches real investing skills through hands-on education. No experience needed. No real money required. Just show up and start learning.</span></p>
 <div class="hero-btns"><button class="btn btn-primary" onclick="navTo('learn')">Start Learning</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('myportfolio')">Build a Portfolio</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('about')">Join Us</button></div>
 </div>
-<!-- Stats strip -->
-<div style="display:flex;gap:32px;margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.15);flex-wrap:wrap;">
-<div><div style="font-family:var(--font-serif);font-size:32px;font-weight:700;color:#FFFFFF;">93%</div><div style="font-size:12px;color:rgba(232,237,242,0.6);text-transform:uppercase;letter-spacing:1px;margin-top:2px;">of stock market wealth is held by the top 10%</div></div>
-<div><div style="font-family:var(--font-serif);font-size:32px;font-weight:700;color:#FFFFFF;">~38%</div><div style="font-size:12px;color:rgba(232,237,242,0.6);text-transform:uppercase;letter-spacing:1px;margin-top:2px;">of Americans don't invest in the market at all</div></div>
-<div><div style="font-family:var(--font-serif);font-size:32px;font-weight:700;color:#FFFFFF;">$36,769</div><div style="font-size:12px;color:rgba(232,237,242,0.6);text-transform:uppercase;letter-spacing:1px;margin-top:2px;">what $10k in the S&P 500 became over the last decade</div></div>
+<div style="display:flex;flex-direction:column;gap:24px;">
+<div><div style="font-family:var(--font-serif);font-size:28px;font-weight:700;color:#FFFFFF;">93%</div><div style="font-size:11px;color:rgba(232,237,242,0.5);text-transform:uppercase;letter-spacing:0.8px;margin-top:3px;line-height:1.4;border-left:2px solid rgba(124,179,240,0.4);padding-left:10px;">of stock market wealth<br>held by the top 10%</div></div>
+<div><div style="font-family:var(--font-serif);font-size:28px;font-weight:700;color:#FFFFFF;">~38%</div><div style="font-size:11px;color:rgba(232,237,242,0.5);text-transform:uppercase;letter-spacing:0.8px;margin-top:3px;line-height:1.4;border-left:2px solid rgba(124,179,240,0.4);padding-left:10px;">of Americans don't<br>invest at all</div></div>
+<div><div style="font-family:var(--font-serif);font-size:28px;font-weight:700;color:#FFFFFF;">$36,769</div><div style="font-size:11px;color:rgba(232,237,242,0.5);text-transform:uppercase;letter-spacing:0.8px;margin-top:3px;line-height:1.4;border-left:2px solid rgba(124,179,240,0.4);padding-left:10px;">what $10k in the S&P 500<br>became in 10 years</div></div>
+</div>
 </div>
 </div>
 
@@ -1845,7 +1847,6 @@ function mpRender(){
   if(isEditor)enableEditor();
   // Apply fallback prices if first load
   if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:489.55,BND:72.88};ho
-
 
 
 
