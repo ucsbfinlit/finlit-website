@@ -206,42 +206,28 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <div class="hero-btns"><button class="btn btn-primary" onclick="navTo('learn')">Start Learning</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('myportfolio')">Build a Portfolio</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('about')">Join Us</button></div>
 </div></div>
 
+<!-- Three Value Props -->
 <div class="section">
-<div class="section-header"><div class="section-title">What You'll Learn</div></div>
 <div class="card-grid cols-3">
-<div class="card" style="cursor:pointer;" onclick="navTo('learn')">
-<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Module 1</div>
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Investment Basics</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;"><span data-editable="mod1-desc">What stocks, bonds, and ETFs actually are. How to open a brokerage account. How much money you need to start (less than you think).</span></div>
+<div class="card" style="border-top:3px solid var(--accent);">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Learn the fundamentals</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;" data-editable="value-prop-1">We break down stocks, bonds, ETFs, risk, valuation, and portfolio strategy into plain language. No finance background needed. Our curriculum takes you from zero to confident.</div>
+<div style="margin-top:12px;"><button class="btn btn-ghost btn-sm" onclick="navTo('learn')">Start learning</button></div>
 </div>
-<div class="card" style="cursor:pointer;" onclick="navTo('learn')">
-<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Module 2</div>
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Risk and Reward</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;"><span data-editable="mod2-desc">Why some investments go up more than others. How to think about risk. Sectors, value vs growth, and why patience beats timing.</span></div>
+<div class="card" style="border-top:3px solid var(--green);">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Build your own portfolio</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;" data-editable="value-prop-2">Practice investing with our portfolio simulator. Add real stocks, track live prices, see your performance, and learn from your decisions. No real money, real learning.</div>
+<div style="margin-top:12px;"><button class="btn btn-ghost btn-sm" onclick="navTo('myportfolio')">Build a portfolio</button></div>
 </div>
-<div class="card" style="cursor:pointer;" onclick="navTo('learn')">
-<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:6px;">Module 3</div>
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Picking Stocks</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;"><span data-editable="mod3-desc">How to read a balance sheet. What margins and earnings tell you. How to figure out if a stock is cheap or expensive.</span></div>
+<div class="card" style="border-top:3px solid var(--yellow);">
+<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Join a community</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;" data-editable="value-prop-3">Weekly meetings, guest speakers from the finance industry, stock pitch sessions, and a team of students all learning together. Every major welcome.</div>
+<div style="margin-top:12px;"><button class="btn btn-ghost btn-sm" onclick="navTo('about')">Get involved</button></div>
 </div>
-</div></div>
+</div>
+</div>
 
-<div class="section section-blue" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
-<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-<div><div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">What kind of investor are you?</div><div style="font-size:13px;color:var(--text-secondary);">Take a 2-minute quiz to find your risk profile and get a personalized starting point.</div></div>
-<button class="btn btn-primary" onclick="navTo('learn');setTimeout(()=>{const el=document.getElementById('risk-quiz-section');if(el)el.scrollIntoView({behavior:'smooth'});},300)">Take the Quiz</button>
-</div></div>
-
-<div class="section">
-<div class="section-header"><div class="section-title" data-editable="model-title">How We Invest</div><div class="section-desc" data-editable="model-desc">Our mock portfolio uses a 60/30/10 allocation model. This is a teaching framework, not a recommendation.</div></div>
-<div class="card" style="padding:0;overflow:hidden;">
-<table style="width:100%;"><thead><tr><th>Category</th><th>What It Is</th><th class="text-right">Target</th></tr></thead>
-<tbody>
-<tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-index">Index</span> Core Holdings</td><td style="color:var(--text-secondary);font-size:13px;">ETFs that track the whole market. You own a little piece of 500+ companies at once. Low fees, broad diversification. This is the foundation.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">60%</td></tr>
-<tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-alpha">Alpha</span> Stock Picks</td><td style="color:var(--text-secondary);font-size:13px;">Individual stocks our members research and pitch. Higher risk, higher potential reward. This is where you learn to analyze companies.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">30%</td></tr>
-<tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-fixed">Fixed</span> Bonds</td><td style="color:var(--text-secondary);font-size:13px;">Bonds and treasuries. You are lending money to the government or a company and they pay you interest. Stable, low risk. Your safety net.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">10%</td></tr>
-</tbody></table></div></div>
-
+<!-- Mission + Photo -->
 <div class="section section-warm" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
 <div>
@@ -260,6 +246,25 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 </div>
 </div>
 
+<!-- Quiz Teaser -->
+<div class="section section-blue" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+<div><div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">What kind of investor are you?</div><div style="font-size:13px;color:var(--text-secondary);">Take a 2-minute quiz to find your risk profile and get a personalized starting point.</div></div>
+<button class="btn btn-primary" onclick="navTo('learn');setTimeout(()=>{const el=document.getElementById('risk-quiz-section');if(el)el.scrollIntoView({behavior:'smooth'});},300)">Take the Quiz</button>
+</div></div>
+
+<!-- How We Invest -->
+<div class="section">
+<div class="section-header"><div class="section-title" data-editable="model-title">How We Invest</div><div class="section-desc" data-editable="model-desc">Our mock portfolio uses a 60/30/10 allocation model. This is a teaching framework, not a recommendation.</div></div>
+<div class="card" style="padding:0;overflow:hidden;">
+<table style="width:100%;"><thead><tr><th>Category</th><th>What It Is</th><th class="text-right">Target</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-index">Index</span> Core Holdings</td><td style="color:var(--text-secondary);font-size:13px;">ETFs that track the whole market. You own a little piece of 500+ companies at once. Low fees, broad diversification. This is the foundation.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">60%</td></tr>
+<tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-alpha">Alpha</span> Stock Picks</td><td style="color:var(--text-secondary);font-size:13px;">Individual stocks our members research and pitch. Higher risk, higher potential reward. This is where you learn to analyze companies.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">30%</td></tr>
+<tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-fixed">Fixed</span> Bonds</td><td style="color:var(--text-secondary);font-size:13px;">Bonds and treasuries. You are lending money to the government or a company and they pay you interest. Stable, low risk. Your safety net.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">10%</td></tr>
+</tbody></table></div></div>
+
+<!-- Latest Meeting / Newsletter -->
 <div class="section"><div class="charts-row"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Meeting</div><div id="home-latest-slide"></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Newsletter</div><div id="home-latest-nl"></div></div></div></div>
 </div></div>
 
@@ -750,7 +755,7 @@ Networking opportunities and community events<br>
 <div style="padding:24px;background:var(--blue-tint);border:1px solid var(--accent-border);border-radius:4px;margin-bottom:20px;">
 <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Make a Contribution</div>
 <div style="font-size:13px;color:var(--text-secondary);margin-bottom:14px;">Contributions of any size make a meaningful difference. If you are interested in sponsoring a specific program or event, please reach out to us directly.</div>
-<a id="donate-link" href="#" class="btn btn-primary">Donate</a>
+<a id="donate-link" href="javascript:void(0)" class="btn btn-primary" onclick="navTo('about')">Contact Us to Donate</a>
 
 </div>
 
@@ -927,6 +932,9 @@ const EDITABLE_FIELDS={
   'mod2-desc':'Why some investments go up more than others. How to think about risk. Sectors, value vs growth, and why patience beats timing.',
   'mod3-desc':'How to read a balance sheet. What margins and earnings tell you. How to figure out if a stock is cheap or expensive.',
   'about-desc':'A student-run organization at UCSB focused on investment education.',
+  'value-prop-1':'We break down stocks, bonds, ETFs, risk, valuation, and portfolio strategy into plain language. No finance background needed. Our curriculum takes you from zero to confident.',
+  'value-prop-2':'Practice investing with our portfolio simulator. Add real stocks, track live prices, see your performance, and learn from your decisions. No real money, real learning.',
+  'value-prop-3':'Weekly meetings, guest speakers from the finance industry, stock pitch sessions, and a team of students all learning together. Every major welcome.',
 };
 
 async function loadSiteContent(){
