@@ -12,9 +12,9 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Financial Literacy Club | UCSB">
 <meta name="twitter:description" content="Learn to invest through hands-on education. Interactive tools, live data, and structured curriculum.">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--white:#FFFFFF;--off-white:#F7F8FA;--light-gray:#EEF0F4;--mid-gray:#E2E4E8;--border-color:#D5D8DC;--navy-band:#1B2A4A;--navy-band-text:#E8EDF2;--blue-tint:#EDF2F9;--warm-gray:#F4F3F1;--text-primary:#1A1D23;--text-secondary:#4A5568;--text-muted:#718096;--accent:#0056B3;--accent-hover:#004494;--accent-light:#E8F0FE;--accent-border:#B3D4FC;--green:#0D7D4D;--green-bg:#E6F5EE;--green-border:#B3E0CC;--red:#C53030;--red-bg:#FFF5F5;--red-border:#FEB2B2;--yellow:#B7791F;--yellow-bg:#FFFFF0;--blue-cat:#0056B3;--yellow-cat:#B7791F;--green-cat:#0D7D4D;--border:var(--border-color);--muted:var(--text-muted);--secondary:var(--text-secondary);--text:var(--text-primary);--surface-alt:var(--light-gray);--radius:3px;--radius-lg:4px;--font-sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;--font-mono:'IBM Plex Mono',monospace;}
+:root{--white:#FFFFFF;--off-white:#F7F8FA;--light-gray:#EEF0F4;--mid-gray:#E2E4E8;--border-color:#D5D8DC;--navy-band:#1B2A4A;--navy-band-text:#E8EDF2;--blue-tint:#EDF2F9;--warm-gray:#F4F3F1;--text-primary:#1A1D23;--text-secondary:#4A5568;--text-muted:#718096;--accent:#0056B3;--accent-hover:#004494;--accent-light:#E8F0FE;--accent-border:#B3D4FC;--green:#0D7D4D;--green-bg:#E6F5EE;--green-border:#B3E0CC;--red:#C53030;--red-bg:#FFF5F5;--red-border:#FEB2B2;--yellow:#B7791F;--yellow-bg:#FFFFF0;--blue-cat:#0056B3;--yellow-cat:#B7791F;--green-cat:#0D7D4D;--border:var(--border-color);--muted:var(--text-muted);--secondary:var(--text-secondary);--text:var(--text-primary);--surface-alt:var(--light-gray);--radius:3px;--radius-lg:4px;--font-sans:'Inter',system-ui,-apple-system,sans-serif;--font-mono:'Inter',monospace;--font-serif:'Lora','Georgia',serif;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:var(--font-sans);background:var(--white);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
@@ -44,7 +44,7 @@ a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
 .section-blue{background:var(--blue-tint);margin:0 -32px;padding:28px 32px;}
 .section-warm{background:var(--warm-gray);margin:0 -32px;padding:28px 32px;}
 @media(max-width:768px){.section-alt,.section-navy,.section-blue,.section-warm{margin:0 -16px;padding:28px 16px;}}
-.section-title{font-size:18px;font-weight:700;letter-spacing:-0.2px;color:var(--text-primary);text-transform:none;}
+.section-title{font-family:var(--font-serif);font-size:18px;font-weight:700;letter-spacing:-0.2px;color:var(--text-primary);text-transform:none;}
 .section-desc{font-size:14px;color:var(--muted);margin-top:5px;line-height:1.6;}
 .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;transition:border-color 0.2s;}
 .card:hover{border-color:#B0B8C4;}
@@ -57,7 +57,7 @@ a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
 .hero::before{content:'';display:none;}
 .hero-content{position:relative;z-index:1;max-width:700px;}
 .hero-logo{width:100px;border-radius:4px;margin-bottom:20px;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
-.hero h1{font-family:var(--font-sans);font-size:40px;font-weight:700;line-height:1.15;letter-spacing:-0.5px;margin-bottom:14px;color:#FFFFFF;}
+.hero h1{font-family:var(--font-serif);font-size:40px;font-weight:700;line-height:1.15;letter-spacing:-0.5px;margin-bottom:14px;color:#FFFFFF;}
 .hero .accent{color:#7CB3F0;}
 .hero p{font-size:16px;color:rgba(232,237,242,0.8);line-height:1.7;margin-bottom:28px;max-width:550px;}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
@@ -193,7 +193,7 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 
 <!-- Officer unlock bar -->
 <div id="officer-bar" class="hidden" style="max-width:1200px;margin:10px auto 0;padding:0 32px;"><div class="officer-bar">Officer Mode — you can edit holdings, meetings, newsletters, and watchlist <button class="btn btn-sm btn-ghost" onclick="lockOfficer()" style="padding:4px 12px;font-size:11px;">Lock</button></div></div>
-<div id="editor-bar" class="hidden" style="max-width:1200px;margin:10px auto 0;padding:0 32px;"><div class="editor-bar">Editor Mode — click on highlighted text to edit. <button class="btn btn-sm btn-primary" onclick="saveAllEdits()" style="padding:4px 12px;font-size:11px;">Save All Changes</button> <button class="btn btn-sm btn-ghost" onclick="lockEditor()" style="padding:4px 12px;font-size:11px;">Exit Editor</button></div></div>
+<div id="editor-bar" class="hidden" style="max-width:1200px;margin:10px auto 0;padding:0 32px;"><div class="editor-bar">Editor Mode — click on highlighted text to edit. <span style="display:inline-flex;align-items:center;gap:8px;"><label class="btn btn-sm btn-ghost" style="padding:4px 12px;font-size:11px;cursor:pointer;margin:0;">Upload Logo <input type="file" id="logo-upload" accept="image/*" style="display:none;" onchange="handleLogoUpload(event)"></label><button class="btn btn-sm btn-primary" onclick="saveAllEdits()" style="padding:4px 12px;font-size:11px;">Save All Changes</button> <button class="btn btn-sm btn-ghost" onclick="lockEditor()" style="padding:4px 12px;font-size:11px;">Exit Editor</button></span></div></div>
 
 <!-- HOME -->
 
@@ -204,45 +204,52 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <h1 id="ed-hero-title" data-editable="hero-title">Learn to <span class="accent">Invest</span>, Together.</h1>
 <p>The Financial Literacy Club at UCSB <span data-editable="hero-desc">teaches real investing skills through hands-on education. No experience needed. No real money required. Just show up and start learning.</span></p>
 <div class="hero-btns"><button class="btn btn-primary" onclick="navTo('learn')">Start Learning</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('myportfolio')">Build a Portfolio</button><button class="btn" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#FFFFFF;" onclick="navTo('about')">Join Us</button></div>
-</div></div>
-
-<!-- Three Value Props -->
-<div class="section">
-<div class="card-grid cols-3">
-<div class="card" style="border-top:3px solid var(--accent);">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Learn the fundamentals</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;" data-editable="value-prop-1">We break down stocks, bonds, ETFs, risk, valuation, and portfolio strategy into plain language. No finance background needed. Our curriculum takes you from zero to confident.</div>
-<div style="margin-top:12px;"><button class="btn btn-ghost btn-sm" onclick="navTo('learn')">Start learning</button></div>
 </div>
-<div class="card" style="border-top:3px solid var(--green);">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Build your own portfolio</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;" data-editable="value-prop-2">Practice investing with our portfolio simulator. Add real stocks, track live prices, see your performance, and learn from your decisions. No real money, real learning.</div>
-<div style="margin-top:12px;"><button class="btn btn-ghost btn-sm" onclick="navTo('myportfolio')">Build a portfolio</button></div>
-</div>
-<div class="card" style="border-top:3px solid var(--yellow);">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Join a community</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;" data-editable="value-prop-3">Weekly meetings, guest speakers from the finance industry, stock pitch sessions, and a team of students all learning together. Every major welcome.</div>
-<div style="margin-top:12px;"><button class="btn btn-ghost btn-sm" onclick="navTo('about')">Get involved</button></div>
-</div>
+<!-- Stats strip -->
+<div style="display:flex;gap:32px;margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.15);flex-wrap:wrap;">
+<div><div style="font-family:var(--font-serif);font-size:32px;font-weight:700;color:#FFFFFF;">93%</div><div style="font-size:12px;color:rgba(232,237,242,0.6);text-transform:uppercase;letter-spacing:1px;margin-top:2px;">of stock market wealth is held by the top 10%</div></div>
+<div><div style="font-family:var(--font-serif);font-size:32px;font-weight:700;color:#FFFFFF;">~38%</div><div style="font-size:12px;color:rgba(232,237,242,0.6);text-transform:uppercase;letter-spacing:1px;margin-top:2px;">of Americans don't invest in the market at all</div></div>
+<div><div style="font-family:var(--font-serif);font-size:32px;font-weight:700;color:#FFFFFF;">$36,769</div><div style="font-size:12px;color:rgba(232,237,242,0.6);text-transform:uppercase;letter-spacing:1px;margin-top:2px;">what $10k in the S&P 500 became over the last decade</div></div>
 </div>
 </div>
 
-<!-- Mission + Photo -->
+<!-- Value props now integrated into pillar cards above -->
+
+<!-- Mission + Pillar Cards -->
 <div class="section section-warm" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
-<div>
+<div style="text-align:center;max-width:700px;margin:0 auto 24px;">
 <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:8px;">Our Mission</div>
-<div style="font-size:15px;color:var(--text-primary);line-height:1.7;font-weight:500;" data-editable="mission-statement">We exist to bridge the gap between academic finance and real-world investing. Through hands-on portfolio management, structured curriculum, and peer-to-peer education, we give UCSB students the tools and confidence to make informed financial decisions for the rest of their lives.</div>
-<div style="margin-top:14px;display:flex;gap:16px;">
-<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;" data-editable="stat-label-1">Founded</div><div style="font-size:18px;font-weight:700;font-family:var(--font-mono);color:var(--text-primary);" data-editable="stat-value-1">2024</div></div>
-<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;" data-editable="stat-label-2">Members</div><div style="font-size:18px;font-weight:700;font-family:var(--font-mono);color:var(--text-primary);" data-editable="stat-value-2">50+</div></div>
-<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;" data-editable="stat-label-3">Meetings</div><div style="font-size:18px;font-weight:700;font-family:var(--font-mono);color:var(--text-primary);" data-editable="stat-value-3">Weekly</div></div>
+<div style="font-family:var(--font-serif);font-size:18px;color:var(--text-primary);line-height:1.7;font-weight:500;" data-editable="mission-statement">We exist to bridge the gap between academic finance and real-world investing. Through hands-on portfolio management, structured curriculum, and peer-to-peer education, we give UCSB students the tools and confidence to make informed financial decisions for the rest of their lives.</div>
+</div>
+<div class="card-grid cols-3" style="margin-top:20px;">
+<div class="card" style="text-align:center;border-top:3px solid var(--accent);padding:28px 22px;">
+<div style="width:48px;height:48px;border-radius:50%;background:var(--accent-light);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;">
+<svg width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+</div>
+<div style="font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;" data-editable="pillar-title-1">Learn</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;" data-editable="pillar-desc-1">Structured curriculum from basics to advanced analysis. We break down stocks, bonds, ETFs, and portfolio strategy into plain language.</div>
+</div>
+<div class="card" style="text-align:center;border-top:3px solid var(--green);padding:28px 22px;">
+<div style="width:48px;height:48px;border-radius:50%;background:var(--green-bg);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;">
+<svg width="22" height="22" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+</div>
+<div style="font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;" data-editable="pillar-title-2">Build</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;" data-editable="pillar-desc-2">Practice with our portfolio simulator. Add real stocks, track live prices, and learn from your decisions — no real money required.</div>
+</div>
+<div class="card" style="text-align:center;border-top:3px solid var(--yellow);padding:28px 22px;">
+<div style="width:48px;height:48px;border-radius:50%;background:var(--yellow-bg);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;">
+<svg width="22" height="22" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<div style="font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;" data-editable="pillar-title-3">Connect</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;" data-editable="pillar-desc-3">Weekly meetings, guest speakers, stock pitch sessions, and a community of students all learning together. Every major welcome.</div>
 </div>
 </div>
-<div id="club-photo-area" style="width:100%;aspect-ratio:4/3;background:var(--light-gray);border-radius:4px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;">
-<img id="club-photo" style="width:100%;height:100%;object-fit:cover;display:none;">
-<span id="club-photo-placeholder" style="font-size:12px;color:var(--text-muted);text-align:center;padding:20px;">Club photo<br>Use editor mode to update</span>
-</div>
+<div style="display:flex;gap:16px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;" data-editable="stat-label-1">Founded</div><div style="font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--text-primary);" data-editable="stat-value-1">2024</div></div>
+<div style="width:1px;background:var(--border);"></div>
+<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;" data-editable="stat-label-2">Members</div><div style="font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--text-primary);" data-editable="stat-value-2">50+</div></div>
+<div style="width:1px;background:var(--border);"></div>
+<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;" data-editable="stat-label-3">Meetings</div><div style="font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--text-primary);" data-editable="stat-value-3">Weekly</div></div>
 </div>
 </div>
 
@@ -761,7 +768,7 @@ Networking opportunities and community events<br>
 
 <div class="card" style="padding:20px;">
 <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Contact Us About Giving</div>
-<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">For questions about contributions, corporate sponsorships, or partnership opportunities, please email us at ucsbfinlit@gmail.com or use the contact form on our About page.</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">For questions about contributions, corporate sponsorships, or partnership opportunities, please email us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="403523332226292e2c293400272d21292c6e232f2d">[email&#160;protected]</a> or use the contact form on our About page.</div>
 </div>
 
 </div>
@@ -777,7 +784,7 @@ Networking opportunities and community events<br>
 <div style="margin-top:8px;">For educational purposes only · Not financial advice · <span id="last-updated">—</span></div>
 <div style="margin-top:6px;"><span class="lock-icon" onclick="toggleOfficerLogin()" title="Officer login" style="font-size:11px;color:rgba(232,237,242,0.4);text-transform:uppercase;letter-spacing:1px;cursor:pointer;">Admin</span></div>
 </div>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
@@ -953,11 +960,36 @@ function applySiteContent(){
       el.textContent=siteContent[key];
     }
   });
+  // Apply saved logo if exists
+  if(siteContent['custom-logo']){
+    document.getElementById('nav-logo').src=siteContent['custom-logo'];
+    document.getElementById('hero-logo').src=siteContent['custom-logo'];
+    if(document.getElementById('team-logo'))document.getElementById('team-logo').src=siteContent['custom-logo'];
+  }
   // Apply officer names
   for(let i=0;i<OFFICERS.length;i++){
     if(siteContent['officer-'+i+'-name'])OFFICERS[i].name=siteContent['officer-'+i+'-name'];
     if(siteContent['officer-'+i+'-role'])OFFICERS[i].role=siteContent['officer-'+i+'-role'];
   }
+}
+
+function handleLogoUpload(event){
+  const file=event.target.files[0];
+  if(!file)return;
+  if(!file.type.startsWith('image/')){alert('Please upload an image file.');return;}
+  if(file.size>500000){alert('Logo file is too large. Please use an image under 500KB.');return;}
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const dataUrl=e.target.result;
+    // Preview immediately
+    document.getElementById('nav-logo').src=dataUrl;
+    document.getElementById('hero-logo').src=dataUrl;
+    if(document.getElementById('team-logo'))document.getElementById('team-logo').src=dataUrl;
+    // Store in siteContent so it saves with "Save All Changes"
+    siteContent['custom-logo']=dataUrl;
+    alert('Logo updated! Click "Save All Changes" to make it permanent.');
+  };
+  reader.readAsDataURL(file);
 }
 
 function enableEditor(){
@@ -1812,16 +1844,7 @@ function mpRender(){
   await loadSiteContent();
   if(isEditor)enableEditor();
   // Apply fallback prices if first load
-  if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:489.55,BND:72.88};holdings.forEach(h=>{if(fb[h.ticker])h.currentPrice=fb[h.ticker];});}
-  renderAll();
-  fetchAllPrices();
-  listenForUpdates();
-  // Refresh prices every 5 minutes
-  setInterval(fetchAllPrices,300000);
-})();
-</script>
-</body>
-</html>
+  if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:489.55,BND:72.88};ho
 
 
 
