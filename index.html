@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Financial Literacy Club</title>
+<title>Financial Literacy Club | UCSB</title>
+<meta name="description" content="The Financial Literacy Club at UC Santa Barbara teaches investment education through hands-on portfolio management, interactive learning modules, and a student stock research platform.">
+<meta property="og:title" content="Financial Literacy Club | UCSB">
+<meta property="og:description" content="Learn to invest through hands-on education. Interactive risk assessment, live portfolio tracking, stock research tools, and structured curriculum. Built by students, for students.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ucsbflc.netlify.app">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Financial Literacy Club | UCSB">
+<meta name="twitter:description" content="Learn to invest through hands-on education. Interactive tools, live data, and structured curriculum.">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--white:#FFFFFF;--off-white:#F7F8FA;--light-gray:#EEF0F4;--mid-gray:#E2E4E8;--border-color:#D5D8DC;--navy-band:#1B2A4A;--navy-band-text:#E8EDF2;--blue-tint:#EDF2F9;--warm-gray:#F4F3F1;--text-primary:#1A1D23;--text-secondary:#4A5568;--text-muted:#718096;--accent:#0056B3;--accent-hover:#004494;--accent-light:#E8F0FE;--accent-border:#B3D4FC;--green:#0D7D4D;--green-bg:#E6F5EE;--green-border:#B3E0CC;--red:#C53030;--red-bg:#FFF5F5;--red-border:#FEB2B2;--yellow:#B7791F;--yellow-bg:#FFFFF0;--blue-cat:#0056B3;--yellow-cat:#B7791F;--green-cat:#0D7D4D;--border:var(--border-color);--muted:var(--text-muted);--secondary:var(--text-secondary);--text:var(--text-primary);--surface-alt:var(--light-gray);--radius:3px;--radius-lg:4px;--font-sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;--font-mono:'IBM Plex Mono',monospace;}
@@ -234,6 +242,24 @@ td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--light-gray);}
 <tr><td style="font-weight:600;color:var(--text-primary)"><span class="badge badge-fixed">Fixed</span> Bonds</td><td style="color:var(--text-secondary);font-size:13px;">Bonds and treasuries. You are lending money to the government or a company and they pay you interest. Stable, low risk. Your safety net.</td><td class="text-right" style="font-family:var(--font-mono);font-weight:700;font-size:15px;">10%</td></tr>
 </tbody></table></div></div>
 
+<div class="section section-warm" style="border-radius:4px;padding:24px;margin:0 0 20px 0;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+<div>
+<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600;margin-bottom:8px;">Our Mission</div>
+<div style="font-size:15px;color:var(--text-primary);line-height:1.7;font-weight:500;" data-editable="mission-statement">We exist to bridge the gap between academic finance and real-world investing. Through hands-on portfolio management, structured curriculum, and peer-to-peer education, we give UCSB students the tools and confidence to make informed financial decisions for the rest of their lives.</div>
+<div style="margin-top:14px;display:flex;gap:16px;">
+<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;" data-editable="stat-label-1">Founded</div><div style="font-size:18px;font-weight:700;font-family:var(--font-mono);color:var(--text-primary);" data-editable="stat-value-1">2024</div></div>
+<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;" data-editable="stat-label-2">Members</div><div style="font-size:18px;font-weight:700;font-family:var(--font-mono);color:var(--text-primary);" data-editable="stat-value-2">50+</div></div>
+<div><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;" data-editable="stat-label-3">Meetings</div><div style="font-size:18px;font-weight:700;font-family:var(--font-mono);color:var(--text-primary);" data-editable="stat-value-3">Weekly</div></div>
+</div>
+</div>
+<div id="club-photo-area" style="width:100%;aspect-ratio:4/3;background:var(--light-gray);border-radius:4px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+<img id="club-photo" style="width:100%;height:100%;object-fit:cover;display:none;">
+<span id="club-photo-placeholder" style="font-size:12px;color:var(--text-muted);text-align:center;padding:20px;">Club photo<br>Use editor mode to update</span>
+</div>
+</div>
+</div>
+
 <div class="section"><div class="charts-row"><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Meeting</div><div id="home-latest-slide"></div></div><div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--text-primary)">Latest Newsletter</div><div id="home-latest-nl"></div></div></div></div>
 </div></div>
 
@@ -326,6 +352,17 @@ Is it cheap or expensive? (Compare P/E to others in the same sector)<br>
 How much debt does it have? (Look at debt to assets)<br>
 How risky is it? (Look at beta)<br>
 What is the thesis? Why would this stock go up from here?
+</div>
+</div>
+
+<!-- AI Analysis Assistant -->
+<div style="margin-top:20px;" id="ai-analysis-section">
+<div class="card" style="border:1px solid var(--accent-border);">
+<div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Analysis Assistant</div>
+<div style="font-size:12px;color:var(--text-muted);margin-bottom:12px;">Ask a question about this stock. The assistant uses our Module 3 framework to walk you through the analysis. This is for learning, not financial advice.</div>
+<div style="display:flex;gap:8px;margin-bottom:12px;"><input class="input" id="ai-question" placeholder="Is this stock overvalued? What are the risks? Should a beginner buy this?" style="flex:1;" onkeydown="if(event.key==='Enter')askAnalysis()"><button class="btn btn-primary btn-sm" onclick="askAnalysis()">Ask</button></div>
+<div id="ai-response" class="hidden" style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding:14px;background:var(--off-white);border-radius:3px;white-space:pre-wrap;"></div>
+<div id="ai-loading" class="hidden" style="font-size:13px;color:var(--text-muted);padding:14px;">Analyzing...</div>
 </div>
 </div>
 </div>
@@ -714,20 +751,7 @@ Networking opportunities and community events<br>
 <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Make a Contribution</div>
 <div style="font-size:13px;color:var(--text-secondary);margin-bottom:14px;">Contributions of any size make a meaningful difference. If you are interested in sponsoring a specific program or event, please reach out to us directly.</div>
 <a id="donate-link" href="#" class="btn btn-primary">Donate</a>
-<span style="color:var(--text-muted);font-size:11px;margin-left:12px;">Donation link coming soon.</span>
-</div>
 
-<div style="margin-bottom:20px;">
-<div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">What Our Members Say</div>
-<div class="card" style="margin-bottom:10px;padding:20px;">
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;" data-editable="testimonial-1">PLACEHOLDER</div>
-</div>
-<div class="card" style="margin-bottom:10px;padding:20px;">
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;" data-editable="testimonial-2">PLACEHOLDER</div>
-</div>
-<div class="card" style="margin-bottom:10px;padding:20px;">
-<div style="font-size:14px;color:var(--text-secondary);line-height:1.7;font-style:italic;" data-editable="testimonial-3">PLACEHOLDER</div>
-</div>
 </div>
 
 <div class="card" style="padding:20px;">
@@ -794,10 +818,10 @@ const SI={
   BND:{desc:"Holds over 10,000 U.S. investment-grade bonds. Pays monthly dividends with very low volatility.",why:"Portfolio stability and negative correlation to equities during market stress.",sector:"Fixed Income",type:"Bond ETF",beta:0.05,divYield:3.5,pitchedBy:"Founding Officers",thesis:"Bonds tend to go up when stocks go down. That is called negative correlation. When the market crashes, this is the part of the portfolio that holds steady or gains value.",thesisCheck:"Interest rates are elevated, meaning bond yields are attractive right now. BND is doing exactly what it should: providing income and stability."},
 };
 const OFFICERS=[
-  {name:"[Name]",role:"President",initials:"P"},{name:"[Giselle Alexander]",role:"Secretary",initials:"S"},
-  {name:"[Name]",role:"Internal Affairs",initials:"IA"},{name:"[Name]",role:"Dir. of Marketing",initials:"DM"},
-  {name:"[Name]",role:"Dir. of Creative Media",initials:"CM"},{name:"[Name]",role:"Dir. of Outreach",initials:"DO"},
-  {name:"[Name]",role:"Dir. of Events",initials:"DE"},
+  {name:"—",role:"President",initials:"P"},{name:"Giselle Alexander",role:"Secretary",initials:"GA"},
+  {name:"—",role:"Internal Affairs",initials:"IA"},{name:"—",role:"Dir. of Marketing",initials:"DM"},
+  {name:"—",role:"Dir. of Creative Media",initials:"CM"},{name:"—",role:"Dir. of Outreach",initials:"DO"},
+  {name:"—",role:"Dir. of Events",initials:"DE"},
 ];
 const GLOSSARY=[
   {term:"Stock",def:"A unit of ownership in a corporation, representing a proportional claim on assets and earnings.",cat:"basics"},
@@ -888,13 +912,21 @@ const EDITABLE_FIELDS={
   'model-desc':'Our mock portfolio uses a 60/30/10 allocation model. This is a teaching framework, not a recommendation.',
   'support-why':'<span data-editable="support-why">The Financial Literacy Club at UC Santa Barbara is one of the only organizations on campus dedicated entirely to investment education. We serve students across all majors, most of whom have never been exposed to personal finance or portfolio management before college. Our members learn to analyze securities, build diversified portfolios, and develop the financial decision-making skills they will use for the rest of their lives.</span>',
   'support-where':'We operate entirely on volunteer effort and donated resources. Your contribution directly funds the tools and programming that make this possible: research subscriptions, educational materials, guest speaker honorariums, event production, and the technology infrastructure behind our portfolio simulation platform.',
-  'officer-0-name':'[Name]','officer-0-role':'President',
-  'officer-1-name':'[Giselle Alexander]','officer-1-role':'Secretary',
-  'officer-2-name':'[Name]','officer-2-role':'Internal Affairs',
-  'officer-3-name':'[Name]','officer-3-role':'Dir. of Marketing',
-  'officer-4-name':'[Name]','officer-4-role':'Dir. of Creative Media',
-  'officer-5-name':'[Name]','officer-5-role':'Dir. of Outreach',
-  'officer-6-name':'[Name]','officer-6-role':'Dir. of Events',
+  'officer-0-name':'—','officer-0-role':'President',
+  'officer-1-name':'Giselle Alexander','officer-1-role':'Secretary',
+  'officer-2-name':'—','officer-2-role':'Internal Affairs',
+  'officer-3-name':'—','officer-3-role':'Dir. of Marketing',
+  'officer-4-name':'—','officer-4-role':'Dir. of Creative Media',
+  'officer-5-name':'—','officer-5-role':'Dir. of Outreach',
+  'officer-6-name':'—','officer-6-role':'Dir. of Events',
+  'mission-statement':'We exist to bridge the gap between academic finance and real-world investing. Through hands-on portfolio management, structured curriculum, and peer-to-peer education, we give UCSB students the tools and confidence to make informed financial decisions for the rest of their lives.',
+  'stat-label-1':'Founded','stat-value-1':'2024',
+  'stat-label-2':'Members','stat-value-2':'50+',
+  'stat-label-3':'Meetings','stat-value-3':'Weekly',
+  'mod1-desc':'What stocks, bonds, and ETFs actually are. How to open a brokerage account. How much money you need to start (less than you think).',
+  'mod2-desc':'Why some investments go up more than others. How to think about risk. Sectors, value vs growth, and why patience beats timing.',
+  'mod3-desc':'How to read a balance sheet. What margins and earnings tell you. How to figure out if a stock is cheap or expensive.',
+  'about-desc':'A student-run organization at UCSB focused on investment education.',
 };
 
 async function loadSiteContent(){
@@ -1450,6 +1482,76 @@ async function researchStock(){
   }else{
     $('res-fundamentals').classList.add('hidden');
     $('res-no-fundamentals').classList.remove('hidden');
+  }
+}
+
+// ===== AI ANALYSIS ASSISTANT =====
+async function askAnalysis(){
+  const question=$('ai-question').value.trim();
+  if(!question)return;
+  const ticker=$('res-ticker').textContent;
+  if(!ticker||ticker==='')return alert('Look up a stock first, then ask a question about it.');
+
+  $('ai-loading').classList.remove('hidden');
+  $('ai-response').classList.add('hidden');
+
+  // Gather all visible data about this stock
+  const price=$('res-price').textContent;
+  const pe=$('res-pe').textContent;
+  const gm=$('res-gm').textContent;
+  const nm=$('res-nm').textContent;
+  const eps=$('res-eps').textContent;
+  const dta=$('res-dta').textContent;
+  const beta=$('res-beta').textContent;
+  const sector=$('res-sector').textContent;
+  const mcap=$('res-mcap').textContent;
+  const divYield=$('res-divyield').textContent;
+  const revGrowth=$('res-revgrowth').textContent;
+  const name=$('res-name').textContent;
+
+  const systemPrompt=`You are an investment education assistant for a university financial literacy club. You teach students how to analyze stocks using a structured framework: Financial Position (debt to assets), Profitability (margins, EPS), Growth (revenue growth, dividends), and Valuation (P/E ratio). You also consider risk (beta) and sector dynamics.
+
+Your job is to walk the student through the analysis, not give them a buy or sell recommendation. Teach them HOW to think about the data. Be direct, use plain language, no jargon without explanation. Do not use bullet points or lists. Write in short paragraphs. Do not use em-dashes. Never say "I recommend buying" or "you should sell." Instead say things like "here is what the numbers tell us" and "here is how to think about this."
+
+Always end with a reminder that this is for educational purposes and not financial advice.`;
+
+  const userMessage=`The student is looking at ${ticker} (${name}) and asking: "${question}"
+
+Here is the data they can see:
+- Price: ${price}
+- P/E Ratio: ${pe}
+- Gross Margin: ${gm}
+- Net Margin: ${nm}
+- EPS: ${eps}
+- Debt to Assets: ${dta}
+- Beta: ${beta}
+- Sector: ${sector}
+- Market Cap: ${mcap}
+- Dividend Yield: ${divYield}
+- Revenue Growth: ${revGrowth}
+
+Walk them through the analysis using our framework. Reference the specific numbers above.`;
+
+  try{
+    const response=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{role:'user',content:systemPrompt+'\n\n'+userMessage}]
+      })
+    });
+    const data=await response.json();
+    const text=data.content&&data.content[0]?data.content[0].text:'Unable to generate analysis. Please try again.';
+    $('ai-loading').classList.add('hidden');
+    $('ai-response').classList.remove('hidden');
+    $('ai-response').textContent=text;
+  }catch(e){
+    $('ai-loading').classList.add('hidden');
+    $('ai-response').classList.remove('hidden');
+    $('ai-response').textContent='Unable to connect to the analysis assistant. Please try again later.';
+    console.error('AI analysis error:',e);
   }
 }
 
