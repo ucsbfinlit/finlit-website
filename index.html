@@ -809,13 +809,13 @@ try{
 const FINNHUB_KEY="d6flfbhr01qqnmbp4sv0d6flfbhr01qqnmbp4svg";
 const OFFICER_PASS="FLC2025";
 const EDITOR_PASS="WEBFLC2025";
-let isEditor=localStorage.getItem('flc_editor')==='true';
+let isEditor=false;try{isEditor=localStorage.getItem('flc_editor')==='true';}catch(e){}
 let siteContent={}; // Stores all editable text from Firebase
 const INITIAL_INVESTMENT=10000;
 let cashBalance=INITIAL_INVESTMENT; // Will be recalculated from holdings
 
 // ===== STATE =====
-let isOfficer=localStorage.getItem('flc_officer')==='true';
+let isOfficer=false;try{isOfficer=localStorage.getItem('flc_officer')==='true';}catch(e){}
 let holdings=[
   {id:1,ticker:"VOO",name:"Vanguard S&P 500 ETF",category:"index",shares:10,costBasis:550,currentPrice:0,datePurchased:"2025-01-15"},
   {id:2,ticker:"CAT",name:"Caterpillar Inc.",category:"alpha",shares:3,costBasis:350,currentPrice:0,datePurchased:"2025-01-15"},
@@ -914,12 +914,12 @@ function toggleOfficerLogin(){
   if(isOfficer||isEditor){lockOfficer();lockEditor();return;}
   const mode=prompt('Enter access code:\n(Officers: portfolio management)\n(Editors: website content)');
   if(mode===null)return;
-  if(mode===OFFICER_PASS){isOfficer=true;localStorage.setItem('flc_officer','true');renderAll();updateOfficerUI();}
-  else if(mode===EDITOR_PASS){isEditor=true;localStorage.setItem('flc_editor','true');enableEditor();}
+  if(mode===OFFICER_PASS){isOfficer=true;try{localStorage.setItem('flc_officer','true');}catch(e){}renderAll();updateOfficerUI();}
+  else if(mode===EDITOR_PASS){isEditor=true;try{localStorage.setItem('flc_editor','true');}catch(e){}enableEditor();}
   else alert('Incorrect code.');
 }
-function lockOfficer(){isOfficer=false;localStorage.removeItem('flc_officer');renderAll();updateOfficerUI();}
-function lockEditor(){isEditor=false;localStorage.removeItem('flc_editor');disableEditor();}
+function lockOfficer(){isOfficer=false;try{localStorage.removeItem('flc_officer');}catch(e){}renderAll();updateOfficerUI();}
+function lockEditor(){isEditor=false;try{localStorage.removeItem('flc_editor');}catch(e){}disableEditor();}
 function updateOfficerUI(){
   document.querySelectorAll('.officer-only').forEach(el=>el.classList.toggle('hidden',!isOfficer));
   $('officer-bar').classList.toggle('hidden',!isOfficer);
