@@ -796,9 +796,12 @@ document.getElementById('hero-logo').src=LOGO_SRC;
 document.getElementById('team-logo').src=LOGO_SRC;
 
 // ===== FIREBASE =====
-const firebaseConfig={apiKey:"AIzaSyBOIt3sGDr6CBOTZPGdjsl4d-1UzJwIT8o",authDomain:"flc-website-8999c.firebaseapp.com",projectId:"flc-website-8999c",storageBucket:"flc-website-8999c.firebasestorage.app",messagingSenderId:"614437995336",appId:"1:614437995336:web:36822c5af65d6cb294e97d"};
-firebase.initializeApp(firebaseConfig);
-const db=firebase.firestore();
+let db=null;
+try{
+  const firebaseConfig={apiKey:"AIzaSyBOIt3sGDr6CBOTZPGdjsl4d-1UzJwIT8o",authDomain:"flc-website-8999c.firebaseapp.com",projectId:"flc-website-8999c",storageBucket:"flc-website-8999c.firebasestorage.app",messagingSenderId:"614437995336",appId:"1:614437995336:web:36822c5af65d6cb294e97d"};
+  firebase.initializeApp(firebaseConfig);
+  db=firebase.firestore();
+}catch(e){console.warn('Firebase not available — site will run with defaults.',e);}
 
 // ===== CONFIG =====
 const FINNHUB_KEY="d6flfbhr01qqnmbp4sv0d6flfbhr01qqnmbp4svg";
@@ -868,13 +871,14 @@ const GLOSSARY=[
 const $=id=>document.getElementById(id);
 const fmt=v=>'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 const fmtPct=v=>(v>=0?'+':'')+v.toFixed(2)+'%';
-async function sv(){await db.collection('data').doc('holdings').set({v:JSON.stringify(holdings)});}
-async function svS(){await db.collection('data').doc('slides').set({v:JSON.stringify(slides)});}
-async function svN(){await db.collection('data').doc('newsletters').set({v:JSON.stringify(newsletters)});}
-async function svW(){await db.collection('data').doc('watchlist').set({v:JSON.stringify(watchlist)});}
-async function svC(){await db.collection('data').doc('calendar').set({v:JSON.stringify(calendar)});}
-async function svTH(){await db.collection('data').doc('tradeHistory').set({v:JSON.stringify(tradeHistory)});}
+async function sv(){if(!db)return;await db.collection('data').doc('holdings').set({v:JSON.stringify(holdings)});}
+async function svS(){if(!db)return;await db.collection('data').doc('slides').set({v:JSON.stringify(slides)});}
+async function svN(){if(!db)return;await db.collection('data').doc('newsletters').set({v:JSON.stringify(newsletters)});}
+async function svW(){if(!db)return;await db.collection('data').doc('watchlist').set({v:JSON.stringify(watchlist)});}
+async function svC(){if(!db)return;await db.collection('data').doc('calendar').set({v:JSON.stringify(calendar)});}
+async function svTH(){if(!db)return;await db.collection('data').doc('tradeHistory').set({v:JSON.stringify(tradeHistory)});}
 async function loadAll(){
+  if(!db)return;
   try{
     const docs=await Promise.all(['holdings','slides','newsletters','watchlist','calendar','tradeHistory'].map(k=>db.collection('data').doc(k).get()));
     if(docs[0].exists)holdings=JSON.parse(docs[0].data().v);
@@ -887,6 +891,7 @@ async function loadAll(){
 }
 // Listen for real-time updates so all users see changes instantly
 function listenForUpdates(){
+  if(!db)return;
   ['holdings','slides','newsletters','watchlist','calendar','tradeHistory'].forEach(key=>{
     db.collection('data').doc(key).onSnapshot(doc=>{
       if(!doc.exists)return;
@@ -947,6 +952,7 @@ const EDITABLE_FIELDS={
 };
 
 async function loadSiteContent(){
+  if(!db){applySiteContent();return;}
   try{
     const doc=await db.collection('data').doc('siteContent').get();
     if(doc.exists)siteContent=JSON.parse(doc.data().v)||{};
@@ -1022,6 +1028,7 @@ async function saveAllEdits(){
     if(siteContent['officer-'+i+'-role'])OFFICERS[i].role=siteContent['officer-'+i+'-role'];
   }
   try{
+    if(!db){alert('Firebase not available. Changes saved locally only.');renderAll();return;}
     await db.collection('data').doc('siteContent').set({v:JSON.stringify(siteContent)});
     alert('Changes saved.');
     renderAll();
@@ -1847,6 +1854,5 @@ function mpRender(){
   if(isEditor)enableEditor();
   // Apply fallback prices if first load
   if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:489.55,BND:72.88};ho
-
 
 
