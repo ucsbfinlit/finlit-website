@@ -703,7 +703,7 @@ Networking opportunities and community events<br>
 </div>
 
 <!-- Contact -->
-<div class="section">
+<div class="section" id="contact-section">
 <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">Contact</div>
 <div class="charts-row">
 <div class="card">
@@ -780,13 +780,13 @@ Networking opportunities and community events<br>
 <div class="site-footer">
 <div style="margin-bottom:8px;color:rgba(232,237,242,0.8);">Financial Literacy Club</div>
 <a href="https://instagram.com/" target="_blank">Instagram</a> ·
-<span style="cursor:pointer;color:#7CB3F0;" onclick="navTo('contact')">Contact</span> ·
+<span style="cursor:pointer;color:#7CB3F0;" onclick="navTo('about');setTimeout(()=>{const el=document.getElementById('contact-section');if(el)el.scrollIntoView({behavior:'smooth'});},300)">Contact</span> ·
 <span style="cursor:pointer;color:#7CB3F0;" onclick="navTo('support')">Support Us</span> ·
-<span style="cursor:pointer;color:#7CB3F0;" onclick="navTo('join')">Join</span>
+<span style="cursor:pointer;color:#7CB3F0;" onclick="navTo('about')">Join</span>
 <div style="margin-top:8px;">For educational purposes only · Not financial advice · <span id="last-updated">—</span></div>
 <div style="margin-top:6px;"><span class="lock-icon" onclick="toggleOfficerLogin()" title="Officer login" style="font-size:11px;color:rgba(232,237,242,0.4);text-transform:uppercase;letter-spacing:1px;cursor:pointer;">Admin</span></div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
