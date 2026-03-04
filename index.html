@@ -1847,3 +1847,26 @@ function mpRender(){
     const v=h.shares*h.currentPrice,gl=v-h.shares*h.costBasis,gp=h.costBasis>0?((h.currentPrice-h.costBasis)/h.costBasis)*100:0,pp=s.tv>0?(v/s.tv)*100:0,dc=h._dp||0,info=SI[h.ticker]||{sector:'—',beta:1.0};
     return`<tr><td class="mono" style="font-weight:600;color:var(--text-primary)">${h.ticker}</td><td style="color:var(--text-secondary);font-size:12px">${h.name}</td><td><span class="badge ${CM[h.category]?.badge||''}">${h.category}</span></td><td style="font-size:11px;color:var(--muted)">${info.sector||'—'}</td><td class="text-right mono">${h.shares}</td><td class="text-right mono">${fmt(h.costBasis)}</td><td class="text-right"><span class="mono">${fmt(h.currentPrice)}</span>${dc?`<br><span style="font-size:10px;color:${dc>=0?'var(--green-cat)':'var(--red)'}">${fmtPct(dc)}</span>`:''}</td><td class="text-right mono" style="font-weight:600;color:var(--text-primary)">${fmt(v)}</td><td class="text-right mono" style="color:${gl>=0?'var(--green-cat)':'var(--red)'}">${fmt(gl)}<br><span style="font-size:10px">${fmtPct(gp)}</span></td><td class="text-right mono" style="font-size:11px">${(info.beta||1.0).toFixed(2)}</td><td class="text-right mono" style="font-size:11px">${pp.toFixed(1)}%</td><td class="text-right"><button class="btn-danger" onclick="mpRemoveHolding(${h.id})" style="font-size:10px;padding:4px 8px;">Remove</button></td></tr>`;
   }).join('');
+}
+
+// ===== INIT =====
+(async function(){
+  await loadAll();
+  await loadSiteContent();
+  if(isEditor)enableEditor();
+  // Apply fallback prices if first load
+  if(!holdings.some(h=>h.currentPrice>0)){const fb={VOO:636.35,CAT:768.23,LMT:489.55,BND:72.88};holdings.forEach(h=>{if(fb[h.ticker])h.currentPrice=fb[h.ticker];});}
+  renderAll();
+  fetchAllPrices();
+  listenForUpdates();
+  // Refresh prices every 5 minutes
+  setInterval(fetchAllPrices,300000);
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
