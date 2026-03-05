@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head><title>FMP Debug Test</title>
+<style>body{font-family:Arial;padding:40px;} pre{background:#f0f0f0;padding:15px;overflow:auto;max-height:300px;font-size:12px;} .err{color:red;} .ok{color:green;font-weight:bold;}</style>
+</head>
+<body>
+<h1>FMP API Debug</h1>
+<button onclick="runTest()" style="padding:10px 30px;font-size:16px;background:#1B2A4A;color:white;border:none;cursor:pointer;">Test TSLA</button>
+<div id="out"></div>
+<script>
+const FMP_KEY = "ZPgmrci1M6rh0Q46Ev4MDFK9T5n1E9n7";
+
+async function testEndpoint(name, url) {
+  let html = '<h3>' + name + '</h3>';
+  html += '<p style="font-size:11px;color:#888;">URL: ' + url.replace(FMP_KEY, 'KEY') + '</p>';
+  try {
+    const res = await fetch(url);
+    html += '<p>Status: ' + res.status + ' ' + res.statusText + '</p>';
+    const text = await res.text();
+    try {
+      const data = JSON.parse(text);
+      if (Array.isArray(data) && data.length > 0) {
+        html += '<p class="ok">SUCCESS - Got ' + data.length + ' result(s)</p>';
+        html += '<pre>' + JSON.stringify(data[0], null, 2).substring(0, 2000) + '</pre>';
+      } else if (data.Error || data['Error Message']) {
+        html += '<p class="err">API ERROR: ' + (data.Error || data['Error Message']) + '</p>';
+      } else {
+        html += '<p class="err">Empty or unexpected response</p>';
+        html += '<pre>' + JSON.stringify(data, null, 2).substring(0, 500) + '</pre>';
+      }
+    } catch(e) {
+      html += '<p class="err">Not valid JSON</p>';
+      html += '<pre>' + text.substring(0, 500) + '</pre>';
+    }
+  } catch(e) {
+    html += '<p class="err">FETCH FAILED: ' + e.message + '</p>';
+  }
+  return html;
+}
+
+async function runTest() {
+  const out = document.getElementById('out');
+  out.innerHTML = '<p>Testing endpoints...</p>';
+  let html = '';
+
+  html += await testEndpoint('1. Profile', 
+    'https://financialmodelingprep.com/api/v3/profile/TSLA?apikey=' + FMP_KEY);
+  
+  html += await testEndpoint('2. Quote', 
+    'https://financialmodelingprep.com/api/v3/quote/TSLA?apikey=' + FMP_KEY);
+  
+  html += await testEndpoint('3. Income Statement', 
+    'https://financialmodelingprep.com/api/v3/income-statement/TSLA?limit=2&apikey=' + FMP_KEY);
+  
+  html += await testEndpoint('4. Balance Sheet', 
+    'https://financialmodelingprep.com/api/v3/balance-sheet-statement/TSLA?limit=1&apikey=' + FMP_KEY);
+
+  html += await testEndpoint('5. Finnhub Price', 
+    'https://finnhub.io/api/v1/quote?symbol=TSLA&token=d6flfbhr01qqnmbp4sv0d6flfbhr01qqnmbp4svg');
+
+  out.innerHTML = html;
+}
+</script>
+</body>
+</html>
